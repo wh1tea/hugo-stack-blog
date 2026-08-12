@@ -1,0 +1,8 @@
+# 中文菜单：主菜单在内容页 frontmatter 中定义（menu.main），这里只配置社交链接
+[[social]]
+    identifier = "github"
+    name       = "GitHub"
+    url        = "https://github.com/wh1tea"
+
+    [social.params]
+        icon = "brand-github"

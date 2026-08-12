@@ -1,0 +1,27 @@
+# 多语言配置
+# 中文为默认语言（contentDir: content/zh），英文在 /en/（contentDir: content/en）
+# 侧边栏的语言切换下拉框由主题自动生成，显示的就是下面的 label
+# 每段语言下可以覆盖全局参数（params），例如侧边栏副标题
+
+[zh]
+    weight     = 1
+    label      = "简体中文"
+    title      = "Wh1tea 的博客"
+    contentDir = "content/zh"
+    locale     = "zh-cn"
+
+    [zh.params.sidebar]
+        subtitle = "代码 · 博客 · 生活"
+
+    [zh.params.article.license]
+        default = "本作品采用 CC BY-NC-SA 4.0 许可协议"
+
+[en]
+    weight     = 2
+    label      = "English"
+    title      = "Wh1tea's Blog"
+    contentDir = "content/en"
+    locale     = "en-us"
+
+    [en.params.sidebar]
+        subtitle = "Code · Grad School · Life"
