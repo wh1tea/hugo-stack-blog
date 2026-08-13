@@ -3,9 +3,9 @@ title: "用 Hugo + Stack 主题 + GitHub Pages 搭建博客"
 description: "从模板到上线：双语博客的完整搭建记录，附项目结构全解析"
 slug: "hugo-stack-github-pages"
 date: 2026-08-12T16:00:00+08:00
-tags: ["Hugo", "Stack 主题", "GitHub Pages", "博客搭建"]
-cover:
-  image: cover.svg
+tags: ["hugo", "stack", "github-pages", "博客搭建"]
+categories: ["hugo"]
+image: cover.svg
 ---
 
 这篇博客就是最终成果。记录一下我是如何用 Hugo + Stack 主题 + GitHub Pages 三件套，从零搭出一个中英双语的静态博客。
