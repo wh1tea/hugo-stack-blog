@@ -3,5 +3,7 @@ resources
 .hugo_build.lock
 .DS_Store
 assets/jsconfig.json
+
 # 仅本地开发文档，不进仓库
+_devlog
 LOCAL-DEV-NOTES.md

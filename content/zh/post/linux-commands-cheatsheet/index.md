@@ -7,7 +7,8 @@ tags:
   - shell
   - cheatsheet
   - command-line
-categories: ["linux"]
+categories:
+  - linux
 description: 覆盖常用 Linux 命令的分类速查手册，每条注明命令的全称缩写来源，适合日常参考和面试复习。
 ---
 
