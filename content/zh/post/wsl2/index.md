@@ -91,6 +91,7 @@ wsl -u root
 ```
 
 ```bash
+ls /home # 查看用户名
 passwd <用户名>
 ```
 

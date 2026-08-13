@@ -2,7 +2,7 @@
 title: "WSL2 Installation and Usage Guide"
 description: "From install to daily use: a complete WSL2 setup guide covering distro management, resource limits, and troubleshooting."
 slug: "wsl2"
-date: 2026-08-13T15:41:00+08:00
+date: 2026-05-13
 tags:
   - wsl
   - wsl2
@@ -20,14 +20,14 @@ This guide is for developers with some programming background. It covers install
 
 Released with Windows 10 in 2019, WSL2's core improvement is architectural: WSL1 translates Linux syscalls into Windows syscalls with partial compatibility, while WSL2 runs in a lightweight VM with a real Linux kernel and full syscall support.
 
-| Dimension | WSL1 | WSL2 | Traditional VM |
-| :-------- | :--- | :--- | :------------- |
-| Linux kernel | None (translation layer) | Full kernel | Full kernel |
-| Syscalls | Partial | Full | Full |
-| Linux dir I/O | Slow | 3-5x faster | Fast |
-| Windows dir access | Fast | Slower (cross-filesystem) | Slow |
-| Memory usage | Low | Moderate (lightweight VM) | High |
-| Startup | Fast | Seconds | Slow |
+| Dimension          | WSL1                     | WSL2                      | Traditional VM |
+| :----------------- | :----------------------- | :------------------------ | :------------- |
+| Linux kernel       | None (translation layer) | Full kernel               | Full kernel    |
+| Syscalls           | Partial                  | Full                      | Full           |
+| Linux dir I/O      | Slow                     | 3-5x faster               | Fast           |
+| Windows dir access | Fast                     | Slower (cross-filesystem) | Slow           |
+| Memory usage       | Low                      | Moderate (lightweight VM) | High           |
+| Startup            | Fast                     | Seconds                   | Slow           |
 
 WSL2 can be up to 20x faster than WSL1 when extracting tar archives, and roughly 2-5x faster for operations like `git clone`. It also supports GPU acceleration and Linux GUI apps.
 
@@ -59,12 +59,12 @@ wsl --list --online        # list available distros
 wsl --install -d Debian    # install a specific one
 ```
 
-| Option | Description |
-| :----- | :---------- |
-| `--distribution` | Distro name |
-| `--no-launch` | Don't launch after install |
+| Option           | Description                                    |
+| :--------------- | :--------------------------------------------- |
+| `--distribution` | Distro name                                    |
+| `--no-launch`    | Don't launch after install                     |
 | `--web-download` | Download from the web, not the Microsoft Store |
-| `--location` | Custom install directory |
+| `--location`     | Custom install directory                       |
 
 ### Manual install (alternative)
 
@@ -91,6 +91,7 @@ wsl -u root
 ```
 
 ```bash
+ls /home # View usernames
 passwd <username>
 ```
 
@@ -129,28 +130,28 @@ localhostForwarding=true  # localhost forwarding
 
 ### WSL management (run in PowerShell / CMD)
 
-| Command | Description |
-| :------ | :---------- |
-| `wsl --status` | Show WSL status and default version |
-| `wsl -l -v` | List distros and their versions |
-| `wsl` / `wsl -d <distro>` | Launch the default or a specific distro |
-| `wsl -t <distro>` | Terminate a distro |
-| `wsl --shutdown` | Shut down all WSL instances |
-| `wsl --set-default-version 2` | Set WSL2 as default |
-| `wsl --set-version <distro> 2` | Convert a distro to WSL2 |
-| `wsl --update` | Update the WSL kernel |
-| `wsl --unregister <distro>` | Uninstall a distro (removes its filesystem) |
-| `wsl --export <distro> <file.tar>` | Export a distro as a tar backup |
+| Command                            | Description                                 |
+| :--------------------------------- | :------------------------------------------ |
+| `wsl --status`                     | Show WSL status and default version         |
+| `wsl -l -v`                        | List distros and their versions             |
+| `wsl` / `wsl -d <distro>`          | Launch the default or a specific distro     |
+| `wsl -t <distro>`                  | Terminate a distro                          |
+| `wsl --shutdown`                   | Shut down all WSL instances                 |
+| `wsl --set-default-version 2`      | Set WSL2 as default                         |
+| `wsl --set-version <distro> 2`     | Convert a distro to WSL2                    |
+| `wsl --update`                     | Update the WSL kernel                       |
+| `wsl --unregister <distro>`        | Uninstall a distro (removes its filesystem) |
+| `wsl --export <distro> <file.tar>` | Export a distro as a tar backup             |
 
 ### Linux basics (run inside WSL)
 
-| Command | Description |
-| :------ | :---------- |
-| `uname -a` | Kernel version and architecture |
-| `df -h` | Disk space usage |
-| `free -h` | Memory usage |
-| `pwd` | Current working directory |
-| `ls -lah` | List all files (including hidden) |
+| Command    | Description                       |
+| :--------- | :-------------------------------- |
+| `uname -a` | Kernel version and architecture   |
+| `df -h`    | Disk space usage                  |
+| `free -h`  | Memory usage                      |
+| `pwd`      | Current working directory         |
+| `ls -lah`  | List all files (including hidden) |
 
 ## Troubleshooting
 
