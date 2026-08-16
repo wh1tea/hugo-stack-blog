@@ -4,8 +4,8 @@ date: 2026-08-12
 layout: "archives"
 slug: "archives"
 menu:
-    main:
-        weight: 2
-        params:
-            icon: archives
+  main:
+    weight: 2
+    params:
+      icon: archives
 ---

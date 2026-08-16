@@ -10,7 +10,7 @@ tags:
   - blogging
 categories:
   - hugo
-image: cover.svg
+image: /hugo-stack-blog/en/post/hugo/assets/cover-en.svg
 ---
 
 This post is the result. Here's how I built a bilingual (Chinese/English) static blog from scratch with three tools: **Hugo**, the **Stack theme**, and **GitHub Pages**.
@@ -87,7 +87,7 @@ This is the most interesting part of this blog. Hugo treats multilingual sites a
     locale     = "en-us"
 
     [en.params.sidebar]
-        subtitle = "Code · Grad School · Life"
+        subtitle = "Code · Blog · Life"
 ```
 
 ### 2. Set the default language (config/\_default/config.toml)
@@ -116,17 +116,19 @@ UI strings (archives, search, reading time, 404, etc.) come from the theme's `i1
 
 ## Writing a post
 
-Put articles at `content/<lang>/post/<slug>/index.md`, with page resources (images, etc.) in the same folder:
+Put articles at `content/<lang>/post/<topic>/<slug>.md`, with images in the `<topic>/assets/` folder:
 
 ```markdown
 ---
 title: "Post Title"
 description: "One-line summary shown on the homepage card"
+slug: "article-slug"
 date: 2026-08-12T16:00:00+08:00
-tags: ["Hugo", "Blogging"]
-categories: ["Tutorial"]
-cover:
-  image: cover.svg
+tags:
+  - hugo
+categories:
+  - hugo
+image: /hugo-stack-blog/en/post/hugo/assets/cover-en.svg
 ---
 
 Write the body in Markdown.

@@ -1,7 +1,7 @@
 ---
-title: "用 Hugo + Stack 主题 + GitHub Pages 搭建博客"
-description: "从模板到上线：双语博客的完整搭建记录，附项目结构全解析"
-slug: "hugo-stack-github-pages"
+title: 用 Hugo + Stack 主题 + GitHub Pages 搭建博客
+description: 从模板到上线：双语博客的完整搭建记录，附项目结构全解析
+slug: hugo-stack-github-pages
 date: 2026-08-12T16:00:00+08:00
 tags:
   - hugo
@@ -10,12 +10,12 @@ tags:
   - 博客搭建
 categories:
   - hugo
-image: cover.svg
+image: /hugo-stack-blog/post/hugo/assets/cover.svg
 ---
 
-这篇博客就是最终成果。记录一下我是如何用 Hugo + Stack 主题 + GitHub Pages 三件套，从零搭出一个中英双语的静态博客。
+这篇博客就是最终成果。记录一下我是如何用 Hugo + Stack 主题 + GitHub Pages，从零搭出一个中英双语的静态博客。
 
-## 为什么是这三件套
+## 简介
 
 | 组件         | 选择理由                                                                   |
 | ------------ | -------------------------------------------------------------------------- |
@@ -27,12 +27,11 @@ image: cover.svg
 
 ## 环境准备
 
-| 工具          | 用途                               | 安装方式                            |
-| ------------- | ---------------------------------- | ----------------------------------- |
-| Git           | 版本管理                           | `winget install Git.Git`            |
+| 工具            | 用途                       | 安装方式                                |
+| ------------- | ------------------------ | ----------------------------------- |
+| Git           | 版本管理                     | `winget install Git.Git`            |
 | Go            | Hugo 模块机制（拉取主题）          | `winget install GoLang.Go`          |
 | Hugo Extended | 构建站点，extended 版才能编译 SCSS | `winget install Hugo.Hugo.Extended` |
-| Dart Sass     | 编译主题的 SCSS                    | GitHub Releases 下载后加入 PATH     |
 
 验证环境：
 
@@ -87,7 +86,7 @@ hugo            # 构建到 public/
     locale     = "en-us"
 
     [en.params.sidebar]
-        subtitle = "Code · Grad School · Life"
+        subtitle = "Code · Blog · Life"
 ```
 
 ### 2. 指定默认语言（config/\_default/config.toml）
@@ -116,17 +115,19 @@ content/
 
 ## 写一篇文章
 
-文章放在 `content/<语言>/post/<slug>/index.md`，同目录放图片等页面资源：
+文章放在 `content/<语言>/post/<主题>/<slug>.md`，图片放在该主题文件夹的 `assets/` 目录：
 
 ```markdown
 ---
 title: "文章标题"
 description: "一句话摘要，会显示在首页卡片上"
+slug: "article-slug"
 date: 2026-08-12T16:00:00+08:00
-tags: ["Hugo", "博客搭建"]
-categories: ["教程"]
-cover:
-  image: cover.svg
+tags:
+  - hugo
+categories:
+  - hugo
+image: /hugo-stack-blog/post/hugo/assets/cover.svg
 ---
 
 正文用 Markdown 写即可。

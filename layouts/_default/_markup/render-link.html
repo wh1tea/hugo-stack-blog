@@ -1,0 +1,7 @@
+{{- $href := .Destination -}}
+{{- if and (strings.HasSuffix $href ".md") (not (strings.HasPrefix $href "http")) (not (strings.HasPrefix $href "#")) (not (strings.HasPrefix $href "mailto:")) -}}
+    {{- $href = strings.TrimSuffix $href ".md" -}}
+{{- end -}}
+<a class="link" href="{{ $href | safeURL }}" {{ with .Title}} title="{{ . }}"
+    {{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"
+    {{ end }}>{{ .Text | safeHTML }}</a>
