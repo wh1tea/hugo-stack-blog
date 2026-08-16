@@ -1,8 +1,8 @@
 ---
-title: "Git 命令速查手册"
-description: "覆盖仓库、暂存、分支、历史、撤销、远程六大场景的 Git 命令速查表，附常用示例与进阶阅读链接"
-slug: "git-commands-cheatsheet"
-date: 2026-08-14T00:00:00+08:00
+title: Git 命令速查手册
+description: 覆盖仓库、暂存、分支、历史、撤销、远程六大场景的 Git 命令速查表，附常用示例与进阶阅读链接
+slug: git-commands-cheatsheet
+date: 2026-08-14
 tags:
   - git
   - cheatsheet

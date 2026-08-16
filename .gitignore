@@ -8,3 +8,7 @@ assets/jsconfig.json
 _devlog/
 LOCAL-DEV-NOTES.md
 .obsidian/
+
+# frontmatter
+.frontmatter/
+frontmatter.json

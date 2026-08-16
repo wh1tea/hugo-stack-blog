@@ -1,8 +1,8 @@
 ---
-title: "本地项目推送到已有远程仓库"
-description: "解决 refusing to merge unrelated histories：本地与远程仓库合并的完整方案"
-slug: "git-push-existing-remote"
-date: 2026-08-14T13:00:00+08:00
+title: 本地项目推送到已有远程仓库
+description: 解决 refusing to merge unrelated histories：本地与远程仓库合并的完整方案
+slug: git-push-existing-remote
+date: 2025-09-02
 tags:
   - git
   - github

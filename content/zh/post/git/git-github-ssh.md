@@ -1,14 +1,14 @@
 ---
-title: "GitHub SSH 认证配置指南"
-description: "生成 SSH 密钥、启动 ssh-agent、上传公钥，彻底解决 Permission denied (publickey)"
-slug: "git-github-ssh"
-date: 2025-09-30
+title: GitHub SSH 认证配置指南
+description: 生成 SSH 密钥、启动 ssh-agent、上传公钥，彻底解决 Permission denied (publickey)
+date: 2025-09-05
+slug: git-github-ssh
+categories:
+  - tutorial
 tags:
   - git
   - github
   - ssh
-categories:
-  - tutorial
 ---
 
 每次 `git push` 都要输密码很烦，而且 GitHub 早已禁用密码认证，HTTPS 方式会直接报 `Authentication failed`。配置 SSH 密钥后可以永久免密推送，本文给出完整流程与排错方法。
