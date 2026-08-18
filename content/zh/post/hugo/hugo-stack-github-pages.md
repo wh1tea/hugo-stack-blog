@@ -7,7 +7,7 @@ tags:
   - hugo
   - stack
   - github-pages
-  - 博客搭建
+  - blogging
 categories:
   - hugo
 image: /hugo-stack-blog/post/hugo/assets/cover.svg
@@ -27,9 +27,9 @@ image: /hugo-stack-blog/post/hugo/assets/cover.svg
 
 ## 环境准备
 
-| 工具            | 用途                       | 安装方式                                |
-| ------------- | ------------------------ | ----------------------------------- |
-| Git           | 版本管理                     | `winget install Git.Git`            |
+| 工具          | 用途                               | 安装方式                            |
+| ------------- | ---------------------------------- | ----------------------------------- |
+| Git           | 版本管理                           | `winget install Git.Git`            |
 | Go            | Hugo 模块机制（拉取主题）          | `winget install GoLang.Go`          |
 | Hugo Extended | 构建站点，extended 版才能编译 SCSS | `winget install Hugo.Hugo.Extended` |
 

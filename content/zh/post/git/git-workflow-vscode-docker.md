@@ -17,12 +17,12 @@ categories:
 
 点击左侧栏 Git 图标（或 `Ctrl+Shift+G`）打开 Source Control 面板，日常操作全部可视化：
 
-| 操作 | 面板操作 |
-| --- | --- |
-| 暂存 | 点击文件旁的 `+` 加入暂存区 |
-| 提交 | 输入提交信息，点击 `✔` |
-| 分支 | 点击底部状态栏分支名，创建或切换 |
-| 推送 / 拉取 | `...` 菜单选择 `Push` / `Pull` |
+| 操作        | 面板操作                         |
+| ----------- | -------------------------------- |
+| 暂存        | 点击文件旁的 `+` 加入暂存区      |
+| 提交        | 输入提交信息，点击 `✔`           |
+| 分支        | 点击底部状态栏分支名，创建或切换 |
+| 推送 / 拉取 | `...` 菜单选择 `Push` / `Pull`   |
 
 ### GitLens 扩展
 
@@ -78,12 +78,12 @@ git push
 
 ## 常见问题
 
-| 问题 | 解决 |
-| --- | --- |
-| 误删文件 | 已提交用 `git checkout HEAD -- file.txt`；已暂存用 `git restore file.txt` |
-| 推送失败 | `git pull --rebase` 拉取最新，再检查权限与分支名 |
-| 行尾不一致 | 配置 `.gitattributes` + `core.autocrlf`，运行 `git add --renormalize .` |
-| 证书错误 | OpenSSL 检查 `http.sslCAInfo`；Schannel 确认证书已导入 Windows 证书存储 |
+| 问题       | 解决                                                                      |
+| ---------- | ------------------------------------------------------------------------- |
+| 误删文件   | 已提交用 `git checkout HEAD -- file.txt`；已暂存用 `git restore file.txt` |
+| 推送失败   | `git pull --rebase` 拉取最新，再检查权限与分支名                          |
+| 行尾不一致 | 配置 `.gitattributes` + `core.autocrlf`，运行 `git add --renormalize .`   |
+| 证书错误   | OpenSSL 检查 `http.sslCAInfo`；Schannel 确认证书已导入 Windows 证书存储   |
 
 ## 结语
 

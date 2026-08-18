@@ -1,7 +1,9 @@
-public
-resources
+/public/
+/resources/
 .hugo_build.lock
 .DS_Store
+Thumbs.db
+Desktop.ini
 assets/jsconfig.json
 
 # local
@@ -12,3 +14,5 @@ LOCAL-DEV-NOTES.md
 # frontmatter
 .frontmatter/
 frontmatter.json
+
+.vscode

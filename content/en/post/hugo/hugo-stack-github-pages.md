@@ -100,7 +100,7 @@ hasCJKLanguage = true                    # correct word counts / reading time fo
 
 ### 3. Separate content directories per language
 
-```
+```txt
 content/
 ├── zh/   # Chinese version: _index.md, page/, post/
 └── en/   # English version: mirrors the Chinese structure
@@ -146,7 +146,7 @@ In other words, **the `public/` directory is never committed** (already gitignor
 
 ## Project structure
 
-```
+```txt
 hugo-stack-blog/
 ├── .github/workflows/
 │   ├── deploy.yml          # push-to-deploy to GitHub Pages

@@ -1,13 +1,14 @@
 ---
-title: （自用）VS Code 插件配置
-date: 2026-07-15
+title: VS Code 插件配置
+date: 2025-07-15
 tags:
-  - vscode
+  - configuration
+  - extensions
   - ide
   - productivity
-  - extensions
-  - configuration
-category:
+  - vscode
+  - personal
+categories:
   - vscode
 description: 完整收录了我当前 82 个 VS Code 插件配置，按功能分类逐一说明用途，并对冗余、冲突、废弃的插件给出改进建议和清理方案。
 ---

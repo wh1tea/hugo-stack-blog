@@ -3,16 +3,15 @@ title: Git for Windows 配置指南
 description: Git for Windows 安装与配置的完整参考，涵盖 SSH 客户端选择、HTTPS 传输后端、行尾处理、文件系统缓存、符号链接以及 Git 初始化的最佳实践。
 date: 2026-07-13
 slug: git-for-windows
-category: git
+categories:
+    - git
 tags:
-  - git
-  - windows
-  - ssh
-  - https
-  - configuration
+    - git
+    - windows
+    - ssh
+    - https
+    - configuration
 ---
-
-# Git for Windows 配置指南
 
 Git for Windows 安装时提供了多项配置选项，理解它们的区别有助于搭建更高效、更稳定的开发环境。本文从实际场景出发，逐一讲解各选项的含义与推荐配置。
 
