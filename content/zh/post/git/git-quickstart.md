@@ -1,8 +1,8 @@
 ---
 title: Git 入门：从安装到第一次推送
-description: 从零开始：安装 Git、配置身份、初始化仓库、提交代码并推送到 GitHub
 slug: git-quickstart
 date: 2025-09-01
+description: 从零开始：安装 Git、配置身份、初始化仓库、提交代码并推送到 GitHub
 tags:
   - git
   - github

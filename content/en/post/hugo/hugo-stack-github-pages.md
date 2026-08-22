@@ -1,8 +1,8 @@
 ---
-title: "Building a Blog with Hugo, the Stack Theme, and GitHub Pages"
-description: "From template to live: a complete bilingual blog setup guide with a full project structure breakdown"
-slug: "hugo-stack-github-pages"
+title: Building a Blog with Hugo, the Stack Theme, and GitHub Pages
+slug: hugo-stack-github-pages
 date: 2026-08-12T16:00:00+08:00
+description: 'From template to live: a complete bilingual blog setup guide with a full project structure breakdown'
 tags:
   - hugo
   - stack

@@ -1,6 +1,8 @@
 ---
 title: VS Code 中 Emmet 的 Tab 展开功能配置指南
+slug: vscode-emmet-tab
 date: 2025-07-18
+description: 详解 VS Code 中 Emmet 的 Trigger Expansion On Tab 设置，让你用 Tab 键快速展开 HTML/CSS 简写，大幅提升编码效率。
 tags:
   - vscode
   - emmet
@@ -8,10 +10,7 @@ tags:
   - css
   - productivity
 categories: vscode
-description: 详解 VS Code 中 Emmet 的 Trigger Expansion On Tab 设置，让你用 Tab 键快速展开 HTML/CSS 简写，大幅提升编码效率。
 ---
-
-# VS Code 中 Emmet 的 Tab 展开功能配置指南
 
 在日常前端开发中，重复书写完整的 HTML 标签结构或 CSS 属性是一件既耗时又容易出错的事。Emmet 插件通过简写语法极大地加速了这一过程，而 VS Code 内置的 Emmet 功能更将体验提升了一个台阶。
 

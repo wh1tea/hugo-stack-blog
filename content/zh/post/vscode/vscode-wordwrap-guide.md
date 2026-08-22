@@ -1,28 +1,26 @@
 ---
-title: "告别横向滚动vscode设置自动换行"
-description: "详解 VS Code 的 wordWrap 软换行设置：四种模式区别、配置方法与最佳实践，让你彻底告别横向滚动条"
-slug: "vscode-wordwrap-guide"
+title: 告别横向滚动vscode设置自动换行
+slug: vscode-wordwrap-guide
 date: 2026-08-18T08:00:00+08:00
-categories:
-  - vscode
+description: 详解 VS Code 的 wordWrap 软换行设置：四种模式区别、配置方法与最佳实践，让你彻底告别横向滚动条
 tags:
   - vscode
   - word-wrap
   - settings
   - editor
+categories:
+  - vscode
 ---
 
-在 VS Code 中写代码或文档时，你是否经常遇到这种情况：一行代码太长，不得不拖动底部的水平滚动条才能看到结尾？或者，你正在阅读一篇 Markdown 文档，每行文字都远远超出了编辑器窗口的边界？
+在 VS Code 中写代码或文档时，你是否经常遇到这种情况：一行代码太长，不得不拖动底部的水平滚动条才能看到结尾？或者，你正在阅读一篇 Markdown 文档，每行文字都远远超出了编辑器窗口的边界？这种体验不仅打断思路，还降低了效率。VS Code 的 `editor.wordWrap` 设置正是为了解决这个问题而生的。本文将详细介绍它的作用、几种配置模式，以及如何根据你的使用场景做出最佳选择。
 
-这种体验不仅打断思路，还降低了效率。VS Code 的 `editor.wordWrap` 设置正是为了解决这个问题而生的。本文将详细介绍它的作用、几种配置模式，以及如何根据你的使用场景做出最佳选择。
-
-### 什么是 `editor.wordWrap`？
+## 什么是 `editor.wordWrap`？
 
 `editor.wordWrap` 是 VS Code 中控制**软换行（Soft Wrapping）** 的核心设置。所谓的“软换行”，指的是编辑器在**显示**时将长行文本折成多行，以适应窗口宽度，但**并不会在文件中实际插入换行符**。这与你手动按下 `Enter` 键产生的“硬换行”有着本质区别。
 
 默认情况下，VS Code 的 `editor.wordWrap` 设置为 `"off"`，即不自动换行。
 
-### 如何配置 `editor.wordWrap`
+## 如何配置 `editor.wordWrap`
 
 配置 `editor.wordWrap` 有三种常见方式：
 
@@ -39,7 +37,7 @@ tags:
 - **图形界面**：依次点击 `文件` → `首选项` → `设置`（或按 `Ctrl + ,`），在搜索框输入 `word wrap`，找到 `Editor: Word Wrap` 下拉框进行选择。
 - **JSON 配置文件**：在 `settings.json` 中直接添加或修改 `"editor.wordWrap": "值"` 条目。
 
-### 四种模式详解
+## 四种模式详解
 
 `editor.wordWrap` 提供了四种模式，分别对应不同的换行策略：
 
@@ -52,7 +50,7 @@ tags:
 
 与 `editor.wordWrap` 配合使用的还有 `editor.wordWrapColumn` 设置，用于指定 `"wordWrapColumn"` 和 `"bounded"` 模式下的换行列数。例如，设置 `"editor.wordWrapColumn": 80` 即可让代码在 80 列处换行。
 
-### 最佳实践建议
+## 最佳实践建议
 
 **1. 区分不同文件类型**
 
@@ -75,11 +73,11 @@ tags:
 
 对于 Markdown、纯文本等主要以阅读和写作为主的文件，`"on"` 模式能确保文字始终根据窗口大小自动折行，提供最佳的阅读体验。
 
-### 结语
+## 结语
 
 `editor.wordWrap` 是一个看似简单却能显著提升编码体验的设置。理解 `"off"`、`"on"`、`"wordWrapColumn"` 和 `"bounded"` 这四种模式的区别，并根据不同文件类型进行精细化配置，可以让你彻底告别横向滚动条的困扰，将更多注意力集中在代码和文字本身。
 
-### 参考
+## 参考
 
 - [VS Code 官方设置文档](https://code.visualstudio.com/docs/configure/settings)
 - Stack Overflow: [How can I switch word wrap on and off in Visual Studio Code?](https://stackoverflow.com/questions/30037875/how-can-i-switch-word-wrap-on-and-off-in-visual-studio-code)

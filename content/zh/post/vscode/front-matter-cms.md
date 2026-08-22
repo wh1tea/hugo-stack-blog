@@ -1,15 +1,15 @@
 ---
-title: "Front Matter CMS：在 VS Code 里管理 Hugo 博客"
-slug: "front-matter-cms"
+title: Front Matter CMS：在 VS Code 里管理 Hugo 博客
+slug: front-matter-cms
 date: 2026-08-16T21:50:51+08:00
-description: "用 Front Matter CMS 插件以仪表盘管理 Hugo 博客的 front matter 与文章，含 frontmatter.json 完整配置与踩坑记录"
-categories:
-  - vscode
+description: 用 Front Matter CMS 插件以仪表盘管理 Hugo 博客的 front matter 与文章，含 frontmatter.json 完整配置与踩坑记录
 tags:
   - vscode
   - front-matter
   - hugo
   - cms
+categories:
+  - vscode
 ---
 
 静态博客的内容管理一直是痛点：文章是纯 Markdown，front matter 只能手写，标签和分类没有可视化管理，新建文章还要记模板。Front Matter CMS 是一个 VS Code 插件，把这一切变成可视化的仪表盘。

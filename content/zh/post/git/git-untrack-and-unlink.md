@@ -1,8 +1,8 @@
 ---
 title: Git 取消追踪与仓库解绑
-description: git rm --cached 停止跟踪、只追踪指定文件、移除远程关联、删除整个仓库
 slug: git-untrack-and-unlink
 date: 2025-09-04
+description: git rm --cached 停止跟踪、只追踪指定文件、移除远程关联、删除整个仓库
 tags:
   - git
 categories:

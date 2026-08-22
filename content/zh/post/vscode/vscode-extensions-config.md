@@ -1,6 +1,8 @@
 ---
 title: VS Code 插件配置
+slug: vscode-extensions-config
 date: 2025-07-15
+description: 完整收录了我当前 82 个 VS Code 插件配置，按功能分类逐一说明用途，并对冗余、冲突、废弃的插件给出改进建议和清理方案。
 tags:
   - configuration
   - extensions
@@ -10,10 +12,7 @@ tags:
   - personal
 categories:
   - vscode
-description: 完整收录了我当前 82 个 VS Code 插件配置，按功能分类逐一说明用途，并对冗余、冲突、废弃的插件给出改进建议和清理方案。
 ---
-
-# （自用）VS Code 插件配置
 
 > VS Code 的插件生态是其最大优势，但安装过多后容易积累冗余和冲突。本文整理了当前环境下的 82 个插件，按功能分组说明，并给出精简建议。
 

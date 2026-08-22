@@ -1,6 +1,8 @@
 ---
 title: 为右键菜单“新建”添加 Markdown 文件类型
+slug: add-md-to-context-menu
 date: 2026-07-16
+description: 详细介绍了三种为 Windows 右键菜单“新建”添加 Markdown 文件类型的方法，包括手动修改注册表、一键导入 .reg 文件以及利用 Typora 自带功能，助你提升日常写作与笔记管理的效率。
 tags:
   - windows
   - registry
@@ -9,7 +11,6 @@ tags:
   - productivity-tools
 categories:
   - windows
-description: 详细介绍了三种为 Windows 右键菜单“新建”添加 Markdown 文件类型的方法，包括手动修改注册表、一键导入 .reg 文件以及利用 Typora 自带功能，助你提升日常写作与笔记管理的效率。
 ---
 
 在日常写作或笔记管理中，Markdown 已经是我最离不开的格式。无论是用 Typora 写技术文档，还是用 Obsidian 管理知识库，`.md` 文件都是绝对的主力。然而，Windows 系统的右键菜单“新建”里默认只有文本文档、Word 等常见格式，却没有 Markdown。每次新建文件后还要手动重命名后缀，着实不够优雅。

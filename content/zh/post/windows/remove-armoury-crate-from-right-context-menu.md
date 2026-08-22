@@ -1,6 +1,8 @@
 ---
 title: 如何清除右键菜单中的 Armoury Crate（华硕奥创）选项
+slug: remove-sth-from-right-context-menu
 date: 2026-07-16
+description: 详细讲解三种清理或隐藏右键菜单中 Armoury Crate 选项的方法，包括软件内关闭、注册表删除和第三方工具，适用于不同使用场景。
 tags:
   - asus
   - armoury-crate
@@ -9,7 +11,6 @@ tags:
   - system-optimization
 categories:
   - windows
-description: 详细讲解三种清理或隐藏右键菜单中 Armoury Crate 选项的方法，包括软件内关闭、注册表删除和第三方工具，适用于不同使用场景。
 ---
 
 > 如果你在桌面或文件夹上右键时，发现菜单里多了一个 “Armoury Crate” 或 “游戏库” 选项，这通常是因为安装了华硕的奥创智控中心（Armoury Crate）软件。这个选项可能会让右键菜单变得冗长，影响操作效率。本文将提供三种不同的清理方法，你可以根据自己是否仍在使用该软件来选择最适合的方式。

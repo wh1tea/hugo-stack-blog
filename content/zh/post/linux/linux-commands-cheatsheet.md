@@ -1,7 +1,8 @@
 ---
 title: Linux 命令速查手册
-slug: "linux-commands-cheatsheet"
+slug: linux-commands-cheatsheet
 date: 2026-04-01
+description: 覆盖常用 Linux 命令的分类速查手册，每条注明命令的全称缩写来源，适合日常参考和面试复习。
 tags:
   - linux
   - shell
@@ -9,7 +10,6 @@ tags:
   - command-line
 categories:
   - linux
-description: 覆盖常用 Linux 命令的分类速查手册，每条注明命令的全称缩写来源，适合日常参考和面试复习。
 ---
 
 > 本文档覆盖常用 Linux 命令，每条注明命令的全称缩写来源。

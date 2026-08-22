@@ -11,7 +11,7 @@
     locale     = "zh-cn"
 
     [zh.params.sidebar]
-        subtitle = "代码 · 博客 · 生活"
+        subtitle = "知行合一"
 
     [zh.params.article.license]
         default = "本作品采用 CC BY-NC-SA 4.0 许可协议"

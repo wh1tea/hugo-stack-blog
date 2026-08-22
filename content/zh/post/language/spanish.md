@@ -3,11 +3,11 @@ title: Español
 slug: spanish
 date: 2026-03-13T03:55:08+00:00
 description: Español
-categories:
-  - language
 tags:
   - español
   - spanish
+categories:
+  - language
 ---
 
 ## 常用

@@ -1,58 +1,57 @@
 ---
 title: VS Code Profiles：当前配置全览
-description: 用 VS Code Profiles 按项目隔离插件环境：全局 20 个通用扩展 + 6 个语言专属 Profile，逐插件说明作用，附工作区关联与鸡肋插件备忘
 slug: vscode-profiles
 date: 2026-08-18T01:06:27+08:00
-categories:
-  - vscode
+description: 用 VS Code Profiles 按项目隔离插件环境：全局 20 个通用扩展 + 6 个语言专属 Profile，逐插件说明作用，附工作区关联与鸡肋插件备忘
 tags:
   - extensions
   - ide
   - profiles
   - vscode
   - personal
+categories:
+  - vscode
 ---
 
-本文是 VS Code Profiles 配置的现状快照（2026-08）：内置 Default 之外共 7 个命名 Profile，全局通用扩展 20 个、语言专属 47 个，每个插件一句话说明作用。前一篇 [VS Code 插件配置](vscode-extensions-config.md) 是 82 插件的全量档案，本文只讲当前实际在用的配置，并把鸡肋插件单独列为备忘。
+本文是 VS Code Profiles 配置的现状快照（2026-08）：内置 Default 之外共 6 个命名 Profile，每个插件一句话说明作用。前一篇 [VS Code 插件配置](vscode-extensions-config.md) 是 82 插件的全量档案，本文只讲当前实际在用的配置，并把鸡肋插件单独列为备忘。
 
 ## 当前结构
 
-| Profile              | 定位                                         | 扩展数 |
-| -------------------- | -------------------------------------------- | ------ |
-| 全局（Apply to All） | 语言无关的通用工具                           | 20     |
-| Wh1tea               | 个人主 Profile（新窗口默认，Notes/Obsidian） | 0 专属 |
-| Java-Spring          | Java / Maven / Gradle / Spring Boot          | 13     |
-| Web-Frontend         | 前端 / Flutter / 博客                        | 9      |
-| Python               | Python 开发                                  | 5      |
-| C/C++                | C/C++ / CMake                                | 5      |
-| SQL                  | 数据库                                       | 7      |
-| Remote-Dev           | 远程 / 容器                                  | 8      |
+| Profile              | 定位                                         |
+| -------------------- | -------------------------------------------- |
+| 全局（Apply to All） | 语言无关的通用工具                           |
+| Default              | 个人主 Profile（新窗口默认，Notes/Obsidian） |
+| Java-Spring          | Java / Maven / Gradle / Spring Boot          |
+| Web-Frontend         | 前端 / Flutter / 博客                        |
+| Python               | Python 开发                                  |
+| C/C++                | C/C++ / CMake                                |
+| SQL                  | 数据库                                       |
+| Remote-Dev           | 远程 / 容器                                  |
 
-## 全局扩展（Apply to All，19 个）
+## 全局扩展
 
-| 插件               | 作用                                             |
-| ------------------ | ------------------------------------------------ |
-| Dracula Theme      | 暗色主题                                         |
-| 中文语言包         | 中文界面                                         |
-| GitLens            | Git 历史、作者标注、文件对比                     |
-| Git Graph          | Git 提交图可视化                                 |
-| GitHub Actions     | Actions 工作流语法高亮与校验                     |
-| EditorConfig       | 跨编辑器统一编码风格                             |
-| Prettier           | 通用格式化器（html/json/css/markdown/yaml 默认） |
-| YAML               | YAML 语法高亮、校验、补全                        |
-| markdownlint       | Markdown 语法与风格检查                          |
-| Code Runner        | 一键运行代码片段                                 |
-| Better Comments    | 注释按 TODO/FIXME 分类着色                       |
-| dotenv             | `.env` 文件语法高亮                              |
-| indent-rainbow     | 缩进层级彩色标注                                 |
-| Todo Tree          | TODO/FIXME 标记树形视图                          |
-| Project Manager    | 快速切换项目                                     |
-| Comment Translate  | 选中注释翻译（英→中）                            |
-| Code Spell Checker | 拼写检查                                         |
-| SonarLint          | 代码质量静态分析                                 |
-| LeetCode           | LeetCode 刷题                                    |
+| 插件               | 作用                                    |
+| ------------------ | --------------------------------------- |
+| Dracula Theme      | 暗色主题                                |
+| 中文语言包         | 中文界面                                |
+| GitLens            | Git 历史、作者标注、文件对比            |
+| Git Graph          | Git 提交图可视化                        |
+| GitHub Actions     | Actions 工作流语法高亮与校验            |
+| EditorConfig       | 跨编辑器统一编码风格                    |
+| Prettier           | 通用格式化器（html/json/css/yaml 默认） |
+| YAML               | YAML 语法高亮、校验、补全               |
+| markdownlint       | Markdown 语法与风格检查、格式化器       |
+| Code Runner        | 一键运行代码片段                        |
+| Better Comments    | 注释按 TODO/FIXME 分类着色              |
+| dotenv             | `.env` 文件语法高亮                     |
+| indent-rainbow     | 缩进层级彩色标注                        |
+| Project Manager    | 快速切换项目                            |
+| Comment Translate  | 选中注释翻译（英→中）                   |
+| Code Spell Checker | 拼写检查                                |
+| SonarLint          | 代码质量静态分析                        |
+| LeetCode           | LeetCode 刷题                           |
 
-Prettier 与 YAML 必须在 All：settings 里 html / json / jsonc / dockercompose / yaml 的默认格式化器指向它们。
+Prettier 与 YAML 必须在 All：settings 里 html / json / jsonc / dockercompose / yaml 的默认格式化器指向它们。Prettier 使用`_`而不是`*`作为斜体语法，个人改用markdownlint用于md格式化器。
 
 ## 各 Profile 专属扩展
 
@@ -134,21 +133,13 @@ Prettier 与 YAML 必须在 All：settings 里 html / json / jsonc / dockercompo
 | Remote Server              | 远程服务器支持      |
 | hadolint                   | Dockerfile 静态分析 |
 
-### Wh1tea（0 专属）
+### Default
 
-个人主 Profile，只吃全局 20 个扩展；`window.newWindowProfile` 指向它，新窗口默认打开。关联 Notes / Obsidian 等文档目录，不背任何语言工具。
+个人主 Profile，只吃全局扩展；`window.newWindowProfile` 指向它，新窗口默认打开。关联 Notes / Obsidian 等文档目录，不背任何语言工具。
 
 ## 工作区关联
 
-打开文件夹时按关联自动套用 Profile，无需手动切换：
-
-- `D:\Code\JavaCode`、`D:\Code\Java` → Java-Spring
-- `D:\Code\PythonCode`、`D:\Code\Python` → Python
-- `D:\Code\JavaScriptCode`、Flutter 项目、`D:\Projects\web-lab`、hugo-stack-blog、wh1tea.github.io → Web-Frontend
-- `D:\Code\SQL` → SQL
-- `D:\Notes`、`D:\Obsidian` → Wh1tea
-
-关联在 `User\globalStorage\storage.json` 的 `profileAssociations.workspaces`，也可在命令面板 Profiles: Manage 里改。
+打开文件夹时按关联自动套用 Profile，无需手动切换。关联在 `User\globalStorage\storage.json` 的 `profileAssociations.workspaces`，也可在命令面板 Profiles: Manage 里改。
 
 ## 手动配置流程（精简）
 
@@ -180,7 +171,8 @@ Profile 名称等元数据存 SQLite（`state.vscdb`），命名、勾选只能�
 | Blockman            | 代码块嵌套高亮           | 看深嵌套代码时            |
 | Bookmarks           | 行书签跳转               | 大文件多处标记时          |
 | Kubernetes          | K8s 集群管理             | 做 k8s/云原生开发时       |
-| Vim                 | Vim体验模拟              |                           |
+| Vim                 | Vim体验模拟              | 熟练或重度Vim用户         |
+| Todo Tree           | TODO/FIXME 标记树形视图  | 大量TODO需要管理的时候    |
 
 详细扩展 ID 见 [VS Code 插件配置](vscode-extensions-config.md)。
 

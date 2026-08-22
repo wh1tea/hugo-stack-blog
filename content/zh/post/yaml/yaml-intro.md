@@ -1,14 +1,14 @@
 ---
-title: "YAML 入门：从语法到陷阱"
-slug: "yaml-intro"
+title: YAML 入门：从语法到陷阱
+slug: yaml-intro
 date: 2026-08-16T22:28:16+08:00
-description: "YAML 基础语法、数据类型、列表映射、多行字符串与常见坑，附 Hugo front matter 实战，读完能读写规范的 YAML 配置"
-categories:
-  - tutorial
+description: YAML 基础语法、数据类型、列表映射、多行字符串与常见坑，附 Hugo front matter 实战，读完能读写规范的 YAML 配置
 tags:
   - yaml
   - hugo
   - config
+categories:
+  - tutorial
 ---
 
 YAML（YAML Ain't Markup Language）是一种面向配置的数据序列化格式，和 JSON 同样表达数据结构，但更强调可读性。Hugo 的 front matter、GitHub Actions 的工作流、Docker Compose、Ansible 乃至 Kubernetes 的配置，全是 YAML 写的。
@@ -50,7 +50,7 @@ site:
 
 ## 列表与映射
 
-列表（数组）用 `- ` 开头，或内联写法 `[...]`：
+列表（数组）用 `-` 开头，或内联写法 `[...]`：
 
 ```yaml
 tags:
@@ -123,7 +123,7 @@ job-b:
 
 本站每篇文章的 front matter 就是一段 YAML，最常用的两个约定：
 
-- `tags` / `categories` 用块序列（每行一个 `- `），不写内联数组
+- `tags` / `categories` 用块序列（每行一个 `-`），不写内联数组
 - `date` 用 RFC3339 带时区（`2026-08-16T22:28:16+08:00`），避免时区歧义
 - `slug` 必须显式写，中文标题不写会被 URL 编码成乱码
 

@@ -1,14 +1,14 @@
 ---
 title: HTML 语法与常见任务速查表
+slug: html-cheat-sheet
 date: 2026-07-27
+description: 一份面向开发者的 HTML 速查表，涵盖常用标签、属性、语义化写法与代码片段，助你快速查阅与规范书写。
 tags:
   - html
   - cheatsheet
   - web
   - frontend
-description: 一份面向开发者的 HTML 速查表，涵盖常用标签、属性、语义化写法与代码片段，助你快速查阅与规范书写。
 categories:
-  - cheatsheet
   - web
 ---
 
@@ -391,6 +391,8 @@ categories:
 | `&quot;` | `"`      | 双引号     |
 | `&copy;` | `©`      | 版权符号   |
 | `&nbsp;` | （空格） | 不换行空格 |
+
+[More…](html-entities)
 
 ---
 

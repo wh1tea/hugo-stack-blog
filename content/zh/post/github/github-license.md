@@ -1,8 +1,8 @@
 ---
-title: "GitHub 开源许可证怎么选"
-description: "个人项目防商用：CC、GPL、MIT 许可证对比，附 LICENSE 文件快速模板"
-slug: "github-license"
+title: GitHub 开源许可证怎么选
+slug: github-license
 date: 2025-12-07
+description: 个人项目防商用：CC、GPL、MIT 许可证对比，附 LICENSE 文件快速模板
 tags:
   - github
 categories:

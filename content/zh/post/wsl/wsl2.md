@@ -1,8 +1,8 @@
 ---
-title: "WSL2 安装与使用完全指南"
-description: "从安装到日常使用：WSL2 环境搭建完全指南，含发行版管理、资源限制与常见问题排查。"
-slug: "wsl2"
+title: WSL2 安装与使用完全指南
+slug: wsl2
 date: 2026-05-13
+description: 从安装到日常使用：WSL2 环境搭建完全指南，含发行版管理、资源限制与常见问题排查。
 tags:
   - wsl
   - wsl2

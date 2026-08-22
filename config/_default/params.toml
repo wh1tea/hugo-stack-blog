@@ -2,7 +2,7 @@
 mainSections = ["post"]
 # Output page's full content in RSS.
 rssFullContent = true
-favicon        = "img/github-mark-white.png"
+favicon        = "img/wh1tea-favicon.svg"
 
 # Accepted values: "default", "lastmod"
 # default = see https://gohugo.io/quick-reference/glossary/#default-sort-order
@@ -18,9 +18,9 @@ SortBy              = "default"
     lastUpdated = ":date_full"
 
 [sidebar]
-    emoji    = "🍥"
+    emoji    = ""
     subtitle = "Code · Blog · Life" # 各语言可单独覆盖，见 languages.toml
-    avatar   = "img/avatar.png"
+    avatar   = "img/java-line-silver.svg"
 
 [article]
     headingAnchor = false 

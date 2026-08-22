@@ -1,8 +1,8 @@
 ---
 title: Git 撤销与修改提交历史
-description: reset、revert、amend、rebase -i 全面梳理：提交出错后的补救方案
 slug: git-undo-and-rewrite
 date: 2025-09-03
+description: reset、revert、amend、rebase -i 全面梳理：提交出错后的补救方案
 tags:
   - git
 categories:

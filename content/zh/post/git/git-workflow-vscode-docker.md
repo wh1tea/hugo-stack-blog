@@ -1,8 +1,8 @@
 ---
 title: Git 开发工作流：VS Code 与 Docker 集成
-description: VS Code Source Control 面板与 GitLens 的日常用法，以及 Docker + Node.js 项目的 Git 工作流与忽略规则配置
 slug: git-workflow-vscode-docker
 date: 2026-07-14
+description: VS Code Source Control 面板与 GitLens 的日常用法，以及 Docker + Node.js 项目的 Git 工作流与忽略规则配置
 tags:
   - git
   - vscode
