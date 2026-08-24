@@ -9,6 +9,7 @@
 
 import os
 import sys
+import re  # 新增导入
 from pathlib import Path
 from io import StringIO
 import ruamel.yaml
@@ -53,7 +54,7 @@ def reorder_front_matter(content: str, order: list) -> str:
     for key in list(data.keys()):
         new_data[key] = data[key]
 
-    # 转回 YAML 字符串（修正点：使用 StringIO 作为流）
+    # 转回 YAML 字符串
     out_yaml = ruamel.yaml.YAML()
     out_yaml.preserve_quotes = True
     out_yaml.width = 4096  # 禁用自动折行
@@ -71,7 +72,22 @@ def process_file(filepath: Path, order: list):
     """处理单个文件，若内容有变化则写入。"""
     with open(filepath, "r", encoding="utf-8") as f:
         orig = f.read()
+
+    # 提取原始末尾的换行序列（保留原空行数量）
+    match = re.search(r'\n*$', orig)
+    trailing = match.group(0) if match else ''
+
+    # 重排 Front Matter
     new = reorder_front_matter(orig, order)
+
+    # 去除新内容末尾的所有换行，再按原始末尾规则追加
+    new = new.rstrip('\n')
+    if trailing == '':
+        new += '\n'          # 原来没有末尾换行 → 添加一个
+    else:
+        new += trailing      # 原来已有末尾换行 → 保留原样
+
+    # 写入前比较最终内容与原始内容
     if new != orig:
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(new)

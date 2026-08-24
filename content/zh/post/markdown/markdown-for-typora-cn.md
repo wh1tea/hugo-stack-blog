@@ -7,11 +7,6 @@ tags:
   - typora
 categories: markdown
 ---
-
-# Markdown 语法参考：Typora 使用指南
-
-English version here：[English markdown](./markdown.md)
-
 ## Typora
 
 **Markdown** 由 [John Gruber](http://daringfireball.net/) 创建，原始指南见[此处](http://daringfireball.net/projects/markdown/syntax)。但其语法在不同解析器或编辑器之间有所不同，**Typora** 使用的是 [GitHub 风格的 Markdown][GFM]，Obsidian的基本格式语法可以参考[此处](https://obsidian.md/zh/help/syntax)。

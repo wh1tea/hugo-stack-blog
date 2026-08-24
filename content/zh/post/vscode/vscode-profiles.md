@@ -1,7 +1,7 @@
 ---
 title: VS Code Profiles：当前配置全览
 slug: vscode-profiles
-date: 2026-08-18T01:06:27+08:00
+date: 2026-07-18T01:06:27+08:00
 description: 用 VS Code Profiles 按项目隔离插件环境：全局 20 个通用扩展 + 6 个语言专属 Profile，逐插件说明作用，附工作区关联与鸡肋插件备忘
 tags:
   - extensions

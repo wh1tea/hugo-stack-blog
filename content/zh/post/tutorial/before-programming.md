@@ -12,7 +12,8 @@ tags:
   - ai
   - cli
   - docker
-categories: tutorial
+categories:
+  - tutorial
 ---
 
 这篇文章写两件事：一是把我的开发环境从头到尾盘点一遍，重新整理思路；二是给准备入门编程的朋友一份「开工前要装什么、为什么」的地图。读完你能知道：一台 Windows 电脑上，如何搭出一套完整、现代的开发环境。
@@ -148,7 +149,6 @@ hermes "检查这个项目的结构，然后按 README 规范写一篇新博客�
 
 给新手的三条行动建议：
 
-- 终端只学 `pwsh` 和 WSL，直接跳过 cmd。
 - 装软件用 Winget，别去官网下安装包。
 - 环境装完立刻配好 Git 身份和 VSCode 的 Remote-WSL，其余按需补。
 

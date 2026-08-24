@@ -187,5 +187,5 @@ on:
 - [GitHub Pages 官方文档](https://docs.github.com/zh/pages) 托管与自定义域名
 - [marked.js](https://marked.js.org/) Markdown 解析器
 - [highlight.js](https://highlightjs.org/) 代码高亮
-- [Markdown 语法指南](/post.html?file=_posts/markdown/markdown-for-typora.md) 本站文章
+- [Markdown 语法指南](../markdown/markdown-for-typora-cn.md) 本站文章
 - [项目源码](https://github.com/wh1tea/wh1tea.github.io) 本博客仓库
