@@ -8,7 +8,8 @@ tags:
   - programming
   - pattern-matching
   - cli
-categories: tutorial
+categories:
+  - tutorial
 ---
 
 **正则表达式（Regular Expression，简称 regex、regexp 或 RE）**，又称规则表达式，是一种**文本模式**。它用单个字符串来描述、匹配一系列符合特定句法规则的字符串。

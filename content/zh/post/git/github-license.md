@@ -6,7 +6,7 @@ description: 个人项目防商用：CC、GPL、MIT 许可证对比，附 LICENS
 tags:
   - github
 categories:
-  - tutorial
+  - git
 ---
 
 给个人练习项目加 License 时，最常见的诉求是「不允许别人拿去商用」。GitHub 上的许可证差别很大，本文按需求强度对比主流选择，并给出可以直接复制的模板。

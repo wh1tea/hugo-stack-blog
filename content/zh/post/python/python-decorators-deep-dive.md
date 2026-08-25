@@ -6,7 +6,8 @@ tags:
   - python
   - decorators
   - advanced
-categories: python
+categories:
+  - python
 ---
 
 # Python 装饰器详解

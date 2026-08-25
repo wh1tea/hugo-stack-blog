@@ -8,7 +8,7 @@ tags:
   - vscode
   - docker
 categories:
-  - tutorial
+  - git
 ---
 
 终端之外，VS Code 的内置 Git 集成让提交、分支、推送变得更直观；配合 Dev Containers，容器内的版本控制体验与本地一致。本文介绍这两套工作流，以及配套的忽略规则配置。

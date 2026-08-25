@@ -1,11 +1,13 @@
 ---
 title: Markdown 语法参考：Typora 使用指南
+slug: markdown-for-typora
 date: 2026-07-11
 description: 全面梳理 Markdown 语法要点及在 Typora 中的使用方法，涵盖块元素、行内元素、GFM 扩展和 MathJax 公式。
 tags:
   - markdown
   - typora
-categories: markdown
+categories:
+  - tutorial
 ---
 ## Typora
 

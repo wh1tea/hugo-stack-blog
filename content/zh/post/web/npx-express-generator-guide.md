@@ -8,7 +8,8 @@ tags:
   - nodejs
   - scaffolding
   - cli
-categories: tutorial
+categories:
+  - web
 ---
 
 使用 Express 开发 Web 应用时，手动配置目录结构、路由和中间件总是重复且耗时。`express-generator` 是 Express 官方脚手架，配合 `npx` 可在不全局安装的情况下快速生成标准化项目模板。本文面向 Node.js 开发者，介绍 `npx express-generator` 的含义、用法，以及如何与 VSCode、Docker 和 Git 集成，提升开发效率。

@@ -8,7 +8,7 @@ tags:
   - github
   - ssh
 categories:
-  - tutorial
+  - git
 ---
 
 每次 `git push` 都要输密码很烦，而且 GitHub 早已禁用密码认证，HTTPS 方式会直接报 `Authentication failed`。配置 SSH 密钥后可以永久免密推送，本文给出完整流程与排错方法。

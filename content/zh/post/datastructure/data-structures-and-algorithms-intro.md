@@ -7,7 +7,7 @@ tags:
   - algorithm
   - cs
 categories:
-  - datastructure
+  - tutorial
 ---
 
 ## 前言

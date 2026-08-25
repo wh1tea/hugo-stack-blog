@@ -7,7 +7,7 @@ tags:
   - git
   - github
 categories:
-  - tutorial
+  - git
 ---
 
 本文面向刚开始使用 Git 的开发者：带你从安装、配置，到完成第一次 `git push`，把代码托管到 GitHub。读完你就能独立管理一个小项目的版本历史。

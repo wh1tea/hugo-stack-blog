@@ -9,7 +9,8 @@ tags:
   - html
   - css
   - productivity
-categories: vscode
+categories:
+  - devtools
 ---
 
 在日常前端开发中，重复书写完整的 HTML 标签结构或 CSS 属性是一件既耗时又容易出错的事。Emmet 插件通过简写语法极大地加速了这一过程，而 VS Code 内置的 Emmet 功能更将体验提升了一个台阶。

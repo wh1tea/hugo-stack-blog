@@ -6,7 +6,7 @@ description: git rm --cached 停止跟踪、只追踪指定文件、移除远程
 tags:
   - git
 categories:
-  - tutorial
+  - git
 ---
 
 配置文件、密钥、`node_modules` 不小心被提交了？想让 Git 只跟踪某些文件？本文覆盖取消追踪的三种场景：停用单个文件跟踪、解除远程关联、彻底删除仓库。

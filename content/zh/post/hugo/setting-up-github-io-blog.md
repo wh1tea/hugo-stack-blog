@@ -6,7 +6,8 @@ tags:
   - github-pages
   - blog
   - getting-started
-categories: tutorial
+categories:
+  - devtools
 ---
 
 GitHub Pages is a free static site hosting service that turns a GitHub repository into a live website. This guide walks you through creating your personal blog — no server, no database, no cost.

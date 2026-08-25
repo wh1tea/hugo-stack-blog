@@ -10,7 +10,6 @@ tags:
   - yaml
 categories:
   - python
-  - tutorial
 ---
 
 写 Markdown 博客时，每篇文章开头都有一块用 `---` 包裹的元数据，叫 **front matter**（标题、日期、标签、分类都在里面）。这个博客的写作规范对 front matter 的键顺序有明确要求：`title` → `slug` → `date` → `description` → `tags` → `categories` → `image`（如果有）。
@@ -221,4 +220,4 @@ python D:\Projects\hugo-stack-blog\scripts\reorder_fm.py D:\docs
 
 - `reorder_fm.py` 源码：`scripts/reorder_fm.py`
 - [ruamel.yaml 官方文档](https://yaml.dev/doc/ruamel.yaml/)
-- 相关阅读：[YAML 入门](../yaml/yaml-intro.md)、[Markdown 指南](../markdown/markdown-for-typora-cn.md)
+- 相关阅读：[YAML 入门](../tutorial/yaml-intro.md)、[Markdown 指南](../tutorial/markdown-for-typora.md)

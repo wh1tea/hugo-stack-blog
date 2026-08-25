@@ -9,7 +9,7 @@ tags:
   - linux
   - windows
 categories:
-  - windows
+  - linux
 ---
 
 WSL (Windows Subsystem for Linux) is Microsoft's Linux compatibility layer for Windows 10/11. It lets you run Linux commands and applications natively, without a VM or dual boot. WSL2, the second generation, strikes a better balance between performance, compatibility, and resource usage.

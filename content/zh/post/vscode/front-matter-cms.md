@@ -9,7 +9,7 @@ tags:
   - hugo
   - cms
 categories:
-  - vscode
+  - devtools
 ---
 
 静态博客的内容管理一直是痛点：文章是纯 Markdown，front matter 只能手写，标签和分类没有可视化管理，新建文章还要记模板。Front Matter CMS 是一个 VS Code 插件，把这一切变成可视化的仪表盘。

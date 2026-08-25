@@ -6,7 +6,8 @@ tags:
   - java
   - exception-handling
   - best-practices
-categories: java
+categories:
+  - tutorial
 ---
 
 To convert a Java Scanner to a try-with-resources statement, declare the Scanner object within the parentheses of the try statement. Java will then automatically close the resource when the block finishes, eliminating the need for a finally block to close it manually.

@@ -7,7 +7,7 @@ tags:
   - git
   - github
 categories:
-  - tutorial
+  - git
 ---
 
 本地用 `git init` 建好的项目，想推送到 GitHub 上已存在的仓库，经常碰到一堆报错：先是认证失败，再是 `refusing to merge unrelated histories`。本文给出完整的排坑流程。

@@ -10,7 +10,7 @@ tags:
   - vscode
   - personal
 categories:
-  - vscode
+  - devtools
 ---
 
 本文是 VS Code Profiles 配置的现状快照（2026-08）：内置 Default 之外共 6 个命名 Profile，每个插件一句话说明作用。前一篇 [VS Code 插件配置](vscode-extensions-config.md) 是 82 插件的全量档案，本文只讲当前实际在用的配置，并把鸡肋插件单独列为备忘。

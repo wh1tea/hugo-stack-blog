@@ -10,7 +10,6 @@ tags:
   - vscode
   - web-design
 categories:
-  - tutorial
   - web
 ---
 

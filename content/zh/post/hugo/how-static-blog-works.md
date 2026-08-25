@@ -9,7 +9,8 @@ tags:
   - python
   - markdown
   - frontend
-categories: tutorial
+categories:
+  - devtools
 ---
 
 > 面向小白：拆解 wh1tea.github.io 这个纯静态博客的完整实现。读完你会明白从写一篇文章到读者看到它，每一步发生了什么。
@@ -180,12 +181,12 @@ on:
 - 零框架意味着零依赖、加载快、完全可控，代价是功能要自己写
 - 想搭一个：创建 `<用户名>.github.io` 仓库，写第一篇 `.md`，push 即可
 
-具体搭建步骤见 [GitHub Pages 博客搭建教程](./setting-up-github-io-blog.md)。
+具体搭建步骤见 [GitHub Pages 博客搭建教程](setting-up-github-io-blog.md)。
 
 ## 参考
 
 - [GitHub Pages 官方文档](https://docs.github.com/zh/pages) 托管与自定义域名
 - [marked.js](https://marked.js.org/) Markdown 解析器
 - [highlight.js](https://highlightjs.org/) 代码高亮
-- [Markdown 语法指南](../markdown/markdown-for-typora-cn.md) 本站文章
+- [Markdown 语法指南](../tutorial/markdown-for-typora.md) 本站文章
 - [项目源码](https://github.com/wh1tea/wh1tea.github.io) 本博客仓库

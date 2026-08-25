@@ -8,7 +8,8 @@ tags:
   - web
   - css
   - tutorial
-categories: tutorial
+categories:
+  - web
 ---
 
 在网页开发中，通过 Google Fonts 可以免费使用成百上千种开源字体，让页面文字更具设计感。本文从实际代码出发，逐一拆解引用方式的每一部分含义，并介绍多种开源字体查找途径，最后给出更换字体的具体操作步骤。

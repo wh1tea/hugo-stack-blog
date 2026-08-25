@@ -9,7 +9,8 @@ tags:
   - prompt-engineering
   - token
   - cost-optimization
-categories: ai
+categories:
+  - ai
 ---
 
 这不是一篇教你"用 AI 取代程序员"的鸡汤。这是一篇教你**如何让每一分钱、每一个 Token 都花在刀刃上**的实战手册。

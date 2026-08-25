@@ -1,8 +1,8 @@
 ---
-title: 如何清除右键菜单中的 Armoury Crate（华硕奥创）选项
-slug: remove-sth-from-right-context-menu
+title: 如何清除右键菜单中选项
+slug: context-menu-cleanup-guide
 date: 2026-07-16
-description: 详细讲解三种清理或隐藏右键菜单中 Armoury Crate 选项的方法，包括软件内关闭、注册表删除和第三方工具，适用于不同使用场景。
+description: 详细讲解三种清理或隐藏右键菜单选项的方法，包括软件内关闭、注册表删除和第三方工具，适用于不同使用场景，以 Armoury Crate 作例。
 tags:
   - asus
   - armoury-crate

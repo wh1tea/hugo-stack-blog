@@ -6,7 +6,7 @@ description: reset、revert、amend、rebase -i 全面梳理：提交出错后�
 tags:
   - git
 categories:
-  - tutorial
+  - git
 ---
 
 提交信息写错、提交内容不对、已经推送了才发现问题——这些在 Git 里都有对应的补救手段。本文按「是否已推送」梳理撤销与改写历史的完整方案。

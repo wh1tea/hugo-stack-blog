@@ -10,7 +10,8 @@ tags:
   - tool
   - devops
   - productivity
-categories: ai
+categories:
+  - ai
 ---
 
 > 如果你厌倦了网页版 ChatGPT 的频繁中断、复制粘贴的痛苦，想要一个**真正在终端里帮你干活**的 AI 助手——Hermes Agent 可能是你一直在找的东西。

@@ -9,7 +9,7 @@ tags:
   - linux
   - windows
 categories:
-  - windows
+  - linux
 ---
 
 WSL（Windows Subsystem for Linux）是微软为 Windows 10/11 提供的 Linux 兼容层，无需虚拟机或双系统即可原生运行 Linux 命令与应用。WSL2 作为第二代版本，在性能、兼容性和资源占用之间取得了更好的平衡。

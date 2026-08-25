@@ -11,7 +11,7 @@ tags:
   - vscode
   - personal
 categories:
-  - vscode
+  - devtools
 ---
 
 > VS Code 的插件生态是其最大优势，但安装过多后容易积累冗余和冲突。本文整理了当前环境下的 82 个插件，按功能分组说明，并给出精简建议。

@@ -337,3 +337,54 @@ $PSNativeCommandArgumentPassing  # Legacy ✓
 - [x-cmd 官方文档](https://cn.x-cmd.com/)
 - [x-cmd GitHub 仓库](https://github.com/x-cmd/x-cmd)
 - [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+
+## 附件
+
+修改之前使用x-cmd的ps1
+
+```powershell
+if (Test-Path "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1") { 
+    Set-ExecutionPolicy Bypass -Scope Process;
+    . "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1" 
+};  # boot up x-cmd.
+
+$ompBin = "$Home\.x-cmd.root\local\bin\oh-my-posh.exe"
+if (Test-Path $ompBin) {
+    # 1. 把二进制所在目录加入本次会话的 PATH
+    $env:PATH = "$Home\.x-cmd.root\local\bin;$env:PATH"
+    # 2. 初始化（把主题路径换成你想要的，或用 x ohmyposh挑选）
+    & $ompBin init pwsh --config "$Home\.x-cmd.root\local\data\ohmyposh\config\dracula.omp.json" | Invoke-Expression
+}
+
+# oh-my-posh init pwsh --config "$env:LOCALAPPDATA\x-cmd.root\local\data\ohmyposh\config\dracula.omp.json" | Invoke-Expression
+
+# function prompt {
+#     $path = Get-Location
+#     Write-Host "PS " -NoNewline -ForegroundColor Green
+#     Write-Host "$path" -NoNewline -ForegroundColor Green
+#     Write-Host "> " -NoNewline -ForegroundColor Green
+#     return " "
+# }
+
+# function Show-Tree {
+#     param($Path = '.', $MaxDepth = 2)
+#     $Path = Resolve-Path $Path
+#     function recurse($dir, $level) {
+#         if ($level -gt $MaxDepth) { return }
+#         $indent = '  ' * $level
+#         Write-Host "$indent$(Split-Path $dir -Leaf)"
+#         Get-ChildItem $dir -Directory | ForEach-Object {
+#             recurse $_.FullName ($level + 1)
+#         }
+#     }
+#     recurse $Path 0
+# }
+# Show-Tree
+
+# Fix: conda activate 后 _CE_M/_CE_CONDA 被置为空字符串，
+# pwsh 7 的 Standard 原生参数传递会如实传入 "" 导致 conda 子命令报 invalid choice: ''
+# 恢复 5.1 的 Legacy 行为（丢弃空字符串参数）
+$PSNativeCommandArgumentPassing = 'Legacy'
+
+```
+

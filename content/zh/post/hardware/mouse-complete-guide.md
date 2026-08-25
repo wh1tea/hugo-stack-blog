@@ -16,7 +16,8 @@ tags:
   - productivity
   - gaming
   - shortcut
-categories: hardware
+categories:
+  - devtools
 ---
 
 鼠标是每天接触最多的外设，但多数人只用到左键单击、右键菜单和滚动。从选购到调校再到高效使用，这篇文章一次讲透。无论你是办公用户、游戏玩家还是程序员，都能找到提升体验的具体方法。

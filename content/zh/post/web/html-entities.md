@@ -8,7 +8,7 @@ tags:
   - frontend
   - web-development
 categories:
-  - tutorial
+  - web
 ---
 
 在 HTML 中直接书写 `<` 或 `&` 时，浏览器并不会将它们作为普通字符显示——这些符号会被解析为 HTML 代码的一部分。要正确显示这些保留字符，必须使用 **HTML 实体**。

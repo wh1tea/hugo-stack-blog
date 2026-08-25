@@ -9,7 +9,8 @@ tags:
   - github-pages
   - blogging
 categories:
-  - hugo
+  - devtools
+
 image: /hugo-stack-blog/en/post/hugo/assets/cover-en.svg
 ---
 

@@ -3,7 +3,8 @@ title: Conda 插件崩溃修复记：libmambapy QueryFormat 错误的完整解�
 date: 2026-07-13
 description: Conda 启动时报错 "module 'libmambapy' has no attribute 'QueryFormat'"，所有 conda 命令都无法正常执行。本文从原理到实操，提供三种递进的修复方案。
 tags: [conda, python, troubleshooting, windows, environment]
-categories: python
+categories:
+  - python
 ---
 
 打开命令行出现：

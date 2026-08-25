@@ -9,7 +9,7 @@ tags:
   - runtime
   - windows
 categories:
-  - tutorial
+  - windows
 ---
 
 本文面向有编程基础的开发者，旨在帮助你在 Windows / macOS / Linux 上快速确认 .NET 环境状态，理解版本号含义，并做出合理的升级决策。读完本文，你将能独立检查 .NET 安装、判断版本是否过时，并安全地清理旧版本。起因是台式电脑风扇出问题了需要通过[FanControl](https://getfancontrol.com/)去调控风扇，而FanControl需要.NET 10的支持。

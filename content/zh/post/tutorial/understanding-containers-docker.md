@@ -7,7 +7,8 @@ tags:
   - containers
   - linux
   - devops
-categories: tutorial
+categories:
+  - tutorial
 ---
 
 ## 为什么需要容器？

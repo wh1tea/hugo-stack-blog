@@ -8,7 +8,8 @@ tags:
   - pnpm
   - package-manager
   - tutorial
-categories: tutorial
+categories:
+  - web
 ---
 
 Node.js 已成为服务端 JavaScript 的事实标准，而 npm 和 pnpm 则是其生态中最主流的包管理工具。本文面向有 JavaScript 基础的开发者，介绍三者核心概念与基本操作，对比 npm 与 pnpm 的优劣，并给出选型建议。读完你将能独立安装 Node.js、使用 npm/pnpm 管理依赖，并理解它们在 Docker 环境中的应用。

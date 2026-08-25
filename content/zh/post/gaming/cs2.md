@@ -1,6 +1,6 @@
 ---
 title: CS2 从入门到进阶：枪法、身法、道具与地图实战指南
-slug: cs2-guide
+slug: cs2
 date: 2024-08-21T12:00:00+08:00
 description: 基于实战经验的 CS2 全技能指南：涵盖枪法选择、Peek 技巧、道具管理、地图控制与训练方法，助你稳定上分。
 tags:
@@ -11,7 +11,6 @@ tags:
   - counter-strike
 categories:
   - gaming
-  - tutorial
 ---
 
 玩 CS2，枪法是基础，意识是上限，心态决定发挥。单排上分难，往往不是因为枪不够刚，而是细节处理不到位——选位、Peek 时机、道具配合、残局决策，每一个环节都影响胜负。

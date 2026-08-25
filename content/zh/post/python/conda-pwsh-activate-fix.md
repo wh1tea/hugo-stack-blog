@@ -11,7 +11,6 @@ tags:
   - troubleshooting
 categories:
   - python
-  - windows
 ---
 
 在 Windows 上用 PowerShell 7（pwsh）管理 conda 环境时，执行 `conda activate py_env` 后出现两个诡异现象：提示符没有出现 `(py_env)`，紧接着执行任何 conda 子命令（`conda env list`、`conda install` 等）都报 `invalid choice: ''`。
@@ -227,4 +226,4 @@ python -c "import sys; print(sys.prefix)"
 
 - PowerShell 官方文档：[`$PSNativeCommandArgumentPassing`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_parsing?view=powershell-7.6)
 - [Conda 环境激活机制说明](https://docs.conda.io/projects/conda/en/latest/dev-guide/deep-dives/activation.html)
-- 相关阅读：[conda 插件崩溃修复记](conda-libmamba-solver-queryformat-fix.md)、[WSL2 安装与使用完全指南](../wsl/wsl2.md)
+- 相关阅读：[conda 插件崩溃修复记](conda-libmamba-solver-queryformat-fix.md)、[WSL2 安装与使用完全指南](../linux/wsl2.md)

@@ -1,5 +1,6 @@
 ---
 title: Markdown Syntax Reference Typora Guide
+slug: markdown-for-typora
 date: 2026-07-11
 description: Guide to Markdown syntax and usage in Typora, covering blocks, spans, GFM, and MathJax for daily note-taking.
 tags:
@@ -8,7 +9,7 @@ tags:
   - obsidian
   - vscode
 categories:
-  - markdown
+  - tutorial
 ---
 
 ## Overview

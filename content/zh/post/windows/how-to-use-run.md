@@ -1,6 +1,6 @@
 ---
 title: Win+R 运行窗口：命令速查与使用技巧
-slug: how-to-use-run.md
+slug: how-to-use-run
 date: 2026-07-14
 description: 系统梳理 Win+R 运行窗口的常用命令清单，涵盖系统管理、控制面板、日常工具、网络远程等分类，并分享提高操作效率的使用技巧。
 tags:

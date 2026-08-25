@@ -6,7 +6,7 @@ description: 在开发与运维中，HTTP 4xx 状态码是最常遇到的错误�
 tags:
   - https
 categories:
-  - tutorial
+  - web
 ---
 
 ## 引言

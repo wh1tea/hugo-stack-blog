@@ -1,7 +1,7 @@
 ---
-title: "切热点后游戏平台连不上？DNS 劫持排查实录"
+title: 切热点后游戏平台连不上？DNS 劫持排查实录
 slug: dns-hijack-troubleshooting
-date: 2026-08-24T03:26:16+08:00
+date: 2026-03-24T03:26:16+08:00
 description: 换手机热点上网后，5E 与完美平台连不上、网站和 Steam 却正常。记录一次 DNS 劫持排查：现象、定位、根因与修复。
 tags:
   - dns
@@ -11,7 +11,6 @@ tags:
   - troubleshooting
 categories:
   - windows
-  - tutorial
 ---
 
 把电脑从网线切换到手机热点上网，同时开着 Clash 代理，浏览器访问一切正常，Steam 也没问题，但 5E Client（5E 对战平台）和完美世界竞技平台出现明显的网络故障：登录、接口请求全部连不上。
@@ -75,7 +74,7 @@ Resolve-DnsName www.5eplay.com -Server 223.5.5.5        # 阿里 DNS：14.29.50.
 Resolve-DnsName www.5eplay.com -Server 192.168.99.1     # 以太网路由器：114.114.114.114 ✗
 ```
 
-所有正常 DNS 都能给出真实 IP，唯独以太网网关 192.168.99.1 对所有域名（包括 www.baidu.com）都返回 114.114.114.114。元凶锁定：那台路由器在污染 DNS 应答。
+所有正常 DNS 都能给出真实 IP，唯独以太网网关 192.168.99.1 对所有域名（包括 <www.baidu.com）都返回> 114.114.114.114。元凶锁定：那台路由器在污染 DNS 应答。
 
 ### 排除网络封锁
 
