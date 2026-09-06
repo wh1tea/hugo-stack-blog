@@ -22,7 +22,7 @@ front matter 是 Markdown 文件开头的 YAML 块，被两个 `---` 夹在中�
 
 ```yaml
 ---
-title: "我的第一篇文章"
+title: "My First Blog"
 date: 2026-08-22
 tags:
   - python
@@ -30,7 +30,7 @@ categories:
   - tutorial
 ---
 
-正文从这里开始。
+The main text begins here.
 ```
 
 像 Hugo、Hexo 这类静态博客生成器，会读取这个块来渲染页面标题、归档日期、标签页和分类页。没有它，文章就没有标题、没有日期、也没有标签。
@@ -72,7 +72,7 @@ python reorder_fm.py ./docs          # 递归处理目录下所有 .md
 以 `scripts/reorder_fm.py` 重排博客文章目录为例：
 
 ```bash
-python reorder_fm.py content/zh/post
+python reorder_fm.py ../content/zh/post
 ```
 
 执行后每个被修改的文件会打印 `已更新: <路径>`，顺序本来就对的打印 `无变化: <路径>`。

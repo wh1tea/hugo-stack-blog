@@ -16,3 +16,7 @@ LOCAL-DEV-NOTES.md
 frontmatter.json
 
 .vscode
+
+#Private (local private system, never committed)
+content/private/
+config/_default/menu.private.toml
