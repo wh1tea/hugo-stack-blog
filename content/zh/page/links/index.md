@@ -6,12 +6,15 @@ links:
     description: 我的 GitHub 主页
     website: https://github.com/wh1tea
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+  - title: Codepen
+    description: 我的 Codepen 主页
+    website: https://codepen.io/wh1tea/
+    image: https://blog.codepen.io/wp-content/uploads/2023/09/logo-black.png
 menu:
   main:
     weight: 4
     params:
       icon: link
-
 comments: false
 ---
 

@@ -6,11 +6,12 @@ description: "在 pwsh 7 中执行 conda activate py_env 后，提示符不变�
 tags:
   - conda
   - powershell
+  - pwsh
   - python
   - windows
   - troubleshooting
 categories:
-  - python
+  - conda
 ---
 
 在 Windows 上用 PowerShell 7（pwsh）管理 conda 环境时，执行 `conda activate py_env` 后出现两个诡异现象：提示符没有出现 `(py_env)`，紧接着执行任何 conda 子命令（`conda env list`、`conda install` 等）都报 `invalid choice: ''`。

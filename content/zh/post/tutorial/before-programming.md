@@ -1,7 +1,7 @@
 ---
 title: 在编程之前
 slug: before-programming
-date: 2025-08-13
+date: 2025-03-16
 description: 盘点我当前的开发工具链与环境：终端、WSL2、VSCode、Git、Docker 与 AI 辅助工作流，也给入门编程的新手一份开工前的地图。
 tags:
   - tutorial

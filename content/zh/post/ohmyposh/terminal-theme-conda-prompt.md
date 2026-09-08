@@ -10,8 +10,9 @@ tags:
   - oh-my-bash
   - conda
   - prompt
-categories:
   - windows
+categories:
+  - oh-my-posh
 ---
 
 终端提示符是开发者每天面对最多的界面元素。一个好的提示符不仅能展示 Git 分支、Python 虚拟环境等关键信息，还能提升工作效率。

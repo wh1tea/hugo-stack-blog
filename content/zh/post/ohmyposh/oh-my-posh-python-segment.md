@@ -10,8 +10,9 @@ tags:
   - windows
   - pwsh
   - prompt
-categories:
   - windows
+categories:
+  - oh-my-posh
 ---
 
 `conda activate py_env` 之后，提示符纹丝不动：没有 `(py_env)`，没有 Python 图标。环境确实激活了（`python` 能解析到环境路径），但 Oh My Posh 就是不给面子。

@@ -11,8 +11,9 @@ tags:
   - pwsh
   - theme
   - starship
-categories:
   - windows
+categories:
+  - oh-my-posh
 ---
 
 本文完整记录一次终端主题工具链的“从入门到放弃”：在 PowerShell 中安装 x-cmd，通过 x-cmd 安装并管理 Oh My Posh，升级 Oh My Posh 后主题固定无法更改，一路排查到 x-cmd 源码，最终卸载 x-cmd、改用 winget 直装原生 Oh My Posh 的过程。
@@ -387,4 +388,3 @@ if (Test-Path $ompBin) {
 $PSNativeCommandArgumentPassing = 'Legacy'
 
 ```
-

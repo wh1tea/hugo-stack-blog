@@ -41,7 +41,7 @@ hugo version    # 需显示 +extended
 go version
 ```
 
-## 从模板创建仓库
+## 主题：从模板创建仓库
 
 Stack 官方提供了 starter 模板（`CaiJimmy/hugo-theme-stack-starter`），直接省去手搓主题接入的步骤：
 
@@ -64,7 +64,7 @@ hugo            # 构建到 public/
 
 ## 中英双语切换
 
-这是本博客最值得说的部分。Hugo 的多语言是**一等公民**，不需要任何插件。
+这是本博客最值得说的部分。Hugo 的多语言是**一等公民**（First-Class Citizen），不需要任何插件。
 
 ### 1. 定义语言（config/\_default/languages.toml）
 
@@ -72,7 +72,7 @@ hugo            # 构建到 public/
 [zh]
     weight     = 1
     label      = "简体中文"
-    title      = "Wh1tea 的博客"
+    title      = "你的博客"
     contentDir = "content/zh"
     locale     = "zh-cn"
 
@@ -82,7 +82,7 @@ hugo            # 构建到 public/
 [en]
     weight     = 2
     label      = "English"
-    title      = "Wh1tea's Blog"
+    title      = "Your Blog"
     contentDir = "content/en"
     locale     = "en-us"
 
@@ -153,7 +153,7 @@ hugo-stack-blog/
 │   └── update-theme.yml    # 每日自动更新主题的定时任务
 ├── assets/
 │   ├── img/                # 头像、favicon
-│   ├── audio/              # 站内音频资源
+│   ├── icons/              # 自定义 SVG 图标（社交链接等，见下节）
 │   └── scss/custom.scss    # 自定义样式覆盖
 ├── config/_default/
 │   ├── config.toml         # 全局配置（baseurl、默认语言）
@@ -174,6 +174,81 @@ hugo-stack-blog/
 ├── go.mod / go.sum         # 主题模块依赖
 └── .gitignore
 ```
+
+## 自定义社交图标（以 CodePen 为例）
+
+侧边栏社交链接的 `icon` 值不是内置枚举，而是**按文件名查找** `assets/icons/<名字>.svg`：主题的 `helper/icon.html` 用 `resources.GetMatch` 匹配，找不到就直接报错终止构建。主题模块只内置了 tabler 系的 `brand-github.svg`、`brand-twitter.svg` 两个品牌图标。
+
+当时想把 CodePen 加进社交菜单，排查发现 tabler 图标集本身没有 CodePen 品牌图标，需要自己补一个 SVG。
+
+修复分两步。
+
+**第一步：新增 `assets/icons/brand-codepen.svg`**——CodePen 的 path 数据取自 [Tabler Icons](https://tabler.io/icons)（搜 CodePen 复制即可）：
+
+注：[Tablericons](https://tablericons.com/) 也能提供相关图标 [Simple Icons](https://simpleicons.org)
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-codepen">
+	<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+	<path d="M3 15l9 6l9 -6l-9 -6l-9 6" />
+	<path d="M3 9l9 6l9 -6l-9 -6l-9 6" />
+	<path d="M3 9l0 6" />
+	<path d="M21 9l0 6" />
+	<path d="M12 3l0 6" />
+	<path d="M12 15l0 6" />
+</svg>
+```
+
+[备用-CodePen Badge Logo](https://codepen.io/wh1tea/pen/bNqpBKQ)/[备用-CodePen Logo as Inline SVG](https://codepen.io/team/codepen/pen/RaqmEW)
+
+**第二步：改 `config/_default/menu.zh.toml`** 里的图标名：
+
+```toml
+[[social]]
+    identifier = "codepen"
+    name       = "CodePen"
+    url        = "https://codepen.io/username"
+    [social.params]
+        icon = "brand-codepen"
+```
+
+验证很简单：图标名拼错时构建会直接报错 `icon 'xxx.svg' is not found under 'assets/icons' folder`，能构建成功基本等于图标就位；再在预览页右键检查元素确认 CodePen 链接里是 CodePen 的 logo 即可。项目自己的 `assets/icons/` 会覆盖主题模块的同名文件，其它品牌图标同理：下载 SVG → 丢进 `assets/icons/` → 菜单里指过去。
+
+## 清理 public 构建产物
+
+`public/` 是纯本地构建产物：已被 `.gitignore` 排除，线上部署走 GitHub Actions **每次全新构建**，所以本地 `public/` 再脏也不影响线上。但它会误导本地预览和产物检查，原因在于：
+
+> Hugo 重建**不会清空** `public/`。`hugo --gc` 只清缓存、不碰输出目录。
+
+重命名内容、删除文章、移动资源、改 `permalinks` 或 `baseurl` 之后，旧路径的文件会原样残留（比如老文章的 `cover.svg`、拼错目录名遗留的整段页面），`find public` / 页面检查的结果都是过期的。
+
+**什么时候该清**：任何结构类改动之后、以及做产物验证之前。命令：
+
+```bash
+rm -rf public          # 清空产物
+hugo                   # 全量重建
+
+# 一步到位（参数与 CI 一致）：
+rm -rf public resources && hugo --gc --minify
+```
+
+`resources/` 是 Hugo 的处理缓存（图片缩放、SCSS 编译产物），删掉只是下次构建变慢一点，无副作用。顺带记住：`public/` 永远不要提交进 Git。
+
+## Hugo 常用命令速查
+
+| 命令 | 用途 |
+| ---- | ---- |
+| `hugo server` | 本地预览 http://localhost:1313，改文件热更新 |
+| `hugo server --buildDrafts` | 预览带 `draft: true` 的未发布文章 |
+| `hugo` | 构建到 `public/` |
+| `hugo --gc --minify` | 清理缓存 + 压缩产物（CI 同款参数） |
+| `hugo new content <路径>` | 按 archetype 新建内容页 |
+| `hugo list all` | 罗列全部页面（诊断重复渲染、语言挂载问题） |
+| `hugo config` | 打印合并后的完整配置（模块挂载、语言都在里面） |
+| `hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v4` | 更新主题（记得跟 `hugo mod tidy`） |
+| `hugo env` | 查看版本与编译特性（确认 `+extended`） |
+
+本地日常就是 `hugo server` 写文章、`rm -rf public && hugo` 做干净验证这两条；其余多为诊断用。更新主题的另一条路是仓库自带的 `update-theme.yml` 定时任务，见下方常见问题。
 
 ## 常见问题
 

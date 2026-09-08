@@ -9,8 +9,9 @@ tags:
   - gaming
   - tactics
   - counter-strike
+  - game
 categories:
-  - gaming
+  - game
 ---
 
 玩 CS2，枪法是基础，意识是上限，心态决定发挥。单排上分难，往往不是因为枪不够刚，而是细节处理不到位——选位、Peek 时机、道具配合、残局决策，每一个环节都影响胜负。
