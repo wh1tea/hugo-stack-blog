@@ -1,19 +1,19 @@
 ---
 title: 从零搭建 Ball Battle — 一个像素风小球对战游戏的诞生
+slug: ball-battle
 date: 2026-07-30
 description: 从画布上画一个绿色矩形开始，一步步构建出包含碰撞、技能、粒子特效的 4 球对战游戏。每个阶段都有完整可运行的代码。
 tags:
   - javascript
   - canvas
-  - game-development
-  - tutorial
+  - gaming
   - web
 categories:
   - tutorial
 ---
 
 这是一个从零开始用纯前端技术构建像素风小球对战游戏的系列教程。
-读者需要基础 HTML/JavaScript 知识，不需要游戏开发经验。
+读者需要基础 HTML/JavaScript 知识，不需要游戏开发经验。[^1]
 
 最终项目代码在：[ball-battle](https://github.com/wh1tea/ball-battle)。
 Git 仓库里每一步都有对应的 commit，可以随时 `git checkout` 查看某阶段的状态。
@@ -24,7 +24,7 @@ Git 仓库里每一步都有对应的 commit，可以随时 `git checkout` 查�
 
 ### 创建画布
 
-使用 HTML 的 `<canvas>` 元素创建画布
+使用 HTML 的 `<canvas>` 元素创建画布[^2]
 
 ```html
 <!doctype html>
@@ -116,7 +116,7 @@ ctx.fillText("位置 (150, 150)", 10, 20);
 
 ### 动画循环
 
-用 `requestAnimationFrame` 驱动游戏循环，保证帧率与浏览器刷新同步：
+用 `requestAnimationFrame` 驱动游戏循环，保证帧率与浏览器刷新同步：[^3]
 
 ```js
 var x = 150,
@@ -582,11 +582,12 @@ if (ball.isImmuneTo('sting')) continue;
 
 这个项目从 4 行代码画出绿色矩形开始，经过 9 个阶段演变为一个包含碰撞物理、特殊技能、粒子系统、音效、状态效果的完整游戏。每个阶段都可独立运行，Git 仓库中的 commit 记录了每一步的变化。
 
-下一步可以尝试：添加新球种（如冰冻球、爆炸球）、联机对战模式、AI 对手等。框架已经搭好，你只需要新建一个子类覆写钩子方法。
+下一步可以尝试：添加新球种（如冰冻球、爆炸球）、联机对战模式、AI 对手等。框架已经搭好，你只需要新建一个子类覆写钩子方法。[^4]
 
-## 参考
+[^1]: [ES6 Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
-- [Canvas 2D API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
-- [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
-- [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
-- [ES6 Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+[^2]: [Canvas 2D API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
+
+[^3]: [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+
+[^4]: [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)

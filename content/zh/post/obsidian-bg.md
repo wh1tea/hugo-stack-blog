@@ -7,7 +7,7 @@ tags:
   - beautify
   - obsidian
 categories:
-  - obsidian
+  - devtools
 ---
 
 本文提供一种纯插件方案，无需编辑 CSS，即可为编辑器添加背景图。
@@ -24,5 +24,5 @@ categories:
 
 ## 配置
 
-1. **启动图片服务**：服务默认运行于 `http://localhost:8989`，图片文件夹基于仓库根目录默认位置在.bg/。
+1. **启动图片服务**：服务默认运行于 `http://localhost:8989`，图片文件夹基于仓库根目录默认位置在 .bg/。
 2. **设置背景**：进入 Background Image 设置页，在“Background Image URL”（浅色）或“Dark theme image URL”（深色）填入图片地址，如 `http://localhost:8989/wallpaper.jpg`。按需调整透明度（Background opacity）和模糊（Image blur），并选择应用范围。

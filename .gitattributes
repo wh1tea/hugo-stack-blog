@@ -1,0 +1,2 @@
+# 所有 Markdown 强制 LF（仓库内存储与检出均为 LF，免受 core.autocrlf 影响）
+*.md text eol=lf

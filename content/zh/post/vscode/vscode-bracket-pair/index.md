@@ -1,15 +1,15 @@
 ---
 title: Bracket Pair 括号着色：简介与问题排查
-slug: bracket-pair
+slug: vscode-bracket-pair
 date: 2026-09-02T10:00:00+08:00
 description: VS Code 括号配对着色功能简介与常见问题排查，解决 bracket pair 不生效的配置冲突。
 tags:
   - bracket-pair
   - vscode
-  - settings
+  - configuration
   - troubleshooting
 categories:
-  - vscode
+  - devtools
 ---
 
 ## Bracket Pair
@@ -20,7 +20,11 @@ Bracket pair colorization is a built-in code editor feature that visually matche
 
 ### 开启
 
-在 `settings.json` 中添加以下配置：
+`Ctrl + ,` 打开 setting
+
+![Bracket Pair Setting](./bracket-pair-setting.webp)
+
+或在 `settings.json` 中添加以下配置：
 
 ```json
 {
@@ -32,7 +36,7 @@ Bracket pair colorization is a built-in code editor feature that visually matche
 
 > `editor.guides.bracketPairs` 可选 `"active"`（仅当前光标所在括号对显示连线）或 `"all"`（显示全部嵌套层级连线）。
 
-### Bracket Pair不生效
+### Bracket Pair 不生效
 
 如果你已经开启了上述设置但括号仍然没有颜色，问题很可能出在 `settings.json` 中的这两行：
 

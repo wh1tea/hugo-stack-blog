@@ -5,6 +5,7 @@ date: 2025-12-07
 description: 个人项目防商用：CC、GPL、MIT 许可证对比，附 LICENSE 文件快速模板
 tags:
   - github
+  - open-source
 categories:
   - git
 ---
@@ -45,4 +46,6 @@ You are free to share and adapt the material for non-commercial purposes only.
 
 ## 结语
 
-练手项目不想被白嫖商用，`CC-BY-NC-4.0` 最省事、最直白；有开源意愿就上 `GPL v3`。两者都能吓退绝大多数商用场景，放一个 LICENSE 文件成本几乎为零。
+练手项目不想被白嫖商用，`CC-BY-NC-4.0` 最省事、最直白；有开源意愿就上 `GPL v3`。两者都能吓退绝大多数商用场景，放一个 LICENSE 文件成本几乎为零。[^1]
+
+[^1]: [为仓库颁发许可证](https://docs.github.com/zh/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)

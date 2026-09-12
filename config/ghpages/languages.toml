@@ -1,0 +1,5 @@
+# GitHub Pages（CI）专用环境：本地私有语言不上线
+# 用法：CI 构建时加 --environment ghpages（见 .github/workflows/deploy.yml）
+# 本地预览不受影响：hugo / hugo server 仍用默认环境（production / development），/private/ 照常渲染
+[private]
+    disabled = true

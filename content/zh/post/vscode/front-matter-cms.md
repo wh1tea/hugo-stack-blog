@@ -12,13 +12,13 @@ categories:
   - devtools
 ---
 
-静态博客的内容管理一直是痛点：文章是纯 Markdown，front matter 只能手写，标签和分类没有可视化管理，新建文章还要记模板。Front Matter CMS 是一个 VS Code 插件，把这一切变成可视化的仪表盘。
+静态博客的内容管理一直是痛点：文章是纯 Markdown，front matter 只能手写，标签和分类没有可视化管理，新建文章还要记模板。Front Matter CMS 是一个 VS Code 插件，把这一切变成可视化的仪表盘。[^1]
 
-本文以本博客（Hugo + Stack v4）为例，从安装、配置到日常使用完整走一遍，并记录配置过程中踩过的四个坑。读完你就能在 VS Code 里用仪表盘管理自己的博客。
+本文以本博客（Hugo + Stack v4）为例，从安装、配置到日常使用完整走一遍，并记录配置过程中踩过的四个坑。读完你就能在 VS Code 里用仪表盘管理自己的博客。[^2]
 
 ## 简介
 
-Front Matter CMS（插件 ID `eliostruyf.vscode-front-matter`）是一个面向静态站点的 Headless CMS：不引入数据库和后台服务，所有数据仍是 Markdown 文件，插件只是提供一个可视化编辑界面。
+Front Matter CMS（插件 ID `eliostruyf.vscode-front-matter`）是一个面向静态站点的 Headless CMS：不引入数据库和后台服务，所有数据仍是 Markdown 文件，插件只是提供一个可视化编辑界面。[^3]
 
 它适合这样的场景：站点用 Hugo / Next.js / 11ty 等 SSG，内容以 Markdown 为主，想摆脱手写 front matter 但又不愿意上重量级 CMS（Content Management System）。核心能力：
 
@@ -29,7 +29,7 @@ Front Matter CMS（插件 ID `eliostruyf.vscode-front-matter`）是一个面向�
 
 ## 安装与仪表盘
 
-在扩展市场搜索 `Front Matter` 安装即可，作者是 Esteban Sastre。
+在扩展市场搜索 `Front Matter` 安装即可，作者是 Esteban Sastre。[^4]
 
 安装后侧边栏出现 Front Matter 图标，点击打开仪表盘（也可用命令「打开仪表盘」）。内容区左侧是配置过的文件夹树，右侧是文章列表，顶部有搜索框和排序下拉。点开一篇文章，会进入表单视图，front matter 的每个字段对应一个输入控件，正文是 Markdown 编辑区。
 
@@ -163,9 +163,10 @@ Front Matter CMS 把静态博客的内容管理体验提升了一个档次：可
 
 如果你的博客也是 Hugo + Stack 主题，这套配置开箱即用；其他 SSG 只需调整 `framework.id` 和 `pageFolders`。想进一步了解字段类型和高级功能，看官方文档。
 
-## 参考
+[^1]: [Front Matter CMS 官方文档](https://frontmatter.codes/docs) —— 设置项与字段类型的权威参考
 
-- [IvonBlog — VS Code Front Matter CMS 教學](https://ivonblog.com/posts/vscode-front-matter-cms/) —— 中文教程，覆盖安装与基础配置
-- [Front Matter CMS 官方文档](https://frontmatter.codes/docs) —— 设置项与字段类型的权威参考
-- [VS Code 扩展市场 — Front Matter](https://marketplace.visualstudio.com/items?itemName=eliostruyf.vscode-front-matter)
-- 相关文章：[VS Code 插件配置](../vscode/vscode-extensions-config.md)、[Hugo 博客搭建记录](../hugo/hugo-stack-github-pages.md)
+[^2]: 相关文章：[VS Code 插件配置](../vscode/vscode-extensions-config.md)、[Hugo 博客搭建记录](../hugo/hugo-stack-github-pages/index.md)
+
+[^3]: [IvonBlog — VS Code Front Matter CMS 教學](https://ivonblog.com/posts/vscode-front-matter-cms/) —— 中文教程，覆盖安装与基础配置
+
+[^4]: [VS Code 扩展市场 — Front Matter](https://marketplace.visualstudio.com/items?itemName=eliostruyf.vscode-front-matter)

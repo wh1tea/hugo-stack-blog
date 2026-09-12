@@ -1,5 +1,6 @@
 ---
 title: npm、pnpm 与 Node.js 入门指南
+slug: npm-pnpm-nodejs-guide
 date: 2026-08-07
 description: 全面对比 npm 与 pnpm，详解 Node.js 安装与包管理核心用法，助你快速选型并高效管理项目依赖。
 tags:
@@ -12,7 +13,7 @@ categories:
   - web
 ---
 
-Node.js 已成为服务端 JavaScript 的事实标准，而 npm 和 pnpm 则是其生态中最主流的包管理工具。本文面向有 JavaScript 基础的开发者，介绍三者核心概念与基本操作，对比 npm 与 pnpm 的优劣，并给出选型建议。读完你将能独立安装 Node.js、使用 npm/pnpm 管理依赖，并理解它们在 Docker 环境中的应用。
+Node.js 已成为服务端 JavaScript 的事实标准，而 npm 和 pnpm 则是其生态中最主流的包管理工具。本文面向有 JavaScript 基础的开发者，介绍三者核心概念与基本操作，对比 npm 与 pnpm 的优劣，并给出选型建议。读完你将能独立安装 Node.js、使用 npm/pnpm 管理依赖，并理解它们在 Docker 环境中的应用。[^1]
 
 ---
 
@@ -23,7 +24,7 @@ Node.js 是基于 Chrome V8 引擎的 JavaScript 运行时，提供异步、非�
 ### 安装方式
 
 **官方安装包（Windows / macOS）**  
-访问 [Node.js 官网](https://nodejs.org/)，下载 LTS 版本（推荐生产环境）或 Current 版本（尝鲜新特性）。运行安装程序即可。
+访问 [Node.js 官网](https://nodejs.org/)，下载 LTS 版本（推荐生产环境）或 Current 版本（尝鲜新特性）。运行安装程序即可。[^2]
 
 **Linux（Ubuntu/Debian）**  
 使用系统包管理器：
@@ -33,7 +34,7 @@ sudo apt update
 sudo apt install nodejs npm
 ```
 
-**Docker 快速体验**  
+**Docker 快速体验**
 
 ```bash
 docker pull node:22-alpine
@@ -61,7 +62,7 @@ npm -v
 
 ## npm 包管理工具
 
-npm（Node Package Manager）是 Node.js 默认的包管理器，连接全球最大包仓库 [npmjs.com](https://www.npmjs.com/)。随 Node.js 自动安装，可独立更新：
+npm（Node Package Manager）是 Node.js 默认的包管理器，连接全球最大包仓库 npmjs.com[^3]。随 Node.js 自动安装，可独立更新：
 
 ```bash
 npm install -g npm@latest
@@ -143,9 +144,9 @@ pnpm config set store-dir /path/to/store   # 默认 ~/.pnpm-store
 | **生态兼容** | 原生支持 npm 生态              | 完全兼容，命令基本一致             |
 | **学习曲线** | 低，广泛使用                   | 略高，但命令类似，迁移成本低       |
 
-**选型建议**：  
+**选型建议**：
 
-- 小型项目、快速原型：npm 足矣。  
+- 小型项目、快速原型：npm 足矣。
 - 大型项目、monorepo、磁盘受限环境：pnpm 更优。
 
 ---
@@ -170,8 +171,8 @@ CMD ["pnpm", "start"]
 ## 注意事项
 
 - **Node.js 版本**：使用 `nvm` 管理多个版本，确保与依赖兼容。
-- **缓存清理**：  
-  - npm：`npm cache clean --force`  
+- **缓存清理**：
+  - npm：`npm cache clean --force`
   - pnpm：`pnpm store prune`
 - **安全审计**：定期执行 `npm audit` 或 `pnpm audit` 修复漏洞。
 - **镜像源**：国内用户务必配置国内镜像，否则下载极慢。
@@ -180,17 +181,16 @@ CMD ["pnpm", "start"]
 
 ## 总结
 
-- **Node.js** 是服务端 JavaScript 运行基石。  
-- **npm** 是最通用的包管理器，简单可靠，适合绝大多数场景。  
+- **Node.js** 是服务端 JavaScript 运行基石。
+- **npm** 是最通用的包管理器，简单可靠，适合绝大多数场景。
 - **pnpm** 在性能和空间上更具优势，尤其适合大型项目或 monorepo。
 
-建议初学者从 npm 入手，熟悉生态后再尝试 pnpm。无论选择哪种，都请配合 `nvm` 管理 Node 版本，并定期审计依赖安全。结合 Docker 时优先考虑 pnpm 以优化镜像大小。
+建议初学者从 npm 入手，熟悉生态后再尝试 pnpm。无论选择哪种，都请配合 `nvm` 管理 Node 版本，并定期审计依赖安全。结合 Docker 时优先考虑 pnpm 以优化镜像大小。[^4]
 
----
+[^1]: [pnpm 官方文档](https://pnpm.io/zh/pnpm-vs-npm)
 
-## 参考
+[^2]: [Node.js 官方文档](https://nodejs.org/zh-cn)
 
-- [Node.js 官方文档](https://nodejs.org/zh-cn)  
-- [npm 官网](https://www.npmjs.com/)  
-- [pnpm 官方文档](https://pnpm.io/zh/pnpm-vs-npm)  
-- [nvm GitHub 仓库](https://github.com/nvm-sh/nvm)
+[^3]: [npm 官网](https://www.npmjs.com/)
+
+[^4]: [nvm GitHub 仓库](https://github.com/nvm-sh/nvm)

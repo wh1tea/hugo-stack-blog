@@ -9,9 +9,10 @@ tags:
 categories:
   - tutorial
 ---
+
 ## Typora
 
-**Markdown** 由 [John Gruber](http://daringfireball.net/) 创建，原始指南见[此处](http://daringfireball.net/projects/markdown/syntax)。但其语法在不同解析器或编辑器之间有所不同，**Typora** 使用的是 [GitHub 风格的 Markdown][GFM]，Obsidian的基本格式语法可以参考[此处](https://obsidian.md/zh/help/syntax)。
+**Markdown** 由 [John Gruber](http://daringfireball.net/) 创建，原始指南见[此处](http://daringfireball.net/projects/markdown/syntax)。但其语法在不同解析器或编辑器之间有所不同，**Typora** 使用的是 [GitHub 风格的 Markdown][GFM]，Obsidian 的基本格式语法可以参考[此处](https://obsidian.md/zh/help/syntax)。[^1]
 
 目录
 
@@ -21,7 +22,7 @@ categories:
 
 ### 段落和换行
 
-段落是一个或多个连续的文本行。在 markdown 源码中，段落由两个或更多空行分隔。在 Typora 中，您只需一个空行（按一次 `Enter`）即可创建新段落。
+段落是一个或多个连续的文本行。在 markdown 源码中，段落由两个或更多空行分隔。在 Typora 中，您只需一个空行（按一次 `Enter`）即可创建新段落。[^2]
 
 按 `Shift` + `Enter` 可创建单个换行。大多数其他 markdown 解析器会忽略单个换行，因此为了让其他 markdown 解析器识别您的换行，您可以在行尾留两个空格，或者插入 `<br/>`。
 
@@ -171,7 +172,7 @@ $$
 
 您可以像这样创建脚注[^footnote]。
 
-[^footnote]: 这是**脚注**的_文本_。
+[^footnote]: 这是**脚注**的*文本*。
 
 将鼠标悬停在“footnote”上标上以查看脚注内容。
 
@@ -193,7 +194,7 @@ Typora 现在支持 [YAML Front Matter](http://jekyllrb.com/docs/frontmatter/)�
 
 要使用此功能，请先在偏好设置面板中启用。Typora 支持由 flowchart、sequence diagrams 和 mermaid.js 驱动的图表。
 
-[更多详情请参见此处](https://support.typora.io/Draw-Diagrams-With-Markdown/)。
+[更多详情请参见此处](https://support.typora.io/Draw-Diagrams-With-Markdown/)。[^3]
 
 ```mermaid
 graph TD;
@@ -229,7 +230,7 @@ Markdown 支持两种风格的链接：行内式和引用式。
 
 [markdown editor](https://markdown.com.cn/editor/)或[markdown tutorial](https://markdown.com.cn/ "欢迎访问markdown中文教程")
 
-原理是Markdown会将您的文字转换为html格式并输出：
+原理是 Markdown 会将您的文字转换为 html 格式并输出：
 
 This is [an example](http://example.com/ "Title") inline link. (`<p>This is <a href="http://example.com/" title="Title"> an example </a> inline link.</p>`)
 
@@ -276,7 +277,7 @@ Typora 允许您将 URL 作为链接插入，包裹在 `<`尖括号`>` 中。
 
 `<username@domain.com>` 变成 <username@domain.com>。
 
-markdown也会自动链接标准 URL。例如：www.google.com。
+markdown 也会自动链接标准 URL。例如：www.google.com。
 
 ### 图片
 
@@ -354,7 +355,7 @@ GFM 添加了创建删除线文本的语法，这是标准 Markdown 所没有的
 
 使用 `:emoji:` 语法输入 Emoji。
 
-用户可以通过按 `ESC` 键触发 Emoji 的自动补全建议，或者在偏好设置面板启用后自动触发。同时，您也可以直接在菜单栏中选择 `编辑` -> `Emoji 与符号`（macOS）来输入 UTF-8 Emoji 字符。window使用`win`+`period`
+用户可以通过按 `ESC` 键触发 Emoji 的自动补全建议，或者在偏好设置面板启用后自动触发。同时，您也可以直接在菜单栏中选择 `编辑` -> `Emoji 与符号`（macOS）来输入 UTF-8 Emoji 字符。window 使用`win`+`period`
 
 ### 行内数学公式
 
@@ -390,22 +391,20 @@ GFM 添加了创建删除线文本的语法，这是标准 Markdown 所没有的
 <video src="xxx.mp4" />
 ```
 
-<video src="../../assets/audio/FurElise.ogg" controls=""></video>
+<video src="../../assets/audio/FurElise.ogg" controls=""></video>[^4]
 
 ### 其他 HTML 支持
 
-更多详情请参见[此处](https://support.typora.io/HTML/)。
+更多详情请参见[此处](https://support.typora.io/HTML/)。[^5]
 
 [GFM]: https://help.github.com/articles/github-flavored-markdown/ "GitHub Flavored Markdown"
 
-## 参考
+[^1]: [Obsidian basic formatting syntax](https://obsidian.md/help/syntax)
 
-[Markdown For Typora](https://support.typora.io/Markdown-Reference/)
+[^2]: [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
 
-[Obsidian basic formatting syntax](https://obsidian.md/help/syntax)
+[^3]: [Markdown For Typora](https://support.typora.io/Markdown-Reference/)
 
-[Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github)
+[^4]: [CommonMark-Fundamental yet rigorous standardized grammatical norms](https://commonmark.org/)
 
-[CommonMark-Fundamental yet rigorous standardized grammatical norms](https://commonmark.org/)
-
-[GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+[^5]: [Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github)

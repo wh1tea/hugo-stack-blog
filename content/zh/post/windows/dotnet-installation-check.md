@@ -7,16 +7,15 @@ tags:
   - dotnet
   - sdk
   - runtime
-  - windows
 categories:
   - windows
 ---
 
-本文面向有编程基础的开发者，旨在帮助你在 Windows / macOS / Linux 上快速确认 .NET 环境状态，理解版本号含义，并做出合理的升级决策。读完本文，你将能独立检查 .NET 安装、判断版本是否过时，并安全地清理旧版本。起因是台式电脑风扇出问题了需要通过[FanControl](https://getfancontrol.com/)去调控风扇，而FanControl需要.NET 10的支持。
+本文面向有编程基础的开发者，旨在帮助你在 Windows / macOS / Linux 上快速确认 .NET 环境状态，理解版本号含义，并做出合理的升级决策。读完本文，你将能独立检查 .NET 安装、判断版本是否过时，并安全地清理旧版本。起因是台式电脑风扇出问题了需要通过[FanControl](https://getfancontrol.com/)去调控风扇，而 FanControl 需要 .NET 10的支持。
 
 ## 检查 .NET 是否已安装
 
-最通用的方法是使用终端（命令提示符 / PowerShell / bash）执行 `dotnet` 命令。
+最通用的方法是使用终端（命令提示符 / PowerShell / bash）执行 `dotnet` 命令。[^1]
 
 ```bash
 # 列出所有已安装的 SDK
@@ -40,13 +39,13 @@ dotnet --info
 
 你可能会看到类似 `6.0.428` 这样的版本号，其格式为 `主版本.次版本.补丁号`。微软为每个主版本设定明确的支持期限：
 
-| 版本 | 支持类型 | 结束日期（EOL） | 当前状态（2026-08） |
-| :--- | :--- | :--- | :--- |
-| .NET 6 | LTS（长期支持） | 2024-11-12 | 已停止支持，建议立即升级 |
-| .NET 7 | STS（标准支持） | 2024-05-14 | 已停止支持 |
-| .NET 8 | LTS | 2026-11-10 | 仍在支持，但即将到期 |
-| .NET 9 | STS | 2026-05-12 | 已停止支持 |
-| .NET 10 | LTS | 2027-11-09 | 最新 LTS，强烈推荐 |
+| 版本    | 支持类型        | 结束日期（EOL） | 当前状态（2026-08）      |
+| :------ | :-------------- | :-------------- | :----------------------- |
+| .NET 6  | LTS（长期支持） | 2024-11-12      | 已停止支持，建议立即升级 |
+| .NET 7  | STS（标准支持） | 2024-05-14      | 已停止支持               |
+| .NET 8  | LTS             | 2026-11-10      | 仍在支持，但即将到期     |
+| .NET 9  | STS             | 2026-05-12      | 已停止支持               |
+| .NET 10 | LTS             | 2027-11-09      | 最新 LTS，强烈推荐       |
 
 **关键原则**：始终使用处于支持生命周期内的 LTS 版本（当前为 .NET 10 和 .NET 8），以确保获得安全更新和修复。
 
@@ -60,7 +59,7 @@ dotnet --info
 
 ### 安装新版本
 
-官方下载地址：[https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download)
+官方下载地址：https://dotnet.microsoft.com/download[^2][^3]
 
 使用包管理器（推荐）：
 
@@ -85,7 +84,7 @@ sudo apt install dotnet-sdk-10.0
 卸载方式：
 
 - **图形界面**：通过“添加或删除程序”（Windows）或对应包管理器移除。
-- **命令行**：使用微软官方卸载工具 `dotnet-core-uninstall`（[GitHub 发布页](https://github.com/dotnet/cli-lab/releases)）：
+- **命令行**：使用微软官方卸载工具 `dotnet-core-uninstall`（[GitHub 发布页](https://github.com/dotnet/cli-lab/releases)）：[^4]
 
 ```bash
 # 列出可卸载的 SDK 和运行时
@@ -125,9 +124,10 @@ dotnet-core-uninstall remove --runtime 6.0.36
 
 现在，请运行 `dotnet --info` 查看你的环境，并根据输出采取相应行动。
 
-## 参考
+[^1]: [dotnet-core-uninstall 工具](https://github.com/dotnet/cli-lab)
 
-- [.NET介绍](https://learn.microsoft.com/zh-cn/dotnet/core/introduction)
-- [.NET 官方下载页](https://dotnet.microsoft.com/download)
-- [.NET 生命周期政策](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
-- [dotnet-core-uninstall 工具](https://github.com/dotnet/cli-lab)
+[^2]: [.NET 官方下载页](https://dotnet.microsoft.com/download)
+
+[^3]: [.NET 生命周期政策](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
+
+[^4]: [.NET介绍](https://learn.microsoft.com/zh-cn/dotnet/core/introduction)

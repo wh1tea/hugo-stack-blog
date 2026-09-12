@@ -5,7 +5,6 @@ date: 2026-08-29T02:11:06+08:00
 description: hermes update 报网络错误，排查发现 git 全局配置的空代理覆盖项强制直连 github.com 导致超时，附修复与验证命令
 tags:
   - hermes
-  - git
   - proxy
   - wsl
   - cli
@@ -13,7 +12,7 @@ categories:
   - git
 ---
 
-`hermes update` 拉取更新时失败，报 135 秒网络超时。curl 直连与代理都通，问题出在 git 的代理配置：一条空的 `http.https://github.com.proxy` 覆盖项让 git 对 github.com 强制直连，绕开了代理环境变量。本文记录排查链路、git 代理优先级机制与修复方法，可与《GitHub 推送失败排查》对照阅读。
+`hermes update` 拉取更新时失败，报 135 秒网络超时。curl 直连与代理都通，问题出在 git 的代理配置：一条空的 `http.https://github.com.proxy` 覆盖项让 git 对 github.com 强制直连，绕开了代理环境变量。本文记录排查链路、git 代理优先级机制与修复方法，可与《GitHub 推送失败排查》对照阅读。[^1]
 
 ## 报错现象
 
@@ -28,7 +27,7 @@ $ hermes update
 ```
 
 - 超时 135 秒：TCP 层丢包（github.com 直连被墙的典型表现），不是 DNS 也不是 TLS
-- `hermes update` 本质是在源码目录执行 `git fetch origin`，所以问题收敛到 git 的网络链路
+- `hermes update` 本质是在源码目录执行 `git fetch origin`，所以问题收敛到 git 的网络链路[^2]
 
 ## 排查链路
 
@@ -61,11 +60,11 @@ git -c http.https://github.com.proxy=http://127.0.0.1:7897 ls-remote origin HEAD
 
 git 读取代理设置的顺序：
 
-| 优先级 | 来源 | 示例 |
-| :--- | :--- | :--- |
-| 1 | URL 级配置 | `http.https://github.com.proxy` |
-| 2 | 全局配置 | `http.proxy` |
-| 3 | 环境变量 | `https_proxy` / `http_proxy` |
+| 优先级 | 来源       | 示例                            |
+| :----- | :--------- | :------------------------------ |
+| 1      | URL 级配置 | `http.https://github.com.proxy` |
+| 2      | 全局配置   | `http.proxy`                    |
+| 3      | 环境变量   | `https_proxy` / `http_proxy`    |
 
 URL 级配置的优先级最高，会覆盖环境变量。`http.https://github.com.proxy` 表示「仅对 github.com 生效的代理」。
 
@@ -75,7 +74,7 @@ URL 级配置的优先级最高，会覆盖环境变量。`http.https://github.c
 
 ### 这条配置的来历
 
-回查历史会话，这条空值配置是此前排查 GitHub 推送失败时设的：当时代理的 TLS 握手失败（`GnuTLS handshake failed`），临时用 `git config --global http.https://github.com.proxy ""` 让 github.com 直连绕过坏代理。当时直连恰好通畅，问题被掩盖——直到今天直连也被墙，才彻底暴露。
+回查历史会话，这条空值配置是此前排查 GitHub 推送失败时设的：当时代理的 TLS 握手失败（`GnuTLS handshake failed`），临时用 `git config --global http.https://github.com.proxy ""` 让 github.com 直连绕过坏代理。当时直连恰好通畅，问题被掩盖——直到今天直连也被墙，才彻底暴露。[^3]
 
 这也是 TUN 模式救不回来的原因：TUN 拦截的是网络层的包，但 git 在配置层已经明确要求直连，方向就错了。
 
@@ -98,12 +97,12 @@ GIT_CURL_VERBOSE=1 git ls-remote origin HEAD
 
 ## 排查思路小结
 
-| 层 | 检查手段 | 本次结论 |
-| :--- | :--- | :--- |
-| 网络 | `curl -I https://github.com` 直连 / 走代理 | 两层都通，网络无问题 |
-| 机制 | 查看 `hermes update` 实现：实为 `git fetch origin` | 问题收敛到 git |
-| 配置 | `git config --global --list --show-origin` | 发现空代理覆盖项 |
-| 行为 | `GIT_CURL_VERBOSE=1` 观察真实连接 | 直连 vs 代理隧道，实锤 |
+| 层   | 检查手段                                           | 本次结论               |
+| :--- | :------------------------------------------------- | :--------------------- |
+| 网络 | `curl -I https://github.com` 直连 / 走代理         | 两层都通，网络无问题   |
+| 机制 | 查看 `hermes update` 实现：实为 `git fetch origin` | 问题收敛到 git         |
+| 配置 | `git config --global --list --show-origin`         | 发现空代理覆盖项       |
+| 行为 | `GIT_CURL_VERBOSE=1` 观察真实连接                  | 直连 vs 代理隧道，实锤 |
 
 关键经验：
 
@@ -117,8 +116,8 @@ GIT_CURL_VERBOSE=1 git ls-remote origin HEAD
 
 git 的代理优先级是「URL 级配置 > 全局配置 > 环境变量」，一条空的 `http.https://github.com.proxy` 会静默禁用 github.com 的代理，让 git 在墙内直连超时。排查时用 `GIT_CURL_VERBOSE=1` 确认 git 的真实连接方式，修复时写显式代理地址而非空值。如果代理节点本身不稳定，治本还是换稳定节点，而不是在直连与代理之间反复横跳。
 
-## 参考
+[^1]: [GitHub 推送失败排查](github-push-failures.md)——本文空代理配置的由来
 
-- [GitHub 推送失败排查](github-push-failures.md)——本文空代理配置的由来
-- [hermes update 又卡住：全量历史追赶与残留 tmp_pack](hermes-update-slow-fetch.md)——续篇：代理修好后再次卡住的排查
-- [git-config 官方文档](https://git-scm.com/docs/git-config)
+[^2]: [hermes update 又卡住：全量历史追赶与残留 tmp_pack](hermes-update-slow-fetch.md)——续篇：代理修好后再次卡住的排查
+
+[^3]: [git-config 官方文档](https://git-scm.com/docs/git-config)

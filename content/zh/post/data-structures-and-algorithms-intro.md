@@ -1,5 +1,6 @@
 ---
 title: 数据结构与算法入门：复杂度分析与核心数据结构
+slug: data-structures-and-algorithms-intro
 date: 2026-07-15
 description: 系统梳理数据结构与算法的核心概念，从复杂度分析到数组、链表、栈、队列等基本数据结构，适合考研408复习和面试准备。
 tags:

@@ -4,7 +4,8 @@ slug: http-4xx-error
 date: 2026-05-19T09:39:19+00:00
 description: 在开发与运维中，HTTP 4xx 状态码是最常遇到的错误类型。本文系统讲解 403 Forbidden、404 Not Found、405 Method Not Allowed 和 429 Too Many Requests 的含义、常见原因与排查方法，帮助开发者快速定位问题。
 tags:
-  - https
+  - http
+  - troubleshooting
 categories:
   - web
 ---
@@ -18,7 +19,7 @@ HTTP 状态码中的 4xx 类别表示客户端错误——服务器理解了请�
 - **403 Forbidden**：有权限，但不够
 - **404 Not Found**：资源不存在
 - **405 Method Not Allowed**：方法不支持
-- **429 Too Many Requests**：请求太频繁
+- **429 Too Many Requests**：请求太频繁[^1]
 
 ---
 
@@ -43,7 +44,7 @@ Apache 的 `.htaccess` 包含 `Deny from all` 等过严规则；Nginx 的 `nginx
 ModSecurity 等 WAF（Web 应用防火墙）规则将请求误判为攻击。
 
 **目录索引禁用**
-请求了一个目录，但服务器未配置默认索引文件（如 `index.html`），且目录浏览被禁用。
+请求了一个目录，但服务器未配置默认索引文件（如 `index.html`），且目录浏览被禁用。[^2]
 
 ### 1.3 排查思路
 
@@ -58,7 +59,7 @@ ModSecurity 等 WAF（Web 应用防火墙）规则将请求误判为攻击。
 1. 检查文件权限：文件建议 `644`，目录建议 `755`
 2. 检查 Web 服务器配置文件（`.htaccess`、`nginx.conf`）中的访问控制规则
 3. 查看服务器错误日志（Apache 的 `error_log` 或 Nginx 的 `error.log`），过滤客户端 IP 获取具体拒绝原因
-4. 检查防火墙和安全模块（如 ModSecurity）日志，确认是否为误拦截
+4. 检查防火墙和安全模块（如 ModSecurity）日志，确认是否为误拦截[^3]
 
 ---
 
@@ -106,7 +107,7 @@ Nginx 的 `root` 指令指向了错误的目录，或 `location` 块配置有误
 
 ### 3.1 含义
 
-`405 Method Not Allowed` 表示服务器识别了请求的资源，但不支持请求中使用的 HTTP 方法。服务器必须在响应中包含 `Allow` 头，列出该资源支持的方法。
+`405 Method Not Allowed` 表示服务器识别了请求的资源，但不支持请求中使用的 HTTP 方法。服务器必须在响应中包含 `Allow` 头，列出该资源支持的方法。[^4]
 
 ### 3.2 常见原因
 
@@ -139,7 +140,7 @@ Nginx 或 Apache 代理未正确转发请求方法。
 
 ### 4.1 含义
 
-`429 Too Many Requests` 表示客户端在单位时间内发送的请求数量超过了服务端设定的阈值，触发了**限流保护机制**。这是服务端保障稳定性、防止资源滥用的措施。
+`429 Too Many Requests` 表示客户端在单位时间内发送的请求数量超过了服务端设定的阈值，触发了**限流保护机制**。这是服务端保障稳定性、防止资源滥用的措施。[^5]
 
 ### 4.2 常见原因
 
@@ -179,20 +180,22 @@ Nginx 或 Apache 代理未正确转发请求方法。
 | 405    | 方法不允许 | 方法不匹配 | API 文档、请求方法、框架注解   |
 | 429    | 请求过多   | 频率超限   | 限流规则、退避重试、User-Agent |
 
-**行动建议**：
+**行动建议**：[^6]
 
 - 遇到 4xx 错误时，**先从客户端排查**（URL、方法、请求头），再深入服务端配置
 - **善用日志**：访问日志和错误日志是定位问题的第一手资料
-- **API 开发中**：始终在响应中包含 `Allow` 头（405）和 `Retry-After` 头（429），帮助客户端正确处理
+- **API 开发中**：始终在响应中包含 `Allow` 头（405）和 `Retry-After` 头（429），帮助客户端正确处理[^7]
 
----
+[^1]: [404 not found 状态码报错如何排查](https://help.yunaq.com/faq/9006/index.html)
 
-## 参考
+[^2]: [HTTP 403错误全面解析：根源诊断与系统化修复方案](https://www.dns.com/zh/supports/2457.html)
 
-1. [Error 403 · Cloudflare Docs](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-403/)
-2. [HTTP 403错误全面解析：根源诊断与系统化修复方案](https://www.dns.com/zh/supports/2457.html)
-3. [404 not found 状态码报错如何排查](https://help.yunaq.com/faq/9006/index.html)
-4. [Error 405 · Cloudflare Docs](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-405/)
-5. [HTTP 405 Method Not Allowed”错误解析与实战解决方案](https://cloud.baidu.com/article/4522097)
-6. [HTTP 429 Too Many Requests 的处理办法](https://cloud.tencent.com.cn/developer/article/2713062)
-7. [ServiceComb引擎接口访问返回429状态码](https://support.huaweicloud.com/intl/zh-cn/cse_faq/cse_07_0019.html)
+[^3]: [Error 403 · Cloudflare Docs](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-403/)
+
+[^4]: [HTTP 405 Method Not Allowed”错误解析与实战解决方案](https://cloud.baidu.com/article/4522097)
+
+[^5]: [HTTP 429 Too Many Requests 的处理办法](https://cloud.tencent.com.cn/developer/article/2713062)
+
+[^6]: [ServiceComb引擎接口访问返回429状态码](https://support.huaweicloud.com/intl/zh-cn/cse_faq/cse_07_0019.html)
+
+[^7]: [Error 405 · Cloudflare Docs](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-405/)

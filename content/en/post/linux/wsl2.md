@@ -2,7 +2,7 @@
 title: WSL2 Installation and Usage Guide
 slug: wsl2
 date: 2026-05-13
-description: 'From install to daily use: a complete WSL2 setup guide covering distro management, resource limits, and troubleshooting.'
+description: "From install to daily use: a complete WSL2 setup guide covering distro management, resource limits, and troubleshooting."
 tags:
   - wsl
   - wsl2

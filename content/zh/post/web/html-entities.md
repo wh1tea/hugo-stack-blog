@@ -6,7 +6,6 @@ description: 在 HTML 中直接使用 <、>、& 等保留字符会导致解析�
 tags:
   - html
   - frontend
-  - web-development
 categories:
   - web
 ---
@@ -68,7 +67,7 @@ HTML 实体有两种形式，可根据场景选用。
 | `>`  | `&gt;`     | `&#x3e;`             | 大于号，标签结束符                  |
 | `"`  | `&quot;`   | `&#x22;`             | 双引号，属性值的定界符              |
 | `'`  | `&apos;`   | `&#x27;`             | 单引号（在某些属性值中需转义）      |
-| ` ` | `&nbsp;`   | `&#xa0;`             | 不换行空格（Non‑eaking space）      |
+| ` `  | `&nbsp;`   | `&#xa0;`             | 不换行空格（Non‑eaking space）      |
 | `–`  | `&ndash;`  | `&#x2013;`           | 短破折号（en dash，宽度约为字母 n） |
 | `—`  | `&mdash;`  | `&#x2014;`           | 长破折号（em dash，宽度约为字母 m） |
 | `©`  | `&copy;`   | `&#xa9;`             | 版权符号                            |
@@ -83,7 +82,7 @@ HTML 实体有两种形式，可根据场景选用。
 | `×`  | `&times;`  | `&#xd7;`             | 乘号                                |
 | `÷`  | `&divide;` | `&#xf7;`             | 除号                                |
 
-完整的命名字符引用列表可查阅 [HTML Standard: Named Character References](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references)。
+完整的命名字符引用列表可查阅 HTML Standard: Named Character References[^1]。
 
 ---
 
@@ -95,11 +94,8 @@ HTML 实体是前端开发中最基础也最容易被忽略的知识点。理解
 
 - 在 HTML 正文中，凡是需要显示 `<`、`>`、`&` 这三个字符，一律使用对应实体。
 - 对于属性值中的双引号或单引号，也推荐使用 `&quot;` 或 `&apos;` 转义，避免属性解析错误。
-- 遇到特殊符号（版权、商标、货币、数学符号等），优先查找命名实体表；若无对应名称，再使用数字实体。
+- 遇到特殊符号（版权、商标、货币、数学符号等），优先查找命名实体表；若无对应名称，再使用数字实体。[^2]
 
----
+[^1]: [HTML Standard: Named Character References](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references)
 
-## 参考
-
-- [实体 - MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity)
-- [HTML Standard: Named Character References](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references)
+[^2]: [实体 - MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity)

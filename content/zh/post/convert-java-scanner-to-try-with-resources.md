@@ -1,5 +1,6 @@
 ---
 title: Convert to try-with-resources (Java Scanner)
+slug: convert-java-scanner-to-try-with-resources
 date: 2026-03-15
 description: How to convert a Java Scanner to a try-with-resources statement for cleaner, safer resource management.
 tags:
@@ -8,6 +9,7 @@ tags:
   - best-practices
 categories:
   - tutorial
+draft: true
 ---
 
 To convert a Java Scanner to a try-with-resources statement, declare the Scanner object within the parentheses of the try statement. Java will then automatically close the resource when the block finishes, eliminating the need for a finally block to close it manually.

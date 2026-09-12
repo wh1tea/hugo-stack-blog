@@ -4,17 +4,15 @@ slug: hugo-stack-github-pages
 date: 2026-08-12
 description: 从模板到上线：双语博客的完整搭建记录，附项目结构全解析
 tags:
-  - hugo
   - stack
   - github-pages
   - blogging
 categories:
-  - devtools
-
-image: /hugo-stack-blog/post/hugo/assets/cover.svg
+  - hugo
+image: cover.svg
 ---
 
-这篇博客就是最终成果。记录一下我是如何用 Hugo + Stack 主题 + GitHub Pages，从零搭出一个中英双语的静态博客。
+这篇博客就是最终成果。记录一下我是如何用 Hugo + Stack 主题 + GitHub Pages，从零搭出一个中英双语的静态博客。[^1]
 
 ## 简介
 
@@ -43,11 +41,11 @@ go version
 
 ## 主题：从模板创建仓库
 
-Stack 官方提供了 starter 模板（`CaiJimmy/hugo-theme-stack-starter`），直接省去手搓主题接入的步骤：
+Stack 官方提供了 starter 模板（`CaiJimmy/hugo-theme-stack-starter`），直接省去手搓主题接入的步骤：[^2]
 
 1. 在 GitHub 上点 **Use this template**，仓库名随意（本文是 `hugo-stack-blog`）
 2. 到仓库 **Settings → Pages**，把 Build and deployment 的 Source 设为 **GitHub Actions**
-3. 克隆到本地，把 `config/_default/config.toml` 里的 `baseurl` 改成自己的地址：
+3. 克隆到本地，把 `config/_default/config.toml` 里的 `baseurl` 改成自己的地址：[^3]
 
 ```toml
 baseurl = "https://<username>.github.io/hugo-stack-blog/"
@@ -100,7 +98,7 @@ hasCJKLanguage = true                    # 保证中文字数统计 / 阅读时�
 
 ### 3. 按语言分目录存放内容
 
-```
+```text
 content/
 ├── zh/   # 中文版：_index.md、page/、post/
 └── en/   # 英文版：结构与中文一一对应
@@ -146,7 +144,7 @@ image: /hugo-stack-blog/post/hugo/assets/cover.svg
 
 ## 项目结构总览
 
-```
+```text
 hugo-stack-blog/
 ├── .github/workflows/
 │   ├── deploy.yml          # 推送即部署到 GitHub Pages
@@ -189,13 +187,13 @@ hugo-stack-blog/
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-codepen">
-	<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-	<path d="M3 15l9 6l9 -6l-9 -6l-9 6" />
-	<path d="M3 9l9 6l9 -6l-9 -6l-9 6" />
-	<path d="M3 9l0 6" />
-	<path d="M21 9l0 6" />
-	<path d="M12 3l0 6" />
-	<path d="M12 15l0 6" />
+ <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+ <path d="M3 15l9 6l9 -6l-9 -6l-9 6" />
+ <path d="M3 9l9 6l9 -6l-9 -6l-9 6" />
+ <path d="M3 9l0 6" />
+ <path d="M21 9l0 6" />
+ <path d="M12 3l0 6" />
+ <path d="M12 15l0 6" />
 </svg>
 ```
 
@@ -236,17 +234,17 @@ rm -rf public resources && hugo --gc --minify
 
 ## Hugo 常用命令速查
 
-| 命令 | 用途 |
-| ---- | ---- |
-| `hugo server` | 本地预览 http://localhost:1313，改文件热更新 |
-| `hugo server --buildDrafts` | 预览带 `draft: true` 的未发布文章 |
-| `hugo` | 构建到 `public/` |
-| `hugo --gc --minify` | 清理缓存 + 压缩产物（CI 同款参数） |
-| `hugo new content <路径>` | 按 archetype 新建内容页 |
-| `hugo list all` | 罗列全部页面（诊断重复渲染、语言挂载问题） |
-| `hugo config` | 打印合并后的完整配置（模块挂载、语言都在里面） |
-| `hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v4` | 更新主题（记得跟 `hugo mod tidy`） |
-| `hugo env` | 查看版本与编译特性（确认 `+extended`） |
+| 命令                                                      | 用途                                           |
+| --------------------------------------------------------- | ---------------------------------------------- |
+| `hugo server`                                             | 本地预览 <http://localhost:1313，改文件热更新> |
+| `hugo server --buildDrafts`                               | 预览带 `draft: true` 的未发布文章              |
+| `hugo`                                                    | 构建到 `public/`                               |
+| `hugo --gc --minify`                                      | 清理缓存 + 压缩产物（CI 同款参数）             |
+| `hugo new content <路径>`                                 | 按 archetype 新建内容页                        |
+| `hugo list all`                                           | 罗列全部页面（诊断重复渲染、语言挂载问题）     |
+| `hugo config`                                             | 打印合并后的完整配置（模块挂载、语言都在里面） |
+| `hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v4` | 更新主题（记得跟 `hugo mod tidy`）             |
+| `hugo env`                                                | 查看版本与编译特性（确认 `+extended`）         |
 
 本地日常就是 `hugo server` 写文章、`rm -rf public && hugo` 做干净验证这两条；其余多为诊断用。更新主题的另一条路是仓库自带的 `update-theme.yml` 定时任务，见下方常见问题。
 
@@ -268,3 +266,9 @@ hugo mod tidy
 ## 结语
 
 整个流程最重的部分其实是写文章，工具链本身半小时就能跑通。静态博客 + Markdown + Git 的工作流，专注内容、零维护成本，适合长期使用。接下来打算吧其他平台分散的博客也沉淀到这里，欢迎交换友链。
+
+[^1]: [HUGO](https://gohugo.io/)
+
+[^2]: [HUGO中文文档](https://hugo.opendocs.io/)
+
+[^3]: [Hugo Theme Stack](https://github.com/CaiJimmy/hugo-theme-stack)

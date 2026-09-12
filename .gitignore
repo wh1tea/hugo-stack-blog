@@ -8,8 +8,11 @@ assets/jsconfig.json
 
 # local
 _devlog/
-LOCAL-DEV-NOTES.md
+
+# Obsidian
 .obsidian/
+.obsidianignore
+.bg
 
 # frontmatter
 .frontmatter/
@@ -20,3 +23,5 @@ frontmatter.json
 #Private (local private system, never committed)
 content/private/
 config/_default/menu.private.toml
+
+*.pdf

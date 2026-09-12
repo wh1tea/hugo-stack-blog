@@ -4,9 +4,8 @@ slug: git-commands-cheatsheet
 date: 2026-08-14
 description: 覆盖仓库、暂存、分支、历史、撤销、远程六大场景的 Git 命令速查表，附常用示例与进阶阅读链接
 tags:
-  - git
   - cheatsheet
-  - command-line
+  - cli
 categories:
   - git
 ---

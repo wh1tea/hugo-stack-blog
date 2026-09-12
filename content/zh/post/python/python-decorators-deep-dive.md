@@ -1,16 +1,14 @@
 ---
 title: Python 装饰器详解
+slug: python-decorators-deep-dive
 date: 2026-04-20
 description: 深入理解 Python 装饰器的核心原理与常见应用场景，涵盖带参数装饰器、functools.wraps 用法及实际开发中的最佳实践。
 tags:
-  - python
   - decorators
   - advanced
 categories:
   - python
 ---
-
-# Python 装饰器详解
 
 Python 装饰器是一种强大的语法糖，允许你在不修改函数本身的情况下扩展函数的行为。
 

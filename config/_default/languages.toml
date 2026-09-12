@@ -29,9 +29,9 @@
 [private]
     weight     = 3
     label      = "Private"
-    title      = "Wh1tea's Private Blog"
+    title      = "Outgoing late stage depression patients"
     contentDir = "content/private"
     locale     = "zh-cn"
 
     [private.params.sidebar]
-        subtitle = "记得出门遛狗"
+        subtitle = "Remember to go out and take dog for a walk"

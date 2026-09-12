@@ -7,21 +7,19 @@ tags:
   - oh-my-posh
   - conda
   - python
-  - windows
   - pwsh
   - prompt
-  - windows
 categories:
-  - oh-my-posh
+  - windows
 ---
 
-`conda activate py_env` 之后，提示符纹丝不动：没有 `(py_env)`，没有 Python 图标。环境确实激活了（`python` 能解析到环境路径），但 Oh My Posh 就是不给面子。
+`conda activate py_env` 之后，提示符纹丝不动：没有 `(py_env)`，没有 Python 图标。环境确实激活了（`python` 能解析到环境路径），但 Oh My Posh 就是不给面子。[^1]
 
 本文面向 Windows + PowerShell 用户，完整走一遍从 `oh-my-posh debug` 定位、读源码找根因、自定义主题修复到三场景实测的过程。读完你能独立排查任何「段不显示」的问题。
 
 ## 现象：激活 Conda 环境后提示符无反应
 
-环境：oh-my-posh 30.6.5（winget MSIX 安装）+ jandedobbeleer 主题 + conda 24.x + pwsh 7.6。
+环境：oh-my-posh 30.6.5（winget MSIX 安装）+ jandedobbeleer 主题 + conda 24.x + pwsh 7.6。[^2]
 
 `conda activate py_env` 后 `CONDA_DEFAULT_ENV` 和 `CONDA_PREFIX` 都已正确设置，`python -c "import sys; print(sys.prefix)"` 也指向环境目录，但提示符完全不显示环境名。
 
@@ -69,12 +67,12 @@ v30 的主题段配置键是 `options`（网上老教程写的 `properties` 是�
 
 ### display_mode 四值
 
-| 值          | 显示条件                                     |
-| :---------- | :------------------------------------------- |
-| `files`     | 目录里有 `.py` / `.ipynb` 或 `.venv`、`venv`、`virtualenv` 等文件夹（jandedobbeleer 内置默认） |
-| `environment` | 虚拟环境激活时（`VIRTUAL_ENV` 或 `CONDA_DEFAULT_ENV` 等被设置） |
-| `context`   | 上述两者任一                                   |
-| `always`    | 永远显示                                     |
+| 值            | 显示条件                                                                                       |
+| :------------ | :--------------------------------------------------------------------------------------------- |
+| `files`       | 目录里有 `.py` / `.ipynb` 或 `.venv`、`venv`、`virtualenv` 等文件夹（jandedobbeleer 内置默认） |
+| `environment` | 虚拟环境激活时（`VIRTUAL_ENV` 或 `CONDA_DEFAULT_ENV` 等被设置）                                |
+| `context`     | 上述两者任一                                                                                   |
+| `always`      | 永远显示                                                                                       |
 
 Conda 的 `CONDA_DEFAULT_ENV` 在 v30 源码里是认的，问题出在主题把 `display_mode` 设成了 `files`，Conda 环境变量根本不参与判断。
 
@@ -137,11 +135,11 @@ oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\themes\dracula.omp.json"
 
 不依赖真实 conda 激活（interop 测试环境不干净），手动设环境变量模拟，逐场景跑 `oh-my-posh debug --config <副本路径>`：
 
-| 场景                    | 设置                                | 结果         | 渲染            |
-| :---------------------- | :---------------------------------- | :----------- | :-------------- |
-| conda 激活 + 非家目录    | `CONDA_DEFAULT_ENV=py_env`          | `Python(true)`  | 提示符出现 `py_env` |
-| conda 激活 + 家目录      | 同上，`Set-Location $HOME`          | `Python(true)`  | 正常显示（`home_enabled` 生效） |
-| 无环境 + 非家目录        | 清空 `CONDA_*`                      | `Python(false)` | 不显示，行为正确 |
+| 场景                  | 设置                       | 结果            | 渲染                            |
+| :-------------------- | :------------------------- | :-------------- | :------------------------------ |
+| conda 激活 + 非家目录 | `CONDA_DEFAULT_ENV=py_env` | `Python(true)`  | 提示符出现 `py_env`             |
+| conda 激活 + 家目录   | 同上，`Set-Location $HOME` | `Python(true)`  | 正常显示（`home_enabled` 生效） |
+| 无环境 + 非家目录     | 清空 `CONDA_*`             | `Python(false)` | 不显示，行为正确                |
 
 ## 排查中的坑
 
@@ -155,9 +153,8 @@ oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\themes\dracula.omp.json"
 
 行动建议：段不显示先用 `oh-my-posh debug` 看启用状态；查段配置时认准 v30 的 `options` 键和 `fetch_virtual_env` 属性名；主题修改一律走用户目录副本 + 全路径 `--config`，别动 WindowsApps 内置文件。
 
-相关的提示符配置见 [终端提示符配置：让 Oh My Posh 显示 Conda 环境](terminal-theme-conda-prompt.md)（旧版方案，属性名已过时）；conda 激活后子命令报错的修复见 [conda activate 后报 invalid choice](../python/conda-pwsh-activate-fix.md)。
+相关的提示符配置见 [终端提示符配置：让 Oh My Posh 显示 Conda 环境](terminal-theme-conda-prompt.md)（旧版方案，属性名已过时）；conda 激活后子命令报错的修复见 [conda activate 后报 invalid choice](../conda/conda-pwsh-activate-fix.md)。
 
-## 参考
+[^1]: [Oh My Posh Python segment 文档](https://ohmyposh.dev/docs/segments/python)
 
-- [Oh My Posh Python segment 文档](https://ohmyposh.dev/docs/segments/python)
-- [oh-my-posh 源码 src/segments/python.go](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/src/segments/python.go)
+[^2]: [oh-my-posh 源码 src/segments/python.go](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/src/segments/python.go)

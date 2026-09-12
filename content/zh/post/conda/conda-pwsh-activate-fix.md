@@ -5,18 +5,16 @@ date: 2026-08-22T07:46:42+08:00
 description: "在 pwsh 7 中执行 conda activate py_env 后，提示符不变、所有 conda 子命令报 invalid choice: ''。本文完整记录从现象、排查、验证到修复的全过程，并讲透 pwsh 7 原生参数传递的坑。"
 tags:
   - conda
-  - powershell
   - pwsh
-  - python
   - windows
   - troubleshooting
 categories:
-  - conda
+  - python
 ---
 
-在 Windows 上用 PowerShell 7（pwsh）管理 conda 环境时，执行 `conda activate py_env` 后出现两个诡异现象：提示符没有出现 `(py_env)`，紧接着执行任何 conda 子命令（`conda env list`、`conda install` 等）都报 `invalid choice: ''`。
+在 Windows 上用 PowerShell 7（pwsh）管理 conda 环境时，执行 `conda activate py_env` 后出现两个诡异现象：提示符没有出现 `(py_env)`，紧接着执行任何 conda 子命令（`conda env list`、`conda install` 等）都报 `invalid choice: ''`。[^1]
 
-表面看像是「激活失败」，但排查后发现激活其实生效了，真正的坑在 conda 的 PowerShell 激活脚本和 pwsh 7 的原生参数传递方式上。本文完整记录这次 bug 从出现、排查、验证到修复的全流程，读完你不仅能修好同类问题，还能掌握一套可复用的调试方法。
+表面看像是「激活失败」，但排查后发现激活其实生效了，真正的坑在 conda 的 PowerShell 激活脚本和 pwsh 7 的原生参数传递方式上。本文完整记录这次 bug 从出现、排查、验证到修复的全流程，读完你不仅能修好同类问题，还能掌握一套可复用的调试方法。[^2]
 
 ## 问题现象
 
@@ -100,23 +98,23 @@ function Invoke-Conda() {
 
 注意它无条件传了两个变量：`$Env:_CE_M` 和 `$Env:_CE_CONDA`。这正是 hook 里初始化为 `$null` 的两个变量。而 `conda activate` 走的是模块里的 `Enter-CondaEnvironment`，它把激活脚本的输出用 `Invoke-Expression` 应用到当前会话。于是对比 activate 前后的变量：
 
-| 变量 | activate 前 | activate 后 |
-| :--- | :--- | :--- |
-| `_CE_M` | `$null` | `""`（空字符串） |
-| `_CE_CONDA` | `$null` | `""`（空字符串） |
-| `CONDA_PREFIX` | 未设置 | `C:\Users\wbq20\.conda\envs\py_env` |
-| `CONDA_SHLVL` | 未设置 | `1` |
+| 变量           | activate 前 | activate 后                         |
+| :------------- | :---------- | :---------------------------------- |
+| `_CE_M`        | `$null`     | `""`（空字符串）                    |
+| `_CE_CONDA`    | `$null`     | `""`（空字符串）                    |
+| `CONDA_PREFIX` | 未设置      | `C:\Users\wbq20\.conda\envs\py_env` |
+| `CONDA_SHLVL`  | 未设置      | `1`                                 |
 
 **conda 的激活脚本把 `_CE_M` / `_CE_CONDA` 写成了空字符串。** 这两个变量本来只是 conda 内部调用自己的占位符，激活前后值的变化看似无关紧要——直到它撞上 pwsh 7 的参数传递规则。
 
 ## 关键差异：pwsh 7 的参数传递
 
-PowerShell 调用原生命令（exe）时，参数里的 `$null` 和空字符串怎么处理，由 `$PSNativeCommandArgumentPassing` 决定：
+PowerShell 调用原生命令（exe）时，参数里的 `$null` 和空字符串怎么处理，由 `$PSNativeCommandArgumentPassing` 决定：[^3]
 
-| 模式 | 空字符串参数 | 适用场景 |
-| :--- | :--- | :--- |
-| `Legacy` | **丢弃** | Windows PowerShell 5.1、pwsh 7.3 之前 |
-| `Standard` | **如实传递** | pwsh 7.3 及以上（默认） |
+| 模式       | 空字符串参数 | 适用场景                              |
+| :--------- | :----------- | :------------------------------------ |
+| `Legacy`   | **丢弃**     | Windows PowerShell 5.1、pwsh 7.3 之前 |
+| `Standard` | **如实传递** | pwsh 7.3 及以上（默认）               |
 
 于是完整因果链浮出水面：
 
@@ -223,8 +221,8 @@ python -c "import sys; print(sys.prefix)"
 
 下次遇到「某个命令在旧环境正常、新环境报错」的问题，优先检查版本差异——这次就是 pwsh 7.3 的参数传递行为变更，坑了所有升级上来的 5.1 老用户。
 
-## 参考
+[^1]: [Conda 环境激活机制说明](https://docs.conda.io/projects/conda/en/latest/dev-guide/deep-dives/activation.html)
 
-- PowerShell 官方文档：[`$PSNativeCommandArgumentPassing`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_parsing?view=powershell-7.6)
-- [Conda 环境激活机制说明](https://docs.conda.io/projects/conda/en/latest/dev-guide/deep-dives/activation.html)
-- 相关阅读：[conda 插件崩溃修复记](conda-libmamba-solver-queryformat-fix.md)、[WSL2 安装与使用完全指南](../linux/wsl2.md)
+[^2]: 相关阅读：[conda 插件崩溃修复记](conda-libmamba-solver-queryformat-fix.md)、[WSL2 安装与使用完全指南](../linux/wsl2.md)
+
+[^3]: PowerShell 官方文档：[`$PSNativeCommandArgumentPassing`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_parsing?view=powershell-7.6)

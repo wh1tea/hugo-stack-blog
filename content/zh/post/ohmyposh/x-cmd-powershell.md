@@ -4,19 +4,16 @@ slug: x-cmd-powershell
 date: 2026-07-23T19:25:00+08:00
 description: 完整记录在 PowerShell 中安装 x-cmd、通过 x-cmd 管理 Oh My Posh、升级后主题锁死、排查根因、最终卸载 x-cmd 改用 winget 直装原生 Oh My Posh 的全过程。
 tags:
-  - powershell
+  - pwsh
   - x-cmd
   - oh-my-posh
   - terminal
-  - pwsh
   - theme
-  - starship
-  - windows
 categories:
-  - oh-my-posh
+  - windows
 ---
 
-本文完整记录一次终端主题工具链的“从入门到放弃”：在 PowerShell 中安装 x-cmd，通过 x-cmd 安装并管理 Oh My Posh，升级 Oh My Posh 后主题固定无法更改，一路排查到 x-cmd 源码，最终卸载 x-cmd、改用 winget 直装原生 Oh My Posh 的过程。
+本文完整记录一次终端主题工具链的“从入门到放弃”：在 PowerShell 中安装 x-cmd，通过 x-cmd 安装并管理 Oh My Posh，升级 Oh My Posh 后主题固定无法更改，一路排查到 x-cmd 源码，最终卸载 x-cmd、改用 winget 直装原生 Oh My Posh 的过程。[^1]
 
 适合以下读者：被 x-cmd 或 Oh My Posh 主题问题困扰的人；想了解“中间层工具”如何因上游版本升级而静默失效的人；以及想直接使用原生 Oh My Posh 的人。读完你不仅能复现整个排查思路，还能照着最后一步完成迁移。
 
@@ -173,10 +170,10 @@ oh-my-posh init pwsh --config 'C:/.../montys.omp.json' --print
 
 **实验二：print 运行时读什么**
 
-| 版本 | print + `POSH_THEME` 环境变量 | print + `POSH_CONFIG` 环境变量 |
-| :--- | :--- | :--- |
-| 25.11.1（旧） | 渲染对应主题 ✓ | 默认主题 ✗ |
-| 30.6.5（新） | 默认主题 ✗ | 渲染对应主题 ✓ |
+| 版本          | print + `POSH_THEME` 环境变量 | print + `POSH_CONFIG` 环境变量 |
+| :------------ | :---------------------------- | :----------------------------- |
+| 25.11.1（旧） | 渲染对应主题 ✓                | 默认主题 ✗                     |
+| 30.6.5（新）  | 默认主题 ✗                    | 渲染对应主题 ✓                 |
 
 **实验三：配置文件本身有没有问题**
 
@@ -317,7 +314,7 @@ $PSNativeCommandArgumentPassing  # Legacy ✓
 1. 编辑 profile，把 `--config` 后的主题名换成目标主题
 2. 重开终端
 
-预览主题列表用 `Get-PoshThemes`。主题图标需要 Nerd Fonts 才能完整显示，推荐 [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts) 并在终端字体设置中选用。
+预览主题列表用 `Get-PoshThemes`。主题图标需要 Nerd Fonts 才能完整显示，推荐 Meslo Nerd Font[^2] 并在终端字体设置中选用。[^3]
 
 ## 结语
 
@@ -325,28 +322,20 @@ $PSNativeCommandArgumentPassing  # Legacy ✓
 
 绕开中间层后，winget 安装 + profile 一行 init 的方案更简单也更稳定：依赖单一、升级无忧、主题切换直白。这也是对“中间层工具”的一次真实教训——包一层管理器的便利，需要用跟随上游变更的维护成本来换。
 
-**行动建议**：
+**行动建议**：[^4]
 
 1. 只想要提示符主题：直接用 `winget install JanDeDobbeleer.OhMyPosh`，不要引入 x-cmd
 2. profile 加一行 `oh-my-posh init pwsh --config dracula | Invoke-Expression`
-3. 换主题就改主题名，`Get-PoshThemes` 先预览
-
-## 参考
-
-- [Oh My Posh 官方文档](https://ohmyposh.dev/docs/)
-- [Oh My Posh GitHub 仓库](https://github.com/JanDeDobbeleer/oh-my-posh)
-- [x-cmd 官方文档](https://cn.x-cmd.com/)
-- [x-cmd GitHub 仓库](https://github.com/x-cmd/x-cmd)
-- [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+3. 换主题就改主题名，`Get-PoshThemes` 先预览[^5]
 
 ## 附件
 
-修改之前使用x-cmd的ps1
+修改之前使用 x-cmd 的 ps1
 
 ```powershell
-if (Test-Path "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1") { 
+if (Test-Path "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1") {
     Set-ExecutionPolicy Bypass -Scope Process;
-    . "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1" 
+    . "$HOME\.x-cmd.root\local\data\pwsh\_index.ps1"
 };  # boot up x-cmd.
 
 $ompBin = "$Home\.x-cmd.root\local\bin\oh-my-posh.exe"
@@ -388,3 +377,13 @@ if (Test-Path $ompBin) {
 $PSNativeCommandArgumentPassing = 'Legacy'
 
 ```
+
+[^1]: [Oh My Posh 官方文档](https://ohmyposh.dev/docs/)
+
+[^2]: [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+
+[^3]: [Oh My Posh GitHub 仓库](https://github.com/JanDeDobbeleer/oh-my-posh)
+
+[^4]: [x-cmd GitHub 仓库](https://github.com/x-cmd/x-cmd)
+
+[^5]: [x-cmd 官方文档](https://cn.x-cmd.com/)

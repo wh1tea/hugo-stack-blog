@@ -30,7 +30,7 @@ categories:
 | `secpol.msc`   | 本地安全策略                         | Security Policy (MMC)          |
 | `eventvwr.msc` | 时间查看器                           | Event Viewer (MMC)             |
 | `msconfig`     | 系统配置实用程序（管理启动项）       | Microsoft System Configuration |
-| `winver`       | 查看Windows版本信息                  | Windows Version                |
+| `winver`       | 查看 Windows 版本信息                | Windows Version                |
 | `msinfo32`     | 查看详细系统信息                     | Microsoft Info (32-bit)        |
 
 ### 2. 控制面板扩展类（.cpl）
@@ -42,46 +42,46 @@ categories:
 | `appwiz.cpl`   | 程序和功能（卸载软件）     | Application Wizard              |
 | `ncpa.cpl`     | 网络连接设置               | Network Connections Properties? |
 | `sysdm.cpl`    | 系统属性（含环境变量设置） | System Device Manager?          |
-| `firewall.cpl` | Windows防火墙设置          | Firewall                        |
-| `inetcpl.cpl`  | Internet属性               | Internet Control Panel          |
+| `firewall.cpl` | Windows 防火墙设置         | Firewall                        |
+| `inetcpl.cpl`  | Internet 属性              | Internet Control Panel          |
 | `desk.cpl`     | 显示设置/屏幕分辨率        | Desktop                         |
 | `powercfg.cpl` | 电源选项                   | Power Configuration             |
 | `mmsys.cpl`    | 声音和音频设备             | Multimedia System               |
 
 ### 3. 日常工具类
 
-直接调用Windows自带的小工具。
+直接调用 Windows 自带的小工具。
 
-| 命令                | 功能说明   | 缩写来源             |
-| ------------------- | ---------- | -------------------- |
-| `calc`              | 计算器     | Calculator           |
-| `notepad`           | 记事本     | Notepad              |
-| `mspaint`           | 画图工具   | Microsoft Paint      |
-| `write` / `wordpad` | 写字板     | WordPad（旧名Write） |
-| `snippingtool`      | 截图工具   | Snipping Tool        |
-| `osk`               | 屏幕键盘   | On-Screen Keyboard   |
-| `charmap`           | 字符映射表 | Character Map        |
-| `magnify`           | 放大镜     | Magnifier            |
+| 命令                | 功能说明   | 缩写来源              |
+| ------------------- | ---------- | --------------------- |
+| `calc`              | 计算器     | Calculator            |
+| `notepad`           | 记事本     | Notepad               |
+| `mspaint`           | 画图工具   | Microsoft Paint       |
+| `write` / `wordpad` | 写字板     | WordPad（旧名 Write） |
+| `snippingtool`      | 截图工具   | Snipping Tool         |
+| `osk`               | 屏幕键盘   | On-Screen Keyboard    |
+| `charmap`           | 字符映射表 | Character Map         |
+| `magnify`           | 放大镜     | Magnifier             |
 
 ### 4. 网络与远程类
 
-| 命令         | 功能说明       | 缩写来源                           |
-| ------------ | -------------- | ---------------------------------- |
-| `cmd`        | 命令提示符     | Command                            |
-| `powershell` | PowerShell终端 | PowerShell                         |
-| `mstsc`      | 远程桌面连接   | Microsoft Terminal Services Client |
-| `\\IP地址`   | 访问共享文件夹 | 网络路径格式                       |
+| 命令         | 功能说明        | 缩写来源                           |
+| ------------ | --------------- | ---------------------------------- |
+| `cmd`        | 命令提示符      | Command                            |
+| `powershell` | PowerShell 终端 | PowerShell                         |
+| `mstsc`      | 远程桌面连接    | Microsoft Terminal Services Client |
+| `\\IP地址`   | 访问共享文件夹  | 网络路径格式                       |
 
 ### 5. 故障排查与日志类
 
-| 命令       | 功能说明                        | 缩写来源            |
-| ---------- | ------------------------------- | ------------------- |
-| `taskmgr`  | 任务管理器                      | Task Manager        |
-| `eventvwr` | 事件查看器                      | Event Viewer        |
-| `resmon`   | 资源监视器                      | Resource Monitor    |
-| `perfmon`  | 性能监视器                      | Performance Monitor |
-| `dxdiag`   | DirectX诊断工具（查看硬件配置） | DirectX Diagnostic  |
-| `cleanmgr` | 磁盘清理工具                    | Clean Manager       |
+| 命令       | 功能说明                         | 缩写来源            |
+| ---------- | -------------------------------- | ------------------- |
+| `taskmgr`  | 任务管理器                       | Task Manager        |
+| `eventvwr` | 事件查看器                       | Event Viewer        |
+| `resmon`   | 资源监视器                       | Resource Monitor    |
+| `perfmon`  | 性能监视器                       | Performance Monitor |
+| `dxdiag`   | DirectX 诊断工具（查看硬件配置） | DirectX Diagnostic  |
+| `cleanmgr` | 磁盘清理工具                     | Clean Manager       |
 
 ### 6. 用户与权限类
 
@@ -135,11 +135,11 @@ categories:
 
 ### 自定义快捷启动
 
-如果你希望用Win+R快速启动常用第三方软件，可以将该程序的**快捷方式（.lnk）** 复制到 `C:\Windows` 目录下。之后在运行窗口中输入快捷方式的文件名（如 `vscode`），即可一键启动对应程序。
+如果你希望用 Win+R 快速启动常用第三方软件，可以将该程序的**快捷方式（.lnk）** 复制到 `C:\Windows` 目录下。之后在运行窗口中输入快捷方式的文件名（如 `vscode`），即可一键启动对应程序。
 
 ## 命令记忆小窍门
 
-很多Win+R命令其实是有规律可循的：
+很多 Win+R 命令其实是有规律可循的：
 
 - **`taskmgr`** = task（任务）+ mgr（管理器）→ 任务管理器
 - **`cleanmgr`** = clean（清理）+ mgr（管理器）→ 磁盘清理
@@ -159,9 +159,9 @@ categories:
 
 ### 场景三：网络无法连接
 
-`Win + R` → 输入 `ncpa.cpl` → 回车，直接进入网络连接设置，检查网卡状态或修改IP配置。
+`Win + R` → 输入 `ncpa.cpl` → 回车，直接进入网络连接设置，检查网卡状态或修改 IP 配置。
 
-### 场景四：清理C盘空间
+### 场景四：清理 C 盘空间
 
 `Win + R` → 输入 `%temp%` → 回车，全选（Ctrl+A）后一键删除所有临时文件；或者输入 `cleanmgr` 使用磁盘清理工具。
 

@@ -4,8 +4,7 @@ slug: win-shortcuts-guide
 date: 2026-07-18
 description: 系统梳理 Windows 11 高频快捷键与效率技巧，涵盖窗口管理、水平滚动、虚拟桌面、文件操作及系统全局操作。
 tags:
-  - windows
-  - shortcuts
+  - shortcut
   - productivity
   - keyboard
   - virtual-desktop
@@ -13,7 +12,7 @@ categories:
   - windows
 ---
 
-> 系统梳理 Windows 11 中提升效率的核心快捷键与实用技巧，涵盖窗口管理、水平滚动、虚拟桌面、文件操作、系统全局及进阶效率建议，助你彻底告别鼠标拖拽，形成肌肉记忆。
+> 系统梳理 Windows 11 中提升效率的核心快捷键与实用技巧，涵盖窗口管理、水平滚动、虚拟桌面、文件操作、系统全局及进阶效率建议，助你彻底告别鼠标拖拽，形成肌肉记忆。[^1]
 
 ---
 
@@ -157,7 +156,7 @@ Windows 11 增强了贴靠布局（Snap Layouts），键盘操作比鼠标悬停
 
 ## 七、虚拟桌面：多任务分区管理
 
-虚拟桌面是 Windows 11 的一大亮点，适合区分工作、学习和娱乐环境。
+虚拟桌面是 Windows 11 的一大亮点，适合区分工作、学习和娱乐环境。[^2]
 
 | 快捷键                    | 功能                                           |
 | ------------------------- | ---------------------------------------------- |
@@ -240,7 +239,7 @@ Windows 11 增强了贴靠布局（Snap Layouts），键盘操作比鼠标悬停
 ### 7. 快捷键自定义与扩展
 
 - 使用 Microsoft PowerToys 自定义快捷键或重新映射键盘。其“FancyZones”功能可创建复杂窗口布局，适合多屏用户。
-- PowerToys 还提供“键盘管理器”，解决快捷键冲突。
+- PowerToys 还提供“键盘管理器”，解决快捷键冲突。[^3]
 
 ### 8. 快速关闭后台程序
 
@@ -285,10 +284,8 @@ Windows 11 增强了贴靠布局（Snap Layouts），键盘操作比鼠标悬停
 - **系统差异**：部分功能（如语音输入）可能因 Windows 11 版本或地区设置有所不同。
 - **学习曲线**：初次使用虚拟桌面或分屏功能可能需要适应，建议从简单开始逐步拓展。
 
----
+[^1]: [Windows 11 辅助功能键盘快捷方式](https://support.microsoft.com/zh-cn/accessibility/windows/windows-keyboard-shortcuts-for-accessibility)
 
-## 参考
+[^2]: [Windows 11 虚拟桌面使用技巧](https://support.microsoft.com/zh-cn/windows/experience/configure-multiple-desktops-in-windows)
 
-- [Microsoft 键盘快捷方式](https://support.microsoft.com/zh-cn/office/keyboard-shortcuts)
-- [Windows 11 辅助功能键盘快捷方式](https://support.microsoft.com/zh-cn/accessibility/windows/windows-keyboard-shortcuts-for-accessibility)
-- [Windows 11 虚拟桌面使用技巧](https://support.microsoft.com/zh-cn/windows/experience/configure-multiple-desktops-in-windows)
+[^3]: [Microsoft 键盘快捷方式](https://support.microsoft.com/zh-cn/office/keyboard-shortcuts)

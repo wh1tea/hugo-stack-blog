@@ -1,2 +1,32 @@
+# 模块挂载：显式列出各语言的 content 挂载。
+# 原因：content/private/templates/ 里是 Obsidian 模板，front matter 含 {{date:...}} 占位符（非合法 YAML），
+# Hugo 解析页面元数据时会直接报错中断构建；在该挂载上把 templates 目录排除即可
+# （顶层 ignoreFiles 对 content 不生效，只有挂载级 files/excludeFiles 有用）。
+# 注意 1：module.toml 里一旦自定义 mounts，Hugo 自动生成的各语言 content 挂载会被取代，
+#         所以这里必须写全 zh / en / private 三条；以后新增语言要同步补一条。
+# 注意 2：Hugo 的排除前缀是「感叹号 + 一个空格」（"! "），写成 "!templates/**" 会被当成包含模式，
+#         结果是整个挂载被清空（site 内容全丢）。排除项必须写在包含项之前。
 [[imports]]
     path = "github.com/CaiJimmy/hugo-theme-stack/v4"
+
+[[mounts]]
+    source = "content/zh"
+    target = "content"
+
+    [mounts.sites.matrix]
+        languages = ["zh"]
+
+[[mounts]]
+    source = "content/en"
+    target = "content"
+
+    [mounts.sites.matrix]
+        languages = ["en"]
+
+[[mounts]]
+    source = "content/private"
+    target = "content"
+    files = ["! templates/**"]
+
+    [mounts.sites.matrix]
+        languages = ["private"]

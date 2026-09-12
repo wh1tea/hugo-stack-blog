@@ -5,8 +5,6 @@ date: 2026-05-13
 description: 从安装到日常使用：WSL2 环境搭建完全指南，含发行版管理、资源限制与常见问题排查。
 tags:
   - wsl
-  - wsl2
-  - linux
   - windows
 categories:
   - linux
@@ -14,7 +12,7 @@ categories:
 
 WSL（Windows Subsystem for Linux）是微软为 Windows 10/11 提供的 Linux 兼容层，无需虚拟机或双系统即可原生运行 Linux 命令与应用。WSL2 作为第二代版本，在性能、兼容性和资源占用之间取得了更好的平衡。
 
-本文面向有编程基础的开发者，介绍 WSL2 的安装、初始化配置、资源限制与常见问题排查。读完你就能在 Windows 上顺畅搭建 Linux 开发环境。
+本文面向有编程基础的开发者，介绍 WSL2 的安装、初始化配置、资源限制与常见问题排查。读完你就能在 Windows 上顺畅搭建 Linux 开发环境。[^1]
 
 ## WSL1 与 WSL2 怎么选
 
@@ -50,7 +48,7 @@ WSL2 解压 tar 包可达 WSL1 最高 20 倍速度，`git clone` 等操作快约
 wsl --install
 ```
 
-该命令会自动启用 WSL 与虚拟机平台组件、安装最新内核、将 WSL2 设为默认并安装 Ubuntu。完成后需重启计算机。
+该命令会自动启用 WSL 与虚拟机平台组件、安装最新内核、将 WSL2 设为默认并安装 Ubuntu。完成后需重启计算机。[^2]
 
 ### 安装其他发行版
 
@@ -73,7 +71,7 @@ wsl --install -d Debian    # 指定安装
 1. `Win + R` 输入 `appwiz.cpl` 回车，点击「启用或关闭 Windows 功能」
 2. 勾选「适用于 Linux 的 Windows 子系统」和「虚拟机平台」，重启
 3. 管理员 PowerShell 执行 `wsl --set-default-version 2`
-4. 从 Microsoft Store 安装所需发行版
+4. 从 Microsoft Store 安装所需发行版[^3]
 
 ## 初始化配置
 
@@ -110,7 +108,7 @@ bash <(curl -sSL https://linuxmirrors.cn/main.sh)
 
 ### 安装 Windows Terminal
 
-从 Microsoft Store 安装「Windows Terminal」，多标签管理 WSL / PowerShell / CMD。建议将 Ubuntu 设为默认配置文件。
+从 Microsoft Store 安装「Windows Terminal」，多标签管理 WSL / PowerShell / CMD。建议将 Ubuntu 设为默认配置文件。[^4]
 
 ## 资源限制
 
@@ -181,12 +179,14 @@ WSL2 让 Windows 开发者无需虚拟机或双系统即可使用完整 Linux �
 - 用 `wsl --install` 一键安装
 - 安装 Windows Terminal 提升体验
 - 用 `.wslconfig` 限制资源占用
-- 国内用户更换软件源
+- 国内用户更换软件源[^5]
 
-## 参考
+[^1]: [Microsoft Learn - 设置 WSL 开发环境](https://learn.microsoft.com/zh-cn/windows/wsl/setup/environment)
 
-- [Microsoft Learn - 设置 WSL 开发环境](https://learn.microsoft.com/zh-cn/windows/wsl/setup/environment)
-- [Microsoft Learn - 比较 WSL 版本](https://learn.microsoft.com/zh-cn/windows/wsl/compare-versions)
-- [Microsoft Learn - WSL 高级设置配置](https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config)
-- [Ubuntu - Install Ubuntu on WSL 2](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2)
-- [Linux Mirrors - 一键更换软件源](https://linuxmirrors.cn/)
+[^2]: [Ubuntu - Install Ubuntu on WSL 2](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2)
+
+[^3]: [Microsoft Learn - 比较 WSL 版本](https://learn.microsoft.com/zh-cn/windows/wsl/compare-versions)
+
+[^4]: [Microsoft Learn - WSL 高级设置配置](https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config)
+
+[^5]: [Linux Mirrors - 一键更换软件源](https://linuxmirrors.cn/)

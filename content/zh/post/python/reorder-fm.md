@@ -4,7 +4,6 @@ slug: reorder-fm
 date: 2026-08-22T07:40:19+08:00
 description: 博客文章开头的 front matter 键顺序有规范？手动整理太累？用 reorder_fm.py 一条命令批量重排，本文把原理和用法讲到小白也能懂。
 tags:
-  - python
   - hugo
   - front-matter
   - yaml
@@ -14,11 +13,11 @@ categories:
 
 写 Markdown 博客时，每篇文章开头都有一块用 `---` 包裹的元数据，叫 **front matter**（标题、日期、标签、分类都在里面）。这个博客的写作规范对 front matter 的键顺序有明确要求：`title` → `slug` → `date` → `description` → `tags` → `categories` → `image`（如果有）。
 
-手动写新文章时顺序还算容易控制，但要批量整理几十篇旧文章，一篇篇打开调整顺序就很痛苦。本文介绍博客仓库 `scripts/` 下的小工具 `reorder_fm.py`：一条命令递归重排整个目录的 front matter，并尽量讲清楚它背后的原理，零基础也能看懂。
+手动写新文章时顺序还算容易控制，但要批量整理几十篇旧文章，一篇篇打开调整顺序就很痛苦。本文介绍博客仓库 `scripts/` 下的小工具 `reorder_fm.py`：一条命令递归重排整个目录的 front matter，并尽量讲清楚它背后的原理，零基础也能看懂。[^1]
 
 ## Front Matter 是什么
 
-front matter 是 Markdown 文件开头的 YAML 块，被两个 `---` 夹在中间，用来存放文章的元数据：
+front matter 是 Markdown 文件开头的 YAML 块，被两个 `---` 夹在中间，用来存放文章的元数据：[^2]
 
 ```yaml
 ---
@@ -29,7 +28,6 @@ tags:
 categories:
   - tutorial
 ---
-
 The main text begins here.
 ```
 
@@ -50,7 +48,7 @@ The main text begins here.
 `reorder_fm.py` 依赖两个东西：
 
 - Python 3（任意版本均可）
-- `ruamel.yaml` 库（用于保留格式地读写 YAML）
+- `ruamel.yaml` 库（用于保留格式地读写 YAML）[^3]
 
 安装依赖：
 
@@ -87,10 +85,10 @@ python reorder_fm.py document.md --order title date tags
 
 参数说明：
 
-| 参数     | 说明                                             | 默认值                                     |
-| :------- | :----------------------------------------------- | :----------------------------------------- |
-| `path`   | 要处理的文件或目录，目录会递归查找所有 `.md`     | 必填                                       |
-| `--order`| 键顺序列表，空格分隔                             | `title slug date description tags categories` |
+| 参数      | 说明                                         | 默认值                                        |
+| :-------- | :------------------------------------------- | :-------------------------------------------- |
+| `path`    | 要处理的文件或目录，目录会递归查找所有 `.md` | 必填                                          |
+| `--order` | 键顺序列表，空格分隔                         | `title slug date description tags categories` |
 
 ## 脚本原理
 
@@ -216,8 +214,8 @@ python D:\Projects\hugo-stack-blog\scripts\reorder_fm.py D:\docs
 
 `reorder_fm.py` 解决的问题很具体：把「front matter 键顺序」这条规范变成一条可重复执行的命令。核心思路——用保持顺序的 `CommentedMap` 重排 YAML、无变化不写盘——也适用于其他「批量整理元数据」的场景。如果还想更进一步，可以在 git 提交前加一个 pre-commit 检查，让顺序问题在源头就被拦截。
 
-## 参考
+[^1]: `reorder_fm.py` 源码：`scripts/reorder_fm.py`
 
-- `reorder_fm.py` 源码：`scripts/reorder_fm.py`
-- [ruamel.yaml 官方文档](https://yaml.dev/doc/ruamel.yaml/)
-- 相关阅读：[YAML 入门](../tutorial/yaml-intro.md)、[Markdown 指南](../tutorial/markdown-for-typora.md)
+[^2]: 相关阅读：[YAML 入门](../tutorial/yaml-intro.md)、[Markdown 指南](../tutorial/markdown-for-typora.md)
+
+[^3]: [ruamel.yaml 官方文档](https://yaml.dev/doc/ruamel.yaml/)

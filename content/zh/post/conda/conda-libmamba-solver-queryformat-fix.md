@@ -1,15 +1,15 @@
 ---
 title: Conda 插件崩溃修复记：libmambapy QueryFormat 错误的完整解决方案
+slug: conda-libmamba-solver-queryformat-fix
 date: 2026-07-13
 description: Conda 启动时报错 "module 'libmambapy' has no attribute 'QueryFormat'"，所有 conda 命令都无法正常执行。本文从原理到实操，提供三种递进的修复方案。
 tags:
   - environment
-  - python
   - troubleshooting
   - windows
   - conda
 categories:
-  - conda
+  - python
 ---
 
 打开命令行出现：
@@ -24,12 +24,12 @@ Error while loading conda entry point: conda-libmamba-solver (module 'libmambapy
 
 ## 问题原因
 
-Conda 从 22.11 版本开始引入 **libmamba** 作为可选的依赖求解器后端。相比传统 solver，libmamba 使用 C++ 实现的核心解析引擎，速度提升数倍到数十倍。
+Conda 从 22.11 版本开始引入 **libmamba** 作为可选的依赖求解器后端。相比传统 solver，libmamba 使用 C++ 实现的核心解析引擎，速度提升数倍到数十倍。[^1]
 
 这个架构依赖两个关键组件：
 
 - **conda-libmamba-solver**：Conda 的插件包，作为 conda 和 libmamba 之间的桥梁
-- **libmambapy**：libmamba 的 Python 绑定，提供 Python 层面的 API
+- **libmambapy**：libmamba 的 Python 绑定，提供 Python 层面的 API[^2]
 
 当 `conda-libmamba-solver` 和 `libmambapy` 版本不匹配时——比如 conda 升级后旧的 solver 引用了新版 libmambapy 中已移除的 `QueryFormat` 属性——就会触发这个错误。
 
@@ -105,7 +105,7 @@ conda info
 
 - 不再出现 `Error while loading conda entry point` 字样
 - 正常显示 conda 版本和环境信息
-- `conda install` / `conda create` 等命令也能正常使用
+- `conda install` / `conda create` 等命令也能正常使用[^3]
 
 ---
 
@@ -210,8 +210,8 @@ mamba clean --all
 
 这个脚本的实质是**通过夺取 Windows 最高文件权限，手动清除 Conda 无法自删的硬骨头**。它针对性强（仅限 `libmamba` 组件），操作有效，但属于“外科手术式”的非常规手段。执行成功后，若想重新使用 `libmamba`，需重新执行 `conda install conda-libmamba-solver` 并配置求解器。
 
-## 参考
+[^1]: [Stackoverflow: Solve conda-libmamba-solver error after updating conda](https://stackoverflow.com/questions/77617946/solve-conda-libmamba-solver-libarchive-so-19-error-after-updating-conda-to-23)
 
-- [StackOverflow: Error loading conda entry point conda-libmamba-solver](https://stackoverflow.com/questions/79192819/error-while-loading-conda-entry-point-conda-libmamba-solver-module-libmambapy)
-- [Stackoverflow: Solve conda-libmamba-solver error after updating conda](https://stackoverflow.com/questions/77617946/solve-conda-libmamba-solver-libarchive-so-19-error-after-updating-conda-to-23)
-- [Github-`libarchive`: "library not loaded" or "cannot open shared object file"](https://github.com/conda/conda-libmamba-solver/issues/283)
+[^2]: [Github-`libarchive`: "library not loaded" or "cannot open shared object file"](https://github.com/conda/conda-libmamba-solver/issues/283)
+
+[^3]: [StackOverflow: Error loading conda entry point conda-libmamba-solver](https://stackoverflow.com/questions/79192819/error-while-loading-conda-entry-point-conda-libmamba-solver-module-libmambapy)

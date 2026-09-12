@@ -13,7 +13,7 @@ categories:
   - devtools
 ---
 
-本文是 VS Code Profiles 配置的现状快照（2026-08）：内置 Default 之外共 6 个命名 Profile，每个插件一句话说明作用。前一篇 [VS Code 插件配置](vscode-extensions-config.md) 是 82 插件的全量档案，本文只讲当前实际在用的配置，并把鸡肋插件单独列为备忘。
+本文是 VS Code Profiles 配置的现状快照（2026-08）：内置 Default 之外共 6 个命名 Profile，每个插件一句话说明作用。前一篇 [VS Code 插件配置](vscode-extensions-config.md) 是 82 插件的全量档案，本文只讲当前实际在用的配置，并把鸡肋插件单独列为备忘。[^1]
 
 ## 当前结构
 
@@ -51,7 +51,7 @@ categories:
 | SonarLint          | 代码质量静态分析                        |
 | LeetCode           | LeetCode 刷题                           |
 
-Prettier 与 YAML 必须在 All：settings 里 html / json / jsonc / dockercompose / yaml 的默认格式化器指向它们。Prettier 使用`_`而不是`*`作为斜体语法，个人改用markdownlint用于md格式化器。
+Prettier 与 YAML 必须在 All：settings 里 html / json / jsonc / dockercompose / yaml 的默认格式化器指向它们。Prettier 使用`_`而不是`*`作为斜体语法，个人改用 markdownlint 用于 md 格式化器。
 
 ## 各 Profile 专属扩展
 
@@ -73,7 +73,7 @@ Prettier 与 YAML 必须在 All：settings 里 html / json / jsonc / dockercompo
 | XML                                      | pom.xml 等 XML 支持        |
 | Rainbow CSV                              | CSV 列着色                 |
 
-已裁掉：pleiades（与 Pack 重叠）、Live Server（前端工具误入）、Trailing Spaces（原生 `files.trimTrailingWhitespace` 可替）、Code Spell Checker（升为全局）。
+已裁掉：pleiades（与 Pack 重叠）、Live Server（前端工具误入）、Trailing Spaces（原生 `files.trimTrailingWhitespace` 可替）、Code Spell Checker（升为全局）。[^2]
 
 ### Web-Frontend（9）
 
@@ -171,17 +171,17 @@ Profile 名称等元数据存 SQLite（`state.vscdb`），命名、勾选只能�
 | Blockman            | 代码块嵌套高亮           | 看深嵌套代码时            |
 | Bookmarks           | 行书签跳转               | 大文件多处标记时          |
 | Kubernetes          | K8s 集群管理             | 做 k8s/云原生开发时       |
-| Vim                 | Vim体验模拟              | 熟练或重度Vim用户         |
-| Todo Tree           | TODO/FIXME 标记树形视图  | 大量TODO需要管理的时候    |
+| Vim                 | Vim 体验模拟             | 熟练或重度 Vim 用户       |
+| Todo Tree           | TODO/FIXME 标记树形视图  | 大量 TODO 需要管理的时候  |
 
-详细扩展 ID 见 [VS Code 插件配置](vscode-extensions-config.md)。
+详细扩展 ID 见 [VS Code 插件配置](vscode-extensions-config.md)。[^3]
 
 ## 结语
 
 配置一次、按文件夹自动切换：Java 项目不再背 Python 扩展，前端项目没有 C++ 语言服务器。本次整理还修了两处格式化器指向（[java] → redhat.java、Python 补装 Black），清理了 settings 里未装扩展的残留配置。以后装新扩展先想归属：语言无关 → All，语言专属 → 对应 Profile，偶尔用 → 备忘里待命。
 
-## 参考
+[^1]: [VS Code Profiles 官方文档](https://code.visualstudio.com/docs/editor/profiles)
 
-- [VS Code Profiles 官方文档](https://code.visualstudio.com/docs/editor/profiles)
-- [VS Code 插件配置](vscode-extensions-config.md)
-- [Front Matter CMS：在 VS Code 里管理 Hugo 博客](front-matter-cms.md)
+[^2]: [Front Matter CMS：在 VS Code 里管理 Hugo 博客](front-matter-cms.md)
+
+[^3]: [VS Code 插件配置](vscode-extensions-config.md)

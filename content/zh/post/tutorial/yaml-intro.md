@@ -6,14 +6,14 @@ description: YAML 基础语法、数据类型、列表映射、多行字符串�
 tags:
   - yaml
   - hugo
-  - config
+  - configuration
 categories:
   - tutorial
 ---
 
-YAML（YAML Ain't Markup Language）是一种面向配置的数据序列化格式，和 JSON 同样表达数据结构，但更强调可读性。Hugo 的 front matter、GitHub Actions 的工作流、Docker Compose、Ansible 乃至 Kubernetes 的配置，全是 YAML 写的。
+YAML（YAML Ain't Markup Language）是一种面向配置的数据序列化格式，和 JSON 同样表达数据结构，但更强调可读性。Hugo 的 front matter、GitHub Actions 的工作流、Docker Compose、Ansible 乃至 Kubernetes 的配置，全是 YAML 写的。[^1]
 
-本文面向有编程基础、见过 YAML 但没系统学过的读者，从语法到常见陷阱一次讲清。读完你能读懂并写出规范的 YAML 配置，也能看懂本站每篇文章开头的 front matter。
+本文面向有编程基础、见过 YAML 但没系统学过的读者，从语法到常见陷阱一次讲清。读完你能读懂并写出规范的 YAML 配置，也能看懂本站每篇文章开头的 front matter。[^2]
 
 ## 基本语法
 
@@ -117,7 +117,7 @@ job-b:
 - **冒号后必须有空格**：`key:value` 会解析失败，除非整个字符串在引号里
 - **裸日期被解析**：`date: 2026-08-16` 会被当日期对象，再输出可能变成别的格式。要当字符串就加引号
 - **特殊字符开头要引号**：`*`、`&`、`!`、`|`、`>`、`@` 等开头的值会被当语法符号，加引号最稳妥
-- **中文不需要引号**：YAML 原生支持 UTF-8，但注意不要用全角冒号 `：` 当键值分隔符
+- **中文不需要引号**：YAML 原生支持 UTF-8，但注意不要用全角冒号 `：` 当键值分隔符[^3]
 
 ## 与 Hugo 结合
 
@@ -127,7 +127,7 @@ job-b:
 - `date` 用 RFC3339 带时区（`2026-08-16T22:28:16+08:00`），避免时区歧义
 - `slug` 必须显式写，中文标题不写会被 URL 编码成乱码
 
-front matter 的完整规范见 [Front Matter CMS 教程](../vscode/front-matter-cms.md)，博客搭建与 front matter 示例见 [Hugo 博客搭建记录](../hugo/hugo-stack-github-pages.md)。
+front matter 的完整规范见 [Front Matter CMS 教程](../vscode/front-matter-cms.md)，博客搭建与 front matter 示例见 [Hugo 博客搭建记录](../hugo/hugo-stack-github-pages/index.md)。[^4]
 
 ## 结语
 
@@ -135,9 +135,10 @@ YAML 语法不多，半小时就能上手：键值对加缩进是骨架，列表
 
 配合 Front Matter CMS 这类可视化工具，front matter 基本不用手写；但读得懂 YAML，排查配置问题、写 CI 工作流时才能得心应手。
 
-## 参考
+[^1]: [YAML 官方规范（yaml.org）](https://yaml.org/) —— 规范主页与最新 Spec 1.2.2
 
-- [YAML 官方规范（yaml.org）](https://yaml.org/) —— 规范主页与最新 Spec 1.2.2
-- [Learn X in Y minutes — YAML](https://learnxinyminutes.com/docs/yaml/) —— 一页速查，覆盖全部语法点
-- [yaml-multiline.info](https://yaml-multiline.info/) —— 多行字符串（`|` / `>`）行为对照速查
-- [Hugo 官方文档 — Front Matter](https://gohugo.io/content-management/front-matter/) —— Hugo 对 front matter 字段的定义
+[^2]: [Learn X in Y minutes — YAML](https://learnxinyminutes.com/docs/yaml/) —— 一页速查，覆盖全部语法点
+
+[^3]: [yaml-multiline.info](https://yaml-multiline.info/) —— 多行字符串（`|` / `>`）行为对照速查
+
+[^4]: [Hugo 官方文档 — Front Matter](https://gohugo.io/content-management/front-matter/) —— Hugo 对 front matter 字段的定义

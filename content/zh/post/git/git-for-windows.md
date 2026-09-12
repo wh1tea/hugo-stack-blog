@@ -4,7 +4,6 @@ slug: git-for-windows
 date: 2026-07-13
 description: Git for Windows 安装与配置的完整参考，涵盖 SSH 客户端选择、HTTPS 传输后端、行尾处理、文件系统缓存、符号链接以及 Git 初始化的最佳实践。
 tags:
-  - git
   - windows
   - ssh
   - https
@@ -13,17 +12,17 @@ categories:
   - git
 ---
 
-Git for Windows 安装时提供了多项配置选项，理解它们的区别有助于搭建更高效、更稳定的开发环境。本文从实际场景出发，逐一讲解各选项的含义与推荐配置。
+Git for Windows 安装时提供了多项配置选项，理解它们的区别有助于搭建更高效、更稳定的开发环境。本文从实际场景出发，逐一讲解各选项的含义与推荐配置。[^1]
 
 ---
 
 ## SSH 客户端选择
 
-安装 Git for Windows 时，可以选择 **Bundled OpenSSH** 或 **External OpenSSH** 作为 SSH 客户端。两者在功能、配置和使用场景上有显著区别。
+安装 Git for Windows 时，可以选择 **Bundled OpenSSH** 或 **External OpenSSH** 作为 SSH 客户端。两者在功能、配置和使用场景上有显著区别。[^2]
 
 ### Bundled OpenSSH
 
-Git for Windows 自带的 OpenSSH 实现，安装后位于 `C:\Program Files\Git\usr\bin\ssh.exe`。
+Git for Windows 自带的 OpenSSH 实现，安装后位于 `C:\Program Files\Git\usr\bin\ssh.exe`。[^3]
 
 **特点：**
 
@@ -364,13 +363,12 @@ Git for Windows 的配置选项繁多，但核心原则是清晰的：
 - **性能**：Windows 用户推荐启用 `core.fscache` 和 `core.preloadIndex`
 - **符号链接**：跨平台项目按需启用，Windows 需注意权限
 
-良好的 Git 配置能有效减少跨平台协作中的摩擦，让版本控制回归其本质——管理代码变更，而非处理环境差异。
+良好的 Git 配置能有效减少跨平台协作中的摩擦，让版本控制回归其本质——管理代码变更，而非处理环境差异。[^4]
 
----
+[^1]: [Stack Overflow — Git with SSH on Windows](https://stackoverflow.com/questions/2499331/git-with-ssh-on-windows)
 
-## 参考
+[^2]: [Git for Windows 文档 — Using an external OpenSSH client](https://gitforwindows.org/using-an-external-openssh-client.html)
 
-- [Git install Options and Their Meanings](https://gist.github.com/bhagatabhijeet/e08bec472c1a7ee9fb5414b3192b0d3b)
-- [Git for Windows 文档 — Using an external OpenSSH client](https://gitforwindows.org/using-an-external-openssh-client.html)
-- [Stack Overflow — Git with SSH on Windows](https://stackoverflow.com/questions/2499331/git-with-ssh-on-windows)
-- [TYPO3 文档 — SSH Git Windows](https://docs.typo3.org/m/typo3/guide-contributionworkflow/main/en-us/Appendix/Windows/SSHGitWindows.html)
+[^3]: [TYPO3 文档 — SSH Git Windows](https://docs.typo3.org/m/typo3/guide-contributionworkflow/main/en-us/Appendix/Windows/SSHGitWindows.html)
+
+[^4]: [Git install Options and Their Meanings](https://gist.github.com/bhagatabhijeet/e08bec472c1a7ee9fb5414b3192b0d3b)

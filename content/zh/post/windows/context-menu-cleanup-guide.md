@@ -13,7 +13,7 @@ categories:
   - windows
 ---
 
-> 如果你在桌面或文件夹上右键时，发现菜单里多了一个 “Armoury Crate” 或 “游戏库” 选项，这通常是因为安装了华硕的奥创智控中心（Armoury Crate）软件。这个选项可能会让右键菜单变得冗长，影响操作效率。本文将提供三种不同的清理方法，你可以根据自己是否仍在使用该软件来选择最适合的方式。
+> 如果你在桌面或文件夹上右键时，发现菜单里多了一个 “Armoury Crate” 或 “游戏库” 选项，这通常是因为安装了华硕的奥创智控中心（Armoury Crate）软件。这个选项可能会让右键菜单变得冗长，影响操作效率。本文将提供三种不同的清理方法，你可以根据自己是否仍在使用该软件来选择最适合的方式。[^1]
 
 ## 概述
 
@@ -80,8 +80,8 @@ categories:
 
 推荐以下两种常用工具：
 
-- **[火绒安全软件](https://www.huorong.cn/)**：内置“右键管理”功能，可单独禁用 Armoury Crate 相关项，操作直观，且免费。
-- **[Geek Uninstaller](https://geekuninstaller.com/)**：虽然主要用于卸载，但其“右键菜单管理”模块也能快速删除不需要的项。
+- **火绒安全软件[^2]**：内置“右键管理”功能，可单独禁用 Armoury Crate 相关项，操作直观，且免费。
+- **Geek Uninstaller[^3]**：虽然主要用于卸载，但其“右键菜单管理”模块也能快速删除不需要的项。
 
 **通用操作步骤**（以火绒为例）：
 
@@ -117,11 +117,12 @@ A：如果使用方法一关闭，重新开启即可；如果使用方法二删�
 
 ## 结语
 
-右键菜单中的 Armoury Crate 选项虽然不至于影响系统性能，但对于追求简洁操作的用户来说确实是个累赘。选择最适合你的方法清理掉它，能让你的 Windows 体验更加清爽。如果你在执行过程中遇到任何问题，欢迎在评论区留言讨论。
+右键菜单中的 Armoury Crate 选项虽然不至于影响系统性能，但对于追求简洁操作的用户来说确实是个累赘。选择最适合你的方法清理掉它，能让你的 Windows 体验更加清爽。如果你在执行过程中遇到任何问题，欢迎在评论区留言讨论。[^4]
 
-## 参考
+[^1]: [Armoury Crate 官方支持页面](https://www.asus.com/cn/support/FAQ/1044459/)
 
-- [Armoury Crate 官方支持页面](https://www.asus.com/cn/support/FAQ/1044459/)
-- [Windows 注册表基础操作指南 - Microsoft 支持](https://support.microsoft.com/zh-cn/windows)
-- [火绒安全](https://www.huorong.cn/)
-- [Geek Uninstaller 官方下载](https://geekuninstaller.com/)
+[^2]: [火绒安全](https://www.huorong.cn/)
+
+[^3]: [Geek Uninstaller 官方下载](https://geekuninstaller.com/)
+
+[^4]: [Windows 注册表基础操作指南 - Microsoft 支持](https://support.microsoft.com/zh-cn/windows)

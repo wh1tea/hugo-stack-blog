@@ -5,7 +5,6 @@ date: 2026-08-29T03:09:44+08:00
 description: hermes update 卡在 Fetching updates 无报错：上游历史重写导致每次要下载 600MB 全量 pack，慢代理下被超时中断，残留 tmp_pack 越积越多，附后台重跑解法。
 tags:
   - hermes
-  - git
   - proxy
   - wsl
   - cli
@@ -13,7 +12,7 @@ categories:
   - git
 ---
 
-上次修好空代理配置后（见《[hermes update 失败排查：空 git 代理配置作祟](hermes-update-proxy.md)》），`hermes update` 又卡住了。这次没有任何报错，卡在 `→ Fetching updates...` 几分钟不动，最终被终端超时杀掉。本文记录如何区分「死锁」与「慢速下载」、处理 `tmp_pack` 残留，以及后台重跑的正确姿势。
+上次修好空代理配置后（见《[hermes update 失败排查：空 git 代理配置作祟](hermes-update-proxy.md)》），`hermes update` 又卡住了。这次没有任何报错，卡在 `→ Fetching updates...` 几分钟不动，最终被终端超时杀掉。本文记录如何区分「死锁」与「慢速下载」、处理 `tmp_pack` 残留，以及后台重跑的正确姿势。[^1]
 
 ## 现象
 
@@ -60,7 +59,7 @@ ls -la .git/objects/pack/tmp_pack_4qSyK8   # 139MB，在增长 = 在下载，不
 
 ### 坑三：反复失败留下的残包
 
-`git count-objects -v` 报大量 `warning: garbage found: .../tmp_pack_xxx`。pack 目录里有几十个 `tmp_pack_*` 残留文件，累计 2.5GB+，其中多个是今晚多次失败尝试留下的（时间戳 02:17 / 02:19 / 02:27 / 02:41 / 02:47 / 02:48）。每次 fetch 中断都会留一个残包，git 不会自动清理，越积越多。
+`git count-objects -v` 报大量 `warning: garbage found: .../tmp_pack_xxx`。pack 目录里有几十个 `tmp_pack_*` 残留文件，累计 2.5GB+，其中多个是今晚多次失败尝试留下的（时间戳 02:17 / 02:19 / 02:27 / 02:41 / 02:47 / 02:48）。每次 fetch 中断都会留一个残包，git 不会自动清理，越积越多。[^2]
 
 ## 根因
 
@@ -95,11 +94,11 @@ $ git rev-list HEAD..origin/main --count
 
 ## 排查思路小结
 
-| 层 | 检查手段 | 本次结论 |
-| :--- | :--- | :--- |
-| 进程 | `ps aux` 看 git / index-pack 是否存活 | 在下载，不是死锁 |
-| 进度 | pack 目录两次 `ls` 对比 `tmp_pack` 大小 | 121MB → 569MB，稳定增长 |
-| 残留 | `git count-objects -v` 报 garbage | 多次失败尝试累计 2.5GB 残包 |
+| 层   | 检查手段                                 | 本次结论                             |
+| :--- | :--------------------------------------- | :----------------------------------- |
+| 进程 | `ps aux` 看 git / index-pack 是否存活    | 在下载，不是死锁                     |
+| 进度 | pack 目录两次 `ls` 对比 `tmp_pack` 大小  | 121MB → 569MB，稳定增长              |
+| 残留 | `git count-objects -v` 报 garbage        | 多次失败尝试累计 2.5GB 残包          |
 | 根因 | `git rev-list HEAD..origin/main --count` | 17,999 commits，历史被重写，全量追赶 |
 
 关键经验：
@@ -113,7 +112,6 @@ $ git rev-list HEAD..origin/main --count
 
 这次「失败」其实是「没等完」：上游重写历史后，`hermes update` 需要一次性下载全部历史（约 600MB），代理慢 + 同步等待无进度 + 短超时中断，三因素叠加导致反复失败并留下大量残包。解法是后台重跑并耐心等待，成功后 git 自动清理残包。遇到 `hermes update` 卡住，先确认是在下载还是真的死锁，再决定是等还是杀。
 
-## 参考
+[^1]: [hermes update 失败排查：空 git 代理配置作祟](hermes-update-proxy.md)——上一篇：空代理值导致直连超时
 
-- [hermes update 失败排查：空 git 代理配置作祟](hermes-update-proxy.md)——上一篇：空代理值导致直连超时
-- [git count-objects 官方文档](https://git-scm.com/docs/git-count-objects)
+[^2]: [git count-objects 官方文档](https://git-scm.com/docs/git-count-objects)

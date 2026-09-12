@@ -1,30 +1,29 @@
 ---
 title: Hermes Agent 完全指南：安装、配置与模型推荐
+slug: hermes-agent-guide
 date: 2026-07-14
 description: Hermes Agent 是 Nous Research 开源的多平台 AI 智能体框架，支持 20+ LLM 提供商和 Telegram/Discord 等即时通讯平台。本文从零开始讲解安装、配置、核心功能，并推荐市面上值得使用的模型。
 tags:
-  - ai
   - hermes-agent
   - llm
   - cli
   - tool
   - devops
-  - productivity
 categories:
   - ai
 ---
 
-> 如果你厌倦了网页版 ChatGPT 的频繁中断、复制粘贴的痛苦，想要一个**真正在终端里帮你干活**的 AI 助手——Hermes Agent 可能是你一直在找的东西。
+> 如果你厌倦了网页版 ChatGPT 的频繁中断、复制粘贴的痛苦，想要一个**真正在终端里帮你干活**的 AI 助手——Hermes Agent 可能是你一直在找的东西。[^1]
 
 ---
 
 ## 一、Hermes Agent 是什么？
 
-Hermes Agent 由 [Nous Research](https://nousresearch.com/) 开源，属于 **AI 编程/任务执行智能体（Agent）** 这个品类，与 Anthropic 的 Claude Code、OpenAI 的 Codex CLI 同类。但它有一个关键区别：
+Hermes Agent 由 [Nous Research](https://nousresearch.com/) 开源，属于 **AI 编程/任务执行智能体（Agent）** 这个品类，与 Anthropic 的 Claude Code、OpenAI 的 Codex CLI 同类。但它有一个关键区别：[^2]
 
-**Hermes 不绑定任何特定模型。**
+**Hermes 不绑定任何特定模型。**[^3]
 
-你可以用 Anthropic、OpenAI、DeepSeek、本地模型、甚至是国内的大模型（阿里 Qwen、智谱 GLM、Kimi、MiniMax）来驱动它。同一套工具、同一套配置，换模型就像换衣服一样简单。
+你可以用 Anthropic、OpenAI、DeepSeek、本地模型、甚至是国内的大模型（阿里 Qwen、智谱 GLM、Kimi、MiniMax）来驱动它。同一套工具、同一套配置，换模型就像换衣服一样简单。[^4]
 
 核心特性：
 
@@ -87,7 +86,7 @@ Hermes 的所有数据和配置都在 `~/.hermes/` 目录下：
 
 - **配置文件不要用 Notepad 编辑**——Windows 默认保存 UTF-8 BOM，会导致 `hermes` 报错 "No models provided"。解决：用 `hermes config edit` 打开，或者用 VS Code 保存为 UTF-8 Without BOM。
 - **Alt+Enter 在 Windows Terminal 中不会换行**——Windows Terminal 把 Alt+Enter 截胡成全屏切换了。用 **Ctrl+Enter** 代替。
-- **网关在 WSL2 下可能因终端关闭而退出**——需要在 `/etc/wsl.conf` 中开启 `systemd=true`。
+- **网关在 WSL2 下可能因终端关闭而退出**——需要在 `/etc/wsl.conf` 中开启 `systemd=true`。[^5]
 
 ---
 
@@ -124,27 +123,9 @@ model:
   provider: openrouter
 ```
 
-### 3.3 支持的主要提供商速览
+### 3.3 API Key Pool（多 Key 轮转）
 
-| 提供商          | 认证方式 | 环境变量              |
-| --------------- | -------- | --------------------- |
-| OpenRouter      | API Key  | `OPENROUTER_API_KEY`  |
-| Anthropic       | API Key  | `ANTHROPIC_API_KEY`   |
-| OpenAI          | API Key  | `OPENAI_API_KEY`      |
-| Google Gemini   | API Key  | `GOOGLE_API_KEY`      |
-| DeepSeek        | API Key  | `DEEPSEEK_API_KEY`    |
-| xAI (Grok)      | API Key  | `XAI_API_KEY`         |
-| 阿里 DashScope  | API Key  | `DASHSCOPE_API_KEY`   |
-| 智谱 GLM        | API Key  | `GLM_API_KEY`         |
-| Kimi / Moonshot | API Key  | `KIMI_API_KEY`        |
-| MiniMax         | API Key  | `MINIMAX_API_KEY`     |
-| 小米 MiMo       | API Key  | `XIAOMI_API_KEY`      |
-| 本地模型        | Config   | 配置 `base_url`       |
-| GitHub Copilot  | OAuth    | `hermes model` 中登录 |
-
-### 3.4 API Key Pool（多 Key 轮转）
-
-一个账号不够用？Hermes 支持为同一提供商配置多个 API Key，按负载自动轮转：
+一个账号不够用？Hermes 支持为同一提供商配置多个 API Key，按负载自动轮转：[^6]
 
 ```bash
 hermes auth add              # 交互式添加凭据
@@ -528,13 +509,14 @@ Hermes Agent 是目前生态最丰富、最灵活的开源 AI Agent 框架。它
 
 如果你正在寻找一个真正能帮你干活的 AI 助手，Hermes Agent 值得一试。从今天开始，让你的终端拥有真正的智能。
 
----
+[^1]: [官方文档](https://hermes-agent.nousresearch.com/docs/)
 
-## 参考
+[^2]: [Hermes Agent GitHub 仓库](https://github.com/NousResearch/hermes-agent)
 
-- [Hermes Agent GitHub 仓库](https://github.com/NousResearch/hermes-agent)
-- [官方文档](https://hermes-agent.nousresearch.com/docs/)
-- [技能目录](https://hermes-agent.nousresearch.com/docs/reference/skills-catalog)
-- [提供商配置指南](https://hermes-agent.nousresearch.com/docs/integrations/providers)
-- [OpenRouter 模型列表](https://openrouter.ai/models)
-- [DeepSeek 官网](https://deepseek.com/)
+[^3]: [技能目录](https://hermes-agent.nousresearch.com/docs/reference/skills-catalog)
+
+[^4]: [DeepSeek 官网](https://deepseek.com/)
+
+[^5]: [OpenRouter 模型列表](https://openrouter.ai/models)
+
+[^6]: [提供商配置指南](https://hermes-agent.nousresearch.com/docs/integrations/providers)

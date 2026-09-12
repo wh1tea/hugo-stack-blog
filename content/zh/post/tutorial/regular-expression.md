@@ -1,10 +1,10 @@
 ---
 title: 正则表达式从入门到实战
+slug: regular-expression
 date: 2026-07-24
 description: 全面讲解正则表达式的核心语法与常用场景，从字符匹配到分组捕获，助你高效处理文本数据。
 tags:
   - regex
-  - tutorial
   - programming
   - pattern-matching
   - cli
@@ -12,13 +12,13 @@ categories:
   - tutorial
 ---
 
-**正则表达式（Regular Expression，简称 regex、regexp 或 RE）**，又称规则表达式，是一种**文本模式**。它用单个字符串来描述、匹配一系列符合特定句法规则的字符串。
+**正则表达式（Regular Expression，简称 regex、regexp 或 RE）**，又称规则表达式，是一种**文本模式**。它用单个字符串来描述、匹配一系列符合特定句法规则的字符串。[^1]
 
-通俗地说，正则表达式就是**记录文本规则的代码**。它由**普通字符**（如字母 a–z）和**特殊字符（元字符）** 组合而成，形成一个“规则字符串”，用以表达对文本的**过滤逻辑**或**匹配模式**。
+通俗地说，正则表达式就是**记录文本规则的代码**。它由**普通字符**（如字母 a–z）和**特殊字符（元字符）** 组合而成，形成一个“规则字符串”，用以表达对文本的**过滤逻辑**或**匹配模式**。[^2]
 
 **主要用途**：检索、替换符合某模式的文本，广泛用于文本解析、输入验证、数据提取和模式识别等场景。
 
-**支持语言**：正则表达式由 Unix 普及，现已被 Scala、PHP、C#、Java、C++、Objective-C、Perl、Swift、VBScript、JavaScript、Ruby、Python 等众多编程语言支持。
+**支持语言**：正则表达式由 Unix 普及，现已被 Scala、PHP、C#、Java、C++、Objective-C、Perl、Swift、VBScript、JavaScript、Ruby、Python 等众多编程语言支持。[^3]
 
 > 正则表达式是处理文本的利器，几乎每门编程语言和主流编辑器都内置支持。本文从零讲解核心概念，聚焦实战中最常用的语法，配合大量示例助你快速上手。学完后，你将能编写基础正则表达式，并在代码或命令行中自如地完成搜索、替换与提取任务。
 
@@ -226,8 +226,8 @@ chinese = re.findall(r'[\u4e00-\u9fa5]+', 'Hello 你好 World')
 
 ## 五、调试与学习工具
 
-- **在线测试**：[regex101.com](https://regex101.com) —— 支持多语言风格，显示匹配详情和解释。
-- **可视化**：[regexper.com](https://regexper.com) —— 将正则转为铁路图，直观理解结构。
+- **在线测试**：regex101.com[^4] —— 支持多语言风格，显示匹配详情和解释。
+- **可视化**：regexper.com[^5] —— 将正则转为铁路图，直观理解结构。
 - **命令行**：`grep -E`、`sed -E`、`awk` 是练习正则的好环境。
 
 ---
@@ -246,12 +246,12 @@ chinese = re.findall(r'[\u4e00-\u9fa5]+', 'Hello 你好 World')
 
 正则表达式的核心在于组合字符类、量词、分组和锚点来表达你想要匹配的模式。建议从简单需求入手，逐步增加复杂度，并充分利用在线调试工具。掌握正则后，日常编码中的文本处理效率会显著提升。下一步可以深入学习零宽断言（lookahead/lookbehind）和递归模式，这些在复杂解析中非常有用。
 
----
+[^1]: [正则表达式 30 分钟入门教程](https://deerchao.cn/tutorials/regex/regex.htm) —— 经典中文入门教程，涵盖基础到进阶。
 
-## 参考
+[^2]: [MDN 正则表达式文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions) —— JavaScript 正则表达式权威参考
 
-- [正则表达式 30 分钟入门教程](https://deerchao.cn/tutorials/regex/regex.htm) —— 经典中文入门教程，涵盖基础到进阶。
-- [Python `re` 官方文档](https://docs.python.org/3/library/re.html)
-- [regex101 在线测试](https://regex101.com)
-- [正则表达式可视化工具](https://regexper.com)
-- [MDN 正则表达式文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions) —— JavaScript 正则表达式权威参考
+[^3]: [Python `re` 官方文档](https://docs.python.org/3/library/re.html)
+
+[^4]: [regex101 在线测试](https://regex101.com)
+
+[^5]: [正则表达式可视化工具](https://regexper.com)

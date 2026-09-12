@@ -1,9 +1,9 @@
 ---
 title: 程序员 AI 使用指南：效率、技巧与 Token 节约之道
+slug: ai-usage-guide-for-programmers
 date: 2026-07-14
 description: 作为一名程序员，AI 工具用好能让你效率翻倍，用不好则是在浪费时间和金钱。本文从实战角度出发，教你如何正确高效地使用 AI 编程——从选工具、写 Prompt、到节约 Token 的每一个细节。
 tags:
-  - ai
   - productivity
   - best-practices
   - prompt-engineering
@@ -80,7 +80,7 @@ categories:
 > "你是一个有 15 年经验的 Python 后端工程师，擅长编写高并发、可维护的代码。
 > 请 review 以下代码，重点检查：线程安全、内存泄漏、边界情况..."
 
-角色设定不是玄学，它能激活模型在特定领域的知识分布（Claude 在"资深工程师"模式下输出质量明显更高）。
+角色设定不是玄学，它能激活模型在特定领域的知识分布（Claude 在"资深工程师"模式下输出质量明显更高）。[^1]
 
 ### 2.3 分步式 Prompt（Chain of Thought）
 
@@ -156,11 +156,11 @@ AI 模型按**输入 Token + 输出 Token** 双重计费。输入部分是大头
 | DeepSeek V3      | $0.14                | 中文场景、替代 Sonnet |
 | Gemini 2.5 Flash | $0.15                | 批量处理、轻量任务    |
 
-**策略：日常用中端模型（Sonnet / DeepSeek），疑难杂症切高端（Opus），简单任务用微型（Mini / Flash）。**
+**策略：日常用中端模型（Sonnet / DeepSeek），疑难杂症切高端（Opus），简单任务用微型（Mini / Flash）。**[^2]
 
 ### 3.4 善用 Agent 工具的上下文管理
 
-如果使用 Hermes Agent 或 Claude Code 这类工具：
+如果使用 Hermes Agent 或 Claude Code 这类工具：[^3]
 
 - **用 `/compress`** 手动压缩上下文（Hermes 在 Token 使用达到 50% 时自动触发，你也可以手动触发）
 - **开启 Checkpoints** 但注意它消耗额外 Token 记录文件状态
@@ -355,16 +355,16 @@ AI Code Review 的最佳时机是 **PR 提交前**，而不是提交后。让 AI
 
 1. **选对工具**——补全用 Copilot/Cursor，开发用 Agent (Hermes/Claude Code)，问答用 ChatGPT
 2. **写对 Prompt**——给上下文、给约束、分步骤、用示例
-3. **管好 Token**——控制上下文、选合适模型、按场景切换
+3. **管好 Token**——控制上下文、选合适模型、按场景切换[^4]
 
-做到这三点，AI 就是你的超级加速器。做不到，AI 只是另一个让你更焦虑的玩具。
+做到这三点，AI 就是你的超级加速器。做不到，AI 只是另一个让你更焦虑的玩具。[^5]
 
----
+[^1]: [Claude Code 用户指南](https://docs.anthropic.com/en/docs/claude-code/overview)
 
-## 参考
+[^2]: [DeepSeek 官方文档](https://platform.deepseek.com/docs)
 
-- [Hermes Agent 安装与使用指南](./hermes-agent-guide.md)（本站另一篇文章）
-- [OpenAI Tokenizer 在线工具](https://platform.openai.com/tokenizer)
-- [Anthropic 官方 Prompt 工程指南](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering)
-- [Claude Code 用户指南](https://docs.anthropic.com/en/docs/claude-code/overview)
-- [DeepSeek 官方文档](https://platform.deepseek.com/docs)
+[^3]: [Hermes Agent 安装与使用指南](./hermes-agent-guide.md)（本站另一篇文章）
+
+[^4]: [Anthropic 官方 Prompt 工程指南](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering)
+
+[^5]: [OpenAI Tokenizer 在线工具](https://platform.openai.com/tokenizer)

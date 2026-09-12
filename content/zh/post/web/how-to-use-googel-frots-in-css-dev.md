@@ -1,24 +1,24 @@
 ---
 title: Google Fonts 引用方式与开源字体资源详解
+slug: how-to-use-googel-frots-in-css-dev
 date: 2026-07-24
 description: 详细讲解网页中引用 Google Fonts 的代码含义、开源字体查找方法及更换样式的完整步骤，适合前端开发者参考。
 tags:
   - google-fonts
   - fonts
-  - web
   - css
   - tutorial
 categories:
   - web
 ---
 
-在网页开发中，通过 Google Fonts 可以免费使用成百上千种开源字体，让页面文字更具设计感。本文从实际代码出发，逐一拆解引用方式的每一部分含义，并介绍多种开源字体查找途径，最后给出更换字体的具体操作步骤。
+在网页开发中，通过 Google Fonts 可以免费使用成百上千种开源字体，让页面文字更具设计感。本文从实际代码出发，逐一拆解引用方式的每一部分含义，并介绍多种开源字体查找途径，最后给出更换字体的具体操作步骤。[^1]
 
 ---
 
 ## 一、代码逐行解析
 
-你提供的那几行 HTML 代码是标准的 Google Fonts 引用方式，包含预连接和样式请求两部分。
+你提供的那几行 HTML 代码是标准的 Google Fonts 引用方式，包含预连接和样式请求两部分。[^2]
 
 ### 1.1 预连接指令
 
@@ -60,7 +60,7 @@ URL 参数的含义如下：
 
 ### 2.1 Google Fonts 官网
 
-最直接、最全面的资源库是 [Google Fonts](https://fonts.google.com/)，目前收录近 2000 款开源字体。
+最直接、最全面的资源库是 Google Fonts[^3]，目前收录近 2000 款开源字体。
 
 主要功能：
 
@@ -92,18 +92,20 @@ URL 参数的含义如下：
 4. **替换 HTML 中的引用**：用新复制的 `<link>` 标签完全替换旧代码。
 5. **更新 CSS**：在样式表中，将 `font-family` 属性的值改为新字体名称，例如 `font-family: 'Roboto', sans-serif;`。
 
-完成以上步骤后，刷新页面即可看到新字体的效果。
+完成以上步骤后，刷新页面即可看到新字体的效果。[^4]
 
 ---
 
 ## 总结
 
-Google Fonts 的引用代码由预连接和样式请求两部分组成，前者优化加载速度，后者定义所需字体的具体样式。除了官方仓库，还有 Fontsource、文风字体等开源方案可供选择。更换字体只需三步：挑选、复制代码、更新 CSS。需要注意的是，虽然 Google Fonts 上大多数字体开源免费，但个别字体可能有特殊许可要求，大规模商用前建议仔细阅读授权条款。
+Google Fonts 的引用代码由预连接和样式请求两部分组成，前者优化加载速度，后者定义所需字体的具体样式。除了官方仓库，还有 Fontsource、文风字体等开源方案可供选择。更换字体只需三步：挑选、复制代码、更新 CSS。需要注意的是，虽然 Google Fonts 上大多数字体开源免费，但个别字体可能有特殊许可要求，大规模商用前建议仔细阅读授权条款。[^5]
 
-## 参考
+[^1]: [Font Squirrel](https://www.fontsquirrel.com/)
 
-- [Google Fonts 官网](https://fonts.google.com/)
-- [Fontsource 文档](https://fontsource.org/)
-- [文风字体 (Windfonts)](https://www.windfonts.com/)
-- [Font Squirrel](https://www.fontsquirrel.com/)
-- [Adobe Fonts](https://fonts.adobe.com/)
+[^2]: [Adobe Fonts](https://fonts.adobe.com/)
+
+[^3]: [Google Fonts 官网](https://fonts.google.com/)
+
+[^4]: [文风字体 (Windfonts)](https://www.windfonts.com/)
+
+[^5]: [Fontsource 文档](https://fontsource.org/)

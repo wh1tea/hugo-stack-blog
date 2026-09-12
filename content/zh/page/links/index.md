@@ -1,6 +1,6 @@
 ---
 title: 友链
-slug: "links"
+slug: links
 links:
   - title: GitHub
     description: 我的 GitHub 主页

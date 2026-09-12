@@ -1,5 +1,6 @@
 ---
 title: npx express-generator 快速生成 Express 项目
+slug: npx-express-generator-guide
 date: 2026-08-07
 description: 详解 npx express-generator 的用法，从生成项目到集成 VSCode 与 Docker，助你快速启动 Express 开发。
 tags:
@@ -12,14 +13,14 @@ categories:
   - web
 ---
 
-使用 Express 开发 Web 应用时，手动配置目录结构、路由和中间件总是重复且耗时。`express-generator` 是 Express 官方脚手架，配合 `npx` 可在不全局安装的情况下快速生成标准化项目模板。本文面向 Node.js 开发者，介绍 `npx express-generator` 的含义、用法，以及如何与 VSCode、Docker 和 Git 集成，提升开发效率。
+使用 Express 开发 Web 应用时，手动配置目录结构、路由和中间件总是重复且耗时。`express-generator` 是 Express 官方脚手架，配合 `npx` 可在不全局安装的情况下快速生成标准化项目模板。本文面向 Node.js 开发者，介绍 `npx express-generator` 的含义、用法，以及如何与 VSCode、Docker 和 Git 集成，提升开发效率。[^1]
 
 ---
 
 ## 什么是 npx express-generator
 
 - **`npx`**：Node.js 内置工具（随 npm 安装），用于执行 npm 包中的可执行文件，无需全局安装。它会临时下载并运行指定包，适合一次性或低频使用的工具。
-- **`express-generator`**：Express 官方脚手架，自动生成 Express 应用的基础目录、配置文件和示例代码。
+- **`express-generator`**：Express 官方脚手架，自动生成 Express 应用的基础目录、配置文件和示例代码。[^2]
 
 组合命令 `npx express-generator` 即：通过 npx 运行 express-generator，在当前目录生成一个全新的 Express 项目骨架。
 
@@ -29,7 +30,7 @@ categories:
 
 运行命令后，默认生成如下结构（项目名默认为当前目录名，若指定则新建文件夹）：
 
-```
+```text
 my-app/
 ├── app.js                # 主应用配置（中间件、路由挂载）
 ├── package.json          # 依赖与脚本
@@ -162,7 +163,7 @@ CMD ["npm", "start"]
 
 创建 `.dockerignore`：
 
-```
+```text
 node_modules
 npm-debug.log
 .git
@@ -212,7 +213,7 @@ git commit -m "Initial Express project"
 
 若生成时未使用 `--git`，可手动创建 `.gitignore`，至少忽略：
 
-```
+```text
 node_modules/
 *.log
 .env
@@ -242,15 +243,14 @@ git push -u origin main
 - `npx express-generator` 是快速创建 Express 项目的首选工具，无需全局安装，零配置启动。
 - 支持通过 `--view`、`--css` 等选项定制模板，适应不同项目需求。
 - 结合 VSCode 的调试和 Dev Containers，可实现无缝容器化开发。
-- 配合 Git 快速纳入版本控制，便于团队协作。
+- 配合 Git 快速纳入版本控制，便于团队协作。[^3]
 
-建议所有 Express 新手从生成器开始，熟悉项目结构后再进行深度定制。遇到端口冲突或依赖问题时，优先检查 `package.json` 和监听端口号。
+建议所有 Express 新手从生成器开始，熟悉项目结构后再进行深度定制。遇到端口冲突或依赖问题时，优先检查 `package.json` 和监听端口号。[^4]
 
----
+[^1]: [Express 官方文档](https://expressjs.com/)
 
-## 参考
+[^2]: [express-generator GitHub](https://github.com/expressjs/generator)
 
-- [Express 官方文档](https://expressjs.com/)
-- [npx 文档](https://docs.npmjs.com/cli/v9/commands/npx)
-- [express-generator GitHub](https://github.com/expressjs/generator)
-- [VSCode Dev Containers 文档](https://code.visualstudio.com/docs/devcontainers/containers)
+[^3]: [VSCode Dev Containers 文档](https://code.visualstudio.com/docs/devcontainers/containers)
+
+[^4]: [npx 文档](https://docs.npmjs.com/cli/v9/commands/npx)

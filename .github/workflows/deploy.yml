@@ -77,9 +77,11 @@ jobs:
           restore-keys: hugo-
       - name: Build the site
         run: |
+          # ghpages 环境：关掉本地私有语言（config/ghpages/languages.toml），私有内容区不上线
           hugo \
             --gc \
             --minify \
+            --environment ghpages \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
       - name: Cache save

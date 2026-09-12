@@ -5,6 +5,7 @@ date: 2025-09-03
 description: reset、revert、amend、rebase -i 全面梳理：提交出错后的补救方案
 tags:
   - git
+  - troubleshooting
 categories:
   - git
 ---
@@ -113,8 +114,6 @@ git reflog | grep <旧commit的hash前7位>    # 无输出即清理干净
 
 ## 结语
 
-撤销操作按优先级记忆：未推送用 `reset`，已推送优先 `revert`，必须改写历史时用 `rebase -i` + `--force-with-lease`。强制推送会改写远程历史，多人协作前务必沟通，或先建备份分支 `git branch backup`。
+撤销操作按优先级记忆：未推送用 `reset`，已推送优先 `revert`，必须改写历史时用 `rebase -i` + `--force-with-lease`。强制推送会改写远程历史，多人协作前务必沟通，或先建备份分支 `git branch backup`。[^1]
 
-## 参考
-
-[gitignore](https://github.com/github/gitignore)
+[^1]: [gitignore](https://github.com/github/gitignore)

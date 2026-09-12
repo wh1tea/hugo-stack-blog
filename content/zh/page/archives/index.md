@@ -1,8 +1,8 @@
 ---
-title: "归档"
+title: 归档
+slug: archives
 date: 2026-08-12
-layout: "archives"
-slug: "archives"
+layout: archives
 menu:
   main:
     weight: 2

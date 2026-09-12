@@ -8,18 +8,18 @@ tags:
   - vector-graphics
   - ai-generation
   - vscode
-  - web-design
+  - frontend
 categories:
   - web
 ---
 
-### SVG简介
+### SVG 简介
 
-SVG（Scalable Vector Graphics，可缩放矢量图形）是一种基于 [XML](https://developer.mozilla.org/zh-CN/docs/Web/XML) 的 [W3C](https://www.w3.org/) 标准标记语言。与由像素构成的 PNG、JPG 等栅格图像（位图）不同，SVG 通过数学公式定义的路径、曲线和几何形状来描述图形。其本质是存储“绘制方法”而非“像素阵列”，因此无论放大多少倍，图形始终光滑清晰，不会出现锯齿或模糊。本质上，SVG 相对于图像，就好比 [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML) 相对于文本。
+SVG（Scalable Vector Graphics，可缩放矢量图形）是一种基于 [XML](https://developer.mozilla.org/zh-CN/docs/Web/XML) 的 [W3C](https://www.w3.org/) 标准标记语言。与由像素构成的 PNG、JPG 等栅格图像（位图）不同，SVG 通过数学公式定义的路径、曲线和几何形状来描述图形。其本质是存储“绘制方法”而非“像素阵列”，因此无论放大多少倍，图形始终光滑清晰，不会出现锯齿或模糊。本质上，SVG 相对于图像，就好比 [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML) 相对于文本。[^1]
 
 ### 核心特点与适用场景
 
-**核心优势：不失真、体积小、可编辑、利SEO**
+**核心优势：不失真、体积小、可编辑、利 SEO**
 
 - **无限缩放，无损保真**：单一 SVG 文件即可适配从手机图标到广告牌的各种显示尺寸，始终锐利如初。
 - **体积轻量，加载迅速**：仅存储图形的数学描述，文件体积通常远小于同效果的位图，传输效率更高。
@@ -34,11 +34,11 @@ SVG（Scalable Vector Graphics，可缩放矢量图形）是一种基于 [XML](h
 | :------------ | :------------------- | :-------------- | :----------------- | :--------------- |
 | 图像类型      | 矢量（数学路径）     | 栅格（像素）    | 栅格（像素）       | 栅格（像素）     |
 | 压缩方式      | 无损（矢量）         | 无损            | 有损               | 有损 / 无损      |
-| 支持透明背景  | ✅                    | ✅               | ❌                  | ✅                |
-| 支持动画      | ✅（CSS / JS）        | ❌               | ❌                  | ✅                |
-| 无限缩放      | ✅                    | ❌               | ❌                  | ❌                |
-| 文本可编辑    | ✅                    | ❌               | ❌                  | ❌                |
-| CSS / JS 控制 | ✅                    | ❌               | ❌                  | ❌                |
+| 支持透明背景  | ✅                   | ✅              | ❌                 | ✅               |
+| 支持动画      | ✅（CSS / JS）       | ❌              | ❌                 | ✅               |
+| 无限缩放      | ✅                   | ❌              | ❌                 | ❌               |
+| 文本可编辑    | ✅                   | ❌              | ❌                 | ❌               |
+| CSS / JS 控制 | ✅                   | ❌              | ❌                 | ❌               |
 | 文件大小      | 极小（简单图形）     | 较大            | 较小               | 最小             |
 | 最佳应用场景  | 品牌标识、图标、插画 | UI 元素、透明图 | 照片、色彩丰富图像 | 现代网页、移动端 |
 
@@ -50,13 +50,13 @@ AI 生成 SVG 的实质，是让模型学会编写符合 W3C 标准的矢量代�
 这是当前最主流的模式，模型根据描述直接输出结构化的原生 SVG。
 
 - **Recraft V4**：为数不多能直接从文本生成原生 SVG 的平台之一。其 V4 Pro 版本支持 1:1、16:9 等多种比例，输出可直接导入 Figma、Adobe Illustrator。此前 V3 模型曾以 ELO 1172 的成绩登顶 Hugging Face 文生图排行榜，超越 MidJourney 和 DALL-E。
-- **QuiverAI（Arrow 1.1）**：支持文本和图像双模态输入，适用于 Logo、图标、插画及技术绘图。
+- **QuiverAI（Arrow 1.1）**：支持文本和图像双模态输入，适用于 Logo、图标、插画及技术绘图。[^2]
 
 **方式二：图片 → SVG 代码（矢量化）**  
-将现有的 JPG、PNG 等栅格草稿或设计图转换为干净、可编辑的 SVG 矢量文件。Arrow 1.1 同样支持该功能。
+将现有的 JPG、PNG 等栅格草稿或设计图转换为干净、可编辑的 SVG 矢量文件。Arrow 1.1 同样支持该功能。[^3]
 
 **方式三：自然语言 → 技术架构图**  
-**fireworks-tech-graph** 专为技术文档设计，通过自然语言描述系统架构，即可在数秒内生成可直接发布的 SVG + PNG 技术图。它内置 7 种视觉风格及 1 种 AI 手绘风格，完整支持全部 14 种 UML 图类型，目前在 GitHub 上已获得 7.8k Star。
+**fireworks-tech-graph** 专为技术文档设计，通过自然语言描述系统架构，即可在数秒内生成可直接发布的 SVG + PNG 技术图。它内置 7 种视觉风格及 1 种 AI 手绘风格，完整支持全部 14 种 UML 图类型，目前在 GitHub 上已获得 7.8k Star。[^4]
 
 **其他辅助工具：**
 
@@ -66,10 +66,10 @@ AI 生成 SVG 的实质，是让模型学会编写符合 W3C 标准的矢量代�
 
 ### 五、在 VSCode 中高效编辑与预览
 
-SVG 本质是文本代码，搭配 VSCode 扩展可实现“编码即所见”的实时反馈。
+SVG 本质是文本代码，搭配 VSCode 扩展可实现“编码即所见”的实时反馈。[^5]
 
 **推荐扩展 —— Better SVG**  
-当前功能最全面的 SVG 开发插件，提供以下能力：
+当前功能最全面的 SVG 开发插件，提供以下能力：[^6]
 
 - 并排实时预览（打开 `.svg` 文件即自动激活）；
 - 侧边栏自动跟踪当前文件缩略图；
@@ -91,14 +91,18 @@ SVG Preview（Simon Siefke）提供侧边栏实时预览并支持暗黑模式；
 
 ### 结语
 
-SVG 凭借无损缩放、体积轻巧和代码可编辑三大核心优势，已成为品牌标识、插画及技术文档的首选格式。随着 AI 的介入（如 Recraft V4 的原生生成、QuiverAI 的多模态矢量化），矢量图创作正从“手写代码”向“描述需求”演进。配合 VSCode 及 Better SVG 等插件，设计师与开发者可在同一窗口内完成构思、生成、编辑与预览的完整闭环。如今，制作高质量矢量素材的门槛，已降至前所未有的低位。
+SVG 凭借无损缩放、体积轻巧和代码可编辑三大核心优势，已成为品牌标识、插画及技术文档的首选格式。随着 AI 的介入（如 Recraft V4 的原生生成、QuiverAI 的多模态矢量化），矢量图创作正从“手写代码”向“描述需求”演进。配合 VSCode 及 Better SVG 等插件，设计师与开发者可在同一窗口内完成构思、生成、编辑与预览的完整闭环。如今，制作高质量矢量素材的门槛，已降至前所未有的低位。[^7]
 
-## 参考
+[^1]: [SVG 指南 - Mozilla Firefox 文档](https://developer.mozilla.org/zh-CN/docs/Web/SVG)
 
-- [SVG 指南 - Mozilla Firefox 文档](https://developer.mozilla.org/zh-CN/docs/Web/SVG)
-- [Introducing Recraft V4 Pro Text To Vector - WaveSpeedAI](https://wavespeed.ai/blog/posts/introducing-recraft-ai-recraft-v4-pro-text-to-vector-on-wavespeedai/#1)
-- [Introducing Arrow 1.1 - QuiverAI](https://quiver.ai/blog/introducing-arrow-1-1)
-- [fireworks-tech-graph 项目介绍](https://github.com/ninehills/fireworks-tech-graph)
-- [Better SVG GitHub README](https://github.com/midudev/better-svg)
-- [SVG 格式优缺点分析](https://firefox-source-docs.mozilla.org/code-quality/coding-style/svg_guidelines.html)
-- [svg-w3schools](https://www.w3schools.com/graphics/svg_intro.asp)
+[^2]: [Introducing Recraft V4 Pro Text To Vector - WaveSpeedAI](https://wavespeed.ai/blog/posts/introducing-recraft-ai-recraft-v4-pro-text-to-vector-on-wavespeedai/#1)
+
+[^3]: [Introducing Arrow 1.1 - QuiverAI](https://quiver.ai/blog/introducing-arrow-1-1)
+
+[^4]: [fireworks-tech-graph 项目介绍](https://github.com/ninehills/fireworks-tech-graph)
+
+[^5]: [SVG 格式优缺点分析](https://firefox-source-docs.mozilla.org/code-quality/coding-style/svg_guidelines.html)
+
+[^6]: [Better SVG GitHub README](https://github.com/midudev/better-svg)
+
+[^7]: [svg-w3schools](https://www.w3schools.com/graphics/svg_intro.asp)

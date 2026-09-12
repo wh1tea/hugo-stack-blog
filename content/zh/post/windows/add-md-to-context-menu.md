@@ -4,7 +4,6 @@ slug: add-md-to-context-menu
 date: 2026-07-16
 description: 详细介绍了三种为 Windows 右键菜单“新建”添加 Markdown 文件类型的方法，包括手动修改注册表、一键导入 .reg 文件以及利用 Typora 自带功能，助你提升日常写作与笔记管理的效率。
 tags:
-  - windows
   - registry
   - typora
   - markdown
@@ -36,7 +35,7 @@ categories:
 4. 点击左侧的 `.md` 文件夹，在右侧找到`(Default)`项，双击打开，将其**数值数据**修改为 `Typora.md`（若使用其他编辑器，请填写对应的 ProgID，例如 Obsidian 可填 `Obsidian.md`）。
 5. 在左侧 `.md` 文件夹上右键 → 新建 → **项（key）**，将新项命名为 `ShellNew`。
 6. 选中 `ShellNew`，在右侧空白处右键 → 新建 → **字符串值**，命名为 `NullFile`（数值数据留空即可）。
-7. 关闭注册表编辑器，**重启电脑**（或重启资源管理器）即可生效。
+7. 关闭注册表编辑器，**重启电脑**（或重启资源管理器）即可生效。[^1]
 
 重启后，在桌面或文件夹内右键 → 新建，就能看到“Markdown 文件”选项了。新建的 `.md` 文件会默认用 Typora 打开（由第 4 步的关联决定）。
 
@@ -92,8 +91,4 @@ Typora 在较新版本中提供了图形化的注册选项，本应是最便捷�
 
 添加右键新建 Markdown 文件后，工作流会顺畅不少——无论是快速记录灵感，还是创建新的文章草稿，都无需再手工改后缀或打开编辑器再新建。推荐先试试 `.reg` 文件，若失败再手动调整。
 
----
-
-## 参考
-
-- [Windows 注册表 ShellNew 项说明](https://learn.microsoft.com/en-us/windows/win32/shell/launch)
+[^1]: [Windows 注册表 ShellNew 项说明](https://learn.microsoft.com/en-us/windows/win32/shell/launch)

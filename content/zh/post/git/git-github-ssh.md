@@ -4,7 +4,6 @@ slug: git-github-ssh
 date: 2025-09-05
 description: 生成 SSH 密钥、启动 ssh-agent、上传公钥，彻底解决 Permission denied (publickey)
 tags:
-  - git
   - github
   - ssh
 categories:

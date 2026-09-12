@@ -6,7 +6,6 @@ description: 换手机热点上网后，5E 与完美平台连不上、网站和 
 tags:
   - dns
   - network
-  - windows
   - clash
   - troubleshooting
 categories:
@@ -23,11 +22,11 @@ categories:
 
 环境：Clash Verge（verge-mihomo 内核）系统代理模式，监听 `127.0.0.1:7897`；Wi-Fi 连接手机热点；网线仍插在电脑上，以太网处于活动状态。
 
-| 服务 | 状态 |
-| :--- | :--- |
-| 浏览器 / 网页 | 正常 |
-| Steam | 正常 |
-| 5E Client | 连不上 |
+| 服务             | 状态   |
+| :--------------- | :----- |
+| 浏览器 / 网页    | 正常   |
+| Steam            | 正常   |
+| 5E Client        | 连不上 |
 | 完美世界竞技平台 | 连不上 |
 
 这类游戏平台客户端不走系统代理，登录与接口请求靠自己的域名解析和 HTTPS 连接，恰好是最容易踩 DNS 坑的一类软件。
@@ -90,7 +89,7 @@ Test-NetConnection 14.29.50.69 -Port 443    # True
 
 拓扑示意：
 
-```
+```text
 手机热点 ──Wi-Fi──► Wi-Fi 网卡 ──► 出网（正常）
 路由器 ──网线──► 以太网卡 ──► DNS 污染源（192.168.99.1）
 ```

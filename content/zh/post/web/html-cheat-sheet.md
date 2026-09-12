@@ -6,13 +6,12 @@ description: 一份面向开发者的 HTML 速查表，涵盖常用标签、属�
 tags:
   - html
   - cheatsheet
-  - web
   - frontend
 categories:
   - web
 ---
 
-使用 HTML 时，若能有一种简单的方法记住如何正确使用和应用 HTML 标签，将会非常方便。这份速查表面向有编程基础的开发者，旨在为常见用法提供快速、准确、现成的代码片段。
+使用 HTML 时，若能有一种简单的方法记住如何正确使用和应用 HTML 标签，将会非常方便。这份速查表面向有编程基础的开发者，旨在为常见用法提供快速、准确、现成的代码片段。[^1]
 
 > **核心原则**：HTML 标签应根据其**语义价值**而非外观使用。完全可以使用 CSS 改变特定标签的外观和特性。使用 HTML 时，要花时间留意标签的**语义**，而非它们的外观。
 
@@ -398,20 +397,19 @@ categories:
 
 ## 总结
 
-这份速查表涵盖了 HTML 开发中最常用的标签、属性和代码片段。核心要点：
+这份速查表涵盖了 HTML 开发中最常用的标签、属性和代码片段。核心要点：[^2]
 
 1. **语义优先**：根据内容选择最恰当的标签，而非根据外观。
 2. **结构清晰**：合理使用标题层级（h1–h6）和语义化标签（header、nav、main、article 等）。
 3. **表单可访问性**：始终使用 `<label>` 关联表单控件。
 4. **保持简洁**：能用 HTML 语义表达的，不滥用 `<div>` 和 `<span>`。
 
-建议将本速查表打印或收藏，日常开发中随时查阅。深入理解可参考 [MDN HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements)。
+建议将本速查表打印或收藏，日常开发中随时查阅。深入理解可参考 MDN HTML 元素参考[^3]。[^4]
 
----
+[^1]: [菜鸟教程 HTML 速查列表](https://www.runoob.com/html/html-quicklist.html)
 
-## 参考
+[^2]: [LabEx HTML 速查表](https://labex.io/cheatsheets/zh/html)
 
-- [MDN HTML 语法与常见任务速查表](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Cheatsheet)
-- [MDN HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements)
-- [菜鸟教程 HTML 速查列表](https://www.runoob.com/html/html-quicklist.html)
-- [LabEx HTML 速查表](https://labex.io/cheatsheets/zh/html)
+[^3]: [MDN HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements)
+
+[^4]: [MDN HTML 语法与常见任务速查表](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Cheatsheet)

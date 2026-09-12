@@ -9,7 +9,6 @@ tags:
   - ide
   - productivity
   - vscode
-  - personal
 categories:
   - devtools
 ---
@@ -56,7 +55,7 @@ categories:
 | `oracle.oracle-java`                   | Oracle Java 平台支持                                      |
 
 > Java/Spring 领域覆盖非常全，Maven/Gradle 双支持、Spring Boot 全套工具链齐备。  
-> **建议**：`pleiades.java-extension-pack-jdk` 与 `vscjava.vscode-java-pack` + `vmware.vscode-boot-dev-pack` 功能高度重叠——如果 JDK 环境已稳定配置（`JAVA_HOME` 已设置），可移除 `pleiades`。`oracle.oracle-java` 与 `redhat.java` 重叠，二者选一即可，建议保留 `redhat.java`（更活跃）。
+> **建议**：`pleiades.java-extension-pack-jdk` 与 `vscjava.vscode-java-pack` + `vmware.vscode-boot-dev-pack` 功能高度重叠——如果 JDK 环境已稳定配置（`JAVA_HOME` 已设置），可移除 `pleiades`。`oracle.oracle-java` 与 `redhat.java` 重叠，二者选一即可，建议保留 `redhat.java`（更活跃）。[^1]
 
 ---
 
@@ -70,7 +69,7 @@ categories:
 | `ms-vscode.cpp-devtools`            | C/C++ 开发者工具增强                               |
 | `ms-vscode.cmake-tools`             | CMake 构建工具支持（含语法高亮）                   |
 
-> cpptools + CMake 标准组合。
+> cpptools + CMake 标准组合。[^2]
 
 ---
 
@@ -106,7 +105,7 @@ categories:
 | `eamodio.gitlens`    | Git 历史追踪、代码作者标注、文件对比、Branch 管理 |
 | `mhutchie.git-graph` | Git 提交图可视化                                  |
 
-> **精简**：移除了 `donjayamanne.githistory` 和 `mk12.better-git-line-blame`，这两者功能已被 GitLens 完全覆盖。现保留 GitLens + Git Graph 组合，前者处理日常操作，后者提供直观拓扑图。
+> **精简**：移除了 `donjayamanne.githistory` 和 `mk12.better-git-line-blame`，这两者功能已被 GitLens 完全覆盖。现保留 GitLens + Git Graph 组合，前者处理日常操作，后者提供直观拓扑图。[^3]
 
 ---
 
@@ -276,14 +275,16 @@ categories:
 
 82 个插件覆盖了 Python、Java/Spring、C/C++、Dart/Flutter、前端、数据库、容器、文档、Git 等主流开发场景，工具链完整且无明显冲突。通过移除重复、被取代以及非常用插件，可有效减轻插件管理负担。
 
-建议利用 VS Code 的 [Profiles 功能](https://code.visualstudio.com/docs/editor/profiles) 按项目类型创建不同插件集合（如“Python 开发”、“Java 后端”、“通用写作”），按需切换，避免所有插件在所有场景下同时激活。
+建议利用 VS Code 的 Profiles 功能[^4] 按项目类型创建不同插件集合（如“Python 开发”、“Java 后端”、“通用写作”），按需切换，避免所有插件在所有场景下同时激活。[^5]
 
 ---
 
-## 参考
+[^1]: [VS Code Extension Marketplace](https://marketplace.visualstudio.com/vscode)
 
-- [VS Code Extension Marketplace](https://marketplace.visualstudio.com/vscode)
-- [VS Code Profiles 官方文档](https://code.visualstudio.com/docs/editor/profiles)
-- [Vue Volar 官方指南](https://github.com/vuejs/language-tools)
-- [GitLens 文档](https://gitlens.amod.io/)
-- [EditorConfig 官网](https://editorconfig.org/)
+[^2]: [Vue Volar 官方指南](https://github.com/vuejs/language-tools)
+
+[^3]: [GitLens 文档](https://gitlens.amod.io/)
+
+[^4]: [VS Code Profiles 官方文档](https://code.visualstudio.com/docs/editor/profiles)
+
+[^5]: [EditorConfig 官网](https://editorconfig.org/)

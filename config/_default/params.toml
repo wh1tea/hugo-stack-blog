@@ -34,9 +34,9 @@ SortBy              = "default"
 [widgets]
     homepage = [
         { type = "search" },
-        { type = "archives", params = { limit = 5 } },
-        { type = "categories", params = { limit = 10 } },
-        { type = "tag-cloud", params = { limit = 10 } },
+        { type = "archives", params = { limit = 6 } },
+        { type = "categories", params = { limit = 16 } },
+        { type = "tag-cloud", params = { limit = 31 } },
     ]
     page = [{ type = "toc" }]
 

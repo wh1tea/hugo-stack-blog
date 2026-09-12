@@ -10,7 +10,7 @@ tags:
   - tutorial
   - frontend
 categories:
-  - javascript
+  - web
 ---
 
 ## 引言

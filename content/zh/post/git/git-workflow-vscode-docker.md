@@ -4,7 +4,6 @@ slug: git-workflow-vscode-docker
 date: 2026-07-14
 description: VS Code Source Control 面板与 GitLens 的日常用法，以及 Docker + Node.js 项目的 Git 工作流与忽略规则配置
 tags:
-  - git
   - vscode
   - docker
 categories:
@@ -15,7 +14,7 @@ categories:
 
 ## VS Code 内置 Git
 
-点击左侧栏 Git 图标（或 `Ctrl+Shift+G`）打开 Source Control 面板，日常操作全部可视化：
+点击左侧栏 Git 图标（或 `Ctrl+Shift+G`）打开 Source Control 面板，日常操作全部可视化：[^1]
 
 | 操作        | 面板操作                         |
 | ----------- | -------------------------------- |
@@ -26,7 +25,7 @@ categories:
 
 ### GitLens 扩展
 
-[GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) 是 Git 增强的首选扩展：代码行尾直接显示最后修改者与提交信息，还提供提交历史图谱、文件历史、行级 blame 等功能，点击即可查看完整 diff。
+GitLens[^2] 是 Git 增强的首选扩展：代码行尾直接显示最后修改者与提交信息，还提供提交历史图谱、文件历史、行级 blame 等功能，点击即可查看完整 diff。
 
 ## Docker + Node.js 工作流
 
@@ -89,7 +88,6 @@ git push
 
 VS Code 面板适合直观管理小改动，命令行适合批量与复杂操作，两者互补。容器开发的关键是同时维护 `.gitignore` 与 `.dockerignore`，避免把依赖目录推进仓库；完整命令速查见 [Git 命令速查手册](git-commands-cheatsheet.md)。
 
-## 参考
+[^1]: [VS Code 文档 — Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview)
 
-- [GitLens — Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-- [VS Code 文档 — Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview)
+[^2]: [GitLens — Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)

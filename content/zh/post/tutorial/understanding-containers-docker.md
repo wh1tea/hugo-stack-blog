@@ -1,5 +1,6 @@
 ---
 title: 容器技术入门：从 LXC 到 Docker 再到 K8s
+slug: understanding-containers-docker
 date: 2026-07-15
 description: 从 Linux Containers 到 Docker 再到 Kubernetes，一文理清容器技术的核心概念、演进历程和适用场景。
 tags:

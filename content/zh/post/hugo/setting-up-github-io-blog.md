@@ -1,5 +1,6 @@
 ---
 title: Tutorial of Setting Up a GitHub.io Blog
+slug: setting-up-github-io-blog
 date: 2026-05-15
 description: Step-by-step guide to creating a personal blog with GitHub Pages — from repository setup to first deployment.
 tags:
@@ -7,10 +8,10 @@ tags:
   - blog
   - getting-started
 categories:
-  - devtools
+  - hugo
 ---
 
-GitHub Pages is a free static site hosting service that turns a GitHub repository into a live website. This guide walks you through creating your personal blog — no server, no database, no cost.
+GitHub Pages is a free static site hosting service that turns a GitHub repository into a live website. This guide walks you through creating your personal blog — no server, no database, no cost.[^1]
 
 ## Creating Your Repository
 
@@ -20,7 +21,7 @@ GitHub Pages is a free static site hosting service that turns a GitHub repositor
 4. Set it to **Public**.
 5. Click **Create repository**.
 
-> Your site will be live at `https://<your-username>.github.io` immediately after you push content.
+> Your site will be live at `https://<your-username>.github.io` immediately after you push content.[^2]
 
 ## Cloning to Your Local Machine
 
@@ -80,10 +81,10 @@ Within a few minutes, your site will be live at `https://<username>.github.io`.
 - Add a custom domain (Settings → Pages → Custom domain)
 - Use Markdown for blog posts with a static site generator
 - Set up GitHub Actions for automated builds
-- Enable HTTPS (automatic for GitHub Pages with custom domains)
+- Enable HTTPS (automatic for GitHub Pages with custom domains)[^3]
 
-## 参考
+[^1]: [Quickstart for GitHub Pages](https://docs.github.com/en/pages/quickstart)
 
-- [Quickstart for GitHub Pages](https://docs.github.com/en/pages/quickstart)
-- [Adding content to your GitHub Pages site using Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-content-to-your-github-pages-site-using-jekyll)
-- [Custom domains on GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+[^2]: [Adding content to your GitHub Pages site using Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-content-to-your-github-pages-site-using-jekyll)
+
+[^3]: [Custom domains on GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)

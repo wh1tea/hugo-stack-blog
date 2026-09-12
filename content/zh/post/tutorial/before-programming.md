@@ -4,35 +4,32 @@ slug: before-programming
 date: 2025-03-16
 description: 盘点我当前的开发工具链与环境：终端、WSL2、VSCode、Git、Docker 与 AI 辅助工作流，也给入门编程的新手一份开工前的地图。
 tags:
-  - tutorial
   - windows
   - wsl
   - vscode
   - git
   - ai
-  - cli
-  - docker
 categories:
   - tutorial
 ---
 
-这篇文章写两件事：一是把我的开发环境从头到尾盘点一遍，重新整理思路；二是给准备入门编程的朋友一份「开工前要装什么、为什么」的地图。读完你能知道：一台 Windows 电脑上，如何搭出一套完整、现代的开发环境。
+这篇文章写两件事：一是把我的开发环境从头到尾盘点一遍，重新整理思路；二是给准备入门编程的朋友一份「开工前要装什么、为什么」的地图。读完你能知道：一台 Windows 电脑上，如何搭出一套完整、现代的开发环境。[^1]
 
 ## 环境总览
 
 先看我目前的环境全貌（写于 2026 年 8 月）：
 
-| 层级 | 工具 | 用途 |
-| :--- | :--- | :--- |
-| 操作系统 | Windows 11 + WSL2（Ubuntu 26.04） | 日常使用 + 开发主力 |
-| 终端 | Windows Terminal + PowerShell 7 | 命令行入口 |
-| 终端美化 | Oh My Bash | |
-| | x-cmd | |
-| 编辑器 | VSCode（Cursor 备用） | 写代码 |
-| 版本控制 | Git + GitHub | 代码管理与协作 |
-| 容器 | Docker Desktop | 环境隔离 |
-| 语言运行时 | Node.js、Python、Go、JDK 21 | 写不同语言的程序 |
-| AI 辅助 | DeepSeek 网页版 + Hermes Agent（WSL2） | 问答与自动化 |
+| 层级       | 工具                                   | 用途                |
+| :--------- | :------------------------------------- | :------------------ |
+| 操作系统   | Windows 11 + WSL2（Ubuntu 26.04）      | 日常使用 + 开发主力 |
+| 终端       | Windows Terminal + PowerShell 7        | 命令行入口          |
+| 终端美化   | Oh My Bash                             |                     |
+|            | x-cmd                                  |                     |
+| 编辑器     | VSCode（Cursor 备用）                  | 写代码              |
+| 版本控制   | Git + GitHub                           | 代码管理与协作      |
+| 容器       | Docker Desktop                         | 环境隔离            |
+| 语言运行时 | Node.js、Python、Go、JDK 21            | 写不同语言的程序    |
+| AI 辅助    | DeepSeek 网页版 + Hermes Agent（WSL2） | 问答与自动化        |
 
 ## 终端：cmd、PowerShell 与包管理器
 
@@ -48,7 +45,7 @@ categories:
 
 - 官网下载安装包，一路下一步（最原始，也最易留垃圾）。
 - **Winget**：微软官方包管理器，Windows 11 自带。
-- **Scoop**：社区包管理器，装在用户目录，主打便携与干净。
+- **Scoop**：社区包管理器，装在用户目录，主打便携与干净。[^2]
 
 Winget 一条命令装完软件，还能统一升级：
 
@@ -58,7 +55,7 @@ winget install Microsoft.VisualStudioCode
 winget upgrade --all
 ```
 
-Scoop 的哲学是「便携 + 不改注册表」，装 Python、Node 这类开发工具很干净，缺点是仓库更新略慢。我目前主力是 Winget，PowerShell 7、Docker Desktop、DBeaver 等软件都靠它管理。
+Scoop 的哲学是「便携 + 不改注册表」，装 Python、Node 这类开发工具很干净，缺点是仓库更新略慢。我目前主力是 Winget，PowerShell 7、Docker Desktop、DBeaver 等软件都靠它管理。[^3]
 
 > **提示**：装软件优先用包管理器，卸载干净、版本可控，别去官网下安装包。
 
@@ -74,7 +71,7 @@ Scoop 的哲学是「便携 + 不改注册表」，装 Python、Node 这类开�
 
 从 Windows 终端输入 `wsl` 即进入 Linux。两个系统共享文件系统：Windows 的 C 盘在 WSL 里挂载为 `/mnt/c/`，D 盘是 `/mnt/d/`。
 
-我的习惯：代码和博客项目放在 Windows 侧（`D:\Projects`），用 WSL 里的工具链操作它们——编辑器用 Windows 版 VSCode 连进 WSL，构建、Git、AI 任务在 WSL 里跑。
+我的习惯：代码和博客项目放在 Windows 侧（`D:\Projects`），用 WSL 里的工具链操作它们——编辑器用 Windows 版 VSCode 连进 WSL，构建、Git、AI 任务在 WSL 里跑。[^4]
 
 ## 编辑器：VSCode 与必装插件
 
@@ -82,16 +79,16 @@ Scoop 的哲学是「便携 + 不改注册表」，装 Python、Node 这类开�
 
 必装插件按功能分组：
 
-| 分组 | 插件 |
-| :--- | :--- |
-| 中文 | Chinese Language Pack |
-| Python | Python + Pylance + Black Formatter |
-| 前端 | ESLint + Prettier |
-| Git | GitLens + Git Graph |
-| 容器 | Docker + Remote - Containers |
-| 远程 | Remote - WSL（最重要） |
-| Markdown | Markdown All in One + markdownlint |
-| 效率 | Todo Tree + Code Runner + Project Manager |
+| 分组     | 插件                                      |
+| :------- | :---------------------------------------- |
+| 中文     | Chinese Language Pack                     |
+| Python   | Python + Pylance + Black Formatter        |
+| 前端     | ESLint + Prettier                         |
+| Git      | GitLens + Git Graph                       |
+| 容器     | Docker + Remote - Containers              |
+| 远程     | Remote - WSL（最重要）                    |
+| Markdown | Markdown All in One + markdownlint        |
+| 效率     | Todo Tree + Code Runner + Project Manager |
 
 `Remote - WSL` 是核心：装上后 VSCode 直接连进 WSL 开发，插件装在 Linux 侧，写代码、跑命令、调试都是 Linux 环境，界面仍是 Windows 的。
 
@@ -152,12 +149,14 @@ hermes "检查这个项目的结构，然后按 README 规范写一篇新博客�
 - 装软件用 Winget，别去官网下安装包。
 - 环境装完立刻配好 Git 身份和 VSCode 的 Remote-WSL，其余按需补。
 
-工具只是脚手架，编程的核心永远是思路。把环境一次搭好，把精力留给代码本身。
+工具只是脚手架，编程的核心永远是思路。把环境一次搭好，把精力留给代码本身。[^5]
 
-## 参考
+[^1]: [WSL 官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/)
 
-- [WSL 官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/)
-- [Winget 官方文档](https://learn.microsoft.com/zh-cn/windows/package-manager/)
-- [VSCode 官方文档](https://code.visualstudio.com/docs)
-- [Git 官方文档](https://git-scm.com/doc)
-- [Docker 官方文档](https://docs.docker.com/)
+[^2]: [Winget 官方文档](https://learn.microsoft.com/zh-cn/windows/package-manager/)
+
+[^3]: [Docker 官方文档](https://docs.docker.com/)
+
+[^4]: [VSCode 官方文档](https://code.visualstudio.com/docs)
+
+[^5]: [Git 官方文档](https://git-scm.com/doc)

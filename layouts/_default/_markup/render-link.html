@@ -1,7 +1,43 @@
+{{- /* 链接渲染钩子（覆盖主题默认实现）：
+       站内相对链接先解析成目标页面，再输出该页面的 RelPermalink —— 它自带 baseURL 子路径，
+       本地 `hugo server` 与线上都正确。解析顺序（逐级兜底）：
+       ① .PageInner.GetPage       页面相对：xxx.md、../topic/yyy.md
+       ② path.Join 当前页文件目录 + site.GetPage
+                                  leaf bundle（xxx/index.md）靠这步解析 ../topic/yyy.md
+       ③ 文件名兜底                 只写「文件名」/「文件夹名」也能命中（与 Obsidian 的按文件名解析一致）；
+                                  用 .File.ContentBaseName：普通文章=文件名，leaf bundle=所在文件夹名
+       全部失败（链接写错、指向静态文件、指向 bundle 内的资源文件等）时保持原样输出。
+       注意别用 site.AllPages（0.156 起弃用），也不要在钩子里调 urls.Parse：
+       内容里的畸形 autolink（如 <http://localhost:1313，中文>）会让它直接中断整站构建。
+       历史 bug（已修）：原来写的是 strings.TrimSuffix $href ".md"，而 Hugo 的签名是
+       strings.TrimSuffix SUFFIX STRING（后缀在前）—— 参数写反会静默返回 ".md"，全站站内链接变死链。 */ -}}
 {{- $href := .Destination -}}
-{{- if and (strings.HasSuffix $href ".md") (not (strings.HasPrefix $href "http")) (not (strings.HasPrefix $href "#")) (not (strings.HasPrefix $href "mailto:")) -}}
-    {{- $href = strings.TrimSuffix $href ".md" -}}
+{{- $isExternal := or (strings.HasPrefix $href "http") (strings.HasPrefix $href "mailto:") (strings.HasPrefix $href "#") -}}
+{{- if not $isExternal -}}
+    {{- $path := strings.TrimSuffix ".md" (strings.TrimPrefix "./" $href) -}}
+    {{- $target := .PageInner.GetPage $path -}}
+    {{- with .PageInner.File -}}
+        {{- if not $target -}}
+            {{- $target = site.GetPage (path.Join .Dir $path) -}}
+        {{- end -}}
+    {{- end -}}
+    {{- if not $target -}}
+        {{- $name := path.Base $path -}}
+        {{- range site.RegularPages -}}
+            {{- if not $target -}}
+                {{- $page := . -}}
+                {{- with .File -}}
+                    {{- if eq .ContentBaseName $name -}}
+                        {{- $target = $page -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+    {{- with $target -}}
+        {{- $href = .RelPermalink -}}
+    {{- end -}}
 {{- end -}}
 <a class="link" href="{{ $href | safeURL }}" {{ with .Title}} title="{{ . }}"
-    {{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"
+    {{ end }}{{ if strings.HasPrefix $href "http" }} target="_blank" rel="noopener"
     {{ end }}>{{ .Text | safeHTML }}</a>

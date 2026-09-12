@@ -9,10 +9,8 @@ tags:
   - oh-my-posh
   - oh-my-bash
   - conda
-  - prompt
-  - windows
 categories:
-  - oh-my-posh
+  - windows
 ---
 
 终端提示符是开发者每天面对最多的界面元素。一个好的提示符不仅能展示 Git 分支、Python 虚拟环境等关键信息，还能提升工作效率。
@@ -20,7 +18,7 @@ categories:
 本文解决两个场景的问题：
 
 - **Windows / WSL 用户**：使用 Oh My Posh 主题，让提示符显示当前 Conda 环境名（如 `(py_env)`），并避免与 Conda 自带提示重复。
-- **Linux / macOS 用户**：在 Oh My Bash 中挑选合适的主题，以及如何恢复默认提示符。
+- **Linux / macOS 用户**：在 Oh My Bash 中挑选合适的主题，以及如何恢复默认提示符。[^1]
 
 读完本文后，你将能根据自己的终端环境完成配置，并理解故障排查的基本思路。
 
@@ -61,16 +59,16 @@ Oh My Posh 的 Dracula 主题默认不显示 Conda 环境名。核心解决思�
 
 **配置项说明**：
 
-| 字段                                 | 说明                                                |
-| :----------------------------------- | :-------------------------------------------------- |
-| `"type": "python"`                   | 告诉 Oh My Posh 这是一个 Python 相关的段            |
-| `"style": "plain"`                   | 纯文本样式，与 Dracula 主题风格融合                 |
-| `"foreground": "#98C379"`            | 柔和绿色，与 Dracula 主题搭配                       |
-| `"display_mode": "environment"`      | **核心设置**，显示环境名而非 Python 版本            |
-| `"display_virtual_env": true`        | 启用虚拟环境名显示（Conda 环境也属于此类）          |
-| `"display_version": false`           | 隐藏 Python 版本号，避免与环境名重复                |
-| `"home_enabled": true`               | 确保在用户主目录下也能显示                          |
-| `"prefix": "("` 和 `"postfix": ") "` | 控制显示格式，如 `(py_env)`                         |
+| 字段                                 | 说明                                       |
+| :----------------------------------- | :----------------------------------------- |
+| `"type": "python"`                   | 告诉 Oh My Posh 这是一个 Python 相关的段   |
+| `"style": "plain"`                   | 纯文本样式，与 Dracula 主题风格融合        |
+| `"foreground": "#98C379"`            | 柔和绿色，与 Dracula 主题搭配              |
+| `"display_mode": "environment"`      | **核心设置**，显示环境名而非 Python 版本   |
+| `"display_virtual_env": true`        | 启用虚拟环境名显示（Conda 环境也属于此类） |
+| `"display_version": false`           | 隐藏 Python 版本号，避免与环境名重复       |
+| `"home_enabled": true`               | 确保在用户主目录下也能显示                 |
+| `"prefix": "("` 和 `"postfix": ") "` | 控制显示格式，如 `(py_env)`                |
 
 保存文件后，**重启终端**（PowerShell 或 Windows Terminal）即可生效。
 
@@ -82,7 +80,7 @@ Oh My Posh 的 Dracula 主题默认不显示 Conda 环境名。核心解决思�
 2. **确认 Conda 已初始化**：确保在 PowerShell 中能正常执行 `conda activate <环境名>`。
 3. **检查主题文件路径**：确认 PowerShell 配置文件（`$PROFILE`）中 `oh-my-posh init ... --config` 命令指向的是修改后的 `dracula.omp.json`。
 4. **检查 Conda 设置**：运行 `conda config --show changeps1`，确保值为 `False`。如果不是，执行 `conda config --set changeps1 False` 关闭 Conda 自带的提示符修改。
-5. **备选配置**：如果上述配置无效，可尝试以下简化方案：
+5. **备选配置**：如果上述配置无效，可尝试以下简化方案：[^2]
 
 ```json
 {
@@ -111,7 +109,7 @@ Oh My Posh 的 Dracula 主题默认不显示 Conda 环境名。核心解决思�
 
 ## Oh My Bash：主题推荐与切换
 
-Oh My Bash 内置了超过 100 款主题，从极简到华丽，选择丰富。
+Oh My Bash 内置了超过 100 款主题，从极简到华丽，选择丰富。[^3]
 
 ### 热门主题推荐
 
@@ -205,10 +203,8 @@ uninstall_oh_my_bash
 
 **行动建议**：先备份配置文件再动手修改；遇到问题优先运行 `oh-my-posh debug` 或检查 `$PROFILE` 加载顺序；主题选择以实用为主，不必追求过度复杂。
 
----
+[^1]: [Oh My Posh 官方文档](https://ohmyposh.dev/docs)
 
-## 参考
+[^2]: [Conda 官方文档 — 提示符配置](https://docs.conda.io/en/latest/)
 
-- [Oh My Posh 官方文档](https://ohmyposh.dev/docs)
-- [Oh My Bash 官方仓库](https://github.com/ohmybash/oh-my-bash)
-- [Conda 官方文档 — 提示符配置](https://docs.conda.io/en/latest/)
+[^3]: [Oh My Bash 官方仓库](https://github.com/ohmybash/oh-my-bash)

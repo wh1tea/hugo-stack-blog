@@ -13,7 +13,7 @@ categories:
   - devtools
 ---
 
-在日常前端开发中，重复书写完整的 HTML 标签结构或 CSS 属性是一件既耗时又容易出错的事。Emmet 插件通过简写语法极大地加速了这一过程，而 VS Code 内置的 Emmet 功能更将体验提升了一个台阶。
+在日常前端开发中，重复书写完整的 HTML 标签结构或 CSS 属性是一件既耗时又容易出错的事。Emmet 插件通过简写语法极大地加速了这一过程，而 VS Code 内置的 Emmet 功能更将体验提升了一个台阶。[^1]
 
 本文将聚焦于 Emmet 的一项核心设置——**Trigger Expansion On Tab**。你会了解它的作用、使用方法，以及当按下 Tab 键无效时如何快速排查并修复。
 
@@ -21,7 +21,7 @@ categories:
 
 ## 一、什么是 Trigger Expansion On Tab
 
-`Trigger Expansion On Tab` 是 VS Code 中 Emmet 扩展的一个开关选项。当它开启时，你可以在编辑器中输入 Emmet 简写（例如 `!` 或 `div.container`），然后**直接按下 Tab 键**，VS Code 会自动将简写展开为完整的 HTML 或 CSS 代码结构。
+`Trigger Expansion On Tab` 是 VS Code 中 Emmet 扩展的一个开关选项。当它开启时，你可以在编辑器中输入 Emmet 简写（例如 `!` 或 `div.container`），然后**直接按下 Tab 键**，VS Code 会自动将简写展开为完整的 HTML 或 CSS 代码结构。[^2]
 
 这个功能的核心价值在于：**将“输入简写 + 选择补全”的两步操作简化为“输入简写 + Tab”的一键展开**，让编码节奏更加流畅。
 
@@ -62,7 +62,7 @@ categories:
 实际上，VS Code 的处理顺序是：
 
 - 如果有**当前选中的建议项**（即智能提示列表高亮），按 `Tab` 会首先采纳该建议。
-- 如果**没有活动建议**，且当前光标前的内容匹配 Emmet 简写语法，则触发 Emmet 展开。
+- 如果**没有活动建议**，且当前光标前的内容匹配 Emmet 简写语法，则触发 Emmet 展开。[^3]
 
 因此，当你想使用 Emmet 时，确保没有打开的建议列表（可以按 `Esc` 关闭），然后按 `Tab` 即可。
 
@@ -111,8 +111,8 @@ categories:
 
 现在，打开 VS Code，尝试输入 `!` 然后按 `Tab`，感受一下 0.1 秒生成完整页面骨架的爽快吧。
 
-## 参考
+[^1]: [VS Code 官方文档 — Emmet](https://code.visualstudio.com/docs/editor/emmet) —— 全面介绍 VS Code 中 Emmet 的集成与配置
 
-- [VS Code 官方文档 — Emmet](https://code.visualstudio.com/docs/editor/emmet) —— 全面介绍 VS Code 中 Emmet 的集成与配置
-- [Emmet 官方文档 — Cheat Sheet](https://docs.emmet.io/cheat-sheet/) —— 完整的简写语法速查表
-- [VS Code 设置 — Emmet 配置项列表](https://code.visualstudio.com/docs/getstarted/settings#_emmet) —— 所有与 Emmet 相关的可调参数
+[^2]: [VS Code 设置 — Emmet 配置项列表](https://code.visualstudio.com/docs/getstarted/settings#_emmet) —— 所有与 Emmet 相关的可调参数
+
+[^3]: [Emmet 官方文档 — Cheat Sheet](https://docs.emmet.io/cheat-sheet/) —— 完整的简写语法速查表
