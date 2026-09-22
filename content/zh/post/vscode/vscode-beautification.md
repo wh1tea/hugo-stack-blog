@@ -5,10 +5,10 @@ date: 2025-09-12T21:30:00+08:00
 description: VS Code 主题与字体设置：主题列表的打开方式、常用主题对比、编辑器与终端字体和连字的配置写法
 tags:
   - vscode
-  - fonts
+  - font
   - configuration
 categories:
-  - devtools
+  - devtool
 ---
 
 VS Code 默认的配色和字体未必适合长时间编码。本文用最少的步骤把主题、字体和连字配置好，读完能直接套用到自己的编辑器上。

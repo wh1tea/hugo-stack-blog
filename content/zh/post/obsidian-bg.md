@@ -7,7 +7,7 @@ tags:
   - beautify
   - obsidian
 categories:
-  - devtools
+  - devtool
 ---
 
 本文提供一种纯插件方案，无需编辑 CSS，即可为编辑器添加背景图。

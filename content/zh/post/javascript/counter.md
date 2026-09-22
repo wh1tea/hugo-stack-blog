@@ -1,5 +1,5 @@
 ---
-title: 从零实现计数器：一个前端小项目的完整迭代之路
+title: 从零实现计数器
 slug: counter
 date: 2026-09-01T10:00:00+08:00
 description: 从空白文件开始，用四次迭代构建一个带正负变色与本地存储的计数器，再检验你对 HTML、CSS、JavaScript 的真实掌握。

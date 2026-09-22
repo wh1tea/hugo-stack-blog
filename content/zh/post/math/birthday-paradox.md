@@ -8,9 +8,8 @@ tags:
   - combinatorics
   - python
 categories:
-  - tutorial
+  - math
 math: true
-draft: true
 ---
 
 一群人里至少有两人生日相同，需要多少人？直觉常答 183（365 的一半），正确答案是 23。本文说明这个反直觉结论怎么来的，给出可复算的推导与代码，读完能自己验证任意人数下的概率。

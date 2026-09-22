@@ -1,12 +1,17 @@
+# Hugo
 /public/
 /resources/
 .hugo_build.lock
+
+# System
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Generated
 assets/jsconfig.json
 
-# local
+# Local dev
 _devlog/
 
 # Obsidian
@@ -14,14 +19,16 @@ _devlog/
 .obsidianignore
 .bg
 
-# frontmatter
+# Front Matter
 .frontmatter/
 frontmatter.json
 
-.vscode
+# Editor
+.vscode/
 
-#Private (local private system, never committed)
-content/private/
-config/_default/menu.private.toml
+# Private (never committed)
+/content/private/
+/config/_default/menu.private.toml
 
+# PDFs
 *.pdf

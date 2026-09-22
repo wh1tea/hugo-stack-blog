@@ -4,7 +4,7 @@ slug: python-decorators-deep-dive
 date: 2026-04-20
 description: 深入理解 Python 装饰器的核心原理与常见应用场景，涵盖带参数装饰器、functools.wraps 用法及实际开发中的最佳实践。
 tags:
-  - decorators
+  - decorator
   - advanced
 categories:
   - python

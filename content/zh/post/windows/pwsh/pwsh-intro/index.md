@@ -60,7 +60,7 @@ oh-my-posh 是当前最流行的 PowerShell 提示符美化工具，可以显示
 oh-my-posh init pwsh --config 'dracula' | Invoke-Expression
 ```
 
-**做了什么**：让 oh-my-posh 用指定的主题文件（`dracula`）初始化提示符。你可以换成其他主题文件，或者用 `oh-my-posh init pwsh | Invoke-Expression` 使用默认主题。`dracula`不支持`conda`补丁版教程见[此处](......\ohmyposh\terminal-theme-conda-prompt.md)
+**做了什么**：让 oh-my-posh 用指定的主题文件（`dracula`）初始化提示符。你可以换成其他主题文件，或者用 `oh-my-posh init pwsh | Invoke-Expression` 使用默认主题。`dracula`不支持`conda`补丁版教程见[此处](..\..\..\ohmyposh\terminal-theme-conda-prompt.md)
 
 ### 2. conda 兼容性修复（关键）
 

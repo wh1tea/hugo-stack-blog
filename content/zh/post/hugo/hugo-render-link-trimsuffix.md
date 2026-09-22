@@ -4,7 +4,7 @@ slug: hugo-render-link-trimsuffix
 date: 2026-09-11T22:22:00+08:00
 description: 一个函数参数顺序写反，全站站内链接变成 href=.md 死链，构建却零报错。记录定位、修复与验证方法。
 tags:
-  - templates
+  - template
   - troubleshooting
 categories:
   - hugo

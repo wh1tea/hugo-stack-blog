@@ -5,7 +5,7 @@ date: 2026-07-24
 description: 详细讲解网页中引用 Google Fonts 的代码含义、开源字体查找方法及更换样式的完整步骤，适合前端开发者参考。
 tags:
   - google-fonts
-  - fonts
+  - font
   - css
   - tutorial
 categories:

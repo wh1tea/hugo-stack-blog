@@ -5,10 +5,9 @@ date: 2026-08-16T16:00:00+00:00
 description: Leaf Bundle 的含义、与 Branch Bundle 的区别、资源打包优势，以及它在文件查找上的取舍
 tags:
   - hugo
-  - templates
+  - template
 categories:
   - hugo
-draft: true
 ---
 
 Leaf Bundle 不是一个通用术语，含义取决于上下文。目前最广为人知的定义来自静态网站生成器 Hugo；在游戏开发框架等领域也有出现。本文只讲 Hugo 语境下的 Leaf Bundle。

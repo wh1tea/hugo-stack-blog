@@ -9,7 +9,7 @@ tags:
   - configuration
   - troubleshooting
 categories:
-  - devtools
+  - devtool
 ---
 
 ## Bracket Pair

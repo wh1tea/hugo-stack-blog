@@ -60,8 +60,6 @@ npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMExcep
 
 结论：**不影响任何功能，直接忽略**。等 dsh 依赖链更新后，警告会自然消失。
 
----
-
 [^1]: [deepseek-harness GitHub 仓库](https://github.com/deepseek-ai/deepseek-harness)
 
 [^2]: [Node.js v17.0.0 发布说明（原生 DOMException）](https://nodejs.org/en/blog/release/v17.0.0)

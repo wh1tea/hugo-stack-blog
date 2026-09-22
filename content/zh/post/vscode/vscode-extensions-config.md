@@ -5,12 +5,12 @@ date: 2025-07-15
 description: 完整收录了我当前 82 个 VS Code 插件配置，按功能分类逐一说明用途，并对冗余、冲突、废弃的插件给出改进建议和清理方案。
 tags:
   - configuration
-  - extensions
+  - extension
   - ide
   - productivity
   - vscode
 categories:
-  - devtools
+  - devtool
 ---
 
 > VS Code 的插件生态是其最大优势，但安装过多后容易积累冗余和冲突。本文整理了当前环境下的 82 个插件，按功能分组说明，并给出精简建议。
@@ -276,8 +276,6 @@ categories:
 82 个插件覆盖了 Python、Java/Spring、C/C++、Dart/Flutter、前端、数据库、容器、文档、Git 等主流开发场景，工具链完整且无明显冲突。通过移除重复、被取代以及非常用插件，可有效减轻插件管理负担。
 
 建议利用 VS Code 的 Profiles 功能[^4] 按项目类型创建不同插件集合（如“Python 开发”、“Java 后端”、“通用写作”），按需切换，避免所有插件在所有场景下同时激活。[^5]
-
----
 
 [^1]: [VS Code Extension Marketplace](https://marketplace.visualstudio.com/vscode)
 
