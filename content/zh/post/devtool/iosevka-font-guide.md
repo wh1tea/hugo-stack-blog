@@ -11,7 +11,6 @@ tags:
 categories:
   - devtool
 ---
-
 Iosevka 是少数可以自行定制字形的编程字体，Nerd Font 版本则补齐了终端图标。本文在 Windows 上从 Nerd Fonts 官方 release 安装它，重点解决一个容易被忽略的环节：**这个字体的族名和你想的不一样**，填错会静默回退。字体选型的一般方法见 [编程字体怎么选：从等宽到 Maple Mono](programming-font-choosing.md)。
 
 ## 选哪两个文件

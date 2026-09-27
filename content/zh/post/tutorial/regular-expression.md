@@ -228,6 +228,7 @@ chinese = re.findall(r'[\u4e00-\u9fa5]+', 'Hello 你好 World')
 
 - **在线测试**：regex101.com[^4] —— 支持多语言风格，显示匹配详情和解释。
 - **可视化**：regexper.com[^5] —— 将正则转为铁路图，直观理解结构。
+- **首屈一指的正则表达式网站**：regular-expressions.info[^6]
 - **命令行**：`grep -E`、`sed -E`、`awk` 是练习正则的好环境。
 
 ---
@@ -255,3 +256,6 @@ chinese = re.findall(r'[\u4e00-\u9fa5]+', 'Hello 你好 World')
 [^4]: [regex101 在线测试](https://regex101.com)
 
 [^5]: [正则表达式可视化工具](https://regexper.com)
+
+[^6]: [正则表达式](https://www.regular-expressions.info/)
+

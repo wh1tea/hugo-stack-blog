@@ -6,3 +6,9 @@
 
     [social.params]
         icon = "brand-github"
+[[social]]
+    identifier = "codepen"
+    name       = "CodePen"
+    url        = "https://codepen.io/wh1tea"
+    [social.params]
+        icon = "brand-codepen"

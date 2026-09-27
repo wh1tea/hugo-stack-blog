@@ -169,7 +169,7 @@ categories:
 为了让产品更专业，做两项优化：
 
 1. **键盘支持**：输入框按 `Enter` 触发提交。
-2. **无障碍实时反馈**：使用 `<output>` 替代 `<p>` 作为结果显示容器，替代冗余的 `aria-live` 和 `role`。规范指出，`<output>` 默认具有 `aria-live="polite"` 语义，且无需额外角色声明。
+2. **无障碍实时反馈**：使用 `<output>` 替代 `<p>` 作为结果显示容器，替代冗余的 `aria-live` 和 `role`。规范指出，`<output>` 默认具有 `aria-live="polite"` 语义，且无需额外角色声明。[^1]
 
 修改 HTML 结构（关键行）：
 
@@ -201,3 +201,5 @@ guessInput.addEventListener("keydown", (event) => {
 回顾整个开发过程，我们并非一次成型，而是通过 **“界面搭建 → 逻辑验证 → 状态闭环 → 体验优化”** 的节奏逐步推进。这种“最小可行产品”（MVP）的迭代思路同样适用于任何复杂项目：先跑通核心流程，再横向扩展功能，最后纵向打磨细节。
 
 **行动建议**：将此代码保存为本地 `.html` 文件，亲手在浏览器中打开，按 `F12` 调试逐行理解。然后尝试为其增加难度选择（如 1~1000）、计分板或暗色模式——那将是你迈向下一个台阶的起点。
+
+[^1]: [WAI-ARIA Roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles)

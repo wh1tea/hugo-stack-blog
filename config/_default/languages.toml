@@ -6,12 +6,12 @@
 [zh]
     weight     = 1
     label      = "简体中文"
-    title      = "白茶木的博客"
+    title      = "Wh1tea's Blog"
     contentDir = "content/zh"
     locale     = "zh-cn"
 
     [zh.params.sidebar]
-        subtitle = "知行合一"
+        subtitle = "Think · Write · Share"
 
     [zh.params.article.license]
         default = "本作品采用 CC BY-NC-SA 4.0 许可协议"
@@ -29,9 +29,9 @@
 [private]
     weight     = 3
     label      = "Private"
-    title      = "Outgoing late stage depression patients"
+    title      = "Wh1tea's Blog"
     contentDir = "content/private"
     locale     = "zh-cn"
 
     [private.params.sidebar]
-        subtitle = "Remember to go out and take dog for a walk"
+        subtitle = "hi~ヾ(≧▽≦*)o"
