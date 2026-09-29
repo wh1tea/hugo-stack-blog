@@ -19,7 +19,7 @@ SortBy              = "default"
 
 [sidebar]
     emoji    = ""
-    subtitle = "Code · Blog · Life" # 各语言可单独覆盖，见 languages.toml
+    subtitle = "Code · Blog · Love" # 各语言可单独覆盖，见 languages.toml
     avatar   = "img/higan-chan.webp"
 
 [article]

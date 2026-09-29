@@ -2,7 +2,7 @@
 title: HTTP 4xx 状态码排查指南：403、404、405、429
 slug: http-4xx-error
 date: 2026-05-19T09:39:19+00:00
-description: 在开发与运维中，HTTP 4xx 状态码是最常遇到的错误类型。本文系统讲解 403 Forbidden、404 Not Found、405 Method Not Allowed 和 429 Too Many Requests 的含义、常见原因与排查方法，帮助开发者快速定位问题。
+description: 本文系统讲解 403 Forbidden、404 Not Found、405 Method Not Allowed 和 429 Too Many Requests 的含义、常见原因与排查方法，帮助开发者快速定位问题。
 tags:
   - http
   - troubleshooting
@@ -12,7 +12,7 @@ categories:
 
 ## 引言
 
-HTTP 状态码中的 4xx 类别表示客户端错误——服务器理解了请求，但因客户端的某种原因无法完成处理。与 5xx 服务端错误不同，4xx 错误通常需要从客户端或配置层面解决。
+在开发与运维中，HTTP 4xx 状态码是最常遇到的错误类型。HTTP 状态码中的 4xx 类别表示客户端错误——服务器理解了请求，但因客户端的某种原因无法完成处理。与 5xx 服务端错误不同，4xx 错误通常需要从客户端或配置层面解决。
 
 本文聚焦四个最常见的 4xx 状态码：
 

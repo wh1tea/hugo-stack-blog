@@ -9,7 +9,7 @@ tags:
   - gaming
   - web
 categories:
-  - tutorial
+  - web
 ---
 
 这是一个从零开始用纯前端技术构建像素风小球对战游戏的系列教程。

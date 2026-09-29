@@ -11,7 +11,7 @@
     locale     = "zh-cn"
 
     [zh.params.sidebar]
-        subtitle = "Think · Write · Share"
+        subtitle = "Salary-Oriented Programming"
 
     [zh.params.article.license]
         default = "本作品采用 CC BY-NC-SA 4.0 许可协议"
@@ -24,7 +24,7 @@
     locale     = "en-us"
 
     [en.params.sidebar]
-        subtitle = "Code · Blog · Life"
+        subtitle = "Memento mori"
 
 [private]
     weight     = 3
