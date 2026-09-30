@@ -1,8 +1,8 @@
 ---
 title: Hugo 构建失败排查：跳过不该解析的文件
 slug: hugo-ignore-content-files
-date: 2026-09-11T21:52:00+08:00
-description: 一个 Obsidian 模板文件让整站构建中断。从报错定位到 mounts 配置的完整排查过程，附官方文档、实测结论与自证方法。
+date: 2026-09-12
+description: " Obsidian 模板文件让整站构建中断。从报错定位到 mounts 配置的完整排查过程，附官方文档、实测结论与自证方法。"
 tags:
   - obsidian
   - configuration
@@ -16,7 +16,7 @@ draft: false
 
 这篇文章完整记录排查过程：先看懂报错，再依次排除三个不奏效的修法，最后用挂载层面的 `files` 过滤解决，并给出可复现的验证方法。中途还撞上一个官方文档没写清的坑——否定前缀是「感叹号 + 一个空格」，写错会让内容**静默消失**。
 
-> 实测环境：Hugo 0.164 extended + Stack v4 主题 + GitHub Pages 部署，命令在 WSL 下执行。
+> 环境：Hugo 0.164 extended + Stack v4 主题 + GitHub Pages 部署。
 
 ## 先给结论
 
@@ -24,7 +24,7 @@ draft: false
 - 三个反直觉点：`draft: true` 救不了（解析在前）；顶层 `ignoreFiles` 也救不了（实测对 `content` 无效）；改名加 `_` 前缀同样无效（实测）。
 - 正解：在 `config/_default/module.toml` 里给**每个语言**写显式 `[[mounts]]`，在包含该目录的那条挂载上写 `files = ["! templates/**"]`——感叹号后必须有一个空格，写错会让那个语言的内容静默消失。
 
-只想要配置的可以直接跳到[正解：mounts + files](#正解mounts--files)；想把排查思路走一遍、尤其是学会“怎么自证改动有效”，按顺序往下读。
+只要配置的直接看下面[「正解」](#正解mounts--files)一节。
 
 ## 现象：一个文件搞崩整站
 

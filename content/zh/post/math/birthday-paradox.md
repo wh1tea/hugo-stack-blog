@@ -1,7 +1,7 @@
 ---
 title: 生日悖论：为什么 23 人就够
 slug: birthday-paradox
-date: 2026-09-12
+date: 2026-09-13
 description: 解释生日悖论：23 人里存在两人生日相同的概率已过半，附组合数推导与 Python 验证，纠正「比直觉小得多」的误解
 tags:
   - probability

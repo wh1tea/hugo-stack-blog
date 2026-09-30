@@ -1,15 +1,19 @@
 ---
-title: 友链
+title: 链接
 slug: links
 links:
   - title: GitHub
-    description: 我的 GitHub 主页
-    website: https://github.com/wh1tea
-    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+    description: GitHub is the world's largest software development platform.
+    website: https://github.com
+    image: https://proicons.com/icon/11265.svg
   - title: Codepen
-    description: 我的 Codepen 主页
-    website: https://codepen.io/wh1tea/
-    image: https://blog.codepen.io/wp-content/uploads/2023/09/logo-black.png
+    description: A social development environment for front-end designers and developers.
+    website: https://codepen.io/
+    image: https://proicons.com/icon/11215.svg
+  - title: TypeScript
+    description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+    website: https://www.typescriptlang.org
+    image: https://proicons.com/icon/11412.svg
 menu:
   main:
     weight: 4
@@ -18,12 +22,16 @@ menu:
 comments: false
 ---
 
-欢迎交换友链：在本文 frontmatter 的 `links` 中追加即可。
+要使用此功能，在本文 frontmatter 的 `links` 中追加即可。
+
+这是页面的 frontmatter:
 
 ```yaml
 links:
-  - title: 站点名
-    description: 一句话介绍
-    website: https://example.com
-    image: https://example.com/logo.png
+  - title: GitHub
+    description: GitHub is the world's largest software development platform.
+    website: https://github.com
+    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
 ```
+
+`image`既接受本地图像，也接受外部图像。

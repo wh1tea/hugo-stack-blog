@@ -1,7 +1,7 @@
 ---
 title: hermes update 又卡住：全量历史追赶与残留 tmp_pack
 slug: hermes-update-slow-fetch
-date: 2026-08-29T03:09:44+08:00
+date: 2026-08-30
 description: hermes update 卡在 Fetching updates 无报错：上游历史重写导致每次要下载 600MB 全量 pack，慢代理下被超时中断，残留 tmp_pack 越积越多，附后台重跑解法。
 tags:
   - hermes

@@ -1,7 +1,7 @@
 ---
 title: 从「PERSONA_LOAD」到AI人格工程：一段提示词背后的技术解剖
 slug: persona-load-prompt-engineering
-date: 2026-09-01T16:00:00+08:00
+date: 2026-08-31
 description: 从一个看似中二的「PERSONA_LOAD」提示词出发，反向拆解AI人格设定的技术原理：系统提示词包装器、注意力机制偏置、角色提示与提示词注入。
 tags:
   - prompt-engineering
