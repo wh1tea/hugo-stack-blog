@@ -14,7 +14,7 @@ categories:
 draft: true
 ---
 
-> dsh 每隔几秒弹一次「模型重试 / 重试延迟：8587 毫秒 / 失败原因：DeepSeek Messages transport failed」。官方状态页正常、ping 通、API Key 和余额都没问题。真正的原因是 **Node 的原生 fetch 不读 Windows 的系统代理设置**，dsh 一直在直连一个本机已经不可达的接口。下面记录定位过程、三行修复，以及为什么以前不用设也能用。
+> dsh 每隔几秒弹一次「模型重试 / 重试延迟：8587 毫秒 / 失败原因：DeepSeek Messages transport failed」。官方状态页正常、ping 通、API Key 和余额都没问题。真正的原因是 **Node 的原生 fetch 不读 Windows 的系统代理设置**，dsh 一直在直连一个当时不可达的接口；那个接口为什么不可达，是后来才查出来的路径 MTU 黑洞。下面记录定位过程、三行修复，以及为什么以前不用设也能用。
 
 ## 报错本身没给出原因
 
@@ -43,7 +43,7 @@ throw new LlmError("DeepSeek Messages transport failed", "TRANSPORT", { cause: e
 
 Windows 的「系统代理」（设置 → 网络和 Internet → 代理）只对**读这个设置的程序**生效，例如浏览器和 .NET/WinINET。Node 的原生 `fetch` 不在其中，它默认直连。
 
-本机上 Clash 正开着系统代理 `127.0.0.1:7897`，浏览器和 `Invoke-WebRequest` 都走它；dsh 跑在 Node 里，**把系统代理整个跳过了**。而本机现在直连 `api.deepseek.com` 是不通的：
+本机上 Clash 正开着系统代理 `127.0.0.1:7897`，浏览器和 `Invoke-WebRequest` 都走它；dsh 跑在 Node 里，**把系统代理整个跳过了**。而当时本机直连 `api.deepseek.com` 是不通的（不可达的原因见后面「为什么以前直接 npx 就能用」）：
 
 | 方式                         | 结果                                  |
 | :--------------------------- | :------------------------------------ |
@@ -51,7 +51,7 @@ Windows 的「系统代理」（设置 → 网络和 Internet → 代理）只�
 | 走 Clash `127.0.0.1:7897`    | `http=401`，TLS 0.32 秒、总计 0.89 秒 |
 | Node 直连                    | `TimeoutError`，与 dsh 的报错一一对应 |
 
-`401` 是没带 API Key 的正常响应——能拿到 401 就说明链路是通的。链路本身没问题，问题只是**走了哪条路**。
+`401` 是没带 API Key 的正常响应——能拿到 401 就说明这条路是通的。问题不在 DeepSeek 服务，也不在 API Key，只在**走了哪条路**。
 
 ## 修复：把代理显式告诉 Node
 
@@ -80,23 +80,23 @@ node -e 'fetch("https://api.deepseek.com",{method:"HEAD",signal:AbortSignal.time
 
 ## 为什么以前直接 npx 就能用
 
-同一台机器、同一条命令，以前不需要设这些变量。有两种解释，两条命令就能分清。
+同一台机器、同一条命令，以前不需要设这些变量。当时留了两种解释，现在能定论：**直连确实不通，但原因不是运营商路由波动，而是路径 MTU 黑洞**。
 
-**① 以前 Clash 开的是 TUN 模式。** TUN 会建虚拟网卡、接管**所有**流量，Node 不读环境变量也会被代理。后来切回「系统代理」模式，Node 就被漏掉了。这是最常见的情况。
+**① TUN 模式（排除）。** TUN 会建虚拟网卡、接管**所有**流量，Node 不读环境变量也会被代理；切回「系统代理」模式后 Node 才被漏掉。本次排查里虚拟网卡不存在：
 
 ```powershell
 Get-NetAdapter | Where-Object { $_.InterfaceDescription -match 'TUN|Wintun|Mihomo|Clash' }
 # 有虚拟网卡 = TUN 模式；只剩 Disconnected 的第三方 TAP = 没开
 ```
 
-**② 以前直连还能通。** 直连是否可达取决于运营商路由与目标 IP，会变。
+**② 直连不可达（成立，原因已查明）。** 当时 `curl --noproxy '*'` 返回 `000`，判断成「直连是否可达取决于运营商路由与目标 IP，会变」。实际原因是那条线路的**路径 MTU 黑洞**：服务器一发大包（TLS 证书）就被丢，握手永远完不成，HTTPS 自然连不上——`ping` 只有几十字节，照样 0 丢包。
 
 ```powershell
 curl.exe -4 -s -o NUL --max-time 10 --noproxy '*' -w '%{http_code}' https://api.deepseek.com
-# 000 = 直连不通，必须走代理；200/401 = 直连通，那问题在别处
+# 修复前 000；MTU 降到 1280 后 401、0.12 秒
 ```
 
-本次排查中，①的虚拟网卡不存在、②返回 `000`，所以当时的情形是「只有系统代理，且直连已不可达」。
+那一刻「必须走代理」是这条路径故障造成的，不是 Node 的固有限制，也不该归咎于运营商路由变化。故障的现象、判别方法与一个自动给出结论的脚本见 [MTU blackhole troubleshooting](../network/mtu-blackhole-troubleshooting/index.md)。
 
 ## 怎么快速确认修好了
 
@@ -110,6 +110,6 @@ curl.exe -4 -s -o NUL --max-time 10 --noproxy '*' -w '%{http_code}' https://api.
 
 ## 小结
 
-`DeepSeek Messages transport failed` 只是兜底文案，真正要查的是这台机器到 `api.deepseek.com` 的实际 HTTP 链路。在 Windows 上，`ping` 通、状态页正常、系统代理开着——这三件事都不足以说明 Node 程序能连上，因为它压根不读系统代理。给 Node 显式设置 `HTTP_PROXY` / `HTTPS_PROXY` 并打开 `NODE_USE_ENV_PROXY`，问题即解。
+`DeepSeek Messages transport failed` 只是兜底文案，真正要查的是这台机器到 `api.deepseek.com` 的实际 HTTP 链路。`ping` 通、状态页正常、系统代理开着，这三件事都不足以说明 Node 程序能连上，因为它压根不读系统代理。给 Node 显式设置 `HTTP_PROXY` / `HTTPS_PROXY` 并打开 `NODE_USE_ENV_PROXY`，问题即解；但先分清是「路线选错」还是「路本身坏了」——本例里两条同时成立，后者是后来才查出的 MTU 黑洞。
 
 [^1]: [Node.js CLI 文档：--use-env-proxy](https://nodejs.org/api/cli.html)

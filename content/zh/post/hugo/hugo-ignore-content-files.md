@@ -2,7 +2,7 @@
 title: Hugo 构建失败排查：跳过不该解析的文件
 slug: hugo-ignore-content-files
 date: 2026-09-12
-description: " Obsidian 模板文件让整站构建中断。从报错定位到 mounts 配置的完整排查过程，附官方文档、实测结论与自证方法。"
+description:  Obsidian 模板文件让整站构建中断。从报错定位到 mounts 配置的完整排查过程，附官方文档、实测结论与自证方法。
 tags:
   - obsidian
   - configuration

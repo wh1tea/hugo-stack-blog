@@ -9,7 +9,7 @@ tags:
   - clash
   - troubleshooting
 categories:
-  - windows
+  - network
 ---
 
 把电脑从网线切换到手机热点上网，同时开着 Clash 代理，浏览器访问一切正常，Steam 也没问题，但 5E Client（5E 对战平台）和完美世界竞技平台出现明显的网络故障：登录、接口请求全部连不上。
