@@ -1,0 +1,18 @@
+{{/*
+  覆盖主题的 layouts/_partials/head/style.html，只做一件事：显式指定 transpiler = dartsass。
+  主题（hugo-theme-stack v4.0.3，上游 master 同）仍用 `toCSS` 默认的 libsass，
+  Hugo v0.153.0 起会打印 "libsass was deprecated" 警告，未来版本会直接移除。
+
+  silenceDeprecations：主题的 scss 还是老的 `@import` + 全局内建函数写法，
+  Dart Sass 会为每个文件刷一条 DEPRECATED 警告。这里只压掉这两类
+  （import / global-builtin），其余类别保持可见。
+
+  主题哪天自己切到 dartsass 后，删掉本文件即可。
+*/}}
+{{ $sass := resources.Get "scss/style.scss" }}
+{{ $opts := dict
+  "transpiler" "dartsass"
+  "silenceDeprecations" (slice "import" "global-builtin")
+}}
+{{ $style := $sass | css.Sass $opts | minify | resources.Fingerprint "sha256" }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">

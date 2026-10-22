@@ -11,7 +11,6 @@ tags:
 categories:
   - math
 math: true
-draft: false
 ---
 
 同一套证明可以搬给双曲函数：Lagrange 中值定理把 $\operatorname{sh}$ 的差商换成中间点的 $\operatorname{ch}$ 值，剩下的只是单调性与两个带余项的不等式。

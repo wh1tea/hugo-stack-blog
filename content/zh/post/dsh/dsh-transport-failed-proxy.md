@@ -11,7 +11,6 @@ tags:
   - clash
 categories:
   - ai
-draft: true
 ---
 
 > dsh 每隔几秒弹一次「模型重试 / 重试延迟：8587 毫秒 / 失败原因：DeepSeek Messages transport failed」。官方状态页正常、ping 通、API Key 和余额都没问题。真正的原因是 **Node 的原生 fetch 不读 Windows 的系统代理设置**，dsh 一直在直连一个当时不可达的接口；那个接口为什么不可达，是后来才查出来的路径 MTU 黑洞。下面记录定位过程、三行修复，以及为什么以前不用设也能用。

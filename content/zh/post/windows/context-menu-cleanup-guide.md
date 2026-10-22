@@ -115,6 +115,27 @@ A：只删除 `gamelibrary` 这一项，不会影响系统正常运行。但如�
 **Q：如果我未来又想恢复这个菜单项怎么办？**  
 A：如果使用方法一关闭，重新开启即可；如果使用方法二删除，需要重新安装 Armoury Crate 才能恢复；如果使用方法三禁用，在工具中重新启用即可。
 
+## 附：百度网盘与夸克网盘的右键项
+
+网盘类软件会同时注册 `shell` 和 `shellex\ContextMenuHandlers` 两处，删掉后程序本身不受影响，只是右键入口消失。下面这份 `.reg` 直接用删除语法（方括号开头的减号表示删除）：
+
+```text
+Windows Registry Editor Version 5.00
+
+;; 夸克网盘
+[-HKEY_CLASSES_ROOT\*\shell\QuarkCloudDrive.upload]
+[-HKEY_CLASSES_ROOT\Directory\shell\QuarkCloudDrive.backup]
+[-HKEY_CLASSES_ROOT\Directory\shell\QuarkCloudDrive.upload]
+
+;; 百度网盘
+[-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\YunShellExt]
+[-HKEY_CLASSES_ROOT\*\shell\YunShellExplorerCommand]
+[-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\YunShellExt]
+[-HKEY_CLASSES_ROOT\Directory\shell\YunShellExplorerCommand]
+```
+
+存成 `.reg` 文件后双击导入即可；导入前先选中对应注册表项导出备份，删错了可以直接导回来。`HKEY_CLASSES_ROOT` 下的写入需要管理员权限，UAC 弹窗要允许。
+
 ## 结语
 
 右键菜单中的 Armoury Crate 选项虽然不至于影响系统性能，但对于追求简洁操作的用户来说确实是个累赘。选择最适合你的方法清理掉它，能让你的 Windows 体验更加清爽。如果你在执行过程中遇到任何问题，欢迎在评论区留言讨论。[^4]

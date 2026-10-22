@@ -9,7 +9,6 @@ tags:
 categories:
   - math
 math: true
-draft: false
 ---
 
 同一个复数有三种写法，各自方便不同的运算：实部与虚部直接可读，模长与辐角直接可读，而指数形式让乘除变成模长与辐角上的运算。

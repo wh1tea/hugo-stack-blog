@@ -2,7 +2,7 @@
 mainSections = ["post"]
 # Output page's full content in RSS.
 rssFullContent = true
-favicon        = "img/wh1tea-favicon.svg"
+favicon        = "icons/wh1tea-favicon.svg"
 
 # Accepted values: "default", "lastmod"
 # default = see https://gohugo.io/quick-reference/glossary/#default-sort-order
@@ -10,7 +10,7 @@ favicon        = "img/wh1tea-favicon.svg"
 SortBy              = "default"
 
 [footer]
-    since      = 2026
+    since      = 2021
     customText = ""
 
 [dateFormat]
@@ -18,8 +18,8 @@ SortBy              = "default"
     lastUpdated = ":date_full"
 
 [sidebar]
-    emoji    = ""
-    subtitle = "Code · Blog · Love" # 各语言可单独覆盖，见 languages.toml
+    emoji    = "🥰"
+    subtitle = "Blog · Code · Love" # 各语言可单独覆盖，见 languages.toml
     avatar   = "img/higan-chan.webp"
 
 [article]

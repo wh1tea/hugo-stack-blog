@@ -9,7 +9,6 @@ tags:
   - typeof
 categories:
   - web
-draft: false
 ---
 
 判断一个值「到底是什么」，在 JS 里有两件事要做：先分清原始类型和引用类型，再用对检测手段。

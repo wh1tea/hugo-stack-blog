@@ -1,3 +1,11 @@
 /*
     You can add your own custom styles here.
 */
+/* 侧边栏头像右下角的 emoji 徽标。
+   主题在 .left-sidebar 上定义了两个 CSS 变量来驱动这个徽标
+   （见主题 assets/scss/partials/sidebar.scss），覆盖变量即可，
+   不需要去动 .sidebar header .site-avatar .emoji 这条规则本身。 */
+.left-sidebar {
+  --emoji-size: 28px; /* 圆形底色直径，同时决定 width / height / line-height */
+  --emoji-font-size: 16px; /* emoji 字形大小 */
+}

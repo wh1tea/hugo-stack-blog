@@ -9,7 +9,6 @@ tags:
   - arrow-function
 categories:
   - web
-draft: false
 ---
 
 函数的坑集中在三处：`this` 属于谁、参数怎么收、`return` 怎么写。

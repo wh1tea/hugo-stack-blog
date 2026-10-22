@@ -20,11 +20,8 @@
     target = "content"
     files = [
         "! _templates/**",
-        "! journal/**",
-        "! LOG.md",
+        "! archives/**",
         "! README.md",
-        "! post/archives/**",
-        "! post/INBOX.md",
     ]
 
     [mounts.sites.matrix]

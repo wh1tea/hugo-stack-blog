@@ -2,14 +2,13 @@
 title: Hugo 构建失败排查：跳过不该解析的文件
 slug: hugo-ignore-content-files
 date: 2026-09-12
-description:  Obsidian 模板文件让整站构建中断。从报错定位到 mounts 配置的完整排查过程，附官方文档、实测结论与自证方法。
+description: Obsidian 模板文件让整站构建中断。从报错定位到 mounts 配置的完整排查过程，附官方文档、实测结论与自证方法。
 tags:
   - obsidian
   - configuration
   - github-pages
 categories:
   - hugo
-draft: false
 ---
 
 博客一直构建得好好的，某天 `hugo` 一跑就直接报错退出，错误信息里全是 YAML 解析细节——这就是我这次的起点：`content/` 下多了一个 Obsidian 模板文件，`{{date:...}}` 占位符写在了 front matter 里，Hugo 读到就崩，整站构建中断。

@@ -168,3 +168,28 @@ categories:
 ### 场景五：查看电脑配置
 
 `Win + R` → 输入 `dxdiag` → 回车，即可查看完整的硬件配置和系统信息。
+
+## 附：cmd 里 `cd` 不切换盘符
+
+从运行窗口敲 `cmd` 进命令行后，`cd D:\Projects` 只改了 D 盘的「当前目录」，提示符还留在 C 盘——cmd 的 `cd` 不带盘符切换：
+
+```cmd
+C:\Users\<username>>cd D:\Projects
+
+C:\Users\<username>>
+```
+
+三种切法：
+
+```cmd
+C:\Users\<username>>cd /d D:\Projects
+D:\Projects>
+
+C:\Users\<username>>D:
+D:\Projects>
+
+C:\Users\<username>>pushd D:\Projects
+D:\Projects>
+```
+
+`cd /d` 直接切盘并进入目标目录；`D:` 只切盘符，目录已经被上一条 `cd` 记住了；`pushd` 会压栈，配 `popd` 能回原位置。PowerShell 没有这个问题，`Set-Location D:\Projects` 直接生效。
