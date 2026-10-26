@@ -52,7 +52,7 @@ git commit -m "Initial commit"
 
 `git status` 是使用频率最高的命令：它会告诉你哪些文件未跟踪、哪些已暂存、哪些已修改。
 
-## 编写 .gitignore
+## 编写 [.gitignore](https://github.com/github/gitignore)
 
 `.gitignore` 用来排除不需要版本控制的文件。规则很简单：`node_modules/` 忽略目录，`*.log` 忽略一类文件，`!keep.txt` 取反保留。提交前先写好它，避免把缓存、密钥、依赖目录推上远程。
 
