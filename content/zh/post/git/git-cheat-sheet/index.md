@@ -15,8 +15,8 @@ categories:
 
 ## 入门
 
-| 场景       | 命令                 |
-| -------- | ------------------ |
+| 场景             | 命令               |
+| ---------------- | ------------------ |
 | 初始化一个新仓库 | `git init`         |
 | 克隆一个已有仓库 | `git clone <repo>` |
 
@@ -205,6 +205,8 @@ categories:
 | 推送一个从未推送过的分支          | `git push -u origin <branch>` |
 | 强制推送                          | `git push --force-with-lease` |
 | 推送标签                          | `git push --tags`             |
+
+GitHub 在 **2020 年 10 月 1 日**正式将新仓库的默认分支名从 `master` 改为 `main`。
 
 ## 拉取更改
 
