@@ -11,7 +11,7 @@ categories:
   - tutorial
 ---
 
-图写在代码块里有三个好处：能进版本控制、能 review diff、改图等于改文本。Mermaid 用接近 Markdown 的语法画流程图、饼图、时序图等，GitHub、Typora、Obsidian 与本站主题（Stack 的 `render-codeblock-mermaid` 局部模板）都会把 mermaid 代码块渲染成图。
+图写在代码块里有三个好处：能进版本控制、能 review diff、改图等于改文本。Mermaid 用接近 Markdown 的语法画流程图、饼图、时序图等，GitHub、Typora、Obsidian 与本站主题（Stack 的 `render-codeblock-mermaid` 局部模板）都会把 mermaid 代码块渲染成图。[^1]
 
 ## 流程图：方向、节点、连线
 
@@ -91,3 +91,5 @@ pie title 时间都去哪了
 ## 结语
 
 流程图记住三段就够用：方向、形状、连线；其余图（`sequenceDiagram`、`classDiagram`、`gantt`、`gitGraph`）各对应官网一页。当前主版本是 12，v12 把流程图默认布局从 Dagre 换成了 ELK、默认主题也改了，同一份代码在新版本里样式会变，语义不变。
+
+[^1]: [mermaid](https://mermaid.ai/)
