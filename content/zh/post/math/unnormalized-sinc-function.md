@@ -8,7 +8,7 @@ tags:
   - signal-processing
 categories:
   - math
-draft: true
+math: true
 
 ---
 
@@ -17,6 +17,14 @@ draft: true
 $$
 f(x,y,z)=\frac{\sin\sqrt{x^2+y^2}}{\sqrt{x^2+y^2}}
 $$
+
+可视化：
+<iframe 
+  src="https://codepen.io/editor/wh1tea/pen/01a1821f-1583-7adf-8f32-5905ce31d39e" 
+  frameborder="0" 
+  allowfullscreen
+  style="width: 100%; aspect-ratio: 4 / 3; border: none;"
+></iframe>
 
 其中 $r=\sqrt{x^2+y^2}$ 是到 $z$ 轴的距离，而不是三维球半径。表达式中没有 $z$，所以这实际上是把一元函数 $f(r)=\sin r/r$（$r>0$）嵌入三维空间来观察；它的水平集是绕 $z$ 轴的圆柱面，而不是球面。$f(r)$ 即非归一化 Sinc 函数[^1]。它在 $r=0$（整条 $z$ 轴）处有可去奇点，在 $r>0$ 上以 $r=n\pi$ 为零点振荡衰减，也是球面波和理想低通滤波器的共同原型。为避免混淆，下文用 $r$ 表示柱坐标径向距离；讨论球面波时改用 $R$ 表示三维球半径。
 
