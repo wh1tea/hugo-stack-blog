@@ -85,22 +85,23 @@ categories:
 
 ## 丢弃你的更改
 
-| 场景                                 | 命令                                                                         |
-| ------------------------------------ | ---------------------------------------------------------------------------- |
-| 删除某个文件的未暂存更改             | `git restore <file>`<br>或<br>`git checkout <file>`                          |
+| 场景                                 | 命令                                                         |
+| ------------------------------------ | ------------------------------------------------------------ |
+| 删除某个文件的未暂存更改             | `git restore <file>`<br>或<br>`git checkout <file>`          |
 | 删除某个文件的全部已暂存和未暂存更改 | `git restore --staged --worktree <file>`<br>或<br>`git checkout HEAD <file>` |
-| 删除全部已暂存和未暂存更改           | `git reset --hard`<br>或<br>`git restore --staged --worktree .`              |
-| 删除未跟踪文件                       | `git clean`                                                                  |
-| 暂存（stash）全部已暂存和未暂存更改  | `git stash`                                                                  |
+| 删除全部已暂存和未暂存更改           | `git reset --hard`<br>或<br>`git restore --staged --worktree .` |
+| 删除未跟踪文件                       | `git clean`                                                  |
+| 暂存（stash）全部已暂存和未暂存更改  | `git stash`                                                  |
 
 ## 编辑历史
 
-| 场景                                   | 命令                                                                                                     |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| “撤销”最近一次提交（保持工作目录不变） | `git reset HEAD^`                                                                                        |
-| 将最近 5 次提交压缩为一次              | `git rebase -i HEAD~5`<br>然后将需与上一提交合并的提交的 `pick` 改为 `fixup`                             |
-| 撤销失败的 rebase                      | `git reflog BRANCHNAME`<br>在 reflog 中手动找到正确的提交 ID 后，再运行：<br>`git reset --hard <commit>` |
-| 修改提交信息（或添加忘记的文件）       | `git commit --amend`                                                                                     |
+| 场景                                 | 命令                                                         | 备注                     |
+| ------------------------------------ | ------------------------------------------------------------ | ------------------------ |
+| 回退最近一次提交（保持工作目录不变） | `git reset HEAD^`                                            | `git reset --soft HEAD^` |
+| 将最近 5 次提交压缩为一次            | `git rebase -i HEAD~5`<br>然后将需与上一提交合并的提交的 `pick` 改为 `fixup` |                          |
+| 撤销首个提交                         | `git update-ref -d HEAD`                                     |                          |
+| 撤销失败的 rebase                    | `git reflog BRANCHNAME`<br>在 reflog 中手动找到正确的提交 ID 后，再运行：<br>`git reset --hard <commit>` |                          |
+| 修改提交信息（或添加忘记的文件）     | `git commit --amend`                                         |                          |
 
 ## 代码考古
 
