@@ -23,7 +23,7 @@ categories:
 
 `conda activate py_env` 后 `CONDA_DEFAULT_ENV` 和 `CONDA_PREFIX` 都已正确设置，`python -c "import sys; print(sys.prefix)"` 也指向环境目录，但提示符完全不显示环境名。
 
-## 第一步：oh-my-posh debug 定位
+## oh-my-posh debug 定位
 
 不要猜，先看段有没有启用：
 
@@ -42,7 +42,7 @@ Python(false)       -   1 ms
 
 `Python(false)` 说明段压根没启用，不是渲染问题。`debug` 还会打印每个段的执行日志（`[DEBUG] ... segment: Python`），能直接看到它走了哪条判断分支。
 
-## 第二步：读主题配置与源码，找根因
+## 读主题配置与源码，找根因
 
 ### 主题里的 Python 段长这样
 
@@ -81,7 +81,7 @@ Conda 的 `CONDA_DEFAULT_ENV` 在 v30 源码里是认的，问题出在主题把
 - **pure 和 dracula 主题里根本没有 Python 段**：不是「默认不显示」，是压根没写。想显示环境名必须自己加段
 - **网上教程的 `display_virtual_env` 是旧属性名**：v30.6.5 源码里对应开关叫 `fetch_virtual_env`，照抄旧教程会静默无效
 
-## 第三步：修复——自定义主题副本
+## 修复——自定义主题副本
 
 内置主题在 WindowsApps 目录下：只读，且 MSIX 每次升级都会换路径。正确做法是拷贝一份到用户目录再改，`--config` 指向全路径，升级不受影响。
 
@@ -131,7 +131,7 @@ dracula 没有段，就在 `node` 段后面插入同款段，配色与主题统�
 oh-my-posh init pwsh --config "$HOME\.config\oh-my-posh\themes\dracula.omp.json" | Invoke-Expression
 ```
 
-## 第四步：三场景实测验证
+## 三场景实测验证
 
 不依赖真实 conda 激活（interop 测试环境不干净），手动设环境变量模拟，逐场景跑 `oh-my-posh debug --config <副本路径>`：
 

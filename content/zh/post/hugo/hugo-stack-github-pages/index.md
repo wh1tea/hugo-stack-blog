@@ -64,7 +64,7 @@ hugo            # 构建到 public/
 
 这是本博客最值得说的部分。Hugo 的多语言是**一等公民**（First-Class Citizen），不需要任何插件。
 
-### 1. 定义语言（config/\_default/languages.toml）
+### 定义语言（config/\_default/languages.toml）
 
 ```toml
 [zh]
@@ -88,7 +88,7 @@ hugo            # 构建到 public/
         subtitle = "Code · Blog · Life"
 ```
 
-### 2. 指定默认语言（config/\_default/config.toml）
+### 指定默认语言（config/\_default/config.toml）
 
 ```toml
 defaultContentLanguage = "zh"
@@ -96,7 +96,7 @@ defaultContentLanguageInSubdir = false   # 中文在根路径，英文在 /en/
 hasCJKLanguage = true                    # 保证中文字数统计 / 阅读时长正确
 ```
 
-### 3. 按语言分目录存放内容
+### 按语言分目录存放内容
 
 ```text
 content/
@@ -106,7 +106,7 @@ content/
 
 同一篇文章的两个语言版本放在对应目录下即可，标题、标签都可以不同。
 
-### 4. 语言切换器与界面文案
+### 语言切换器与界面文案
 
 切换器**不需要任何配置**：主题检测到站点是多语言的，就会在侧边栏自动渲染一个下拉框，遍历 `AllTranslations` 生成选项（显示的就是 languages.toml 里的 `label`）。
 

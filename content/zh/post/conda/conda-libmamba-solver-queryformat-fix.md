@@ -124,7 +124,7 @@ conda info
 
 ---
 
-### 1. 定位目录
+### 定位目录
 
 ```powershell
 cd D:\ProgramData\anaconda3\Lib\site-packages\
@@ -135,7 +135,7 @@ cd D:\ProgramData\anaconda3\Lib\site-packages\
 
 ---
 
-### 2. 核心三连击（以 `conda_libmamba_solver` 为例）
+### 核心三连击（以 `conda_libmamba_solver` 为例）
 
 #### ① `takeown /F conda_libmamba_solver /R /D Y`
 
@@ -165,7 +165,7 @@ cd D:\ProgramData\anaconda3\Lib\site-packages\
 
 ---
 
-### 3. 重复操作四个目录
+### 重复操作四个目录
 
 脚本后续对以下四个目录做了完全相同的处理：
 
@@ -180,7 +180,7 @@ cd D:\ProgramData\anaconda3\Lib\site-packages\
 
 ---
 
-### 4. 脚本的潜在风险与注意事项（必看）
+### 脚本的潜在风险与注意事项（必看）
 
 - **不可逆操作**：`Remove-Item -Force` 不会进入回收站，删除即**永久丢失**。若删错路径（比如敲错文件夹名），整个 Python 环境可能直接瘫痪。
 - **破坏依赖完整性**：如果当前 Conda 环境默认使用 `libmamba` 作为求解器（`conda config --set solver libmamba`），删掉后执行 `conda install` 会直接报错，必须切回经典求解器：`conda config --set solver classic`。
@@ -189,7 +189,7 @@ cd D:\ProgramData\anaconda3\Lib\site-packages\
 
 ---
 
-### 5. 更优雅的安全替代方案（优先尝试）
+### 更优雅的安全替代方案（优先尝试）
 
 在动用手动删除之前，建议先尝试 Conda 自带的安全卸载：
 

@@ -14,7 +14,7 @@ categories:
 
 ## 常用命令大全
 
-### 1. 系统核心管理类
+### 系统核心管理类
 
 这类命令用于快速调出系统最底层的管理工具。
 
@@ -33,7 +33,7 @@ categories:
 | `winver`       | 查看 Windows 版本信息                | Windows Version                |
 | `msinfo32`     | 查看详细系统信息                     | Microsoft Info (32-bit)        |
 
-### 2. 控制面板扩展类（.cpl）
+### 控制面板扩展类（.cpl）
 
 后缀为 `.cpl` 的命令可直接打开特定的设置面板。
 
@@ -48,7 +48,7 @@ categories:
 | `powercfg.cpl` | 电源选项                   | Power Configuration             |
 | `mmsys.cpl`    | 声音和音频设备             | Multimedia System               |
 
-### 3. 日常工具类
+### 日常工具类
 
 直接调用 Windows 自带的小工具。
 
@@ -63,7 +63,7 @@ categories:
 | `charmap`           | 字符映射表 | Character Map         |
 | `magnify`           | 放大镜     | Magnifier             |
 
-### 4. 网络与远程类
+### 网络与远程类
 
 | 命令         | 功能说明        | 缩写来源                           |
 | ------------ | --------------- | ---------------------------------- |
@@ -72,7 +72,7 @@ categories:
 | `mstsc`      | 远程桌面连接    | Microsoft Terminal Services Client |
 | `\\IP地址`   | 访问共享文件夹  | 网络路径格式                       |
 
-### 5. 故障排查与日志类
+### 故障排查与日志类
 
 | 命令       | 功能说明                         | 缩写来源            |
 | ---------- | -------------------------------- | ------------------- |
@@ -83,7 +83,7 @@ categories:
 | `dxdiag`   | DirectX 诊断工具（查看硬件配置） | DirectX Diagnostic  |
 | `cleanmgr` | 磁盘清理工具                     | Clean Manager       |
 
-### 6. 用户与权限类
+### 用户与权限类
 
 | 命令                     | 功能说明                      | 缩写来源                       |
 | ------------------------ | ----------------------------- | ------------------------------ |
@@ -91,7 +91,7 @@ categories:
 | `netplwiz`               | 高级用户账户管理              | Network Place Wizard           |
 | `control userpasswords2` | 用户账户控制                  | Control Panel + User Passwords |
 
-### 7. 系统操作与文件夹快捷访问
+### 系统操作与文件夹快捷访问
 
 | 命令                  | 功能说明                    | 缩写来源         |
 | --------------------- | --------------------------- | ---------------- |

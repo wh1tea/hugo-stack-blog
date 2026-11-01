@@ -94,7 +94,7 @@ python reorder_fm.py document.md --order title date tags
 
 `reorder_fm.py` 的核心逻辑只有三步：**切出 front matter → 按顺序重建字典 → 写回文件**。
 
-### 第一步：找到 front matter 的边界
+### 找到 front matter 的边界
 
 第一行必须是 `---`，然后往下找到第二个 `---`，中间就是 YAML：
 
@@ -109,7 +109,7 @@ fm = "\n".join(lines[1:end])            # 两个 --- 之间的部分
 
 这就是为什么**没有 front matter 的文件会被自动跳过**，混在目录里的普通笔记不会被误改。
 
-### 第二步：按顺序重建字典
+### 按顺序重建字典
 
 普通的 Python 字典不保证键的插入顺序，所以脚本用了 `ruamel.yaml` 的 `CommentedMap`（一个保持顺序的字典子类）：
 
@@ -132,7 +132,7 @@ for key in list(data):                   # 剩下的键保持原来的相对顺�
 
 `ruamel.yaml` 的 round-trip 模式会尽量保留注释和缩进等格式细节，这是它比 `json` 或普通 `yaml.safe_load` 更适合这类工具的原因。
 
-### 第三步：写回文件
+### 写回文件
 
 重排后的 YAML 再拼回 `---` 框架，如果内容有变化就覆盖写入，没有变化则不碰文件：
 

@@ -16,7 +16,7 @@ categories:
 
 你还在用 Windows 自带的“蓝色窗口”吗？那其实是 **Windows PowerShell 5.1**，一个已经停更多年的版本。**PowerShell 7**（命令为 `pwsh`）是它的继任者，跨平台、性能更强，并且能与旧版并行运行。本文带你快速了解 PowerShell 7，并整理一份实用的配置文件指南，帮你打造顺手的终端环境。非常推荐的阅读[**What is a command shell?**](https://learn.microsoft.com/en-us/powershell/utility-modules/aishell/concepts/what-is-a-command-shell?view=ps-modules)
 
-## 一、PowerShell 7 是什么
+## PowerShell 7 是什么
 
 PowerShell 7 与 Windows PowerShell 5.1 最根本的区别在于底层运行时：5.1 基于 .NET Framework，而 PowerShell 7 基于 **.NET Core**（后续版本基于 .NET 5+）。这意味着它能在 Windows、macOS、Linux 上运行，并且可执行文件名从 `powershell.exe` 改成了 `pwsh.exe`，方便两个版本共存。
 
@@ -30,7 +30,7 @@ PowerShell 7 与 Windows PowerShell 5.1 最根本的区别在于底层运行时�
 pwsh -NoProfile
 ```
 
-## 二、配置文件是什么
+## 配置文件是什么
 
 PowerShell 配置文件是在每次启动时自动执行的脚本。你可以把别名、函数、变量、模块导入等自定义内容放进去，让它们在所有会话中生效。
 
@@ -48,11 +48,11 @@ notepad $PROFILE
 
 如果文件不存在，记事本会提示创建，选择“是”即可。
 
-## 三、一份实用的配置文件
+## 一份实用的配置文件
 
 下面这份配置涵盖了 oh-my-posh 提示符、x-cmd 集成，以及一个针对 conda 的兼容性修复。
 
-### 1. oh-my-posh 提示符初始化
+### oh-my-posh 提示符初始化
 
 oh-my-posh 是当前最流行的 PowerShell 提示符美化工具，可以显示 Git 状态、Python 环境、路径等信息。
 
@@ -62,7 +62,7 @@ oh-my-posh init pwsh --config 'dracula' | Invoke-Expression
 
 **做了什么**：让 oh-my-posh 用指定的主题文件（`dracula`）初始化提示符。你可以换成其他主题文件，或者用 `oh-my-posh init pwsh | Invoke-Expression` 使用默认主题。`dracula`不支持`conda`补丁版教程见[此处](..\..\..\ohmyposh\terminal-theme-conda-prompt.md)
 
-### 2. conda 兼容性修复（关键）
+### conda 兼容性修复（关键）
 
 如果你使用 conda 管理 Python 环境，并且 PowerShell 版本是 **7.5 及以上**，很可能会遇到 `conda activate` 报错：
 
@@ -82,7 +82,7 @@ $PSNativeCommandArgumentPassing = 'Legacy'
 
 > **更彻底的方案**：将 conda 升级到 **25.1.1 或更高版本**，该版本已官方修复此问题，不再需要这行配置。
 
-## 四、完整配置文件一览
+## 完整配置文件一览
 
 ```powershell
 # ══ oh-my-posh 提示符 ═══════════════════════════════════════

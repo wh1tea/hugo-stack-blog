@@ -66,7 +66,7 @@ hugo            # build to public/
 
 This is the most interesting part of this blog. Hugo treats multilingual sites as a **first-class citizen** — no plugins needed.
 
-### 1. Define languages (config/\_default/languages.toml)
+### Define languages (config/\_default/languages.toml)
 
 ```toml
 [zh]
@@ -90,7 +90,7 @@ This is the most interesting part of this blog. Hugo treats multilingual sites a
         subtitle = "Code · Blog · Life"
 ```
 
-### 2. Set the default language (config/\_default/config.toml)
+### Set the default language (config/\_default/config.toml)
 
 ```toml
 defaultContentLanguage = "zh"
@@ -98,7 +98,7 @@ defaultContentLanguageInSubdir = false   # Chinese at root, English at /en/
 hasCJKLanguage = true                    # correct word counts / reading time for CJK
 ```
 
-### 3. Separate content directories per language
+### Separate content directories per language
 
 ```txt
 content/
@@ -108,7 +108,7 @@ content/
 
 Write each language's version of an article in its own directory — titles and tags can differ.
 
-### 4. Language switcher & UI strings
+### Language switcher & UI strings
 
 The switcher needs **zero configuration**: when the theme detects a multilingual site, it renders a dropdown in the sidebar, iterating over `AllTranslations` (labels come from `languages.toml`).
 

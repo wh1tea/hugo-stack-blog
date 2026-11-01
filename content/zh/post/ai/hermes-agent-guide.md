@@ -17,7 +17,7 @@ categories:
 
 ---
 
-## 一、Hermes Agent 是什么？
+## Hermes Agent 是什么？
 
 Hermes Agent 由 [Nous Research](https://nousresearch.com/) 开源，属于 **AI 编程/任务执行智能体（Agent）** 这个品类，与 Anthropic 的 Claude Code、OpenAI 的 Codex CLI 同类。但它有一个关键区别：[^2]
 
@@ -47,9 +47,9 @@ Hermes Agent 由 [Nous Research](https://nousresearch.com/) 开源，属于 **AI
 
 ---
 
-## 二、安装 Hermes Agent
+## 安装 Hermes Agent
 
-### 2.1 一键安装（推荐）
+### 一键安装（推荐）
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
@@ -57,7 +57,7 @@ curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scri
 
 安装脚本会自动检测操作系统，下载对应二进制文件，并完成基础配置。
 
-### 2.2 验证安装
+### 验证安装
 
 ```bash
 hermes --version
@@ -66,7 +66,7 @@ hermes doctor    # 检查依赖和环境
 
 `hermes doctor` 会告诉你哪些组件就绪、哪些缺少，是排查问题的第一站。
 
-### 2.3 安装位置
+### 安装位置
 
 Hermes 的所有数据和配置都在 `~/.hermes/` 目录下：
 
@@ -80,7 +80,7 @@ Hermes 的所有数据和配置都在 `~/.hermes/` 目录下：
 └── auth.json        # OAuth 令牌和凭据池
 ```
 
-### 2.4 Windows (WSL) 注意事项
+### Windows (WSL) 注意事项
 
 如果你在 WSL 上安装，一切正常运行。几个已知坑：
 
@@ -90,11 +90,11 @@ Hermes 的所有数据和配置都在 `~/.hermes/` 目录下：
 
 ---
 
-## 三、配置 LLM 提供商
+## 配置 LLM 提供商
 
 这是最关键的一步——Hermes 本身不包含模型，你需要告诉它用哪个大模型。
 
-### 3.1 交互式配置
+### 交互式配置
 
 ```bash
 hermes setup      # 启动设置向导
@@ -103,7 +103,7 @@ hermes model      # 选择和切换模型
 
 `hermes model` 会打开一个交互式选择器，你可以先选提供商，再选具体模型。
 
-### 3.2 手动配置
+### 手动配置
 
 API 密钥放在 `~/.hermes/.env` 中（这个文件不会被提交到版本控制）：
 
@@ -123,7 +123,7 @@ model:
   provider: openrouter
 ```
 
-### 3.3 API Key Pool（多 Key 轮转）
+### API Key Pool（多 Key 轮转）
 
 一个账号不够用？Hermes 支持为同一提供商配置多个 API Key，按负载自动轮转：[^6]
 
@@ -136,9 +136,9 @@ hermes auth remove deepseek 0 # 移除第 0 个 Key
 
 ---
 
-## 四、初次使用：从 Hello World 到实际干活
+## 初次使用：从 Hello World 到实际干活
 
-### 4.1 启动交互式会话
+### 启动交互式会话
 
 ```bash
 hermes
@@ -146,7 +146,7 @@ hermes
 
 这会进入一个类 Shell 的交互界面，可以直接打字对话。Hermes 可以执行命令、读写文件、搜索网络、浏览网页等。
 
-### 4.2 单次查询模式
+### 单次查询模式
 
 不需要交互时，用 `-q` 参数：
 
@@ -155,7 +155,7 @@ hermes chat -q "列出当前目录下最大的 5 个文件"
 hermes chat -q "帮我写一个 Python 脚本来批量重命名这些 .jpg 文件"
 ```
 
-### 4.3 加载技能启动
+### 加载技能启动
 
 技能是 Hermes 最重要的特性之一——它就像一个插件，告诉 Hermes 如何做某类事情：
 
@@ -165,7 +165,7 @@ hermes -s github-pr-workflow -s systematic-debugging
 
 这会在启动时加载两个技能，使 Hermes 立即知道如何处理 GitHub PR 以及如何系统化调试。
 
-### 4.4 核心 Slash 命令
+### 核心 Slash 命令
 
 进入交互会话后，以下命令最常用：
 
@@ -183,7 +183,7 @@ hermes -s github-pr-workflow -s systematic-debugging
 | `/save`            | 保存会话到文件                |
 | `/history`         | 查看会话历史                  |
 
-### 4.5 工作区模式（多任务隔离）
+### 工作区模式（多任务隔离）
 
 ```bash
 hermes -w     # worktree 模式，自动创建隔离分支
@@ -193,9 +193,9 @@ hermes -w     # worktree 模式，自动创建隔离分支
 
 ---
 
-## 五、深入核心功能
+## 深入核心功能
 
-### 5.1 技能系统（Skills）
+### 技能系统（Skills）
 
 技能是 Hermes 最独特的设计。它不是一个僵硬的插件，而是一份**动态加载的说明书**——告诉 Hermes 遇到某类任务时该怎么做。
 
@@ -236,7 +236,7 @@ hermes skills list              # 查看已安装的技能
 # 确认后，下次启动时加载该技能即可复用整套流程
 ```
 
-### 5.2 持久记忆（Memory）
+### 持久记忆（Memory）
 
 Hermes 能记住你是谁、你喜欢什么、你的项目约定是什么——跨会话跨天。
 
@@ -252,7 +252,7 @@ hermes memory setup    # 配置记忆后端（内置 / Honcho / Mem0 等）
 
 比如你说一次 "我不喜欢冗长的输出，简洁点"，之后 Hermes 就会记住这一点。
 
-### 5.3 子智能体（Delegate Task）
+### 子智能体（Delegate Task）
 
 复杂任务可以拆成子任务并行执行，互不干扰：
 
@@ -267,7 +267,7 @@ hermes memory setup    # 配置记忆后端（内置 / Honcho / Mem0 等）
 - 同时搜索多个来源的资料
 - 在隔离环境中运行高风险操作
 
-### 5.4 定时任务（Cron）
+### 定时任务（Cron）
 
 像 Linux cron 一样的调度器，但任务可以是复杂的 AI 工作流：
 
@@ -279,7 +279,7 @@ hermes cron run <job_id>          # 立即触发一次
 
 例子：每天早上自动抓取 Hacker News 热门文章并生成摘要推送到 Telegram。
 
-### 5.5 多平台网关（Gateway）
+### 多平台网关（Gateway）
 
 这是把 Hermes 变成"随身 AI 助手"的关键：
 
@@ -302,11 +302,11 @@ Telegram、Discord、Slack、WhatsApp、Signal、Email、SMS、Matrix、钉钉�
 
 ---
 
-## 六、模型推荐：2026 年 7 月市场概览
+## 模型推荐：2026 年 7 月市场概览
 
 选择什么模型驱动 Hermes，直接影响使用体验。以下是我实际使用后的推荐：
 
-### 6.1 综合最强：Claude Sonnet 4
+### 综合最强：Claude Sonnet 4
 
 > 提供商：Anthropic（OpenRouter 或直连）
 > 模型名：anthropic/claude-sonnet-4
@@ -317,7 +317,7 @@ Claude Sonnet 4 是目前在**代码生成、工具调用、指令遵循**三个
 **价格：** 中等偏贵
 **推荐度：** ★★★★★
 
-### 6.2 性价比之选：DeepSeek V4 / V3
+### 性价比之选：DeepSeek V4 / V3
 
 > 提供商：DeepSeek
 > 模型名：deepseek/deepseek-v4 或 deepseek/deepseek-v3
@@ -328,7 +328,7 @@ DeepSeek 的模型在国内可直接访问，性能接近第一梯队，但价�
 **价格：** 便宜
 **推荐度：** ★★★★★
 
-### 6.3 最强推理：Claude Opus 4 / o4
+### 最强推理：Claude Opus 4 / o4
 
 > 提供商：Anthropic / OpenAI
 > 模型名：anthropic/claude-opus-4 或 openai/o4
@@ -339,7 +339,7 @@ DeepSeek 的模型在国内可直接访问，性能接近第一梯队，但价�
 **价格：** 贵
 **推荐度：** ★★★★
 
-### 6.4 轻量快速：Gemini 2.5 Flash / GPT-4o Mini
+### 轻量快速：Gemini 2.5 Flash / GPT-4o Mini
 
 > 提供商：Google / OpenAI
 > 模型名：google/gemini-2.5-flash 或 openai/gpt-4o-mini
@@ -350,7 +350,7 @@ DeepSeek 的模型在国内可直接访问，性能接近第一梯队，但价�
 **价格：** 极低
 **推荐度：** ★★★★
 
-### 6.5 国产模型推荐
+### 国产模型推荐
 
 > 阿里 Qwen： dashscope/qwen-max 或 qwen-plus
 > 智谱 GLM-4： glm/glm-4-plus
@@ -359,7 +359,7 @@ DeepSeek 的模型在国内可直接访问，性能接近第一梯队，但价�
 
 国产模型在中文场景下表现出色，且国内网络直连延迟低。如果你在国内网络环境下使用 Hermes，DeepSeek 和阿里 Qwen 是首选。
 
-### 6.6 本地模型
+### 本地模型
 
 > 提供商：Local（Ollama / llama.cpp / vLLM）
 > 配置：model.base_url = <http://localhost:11434/v1>
@@ -372,7 +372,7 @@ DeepSeek 的模型在国内可直接访问，性能接近第一梯队，但价�
 
 注意：本地模型的能力上限取决于你的硬件。32B 以上的模型需要至少 24GB 显存。
 
-### 6.7 混合策略（推荐）
+### 混合策略（推荐）
 
 在实际使用中，最佳实践是**按任务切换模型**，而不是固守一个：
 
@@ -392,7 +392,7 @@ delegation:
 /model anthropic/claude-sonnet-4  # 切回 Claude
 ```
 
-### 6.8 模型推荐速查表
+### 模型推荐速查表
 
 | 使用场景         | 推荐模型                      | 提供商        | 成本  |
 | ---------------- | ----------------------------- | ------------- | ----- |
@@ -406,9 +406,9 @@ delegation:
 
 ---
 
-## 七、进阶技巧
+## 进阶技巧
 
-### 7.1 配置 Credential Pool（多 Key 自动轮转）
+### 配置 Credential Pool（多 Key 自动轮转）
 
 如果你有多个 DeepSeek 或 OpenRouter 账号，配置 Pool 可以避免限流：
 
@@ -419,7 +419,7 @@ hermes auth list deepseek    # 确认
 # 使用时会自动轮转
 ```
 
-### 7.2 Profiles（多环境隔离）
+### Profiles（多环境隔离）
 
 工作和个人环境隔离：
 
@@ -432,7 +432,7 @@ hermes work                          # 用 work profile 启动（自动生成 al
 
 每个 Profile 有独立的 config、.env、sessions、skills、memory。
 
-### 7.3 MCP 服务器集成
+### MCP 服务器集成
 
 如果你有 MCP 兼容的服务（比如数据库、文件系统等），可以让 Hermes 直接调用：
 
@@ -441,7 +441,7 @@ hermes mcp add my-db --command "npx @modelcontextprotocol/server-postgres"
 hermes mcp list
 ```
 
-### 7.4 会话恢复与分支
+### 会话恢复与分支
 
 工作到一半被打断？下次可以无缝续接：
 
@@ -451,7 +451,7 @@ hermes -r 20260714_083021_xxx  # 恢复指定会话
 # /branch 命令可以"分支"当前会话，像 git branch 一样
 ```
 
-### 7.5 与 Claude Code / Codex 配合
+### 与 Claude Code / Codex 配合
 
 你可以让 Hermes 协调其他 Agent 一起工作：
 
@@ -461,7 +461,7 @@ Hermes 会通过 `delegate_task` 或者直接启动 Claude Code 进程来完成�
 
 ---
 
-## 八、常见问题
+## 常见问题
 
 ### Q：Hermes 与其他 Agent 有什么区别？
 
@@ -498,7 +498,7 @@ hermes skills browse           # 在终端浏览技能目录
 
 ---
 
-## 九、总结
+## 总结
 
 Hermes Agent 是目前生态最丰富、最灵活的开源 AI Agent 框架。它的核心竞争力在于：
 

@@ -37,13 +37,13 @@ HTML 实体是一种以 `&`（和号）开头、以 `;`（分号）结尾的特�
 
 HTML 实体有两种形式，可根据场景选用。
 
-### 1. 命名实体（Named Character Reference）
+### 命名实体（Named Character Reference）
 
 使用易记的英文名称表示字符，例如 `&lt;`、`&gt;`、`&amp;`、`&copy;`。  
 **优点**：可读性强，名称易记，书写方便。  
 **缺点**：数量有限（约 2000 多个），生僻字符可能没有对应的命名实体。
 
-### 2. 数字实体（Numeric Character Reference）
+### 数字实体（Numeric Character Reference）
 
 使用 Unicode 码点表示字符，分为十进制和十六进制两种：
 

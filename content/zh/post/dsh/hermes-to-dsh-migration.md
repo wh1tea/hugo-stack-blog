@@ -17,7 +17,7 @@ categories:
 
 ---
 
-## 一、Hermes 里有什么
+## Hermes 里有什么
 
 要搬的两类资产都是 markdown：
 
@@ -30,7 +30,7 @@ Windows 原生版路径同理，在 `%USERPROFILE%\.hermes`。本次实测的库
 
 ---
 
-## 二、导出
+## 导出
 
 在 Hermes 所在侧执行。技能和记忆一次拷出：
 
@@ -44,7 +44,7 @@ cp -r ~/.hermes/skills ~/hermes-migrate/skills
 
 ---
 
-## 三、核心坑：dsh 的技能发现只扫一层
+## 核心坑：dsh 的技能发现只扫一层
 
 dsh 的技能发现（`dsh-skill-filesystem`）只认两种形态：
 
@@ -72,7 +72,7 @@ find "$SRC" -mindepth 2 -maxdepth 4 -name SKILL.md -not -path '*/.*' |
 
 ---
 
-## 四、放进 dsh：`~/.dsh/skills/`
+## 放进 dsh：`~/.dsh/skills/`
 
 dsh 按优先级扫描技能根，数字越小越优先：
 
@@ -94,7 +94,7 @@ cp -r ~/hermes-migrate-flat/* ~/.dsh/skills/
 
 ---
 
-## 五、记忆：没有服务，就挂全局指令
+## 记忆：没有服务，就挂全局指令
 
 dsh 没有 Hermes 那种持久记忆服务，所以「迁移记忆」只能做成两件事：
 
@@ -118,7 +118,7 @@ dsh 没有 Hermes 那种持久记忆服务，所以「迁移记忆」只能做�
 
 ---
 
-## 六、验证
+## 验证
 
 **技能数对得上**（Windows PowerShell）：
 
@@ -134,7 +134,7 @@ dsh 没有 Hermes 那种持久记忆服务，所以「迁移记忆」只能做�
 
 ---
 
-## 七、踩过的坑
+## 踩过的坑
 
 - **`~/.hermes/skills/.cache/` 里有大量无关的 `SKILL.md`**：裸跑 `find ~/.hermes/skills -name SKILL.md` 会把 `uv` 缓存里的嵌套副本一起捞出来。必须限定只走真实分类树（`-not -path '*/.*'`）。
 - **`maxdepth` 的语义**：`find` 的 `-maxdepth` 从基目录算起。三层目录结构（`分类/子类/技能/SKILL.md`）需要 `-maxdepth 4`，写 3 会静默漏掉最深的那一层。
@@ -143,7 +143,7 @@ dsh 没有 Hermes 那种持久记忆服务，所以「迁移记忆」只能做�
 
 ---
 
-## 八、和 Hermes 机制怎么对应
+## 和 Hermes 机制怎么对应
 
 迁移只搬数据，机制得另配。两边的对应关系：
 

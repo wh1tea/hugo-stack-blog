@@ -17,7 +17,7 @@ categories:
 
 ---
 
-## 一、安装
+## 安装
 
 前置：Node.js 18+（推荐 LTS），官网下载或用包管理器安装。
 
@@ -35,7 +35,7 @@ npx @deepseek-ai/dsh web --no-open
 
 ---
 
-## 二、首次使用
+## 首次使用
 
 启动后在 Web UI 里完成两件事即可用：
 
@@ -46,7 +46,7 @@ npx @deepseek-ai/dsh web --no-open
 
 ---
 
-## 三、node-domexception 弃用警告
+## node-domexception 弃用警告
 
 安装时终端会输出：
 
