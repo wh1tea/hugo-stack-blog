@@ -6,6 +6,10 @@ links:
     description: GitHub is the world's largest software development platform.
     website: https://github.com
     image: https://proicons.com/icon/11265.svg
+  - title: Git
+    description: Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+    website: https://git-scm.com/cheat-sheet
+    image: https://proicons.com/icon/11263.svg
   - title: Codepen
     description: A social development environment for front-end designers and developers.
     website: https://codepen.io/
