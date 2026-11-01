@@ -56,7 +56,7 @@ draft: true
 
 | 工具           | 用途        | 检查                   | 备注                                 |
 | :------------- | :---------- | :--------------------- | :----------------------------------- |
-| VS Code        | 写代码      | `code -v`              | 插件见 1.1                           |
+| VS Code        | 写代码      | `code -v`              | 插件见「装编辑器与四个插件」         |
 | Chrome/Firefox | 运行与调试  | 保持最新版             | DevTools 是本路线的主力工具          |
 | Git            | 版本管理    | `git --version` ≥ 2.40 | 装完先配 `user.name` 与 `user.email` |
 | Node.js        | 第 8 周才用 | `node -v` ≥ 22         | 只装 LTS，不要装 Current             |
@@ -93,15 +93,11 @@ frontend-lab/
 
 每个项目目录先只放一个 `index.html`，需要时再加 `style.css` 和 `main.js`。单文件超过 300 行再拆目录，不要一上来就设计架构。
 
-### 关于演示代码
-
-HTML/CSS/JS 的完整示例用 CodePen 嵌入，可以直接在页面里改着看效果。命令行（Git、npm）、目录结构和提问模板放不进 CodePen，仍以代码块给出。
-
 ## 第 1 周：环境、Git 与第一个页面
 
 本周结束：一个只有 HTML 的简历页面在 GitHub 上，提交记录不少于 5 条。
 
-### 1.1 装编辑器与四个插件
+### 装编辑器与四个插件
 
 必装两个：**Live Server**（保存即刷新，省掉手动 F5）、**Prettier**（保存即格式化，避免缩进混乱）。可选两个：**Chinese (Simplified) Language Pack** 把界面变中文；**Error Lens** 把报错直接显示在行尾，省得开面板。
 
@@ -118,7 +114,7 @@ HTML/CSS/JS 的完整示例用 CodePen 嵌入，可以直接在页面里改着�
 
 **验收**：新建一个 `.html` 文件，输入 `!` 按 Tab 能展开骨架；保存时缩进自动对齐。
 
-### 1.2 写出第一个页面
+### 写出第一个页面
 
 新建 `01-resume-html/index.html`，展开骨架后改三处：`<title>` 改成「张三的简历」，`<h1>` 写名字，`<p>` 写一句话简介，再加一张 `<img>`。
 
@@ -135,7 +131,7 @@ HTML/CSS/JS 的完整示例用 CodePen 嵌入，可以直接在页面里改着�
 
 **验收**：浏览器标签页显示你写的标题；DevTools 切到 375px 宽度，文字大小不变；把图片路径改错，页面显示 `alt` 文字而不是空白。
 
-### 1.3 本地服务器与实时刷新
+### 本地服务器与实时刷新
 
 右键 `index.html`，选 **Open with Live Server**，地址栏会出现 `http://127.0.0.1:5500/01-resume-html/`。之后每次 `Ctrl+S`，浏览器自动刷新。
 
@@ -145,7 +141,7 @@ HTML/CSS/JS 的完整示例用 CodePen 嵌入，可以直接在页面里改着�
 
 **验收**：改 `<h1>` 保存，浏览器不刷新也自己变了，地址以 `127.0.0.1` 开头。
 
-### 1.4 Git 与 GitHub
+### Git 与 GitHub
 
 安装、配置身份、建仓库、配 SSH 这一整套步骤见 [Git 入门：从安装到第一次推送](../git/git-quickstart.md)；认证方式见 [GitHub SSH 认证配置](../git/git-github-ssh.md)。这里只规定第 1 周之后的日常动作：
 
@@ -156,7 +152,7 @@ git commit -m "feat: add resume skeleton"
 git push
 ```
 
-提交信息用「动词 + 范围」：`feat: 简历增加技能列表`、`fix: 头像路径错误`、`style: 调整卡片间距`。不要写 `update`、`修改一下`。
+提交信息用**约定式提交**（[Conventional Commits](https://www.conventionalcommits.org/zh-hans/v1.0.0/)）：`feat: 简历增加技能列表`、`fix: 头像路径错误`、`style: 调整卡片间距`。不要写 `update`、`修改一下`。
 
 `.gitignore` 从一开始就建好，写上 `node_modules/`、`dist/`、`.DS_Store`。
 
@@ -164,7 +160,7 @@ git push
 
 **卡点**：推送失败先看报错类型，[GitHub 推送失败排查](../git/github-push-failures.md) 覆盖了认证、代理、非快进三类；Windows 上出现整文件 diff 看 [Git 换行符](../git/git-line-endings.md)；误提交了不该提交的文件，用 [Git 撤销与修改提交历史](../git/git-undo-and-rewrite.md) 回滚，别删仓库重来。
 
-### 1.5 HTML：先掌握这 10 组标签（2.5 小时）
+### HTML：先掌握这 10 组标签（2.5 小时）
 
 不要背标签表，先能用这 10 组把内容组织清楚：
 
@@ -192,7 +188,7 @@ git push
 
 **练习**：做一个「我的收藏夹」页面，放 3 个链接，每个链接配一句为什么收藏它。
 
-### 1.6 DevTools：会看比会写更重要（1 小时）
+### DevTools：会看比会写更重要（1 小时）
 
 F12 打开，本周只练这六个面板：
 
@@ -211,7 +207,7 @@ F12 打开，本周只练这六个面板：
 
 ### 项目 A：纯 HTML 简历（2 小时）
 
-用 1.5 节的标签把简历搭出来，不加任何样式。
+用「HTML：先掌握这 10 组标签」里列的标签把简历搭出来，不加任何样式。
 
 - `header`：头像、姓名（`h1`）、一句话简介
 - `main`：技能列表（至少 5 项）、教育经历、一段项目经历
@@ -234,7 +230,7 @@ F12 打开，本周只练这六个面板：
 
 本周结束：简历有了完整样式，手机宽度下不横向滚动。
 
-### 2.1 选择器、层叠与优先级（2 小时）
+### 选择器、层叠与优先级（2 小时）
 
 样式写在外部文件里，用 `<link rel="stylesheet" href="style.css">` 引入。行内 `style` 和内嵌 `<style>` 只用于临时试验。
 
@@ -255,7 +251,7 @@ F12 打开，本周只练这六个面板：
 
 **验收**：随便改一条样式让它不生效，你能在 Styles 面板指出是哪条规则、因为什么覆盖了它。
 
-### 2.2 盒模型（2 小时）
+### 盒模型（2 小时）
 
 每个元素都是一个盒子，从里到外四层：内容（content）→ 内边距（padding）→ 边框（border）→ 外边距（margin）。
 
@@ -277,7 +273,7 @@ margin
 
 **验收**：`width: 300px; padding: 20px` 在两种 `box-sizing` 下分别占多宽？答 340px 和 300px 才算过关。
 
-### 2.3 单位、字体与颜色（2 小时）
+### 单位、字体与颜色（2 小时）
 
 | 单位      | 相对谁                                   | 什么时候用                       |
 | :-------- | :--------------------------------------- | :------------------------------- |
@@ -300,7 +296,7 @@ margin
 - 卡片式区块：圆角、阴影、内边距
 - 头像裁成圆形，宽高比不能变形
 - 链接悬停时下划线滑入（`transition`）
-- 字号、行高、颜色按 2.3 节的建议设置
+- 字号、行高、颜色按「单位、字体与颜色」一节的建议设置
 
 **验收**：
 
@@ -313,13 +309,13 @@ margin
 
 <!-- CODEPEN B · 答案：简历样式版 -->
 
-**卡点**：容器同时设了 `width: 100%` 和 `padding`，总宽超过屏幕，于是出现横向滚动条——这正是 2.2 节 `box-sizing` 要解决的问题。
+**卡点**：容器同时设了 `width: 100%` 和 `padding`，总宽超过屏幕，于是出现横向滚动条——这正是「盒模型」一节 `box-sizing` 要解决的问题。
 
 ## 第 3 周：Flex、Grid 与响应式（12 小时）
 
 本周结束：一个三页的静态博客，电脑三列、平板两列、手机一列。
 
-### 3.1 Flex：一维布局（3 小时）
+### Flex：一维布局（3 小时）
 
 给容器加 `display: flex`，子元素自动排成一行。容器管整体，项目管自己：
 
@@ -338,7 +334,7 @@ margin
 
 一个必踩的坑：Flex 子元素里的长文本会撑破容器，因为它的最小宽度默认是内容宽度。给子元素加 `min-width: 0` 就能正常换行或省略。
 
-### 3.2 Grid：二维布局（3 小时）
+### Grid：二维布局（3 小时）
 
 `display: grid` 先定义列，再往里放东西：
 
@@ -358,7 +354,7 @@ margin
 
 **什么时候用哪个**：只管一行或一列用 Flex；要同时管行和列、或要卡片自动换列用 Grid。两者可以嵌套，不要互相替代。
 
-### 3.3 响应式与移动优先（2 小时）
+### 响应式与移动优先（2 小时）
 
 `<meta name="viewport">` 已经有了，剩下的是断点。移动优先的意思是：**默认样式写给手机**，再用 `min-width` 往上加。
 
@@ -403,7 +399,7 @@ margin
 
 本周结束：博客换一套框架重写，有一个别人能打开的网址。
 
-### 4.1 把 CSS 组织起来（2 小时）
+### 把 CSS 组织起来（2 小时）
 
 三件事，做完你的 CSS 才不会失控：
 
@@ -413,7 +409,7 @@ margin
 
 单文件超过 300 行就拆成 `base.css`、`layout.css`、`components.css`，在 HTML 里按顺序引入。
 
-### 4.2 选一个 CSS 框架（3 小时）
+### 选一个 CSS 框架（3 小时）
 
 | 框架           | 给你什么                         | 适合                         |
 | :------------- | :------------------------------- | :--------------------------- |
@@ -424,7 +420,7 @@ margin
 
 迁移分三步，不要一次重写：先用框架的容器和栅格搭骨架 → 再把导航、卡片、按钮换成框架组件 → 最后删掉不再使用的旧 CSS。覆盖框架样式时改它的 CSS 变量（Bootstrap 的 `--bs-*`），不要用 `!important` 硬压。
 
-### 4.3 部署上线（2 小时）
+### 部署上线（2 小时）
 
 三条路，选一条即可：
 
@@ -456,7 +452,7 @@ GitHub Pages 的项目页地址是 `https://用户名.github.io/仓库名/`，**
 
 本周结束：两个能玩的小游戏，代码里没有一行内联 `onclick`。
 
-### 5.1 代码怎么跑起来（1 小时）
+### 代码怎么跑起来（1 小时）
 
 `<script src="main.js" defer></script>` 放在 `<head>` 里，`defer` 保证 DOM 解析完再执行。直接写在 `<body>` 末尾也可以，但别两样都不做——脚本在元素之前执行，`querySelector` 拿到 `null`，后面就报错。
 
@@ -471,7 +467,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 断点调试：Sources 面板点行号打红点，刷新页面，代码会停在那里，F10 单步、F11 进入函数、鼠标悬停看变量。比十行 `console.log` 快。
 
-### 5.2 值与类型（2 小时）
+### 值与类型（2 小时）
 
 `const` 优先，需要重新赋值时才用 `let`，`var` 不用。原始类型七个：`string`、`number`、`boolean`、`null`、`undefined`、`symbol`、`bigint`；其余都是对象。
 
@@ -481,7 +477,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 **验收**：能口算 `1 + "2"`（`"12"`）、`"3" * "2"`（`6`）、`[] + []`（`""`）的结果并说出原因。
 
-### 5.3 控制流（1.5 小时）
+### 控制流（1.5 小时）
 
 `if / else if / else` 处理分支，简单的二选一用三元运算符。循环先学 `for` 和 `for...of`，遍历数组用 `forEach`。
 
@@ -489,7 +485,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 **练习**：打印 1 到 100，3 的倍数输出 `Fizz`，5 的倍数输出 `Buzz`，15 的倍数输出 `FizzBuzz`。写不出来说明条件顺序还没想清楚。
 
-### 5.4 函数（2 小时）
+### 函数（2 小时）
 
 函数把逻辑封起来：参数进、`return` 出。写法有三种：`function add(a, b) { ... }` 是声明，`const add = function (a, b) { ... }` 是表达式，`const add = (a, b) => a + b` 是箭头函数。声明适合顶层函数，箭头函数适合回调和短逻辑。
 
@@ -499,7 +495,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 **练习**：`formatPrice(1230)` 返回 `"¥12.30"`；`clamp(n, min, max)` 把数字限制在区间内。
 
-### 5.5 数组与对象（2.5 小时）
+### 数组与对象（2.5 小时）
 
 数组管顺序，对象管属性，两者组合就是前端最常见的数据形状：`[{ id, name, price }]`。
 
@@ -515,7 +511,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 **练习**：给一组商品，筛出 50 元以上的，把名称和价格拼成 `<li>` 字符串，`join("")` 后一次性插入页面。
 
-### 5.6 作用域与严格模式（1 小时）
+### 作用域与严格模式（1 小时）
 
 `let` 和 `const` 是块级作用域，`var` 是函数级——这就是为什么循环里用 `var` 声明索引，回调拿到的永远是最后一个值。
 
@@ -551,7 +547,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 本周结束：一个能增删改查的待办清单，输入恶意字符串也不会弹窗。
 
-### 6.1 查询与修改 DOM（2.5 小时）
+### 查询与修改 DOM（2.5 小时）
 
 | 操作    | 写法                                                        |
 | :------ | :---------------------------------------------------------- |
@@ -568,7 +564,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 - **用户输入永远用 `textContent` 渲染**。用 `innerHTML` 拼接用户输入就是 XSS：任务文本里写 `<img src=x onerror=alert(1)>`，页面一刷新就弹窗。
 - **静态样式写在 CSS 里**，`el.style` 只用于运行时才算得出的值（比如进度条宽度）。
 
-### 6.2 事件与委托（3 小时）
+### 事件与委托（3 小时）
 
 `addEventListener("click", handler)` 是唯一推荐写法，它允许同一元素绑多个监听，也方便移除（移除时传入同一个函数引用）。
 
@@ -578,7 +574,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 常用事件：`click`、`input`（每次输入触发）、`change`（失焦或选项变化）、`submit`（表单提交）、`keydown`（按键）。`e.preventDefault()` 阻止默认行为，表单提交和链接跳转都要用。
 
-### 6.3 表单与校验（2 小时）
+### 表单与校验（2 小时）
 
 HTML 先做一层免费校验：`required`、`type="email"`、`type="number"`、`minlength`、`pattern`。`label` 的 `for` 必须等于控件的 `id`，点文字也能聚焦。
 
@@ -607,7 +603,7 @@ JS 层做三件事：监听 `submit` 并 `preventDefault`；用 `form.checkValid
 
 本周结束：待办刷新不丢、番茄钟切标签页回来仍然准、天气应用能处理三种状态。
 
-### 7.1 localStorage（2 小时）
+### localStorage（2 小时）
 
 只能存字符串，对象先 `JSON.stringify`，读出来再 `JSON.parse`。key 加前缀和版本（`todo.v1`），读的时候给兜底值：`JSON.parse(localStorage.getItem("todo.v1") ?? "[]")`。
 
@@ -615,7 +611,7 @@ JS 层做三件事：监听 `submit` 并 `preventDefault`；用 `form.checkValid
 
 三条边界：容量约 5MB；同源共享，换端口就是另一份数据（5500 和 5173 不互通）；绝不存密码和 token。
 
-### 7.2 定时器与时间（2 小时）
+### 定时器与时间（2 小时）
 
 `setInterval` 和 `setTimeout` 返回 id，`clearInterval` / `clearTimeout` 取消。倒计时不要用 `count--` 每秒减一：定时器本身有误差，后台标签页还会被浏览器节流到 1 秒一次，跑十分钟就偏了几十秒。
 
@@ -625,7 +621,7 @@ JS 层做三件事：监听 `submit` 并 `preventDefault`；用 `form.checkValid
 
 **验收**：暂停再继续不重置；切标签页 5 分钟回来，剩余时间与真实时间一致。
 
-### 7.3 fetch 与三种状态（3 小时）
+### fetch 与三种状态（3 小时）
 
 请求分三步：`const res = await fetch(url)` 拿到响应，检查 `res.ok`，再 `await res.json()` 解析。`res.ok` 为 `false` 时直接抛错，比等到 `res.json()` 炸掉好定位。
 
@@ -690,7 +686,7 @@ JS 层做三件事：监听 `submit` 并 `preventDefault`；用 `form.checkValid
 
 本周结束：一个带搜索、列表、详情、路由的 SPA，部署在线上。
 
-### 8.1 Node、npm 与 Vite（2 小时）
+### Node、npm 与 Vite（2 小时）
 
 Node 与包管理器的安装、镜像、常用命令见 [npm、pnpm 与 Node.js 入门指南](../web/npm-pnpm-nodejs-guide.md)。这里只跑脚手架：
 
@@ -703,7 +699,7 @@ npm run dev
 
 打开 `http://localhost:5173` 看到默认页面就成功。三个命令要分清：`npm run dev` 本地开发（热更新）、`npm run build` 产出 `dist/`、`npm run preview` 本地预览构建结果。`node_modules` 永远不进 git，`dist` 也不进。
 
-### 8.2 组件、props 与状态（3 小时）
+### 组件、props 与状态（3 小时）
 
 页面拆成组件，组件是返回 JSX 的函数，名字大写。props 是只读输入，父传子；state 是组件自己的记忆，用 `useState` 声明。
 
@@ -719,13 +715,13 @@ npm run dev
 
 <!-- CODEPEN D8 · 演示：React 的状态、列表与条件渲染 -->
 
-### 8.3 副作用与数据请求（3 小时）
+### 副作用与数据请求（3 小时）
 
 渲染函数必须是纯的，请求、定时器、订阅这些副作用放 `useEffect`。依赖数组决定何时重跑：`[]` 只跑一次，`[query]` 是 `query` 变了才跑，不写数组是每次渲染都跑。
 
 返回的函数是清理函数，用来取消请求、清定时器——不清理就会在组件卸载后继续 `setState`，控制台一片警告。开发环境下 `StrictMode` 会让副作用执行两次，这是故意的压力测试；正确的做法是写好清理函数，而不是用标志位绕过。
 
-### 8.4 路由（2 小时）
+### 路由（2 小时）
 
 `npm install react-router-dom` 后，用 `BrowserRouter`、`Routes`、`Route` 配两条路由：`/` 搜索页、`/cocktail/:id` 详情页。跳转用 `Link`，不要用 `<a>`——后者会整页刷新，SPA 就白搭了。详情页用 `useParams()` 拿 id，再发请求。加一条 `*` 路由做 404。
 
