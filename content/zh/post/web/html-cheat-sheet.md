@@ -1,8 +1,8 @@
 ---
-title: HTML 语法与常见任务速查表
+title: HTML 速查表
 slug: html-cheat-sheet
 date: 2026-07-27
-description: 一份面向开发者的 HTML 速查表，涵盖常用标签、属性、语义化写法与代码片段，助你快速查阅与规范书写。
+description: HTML 常用标签、属性与易错点的极简速查表，按文本、列表、表格、媒体、表单、语义结构分组。
 tags:
   - html
   - cheatsheet
@@ -11,290 +11,339 @@ categories:
   - web
 ---
 
-使用 HTML 时，若能有一种简单的方法记住如何正确使用和应用 HTML 标签，将会非常方便。这份速查表面向有编程基础的开发者，旨在为常见用法提供快速、准确、现成的代码片段。[^1]
+只记写法与易错点。标签定义以 MDN 为准[^1]。
 
-> **核心原则**：HTML 标签应根据其**语义价值**而非外观使用。完全可以使用 CSS 改变特定标签的外观和特性。使用 HTML 时，要花时间留意标签的**语义**，而非它们的外观。
-
----
-
-## 文档结构与基础
-
-### 基本 HTML 文档
-
-每个 HTML 文档都以文档类型声明开始，并遵循标准结构。
+## 文档骨架
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="页面描述" />
     <title>页面标题</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- 页面内容放在这里 -->
+    ...
   </body>
 </html>
 ```
 
-### Head 中的常用元数据
+- `<!doctype html>`：标准模式，放首行。
+- `lang`：页面语言，影响翻译与朗读。
+- `charset`：UTF-8，放 `head` 最前。
+- `viewport`：移动端布局。
+- `description`：搜索结果摘要；`keywords` 已被主流搜索引擎忽略，可省。
+- `author`：作者信息，可选。
+- `title`：标签页与搜索结果标题，每页唯一。
+
+## 文本
+
+### 标题
+
+`h1` 每页一个，`h2`–`h6` 按层级递进，不跳级。
+
+### 行内语义
+
+| 元素              | 用途           | 示例                              |
+| :---------------- | :------------- | :-------------------------------- |
+| `<strong>`        | 重要           | `<strong>重要</strong>`           |
+| `<em>`            | 强调           | `<em>强调</em>`                   |
+| `<b>`             | 加粗，无语义   | `<b>加粗</b>`                     |
+| `<i>`             | 斜体，无语义   | `<i>斜体</i>`                     |
+| `<mark>`          | 高亮           | `<mark>高亮</mark>`               |
+| `<s>`             | 已过时         | `<s>旧价</s>`                     |
+| `<del>`           | 已删除         | `<del>删除</del>`                 |
+| `<ins>`           | 已插入         | `<ins>插入</ins>`                 |
+| `<u>`             | 下划线，无语义 | `<u>下划线</u>`                   |
+| `<small>`         | 小字           | `<small>小字</small>`             |
+| `<sup>` / `<sub>` | 上标 / 下标    | `x<sup>2</sup>`、`H<sub>2</sub>O` |
+| `<kbd>`           | 键盘输入       | `<kbd>Ctrl</kbd>`                 |
+| `<samp>`          | 程序输出       | `<samp>OK</samp>`                 |
+| `<var>`           | 变量名         | `<var>x</var>`                    |
+| `<code>`          | 行内代码       | `<code>npm i</code>`              |
+| `<pre>`           | 预格式化文本   | 代码块                            |
+
+### 引用与联系
 
 ```html
-<!-- 字符编码 -->
-<meta charset="UTF-8" />
-<!-- 响应式视口 -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- 页面描述（SEO） -->
-<meta name="description" content="页面描述" />
-<!-- 链接 CSS -->
-<link rel="stylesheet" href="styles.css" />
-<!-- 链接 favicon -->
-<link rel="icon" href="favicon.ico" />
-```
-
-### HTML 注释
-
-```html
-<!-- 这是一个单行注释 -->
-
-<!--
-  这是一个多行注释
-  用于更长的解释
--->
-```
-
----
-
-## 文本内容元素
-
-### 标题（h1–h6）
-
-定义内容层次结构和重要性。`<h1>` 应作为主标题使用一次，然后是 `<h2>`、`<h3>` 等。
-
-```html
-<h1>主标题</h1>
-<h2>章节标题</h2>
-<h3>子章节标题</h3>
-<h4>次级子章节标题</h4>
-<h5>小标题</h5>
-<h6>最小标题</h6>
-```
-
-### 段落与文本
-
-```html
-<p>这是包含文本的段落。它可以包含多个句子，并且会自动换行。</p>
-<p>这是另一个段落。段落之间有边距间隔。</p>
-```
-
-### 行内文本格式化
-
-| 用途              | 元素       | 示例                                |
-| ----------------- | ---------- | ----------------------------------- |
-| 重要/强调（粗体） | `<strong>` | `<strong>我很重要！</strong>`       |
-| 强调（斜体）      | `<em>`     | `<em>我很时髦</em>`                 |
-| 粗体（无语义）    | `<b>`      | `<b>加粗单词或短语</b>`             |
-| 斜体（无语义）    | `<i>`      | `<i>斜体标记短语</i>`               |
-| 高亮              | `<mark>`   | `<mark>注意这里！</mark>`           |
-| 删除线            | `<s>`      | `<s>我无关紧要。</s>`               |
-| 下划线            | `<u>`      | `<u>带下划线的文本</u>`             |
-| 小字              | `<small>`  | `<small>小字</small>`               |
-| 上标              | `<sup>`    | `x<sup>2</sup>`                     |
-| 下标              | `<sub>`    | `H<sub>2</sub>O`                    |
-| 插入文本          | `<ins>`    | `<ins>已插入文本</ins>`             |
-| 删除文本          | `<del>`    | `<del>已删除文本</del>`             |
-| 代码格式          | `<code>`   | `<code>console.log('Hello')</code>` |
-| 预格式化          | `<pre>`    | 保留空格和换行                      |
-
-### 换行与分隔线
-
-```html
-<!-- 换行 -->
-第 1 行<br />第 2 行
-
-<!-- 水平分隔线 -->
-<hr />
-```
-
-### 引用与地址
-
-```html
-<!-- 内联引用 -->
-<q>我？</q>，她说道。
-
-<!-- 文献引用 -->
-<cite>《怪物书》</cite>
-
-<!-- 联系信息 -->
-<address>主大街 67 号</address>
-
-<!-- 块级引用 -->
-<blockquote>
-  <p>这是一个块级引用。</p>
+<blockquote cite="https://example.com/source">
+  <p>块级引用。</p>
 </blockquote>
+
+<p>他说：<q cite="https://example.com/source">行内引用</q>。</p>
+
+<p>参考 <cite>HTML Living Standard</cite>。</p>
+
+<address>主大街 67 号</address>
 ```
 
-### 日期与时间
+`q` 自动加引号；`cite` 属性只存来源 URL，不显示；`<cite>` 元素显示作品名；`address` 表示联系信息。
+
+### 代码
 
 ```html
-<time datetime="2020-05-24">发布于 2020 年 5 月 23 日</time>
+<p>行内：<code>const x = 1;</code></p>
+
+<pre><code>function greet(name) {
+  return `Hello, ${name}`;
+}</code></pre>
 ```
 
----
+`pre` 保留空格与换行；代码里的 `<` 写成 `&lt;`。
 
-## 链接与图片
-
-### 链接（`<a>`）
+### 时间、数据与其他
 
 ```html
-<!-- 普通链接 -->
-<a href="https://example.org">至 example.org 的链接</a>
-
-<!-- 在新标签页打开 -->
-<a href="https://example.org" target="_blank">新窗口打开</a>
-
-<!-- 邮件链接 -->
-<a href="mailto:someone@example.com">发送邮件</a>
-
-<!-- 页面内锚点 -->
-<a href="#section">跳转到某章节</a>
+<time datetime="2026-08-01T10:30:00+08:00">2026 年 8 月 1 日</time>
+<data value="P-1024">P-1024</data>
+<ruby>汉<rp>（</rp><rt>hàn</rt><rp>）</rp></ruby>
+<bdo dir="rtl">right to left</bdo>
+Supercalifragilistic<wbr />expialidocious
+<abbr title="HyperText Markup Language">HTML</abbr>
+<dfn title="HyperText Markup Language">超文本标记语言</dfn>
 ```
 
-### 图片（`<img>`）
+- `wbr` 只给浏览器换行机会，不强制换行。
+- `rp` 是不支持 `ruby` 的浏览器回退。
+- `bdo dir="rtl"` 覆盖文字方向。
+- `time` 的 `datetime` 与 `data` 的 `value` 都是机器可读值。
+- `abbr` 用 `title` 给全称；`dfn` 标记术语首次定义。
 
-```html
-<img src="beast.png" alt="替换文本" width="50" />
-```
+### 换行与分隔
 
----
+`br` 只用于强制换行，间距交给 CSS；`hr` 表示主题切换。
 
 ## 列表
 
-### 无序列表（`<ul>`）
-
 ```html
 <ul>
-  <li>第一项</li>
-  <li>第二项</li>
-  <li>第三项</li>
+  <li>无序</li>
 </ul>
-```
 
-### 有序列表（`<ol>`）
-
-```html
-<ol>
-  <li>第一项</li>
-  <li>第二项</li>
-  <li>第三项</li>
+<ol type="1">
+  <li>有序</li>
 </ol>
-```
 
-### 嵌套列表
-
-```html
-<ul>
-  <li>
-    项目
-    <ul>
-      <li>子项目</li>
-    </ul>
-  </li>
-</ul>
-```
-
-### 定义列表（`<dl>`）
-
-```html
 <dl>
   <dt>术语</dt>
-  <dd>术语的定义</dd>
+  <dd>定义</dd>
 </dl>
+
+<menu>
+  <li><button type="button">命令</button></li>
+</menu>
 ```
 
----
+- `ol` 的 `type` 可取 `1`、`a`、`A`、`i`、`I`。
+- `menu` 表示命令列表，结构同 `ul`。
 
-## 表格（`<table>`）
-
-### 基础表格结构
+## 表格
 
 ```html
 <table>
+  <caption>学生成绩</caption>
+  <colgroup>
+    <col />
+    <col span="3" />
+    <col />
+  </colgroup>
   <thead>
     <tr>
-      <th>表头 1</th>
-      <th>表头 2</th>
+      <th scope="col">姓名</th>
+      <th scope="col">语文</th>
+      <th scope="col">数学</th>
+      <th scope="col">英语</th>
+      <th scope="col">总分</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>数据 1</td>
-      <td>数据 2</td>
+      <th scope="row">张三</th>
+      <td>85</td>
+      <td>92</td>
+      <td>78</td>
+      <td>255</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td>表尾 1</td>
-      <td>表尾 2</td>
+      <td colspan="4">平均分</td>
+      <td>259.7</td>
     </tr>
   </tfoot>
 </table>
 ```
 
-### 表格常用属性
+- `caption` 是第一个子元素；`colgroup` 在 `caption` 后、`thead` 前。
+- `th` 加 `scope="col"` / `scope="row"`。
+- `colspan` 合并列，`rowspan` 合并行。
+- `border` 属性废弃，边框用 CSS；表格只放数据。
 
-- `colspan`：跨列合并
-- `rowspan`：跨行合并
+## 链接
 
 ```html
-<td colspan="2">跨两列</td>
+<a href="https://example.org">外链</a>
+<a href="https://example.org" target="_blank" rel="noopener">新标签页</a>
+<a href="mailto:hi@example.com?subject=Hello">邮件</a>
+<a href="tel:+8613800000000">电话</a>
+<a href="#forms">页内锚点</a>
 ```
 
----
+`target="_blank"` 配 `rel="noopener"`；链接文本写目标，不写「点击这里」。
 
-## 表单（`<form>`）
-
-### 基本表单结构
+## 图片
 
 ```html
-<form action="/submit" method="POST">
-  <!-- 表单控件 -->
+<img src="beast.png" alt="描述" width="640" height="360" loading="lazy" decoding="async" />
+
+<figure>
+  <img src="beast.png" alt="描述" width="640" height="360" loading="lazy" />
+  <figcaption>图注</figcaption>
+</figure>
+
+<picture>
+  <source media="(min-width: 720px)" srcset="wide.webp" />
+  <source media="(min-width: 480px)" srcset="mid.webp" />
+  <img src="small.webp" alt="描述" width="640" height="360" loading="lazy" />
+</picture>
+```
+
+- `alt` 必填；装饰图写 `alt=""`。`title` 只作补充提示。
+- `width` / `height` 预留比例，防止布局抖动。
+- `source` 自上而下匹配 `media` 与 `type`；最后的 `img` 兜底，承载 `alt` 与尺寸。
+
+## 音频、视频与嵌入
+
+```html
+<audio controls preload="metadata">
+  <source src="audio.ogg" type="audio/ogg" />
+  <source src="audio.mp3" type="audio/mpeg" />
+  浏览器不支持 audio。
+</audio>
+
+<video controls preload="metadata" width="640">
+  <source src="video.mp4" type="video/mp4" />
+  浏览器不支持 video。
+</video>
+
+<iframe
+  src="https://example.org"
+  title="嵌入内容说明"
+  width="640"
+  height="360"
+  loading="lazy"
+></iframe>
+```
+
+- `source` 按顺序选第一个支持的 `type`；`ogg` 免专利，`mp3` 兼容更广。
+- 后备文本写在不支持时显示的位置。
+- `iframe` 必须有描述性 `title`；`loading="lazy"` 延迟加载。
+- `preload="metadata"` 只取时长，`auto` 会预加载全部。
+
+图像映射：
+
+```html
+<img src="workplace.png" alt="桌面：电脑、咖啡、手机" usemap="#workmap" width="480" height="320" />
+<map name="workmap">
+  <area shape="rect" coords="20,40,250,280" alt="电脑" href="https://example.com/pc" />
+  <area shape="circle" coords="350,110,60" alt="咖啡" href="https://example.com/coffee" />
+</map>
+```
+
+`shape` 支持 `rect`、`circle`、`poly`；`coords` 是像素坐标；`area` 也要写 `alt`。
+
+## 表单
+
+### 基本结构
+
+```html
+<form action="/submit" method="post">
+  <fieldset>
+    <legend>账号</legend>
+    <label for="username">用户名</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      autocomplete="username"
+      required
+    />
+  </fieldset>
 </form>
 ```
 
-### 常用表单控件
+- `action` 提交地址，`method` 为 `get` / `post`。
+- `label` 的 `for` 对应控件的 `id`；`name` 是提交时的键名。
+- 演示页可用 JavaScript 的 `preventDefault()` 拦截提交。
 
-| 类型     | 元素                      | 示例                                             |
-| -------- | ------------------------- | ------------------------------------------------ |
-| 文本输入 | `<input type="text">`     | `<input type="text" name="username" />`          |
-| 密码     | `<input type="password">` | `<input type="password" name="pwd" />`           |
-| 邮箱     | `<input type="email">`    | `<input type="email" name="email" />`            |
-| 数字     | `<input type="number">`   | `<input type="number" name="age" />`             |
-| 单选     | `<input type="radio">`    | `<input type="radio" name="gender" value="M" />` |
-| 复选框   | `<input type="checkbox">` | `<input type="checkbox" name="hobby" />`         |
-| 提交按钮 | `<input type="submit">`   | `<input type="submit" value="提交" />`           |
-| 文本域   | `<textarea>`              | `<textarea name="desc" rows="4"></textarea>`     |
-| 下拉列表 | `<select>`                | `<select><option>选项</option></select>`         |
-| 标签     | `<label>`                 | `<label for="name">姓名</label>`                 |
+### 输入类型
 
-### 表单分组与语义化
+| `type`                        | 用途         | 关键属性                               |
+| :---------------------------- | :----------- | :------------------------------------- |
+| `text`                        | 单行文本     | `placeholder`、`required`、`minlength` |
+| `email`                       | 邮箱         | 浏览器校验格式                         |
+| `password`                    | 密码         | 输入掩码                               |
+| `number`                      | 数字         | `min`、`max`、`step`                   |
+| `radio`                       | 单选         | 同组同 `name`                          |
+| `checkbox`                    | 多选         | 同组同 `name`                          |
+| `file`                        | 文件         | `accept`                               |
+| `color`                       | 颜色         | 值为十六进制                           |
+| `range`                       | 滑块         | `min`、`max`、`value`                  |
+| `date`                        | 日期         | —                                      |
+| `datetime-local`              | 本地日期时间 | —                                      |
+| `hidden`                      | 隐藏字段     | 随表单提交                             |
+| `submit` / `reset` / `button` | 按钮         | `value` 是按钮文字                     |
+
+`button` 默认 `type="submit"`，不提交时必须写 `type="button"`；`button` 内可以放元素，`input` 不能。
+
+### 下拉、文本域与候选
 
 ```html
-<fieldset>
-  <legend>个人信息</legend>
-  <label for="name">姓名</label>
-  <input type="text" id="name" name="name" />
-</fieldset>
+<label for="country">国家</label>
+<select id="country" name="country">
+  <option value="cn" selected>中国</option>
+  <option value="us">美国</option>
+</select>
+
+<label for="bio">简介</label>
+<textarea id="bio" name="bio" rows="4" cols="40"></textarea>
+
+<label for="browser">浏览器</label>
+<input list="browsers" id="browser" name="browser" />
+<datalist id="browsers">
+  <option value="Chrome"></option>
+  <option value="Firefox"></option>
+</datalist>
 ```
 
-> **提示**：每个 `<input>` 标签对应的说明文本都应使用 `<label>` 标签，并通过 `for` 属性与 `id` 关联。
+- `selected` 指定默认项。
+- `textarea` 用 `rows` / `cols` 定尺寸。
+- `datalist` 提供候选，但不限制输入。
 
----
+### 计算与按钮
 
-## 语义化结构标签
+```html
+<form id="calc">
+  <input type="range" id="a" name="a" min="0" max="100" value="40" />
+  <input type="number" id="b" name="b" min="0" max="100" value="60" />
+  <output name="sum" for="a b">100</output>
+</form>
+
+<button type="submit">提交</button>
+<button type="reset">重置</button>
+<button type="button">普通按钮</button>
+```
+
+`output` 只负责显示，值由 JavaScript 用 `parseInt` 或 `Number` 写入；`for` 列出参与计算的控件 `id`。
+
+## 语义结构
 
 | 标签           | 用途                |
-| -------------- | ------------------- |
+| :------------- | :------------------ |
 | `<header>`     | 页眉或区块头部      |
 | `<nav>`        | 导航链接            |
 | `<main>`       | 页面主内容          |
@@ -303,87 +352,96 @@ categories:
 | `<aside>`      | 侧边栏或补充内容    |
 | `<footer>`     | 页脚或区块底部      |
 | `<figure>`     | 插图/图表等独立内容 |
-| `<figcaption>` | `<figure>` 的标题   |
+| `<figcaption>` | `<figure>` 的图注   |
 
 ```html
 <header>
-  <h1>网站标题</h1>
-  <nav>导航链接</nav>
+  <h1>站点标题</h1>
+  <nav aria-label="主导航">导航</nav>
 </header>
+
 <main>
   <article>
-    <h2>文章标题</h2>
-    <p>文章内容</p>
+    <header>文章页眉</header>
+    <p>正文</p>
+    <aside>旁注</aside>
+    <footer>文章页脚</footer>
   </article>
 </main>
+
 <footer>版权信息</footer>
 ```
 
----
+- 每页一个 `main`。
+- `aria-label` / `aria-labelledby` 给没有可见标题的区块命名。
+- `article` 可嵌套：列表 → 单篇 → 评论。
+- 无语义容器：`div` 块级，`span` 行内；优先用语义标签。
+- `noscript` 在禁用 JavaScript 时显示提示。
 
-## 容器与分组
-
-| 标签     | 用途               |
-| -------- | ------------------ |
-| `<div>`  | 块级容器（无语义） |
-| `<span>` | 行内容器（无语义） |
-
-```html
-<div>
-  <span style="color:blue">蓝色文字</span>
-</div>
-```
-
----
-
-## 媒体与嵌入
-
-### 音频（`<audio>`）
+### 标题组与折叠
 
 ```html
-<audio controls>
-  <source src="audio.mp3" type="audio/mpeg" />
-</audio>
+<hgroup>
+  <h2>HTML 语义化</h2>
+  <p>结构与含义一致</p>
+</hgroup>
+
+<details>
+  <summary>展开</summary>
+  <p>折叠内容。</p>
+</details>
 ```
 
-### 视频（`<video>`）
+`hgroup` 在大纲中只保留最高级标题；`details` 加 `open` 默认展开。
+
+### 对话框
 
 ```html
-<video controls width="400">
-  <source src="video.mp4" type="video/mp4" />
-</video>
+<dialog id="dialog" aria-labelledby="dialog-title">
+  <h2 id="dialog-title">标题</h2>
+  <p>内容。</p>
+  <button type="button" data-close>关闭</button>
+</dialog>
 ```
 
-### 内联框架（`<iframe>`）
+```js
+const dialog = document.querySelector("#dialog");
+dialog.showModal(); // 模态；show() 为非模态
+dialog.close();
+```
+
+`open` 属性默认打开；`Esc` 关闭；`::backdrop` 改遮罩。
+
+### 进度与模板
 
 ```html
-<iframe src="https://example.org" width="600" height="400"></iframe>
+<progress value="70" max="100">70%</progress>
+<meter value="0.65" min="0" max="1" low="0.3" high="0.8" optimum="0.5">65%</meter>
+
+<template id="card">
+  <article><h3>标题</h3></article>
+</template>
 ```
 
----
+`progress` 表示任务进度；`meter` 表示已知范围的度量；`template` 不渲染、不执行脚本，`content.cloneNode(true)` 后插入。
 
-## 全局属性（常用）
+## 全局属性与实体
 
-所有 HTML 元素均可使用以下属性：
-
-| 属性       | 说明                    |
-| ---------- | ----------------------- |
-| `id`       | 唯一标识符              |
-| `class`    | 类名（用于 CSS/JS）     |
-| `style`    | 内联样式                |
-| `title`    | 提示信息                |
-| `lang`     | 语言代码                |
-| `dir`      | 文字方向（`ltr`/`rtl`） |
-| `hidden`   | 隐藏元素                |
-| `tabindex` | Tab 键顺序              |
-| `data-*`   | 自定义数据属性          |
-
----
-
-## 常用实体字符
+| 属性       | 作用                                     |
+| :--------- | :--------------------------------------- |
+| `id`       | 唯一标识，锚点与 `label for` 使用        |
+| `class`    | 可复用的类名                             |
+| `style`    | 内联样式，少用                           |
+| `title`    | 悬停提示                                 |
+| `lang`     | 元素语言                                 |
+| `dir`      | 文字方向，`ltr` / `rtl`                  |
+| `hidden`   | 隐藏元素                                 |
+| `tabindex` | Tab 顺序                                 |
+| `data-*`   | 自定义数据，JavaScript 用 `dataset` 读取 |
+| `aria-*`   | 无障碍名称与状态                         |
 
 | 实体     | 显示     | 说明       |
-| -------- | -------- | ---------- |
+| :------- | :------- | :--------- |
 | `&lt;`   | `<`      | 小于号     |
 | `&gt;`   | `>`      | 大于号     |
 | `&amp;`  | `&`      | 和号       |
@@ -391,25 +449,6 @@ categories:
 | `&copy;` | `©`      | 版权符号   |
 | `&nbsp;` | （空格） | 不换行空格 |
 
-[More…](html-entities)
+完整列表见 [HTML 实体表](html-entities.md)。
 
----
-
-## 总结
-
-这份速查表涵盖了 HTML 开发中最常用的标签、属性和代码片段。核心要点：[^2]
-
-1. **语义优先**：根据内容选择最恰当的标签，而非根据外观。
-2. **结构清晰**：合理使用标题层级（h1–h6）和语义化标签（header、nav、main、article 等）。
-3. **表单可访问性**：始终使用 `<label>` 关联表单控件。
-4. **保持简洁**：能用 HTML 语义表达的，不滥用 `<div>` 和 `<span>`。
-
-建议将本速查表打印或收藏，日常开发中随时查阅。深入理解可参考 MDN HTML 元素参考[^3]。[^4]
-
-[^1]: [菜鸟教程 HTML 速查列表](https://www.runoob.com/html/html-quicklist.html)
-
-[^2]: [LabEx HTML 速查表](https://labex.io/cheatsheets/zh/html)
-
-[^3]: [MDN HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements)
-
-[^4]: [MDN HTML 语法与常见任务速查表](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Cheatsheet)
+[^1]: [MDN HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements)
