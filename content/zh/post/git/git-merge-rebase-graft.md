@@ -10,7 +10,6 @@ tags:
   - history-rewrite
 categories:
   - git
-draft: true
 ---
 
 两个仓库要合成一个，历史也要接上。很多人搜到 `--allow-unrelated-histories` 就直接开跑，但如果你的真实要求是「最终只要新仓库的文件，旧仓库只提供历史」，跑完会发现旧文件全都还在。区别不在命令，在于每种做法改的是**父指针**还是**文件快照**。
