@@ -1,5 +1,5 @@
 ---
-title: 小白也能懂的纯静态博客：wh1tea.github.io 是怎么工作的
+title: <username>.github.io 是怎么工作的
 slug: how-static-blog-works
 date: 2026-08-03
 description: 从写 Markdown 到发布上线，拆解一个零框架纯静态博客的完整技术栈与实现原理，适合想自己搭博客的小白。
@@ -13,7 +13,7 @@ categories:
   - hugo
 ---
 
-> 面向小白：拆解 wh1tea.github.io 这个纯静态博客的完整实现。读完你会明白从写一篇文章到读者看到它，每一步发生了什么。[^1]
+> 面向小白：拆解 `<username>.github.io` 这个纯静态博客的完整实现。读完你会明白从写一篇文章到读者看到它，每一步发生了什么。[^1]
 
 ## 这是什么
 
@@ -29,7 +29,7 @@ categories:
 ## 一次访问发生了什么
 
 ```text
-浏览器输入 wh1tea.github.io
+浏览器输入 <username>.github.io
         │
         ▼
 GitHub Pages 返回 index.html（首页）
@@ -141,11 +141,11 @@ GitHub Pages 默认用 Jekyll 构建。Jekyll 会把 `_data/` 当成自己的内
 
 localStorage 是浏览器自带的键值存储，适合存"偏好"：
 
-| 功能       | 存储内容       | 实现                                |
-| ---------- | -------------- | ----------------------------------- |
-| 暗色模式   | `theme`        | 切换 `<html>` 的 `data-theme` 属性  |
-| 中英文切换 | `wh1tea_lang`  | 翻译字典 + `data-i18n` 属性替换文本 |
-| 阅读计数   | `wh1tea_views` | 打开文章 +1，首页给 Top 3 加 🔥 标   |
+| 功能       | 存储内容           | 实现                                |
+| ---------- | ------------------ | ----------------------------------- |
+| 暗色模式   | `theme`            | 切换 `<html>` 的 `data-theme` 属性  |
+| 中英文切换 | `<username>_lang`  | 翻译字典 + `data-i18n` 属性替换文本 |
+| 阅读计数   | `<username>_views` | 打开文章 +1，首页给 Top 3 加 🔥 标   |
 
 不需要服务器，数据存在访问者自己的浏览器里。
 
@@ -179,7 +179,7 @@ on:
 - 静态博客 = Markdown 写作 + 构建脚本 + 前端渲染，三层各司其职
 - GitHub Pages 免费托管，`.nojekyll` 是让 `_data/` 可访问的关键
 - 零框架意味着零依赖、加载快、完全可控，代价是功能要自己写
-- 想搭一个：创建 `<用户名>.github.io` 仓库，写第一篇 `.md`，push 即可[^5]
+- 想搭一个：创建 `<username>.github.io` 仓库，写第一篇 `.md`，push 即可[^5]
 
 具体搭建步骤见 [GitHub Pages 博客搭建教程](setting-up-github-io-blog.md)。
 
