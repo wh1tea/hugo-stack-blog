@@ -2,7 +2,7 @@
 title: DeepSeek Harness 是什么：从零开始用起来
 slug: dsh-guide
 date: 2026-09-06T13:30:25+08:00
-description: dsh 是 DeepSeek 开源的本地编码 Agent：一条 npx 命令启动浏览器界面，用对话完成读写文件、跑命令、调技能。本文讲清它是什么、怎么用。
+description: dsh 是 DeepSeek 开源的本地编码 Agent：一条 npx 命令启动浏览器界面，用对话完成读写文件、跑命令、调技能。本文讲清它是什么、怎么用。本文已过时推荐使用桌面版dsh。
 tags:
   - deepseek
   - dsh
@@ -11,6 +11,7 @@ tags:
   - skill
 categories:
   - ai
+draft: true
 ---
 
 > dsh（DeepSeek Harness）是 DeepSeek 官方开源的编码 Agent 工具，跑在你自己的机器上，用浏览器操作。给它一个工作目录，它就能读写文件、执行命令、搜索网页，还能调用你放在磁盘上的「技能」。本文回答两个问题：它是什么，以及一条命令启动后怎么用。
