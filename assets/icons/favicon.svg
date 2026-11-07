@@ -1,11 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="5.92 8.02 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 40 40">
   <title>Wh1tea Favicon</title>
   <style>
-    path { fill: #000; }
+    path { fill: #121212; }
     @media (prefers-color-scheme: dark) {
-      path { fill: #fff; }
+      path { fill: #E0E0E0; }
     }
   </style>
-  <path d="m22.42 43.463-9.567-30.882H8.919l9.569 30.887zm3.488 0V12.581h-3.48v30.882zm13.532 0-9.568-30.882h-3.937l9.567 30.887z"/>
-  <path d="M42.919 43.463V12.581h-3.48v30.882z"/>
+  <path d="M16.5003 35.4433L6.9329 4.5608H2.99937L12.5679 35.4478L16.5003 35.4433Z
+           M19.9879 35.4431V4.5607H16.5082V35.4431H19.9879Z
+           M33.5193 35.4433L23.9519 4.5608H20.0149L29.5824 35.4478L33.5193 35.4433Z
+           M36.999 35.4431V4.5607H33.5193V35.4431H36.999Z"/>
 </svg>
