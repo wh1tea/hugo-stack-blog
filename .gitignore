@@ -25,6 +25,7 @@ frontmatter.json
 
 # Editor
 .vscode/
+*.code-workspace
 
 # Private (never committed)
 /content/private/
