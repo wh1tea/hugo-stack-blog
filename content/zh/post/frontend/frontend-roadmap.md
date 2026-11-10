@@ -528,7 +528,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 
 ### 项目 F：猜数字（1.5 小时）
 
-跟做 [从零实现猜数字游戏](../javascript/guess-game-tutorial.md)。
+跟做 [从零实现猜数字游戏](number-guessing-game.md)。
 
 **验收**：
 
