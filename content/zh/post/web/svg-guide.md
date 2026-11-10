@@ -2,7 +2,7 @@
 title: SVG 入门：格式对比、AI 生成与 VSCode 预览
 slug: svg-guide
 date: 2026-08-20
-description: 梳理 SVG 的核心优势与格式选型，给出 AI 生成矢量图的三条路径，以及 VSCode 实时预览的配置方法。
+description: 梳理 SVG 的核心优势与格式选型，给出 AI 生成矢量图的三条路径，以及 VSCode 实时预览的配置方法，并记录 Better SVG 的 SVGO 优化陷阱。
 tags:
   - svg
   - frontend
@@ -12,11 +12,11 @@ categories:
   - web
 ---
 
-SVG 用数学路径描述图形，而不是存储像素阵列。这个区别决定了它在缩放、体积和可编辑性上的优势，也决定了它的适用边界。本文梳理 SVG 的核心特性与格式选型，给出 AI 生成矢量图的三条路径，以及 VSCode 里实时预览的配置方法。
+SVG 用数学路径描述图形，而不是存储像素阵列。这个区别决定了它在缩放、体积和可编辑性上的优势，也决定了它的适用边界。本文梳理 SVG 的核心特性与格式选型，给出 AI 生成矢量图的三条路径，以及 VSCode 里实时预览的配置方法，并补充一个 Better SVG 优化导致主题色失效的实际问题。
 
 ## 核心特点与适用边界
 
-SVG 是 W3C 标准的 XML 标记语言[^1]，本质是存储"绘制方法"而非"像素阵列"，放大多少倍都不会出现锯齿。它相对于位图，类似 HTML 相对于纯文本。
+SVG 是 W3C 标准的 XML 标记语言[^1]，本质是存储“绘制方法”而非“像素阵列”，放大多少倍都不会出现锯齿。它相对于位图，类似 HTML 相对于纯文本。
 
 四个优势：
 
@@ -64,19 +64,56 @@ AI 生成 SVG 的实质是让模型输出符合 W3C 标准的矢量代码，目�
 
 ## VSCode 实时预览
 
-SVG 是文本代码，搭配扩展可以做到编码即所见。
+SVG 是文本代码，搭配扩展[SVG](https://marketplace.visualstudio.com/items?itemName=jock.svg)可以做到编码即所见。
 
-**Better SVG** 是当前功能最全的选择[^5]：
+## Bug：Better SVG 的 SVGO 优化陷阱
 
-- 并排实时预览，打开 `.svg` 文件自动激活
-- 侧边栏跟踪当前文件缩略图
-- 代码悬停预览、行号旁缩略图
-- 集成 SVGO 一键优化压缩
-- 识别 React（`.jsx` / `.tsx`）、Vue（`.vue`）、Astro、Svelte、PHP 中的 SVG 语法
+Better SVG 集成了 SVGO 一键优化，但它对含 `<style>` 和媒体查询的 SVG 可能改出问题。以 `test-bug.svg` 为例，优化前：
 
-轻量替代：SVG Preview（侧边栏预览，支持暗黑模式）、SVG Viewer（右键预览、缩放与导出）。
+```html
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <title>inline style bug test</title>
+  <style>
+    circle {
+      fill: #121212;
+    }
+    @media (prefers-color-scheme: dark) {
+      circle {
+        fill: #e0e0e0;
+      }
+    }
+  </style>
+  <circle cx="100" cy="100" r="80" stroke="#FF6B35" stroke-width="5" />
+</svg>
+```
 
-上手三步：在扩展市场安装 Better SVG 或 SVG Preview；打开任意 `.svg` 文件，预览面板自动显示；修改代码，图形实时更新。调整行为可改设置里的 `betterSvg.autoReveal` 和 `betterSvg.enableHover`。
+优化后变成：
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><title>inline style bug test</title><style>@media (prefers-color-scheme:dark){circle{fill:#e0e0e0}}</style><circle cx="100" cy="100" r="80" stroke="#ff6b35" stroke-width="5" style="fill:#121212"/></svg>
+```
+
+格式化：
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <title>inline style bug test</title>
+  <style>
+    @media (prefers-color-scheme:dark) {
+      circle {
+        fill: #e0e0e0
+      }
+    }
+  </style>
+  <circle cx="100" cy="100" r="80" stroke="#ff6b35" stroke-width="5" style="fill:#121212" />
+</svg>
+```
+
+问题在于：SVGO 把基础规则 `path { fill: #121212; }` 提取成了 `path` 元素的内联 `style="fill:#121212"`。内联样式优先级高于 `<style>` 中的普通选择器规则，因此 `@media (prefers-color-scheme: dark)` 里的 `path { fill:#e0e0e0; }` 无法覆盖它，暗色模式实际仍然显示 `#121212`，主题自适应失效。
+
+结论：**含 `<style>`、媒体查询或主题色切换的 SVG，不要使用 Better SVG 的 SVGO 优化功能。** 日常预览建议直接使用 SVG Preview 等只做预览、不改写代码的插件；如果必须优化，先备份并检查 `fill` 是否被内联到元素 `style` 中。
+
+工具选择上，预览优先用 SVG Preview；Better SVG 功能虽全，但对含主题媒体查询的 SVG 要避开其 SVGO 优化，否则容易出现 `test-bug.svg` 这类暗色模式失效问题。
 
 ## 结语
 
