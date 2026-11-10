@@ -1,6 +1,6 @@
 ---
 title: 从零实现猜数字游戏
-slug: guess-game-tutorial
+slug: number-guessing-game
 date: 2026-09-03T10:00:00+08:00
 description: 从空白文件开始，逐步构造一个完整的猜数字游戏，涵盖 HTML 骨架、样式美化、交互逻辑与状态管理，适合前端初学者建立项目思维。
 tags:
@@ -13,45 +13,47 @@ categories:
   - web
 ---
 
-## 引言
+## HTML
 
-本文面向刚接触前端、只会基础 HTML/CSS/JS 语法，却不知如何组织一个小项目的开发者。我们将抛弃“一口气贴完所有代码”的教学方式，把一个完整的猜数字游戏拆解为 **4 个迭代版本**，从“能用”到“好用”，让小白理解工程化的渐进式思维。完整代码见[codepen](https://codepen.io/wh1tea/pen/MWmPMab)
+ `index.html`
 
-## 第一次迭代：搭起 HTML 骨架（最小可执行界面）
-
-我们不做任何交互，先完成最小的静态界面。新建 `index.html`，写入基础结构：
+标题和提示词+输入框+提交按钮+新游戏按钮
 
 ```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Number Guessing Game</title>
-  </head>
-  <body>
-    <h1>Number Guessing Game</h1>
-    <p>Random number range 1~100, you have only 10 chances.</p>
+    <h1>Number guessing game</h1>
+    <p>
+      We have selected a random number between 1 and 100. See if you can guess
+      it in 10 turns or fewer. We'll tell you if your guess was too high or too
+      low.
+    </p>
 
     <div class="form">
-      <label for="guessField">Enter your guess: </label>
-      <input type="number" id="guessField" min="1" max="100" />
-      <button id="submitBtn">Submit</button>
+      <label for="guessField">Enter a guess: </label>
+      <input
+        type="number"
+        id="guessField"
+        class="guessField"
+        placeholder="1~100"
+        min="1"
+        max="100"
+        step="1"
+      />
+      <input type="button" value="Submit guess" class="guessSubmit" />
+      <input type="button" value="Start new game" id="resetButton" hidden />
     </div>
 
     <div class="resultParas">
       <p class="guesses"></p>
-      <p class="lastResult"></p>
+      <output class="lastResult"></output>
       <p class="lowOrHi"></p>
     </div>
-
-    <button id="resetBtn" hidden>New Game</button>
-  </body>
-</html>
 ```
 
 此时页面没有逻辑，点击按钮无反应，但语义化的标签（`label`、`button`）已经为无障碍和后续 JS 选挂载点做好了准备。
 
-## 第二次迭代：植入 JavaScript 灵魂（核心玩法）
+##  JavaScript
+
+生成随机数并记录
 
 第二步引入核心脚本：生成随机数、读取输入、比较大小并给出即时反馈。直接在 `body` 末尾添加 `<script>` 标签：
 
