@@ -2,7 +2,7 @@
 title: Win+V 只复制不粘贴的排查与修复
 slug: win-v-paste-not-working
 date: 2026-11-11T00:30:00+08:00
-description: Win+V 能选中历史、内容也已进剪贴板却不粘贴：先用钩子统计确认面板没发出粘贴动作，再重注册输入体验的组件包修好
+description: Win+V 能选中历史、内容也已进剪贴板却不粘贴：先确认面板是否发出粘贴动作，再重注册输入体验的组件包修好
 tags:
   - troubleshooting
   - windows
@@ -12,25 +12,30 @@ categories:
 draft: true
 ---
 
-Win+V 能打开历史、能选中，选中项也确实进了剪贴板，但点选或回车不会把它送到光标处，还得再按一次 Ctrl+V。这不是权限或第三方软件拦截，而是 Windows「输入体验」组件没有发出粘贴动作；下面给自查、诊断脚本和修法，整套流程在一台 Windows 11 26H2（`build 26300.9818`）上验证过一次。
+`Win+V` 能打开历史、能选中，选中项也确实进了剪贴板，但点选或回车不会把它送到光标处，还得再按一次 Ctrl+V。这不是权限或第三方软件拦截，而是 Windows「输入体验」组件没有发出粘贴动作；下面给自查、诊断脚本和修法，整套流程在一台 Windows 11 26H2（`build 26300.9818`）上验证过一次。
 
-## 先判断是不是同一个毛病
+一句话：**Win+V 选中一条历史后，正常应该自动做两步：①把内容写进剪贴板；②替你模拟按一次 Ctrl+V。本文故障是第①步成功、第②步没发生。**
 
-三条命令都在 **Windows PowerShell**（开始菜单里那个）里跑。PowerShell 7 没有 Appx 模块，第二条会报找不到命令。
+## 问题
 
 ```powershell
+# 查 Win+V 面板所属“功能体验包”的版本
+# 正常应形如 1000.26100.x
 (Get-AppxPackage MicrosoftWindows.Client.CBS).Version
+# 查当前用户的剪贴板历史开关
+# 正常输出里应有 EnableClipboardHistory : 1
 Get-ItemProperty 'HKCU:\Software\Microsoft\Clipboard' -Name EnableClipboardHistory
+# 读当前剪贴板里的文本
 Get-Clipboard
 ```
 
 | 观察 | 正常值 | 说明 |
 | :--- | :--- | :--- |
-| 包版本 | 形如 `1000.26100.x` | 这是 Win+V 面板所在的「功能体验包」 |
-| `EnableClipboardHistory` | `1` | 剪贴板历史开关 |
+| 包版本 | 形如 `1000.26100.x` | 这是 `Win+V` 面板所在的「功能体验包」 |
+| `EnableClipboardHistory` | `1` | 剪贴板历史开关，若为 `0` 用 `Win+I` 找到`System>Clipboard`打开`Clipboard history` |
 | 选中一条后 `Get-Clipboard` | 返回那条内容 | 复制这一步是好的 |
 
-再用两次手工操作确认：按 Win+V 能列出历史，点一条后光标处没有内容。三条都对上才往下走；面板打不开、或复制本身就失败，不属于这类问题。
+发现按 `Win+V` 能列出历史，点一条/Enter后光标处却没有内容。
 
 ## 原因
 
@@ -45,7 +50,9 @@ Get-Clipboard
 
 ## 诊断：面板到底有没有发按键
 
-判据是键盘钩子事件里的 `LLKHF_INJECTED` 标志：它标记这个按键是人按的还是程序模拟的。存成 `probe.ps1`，跑 60 秒，期间按 Win+V、点一条历史：
+按 Win+. 选个 emoji，看能不能插进同一个输入框。能插进去说明输入体验的注入通道是好的，问题只在粘贴这一步；emoji 也插不进去，说明组件整体坏了，重注册之后还要再跑系统文件检查。
+
+再补一个用脚本的对照：判据是键盘钩子事件里的 `LLKHF_INJECTED` 标志：它标记这个按键是人按的还是程序模拟的。存成 `probe.ps1`，跑 60 秒，期间按 Win+V、点一条历史：
 
 ```powershell
 param([int]$Seconds = 60)
@@ -91,17 +98,25 @@ while ((Get-Date) -lt $end) {
 
 每 0.8 秒重挂一次钩子是这个脚本的关键：低层键盘钩子按安装顺序排队，**后装的排在链首**，面板打开时会挂自己的钩子，不重挂就会被它压住，看不到它自己发出的按键。
 
-再补一个不用脚本的对照：按 Win+. 选个 emoji，看能不能插进同一个输入框。能插进去说明输入体验的注入通道是好的，问题只在粘贴这一步；emoji 也插不进去，说明组件整体坏了，重注册之后还要再跑系统文件检查。
-
 ## 处理步骤
 
 Windows PowerShell（管理员）里执行：
 
 ```powershell
+# 1. 找到当前用户的剪贴板历史服务，名字通常像 cbdhsvc_xxxx
 $svc = Get-Service 'cbdhsvc_*' | Select-Object -First 1
+
+# 2. 强制重启这个服务
 Restart-Service -Name $svc.Name -Force
+
+# 3. 结束“输入体验”宿主进程；系统会自动重新拉起它
 Get-Process TextInputHost -ErrorAction SilentlyContinue | Stop-Process -Force
+
+# 4. 找到功能体验包 MicrosoftWindows.Client.CBS
 $cbs = Get-AppxPackage MicrosoftWindows.Client.CBS
+
+# 5. 用包安装目录里的 AppxManifest.xml 重新注册它
+#    不下载、不删除文件；-DisableDevelopmentMode 表示按非开发模式注册
 Add-AppxPackage -Register (Join-Path $cbs.InstallLocation 'AppxManifest.xml') -DisableDevelopmentMode
 ```
 
@@ -118,6 +133,7 @@ Add-AppxPackage -Register (Join-Path $cbs.InstallLocation 'AppxManifest.xml') -D
 先做一次系统文件检查，再考虑覆盖安装（设置 → 系统 → 恢复 → 使用 Windows 更新修复问题 → 立即重新安装，文件和已装应用会保留）：
 
 ```powershell
+# 系统文件检查器，扫描并修复系统文件
 sfc /scannow
 ```
 
