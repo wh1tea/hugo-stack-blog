@@ -153,3 +153,89 @@ sfc /scannow
 面板类故障先分清「动作没发出」还是「发出后被拦」：键盘钩子统计显示 `injected=0`，且同组件的 emoji 注入正常，就基本锁定组件状态；重注册对应包比逐项改设置有效。
 
 [^1]: [Microsoft Q&A report on Win+V paste failure](https://learn.microsoft.com/zh-hk/answers/questions/3943900/win10-win-v?orderby=oldest&page=1)
+
+## 附件 fix-clipboard-paste.ps1
+
+```powershell
+# requires -Version 5.1
+<#
+  Win+V 剪贴板面板"只复制、不粘贴"修复脚本
+  必须在【管理员】PowerShell 中运行
+
+  用法：
+    powershell -NoProfile -ExecutionPolicy Bypass -File .\fix-clipboard-paste.ps1
+    powershell -NoProfile -ExecutionPolicy Bypass -File .\fix-clipboard-paste.ps1 -SkipHealth   # 跳过 DISM/SFC
+#>
+[CmdletBinding()]
+param([switch]$SkipHealth)
+
+$ErrorActionPreference = 'Continue'
+function Step($t) { Write-Host "`n=== $t ===" -ForegroundColor Cyan }
+
+$isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()
+).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+if (-not $isAdmin) {
+  Write-Host "需要管理员权限：请在管理员终端里重新运行本脚本。" -ForegroundColor Red
+  exit 1
+}
+
+Step "0/5 系统信息"
+$cv = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+"版本: {0} build {1}.{2}" -f $cv.DisplayVersion, $cv.CurrentBuild, $cv.UBR
+$cbs = Get-AppxPackage -Name MicrosoftWindows.Client.CBS
+"Windows 功能体验包 (CBS): {0}" -f $(if ($cbs) { $cbs.Version } else { "未找到" })
+
+Step "1/5 重启剪贴板用户服务 (Clipboard User Service)"
+$svc = Get-Service 'cbdhsvc_*' | Select-Object -First 1
+if ($svc) {
+  "服务: {0}" -f $svc.Name
+  Restart-Service -Name $svc.Name -Force
+  Start-Sleep -Seconds 2
+  "状态: {0}" -f (Get-Service $svc.Name).Status
+}
+
+Step "2/5 结束输入体验进程 (TextInputHost)"
+Get-Process -Name TextInputHost -ErrorAction SilentlyContinue | ForEach-Object {
+  "结束 pid {0}" -f $_.Id
+  Stop-Process -Id $_.Id -Force
+}
+Start-Sleep -Seconds 2
+
+Step "3/5 重新注册 Windows 功能体验包"
+if ($cbs) {
+  $manifest = Join-Path $cbs.InstallLocation 'AppxManifest.xml'
+  if (Test-Path $manifest) {
+    "注册: {0}" -f $manifest
+    Add-AppxPackage -Register $manifest -DisableDevelopmentMode -ErrorAction Continue
+  } else {
+    "找不到 AppxManifest.xml，跳过"
+  }
+}
+
+Step "4/5 重置输入体验的应用设置 (settings.dat)"
+$settings = Join-Path $env:LOCALAPPDATA 'Packages\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\Settings\settings.dat'
+if (Test-Path $settings) {
+  $bak = "$settings.bak-$(Get-Date -Format yyyyMMddHHmmss)"
+  try {
+    Rename-Item -LiteralPath $settings -NewName (Split-Path $bak -Leaf) -Force -ErrorAction Stop
+    "已备份为: {0}" -f $bak
+  } catch {
+    "重命名失败（进程仍占用？）: {0}" -f $_.Exception.Message
+  }
+} else {
+  "未找到 settings.dat，跳过"
+}
+
+if (-not $SkipHealth) {
+  Step "5/5 系统组件健康检查（DISM + SFC，10-30 分钟，可 Ctrl+C 跳过）"
+  Write-Host ">> DISM /Online /Cleanup-Image /RestoreHealth" -ForegroundColor Yellow
+  DISM.exe /Online /Cleanup-Image /RestoreHealth
+  Write-Host ">> sfc /scannow" -ForegroundColor Yellow
+  sfc.exe /scannow
+} else {
+  Step "5/5 已跳过 DISM/SFC"
+}
+
+Write-Host "`n全部步骤完成。请【重启】，然后测试：输入框 → Win+V → 点/回车一条历史。" -ForegroundColor Green
+Write-Host "若仍然只复制不粘贴，说明是该 Windows 版本输入体验组件的缺陷，下一步只能做覆盖安装修复（保留文件和应用）。" -ForegroundColor Yellow
+```
