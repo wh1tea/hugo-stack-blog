@@ -2,12 +2,12 @@
   <title>Wh1tea Favicon</title>
   <style>
     path {
-      fill: #121212;
+      fill: #15141A;
     }
 
     @media (prefers-color-scheme: dark) {
       path {
-        fill: #E0E0E0;
+        fill: #F2F2F2;
       }
     }
   </style>
