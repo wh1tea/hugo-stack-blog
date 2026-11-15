@@ -10,23 +10,22 @@ tags:
   - nodejs
 categories:
   - windows
-draft: true
 ---
 
 `where.exe` 对同一条命令给出两三个结果，通常不是没装，而是几套系统在各自往 PATH 里塞东西。下面把每层的版本、来源、位置摊开，再说明 PATH 里那一条为什么存在。
 
 ## 分层总览
 
-| 层        | 命令                                                         | 版本                                            | 来源                     | 位置                                                         |
-| :-------- | ------------------------------------------------------------ | :---------------------------------------------- | :----------------------- | :----------------------------------------------------------- |
-| Python    | `conda -v`/`python -v`/`conda env list`                      | base 3.12.4 · py_env 3.12.13 · pixel_rpg 3.9.23 | conda                    | `D:\ProgramData\anaconda3`、`%USERPROFILE%\.conda\envs`      |
-| Node      | `nvm -v`/`nvm list`/`node -v`/`npm -v`                       | 22.23.4                                         | nvm-windows 2.1.0-beta.6 | `%LOCALAPPDATA%\Author Software\nvm`                         |
-| JVM       | `java -version`/`javac -version`                             | Temurin 21.0.8                                  | 官方 MSI                 | `C:\Program Files\Eclipse Adoptium`                          |
-| Go        | `go version`                                                 | 1.26.5                                          | 官方 MSI                 | `C:\Program Files\Go`                                        |
-| .NET      | `dotnet --list-sdks`/`dotnet --list-runtimes`/`dotnet --version`/`dotnet --info` | SDK 10.0.403 · 6.0.428                          | 官方 MSI                 | `C:\Program Files\dotnet`                                    |
-| Container | `docker -v`/`docker version`/`docker info`                   | Docker 29.9.1                                   | Docker Desktop           | `C:\Program Files\Docker`                                    |
-| Editor    | `code -v`/`webstorm -v`                                      | VS Code · WebStorm 2026.2                       | 用户安装器               | `%LOCALAPPDATA%\Programs\Microsoft VS Code`、`D:\Program Files\JetBrains` |
-| Terminal  | `pwsh -v`/`oh-my-posh version`                               | PowerShell 7.6.9 + oh-my-posh 30.6.5            | —                        | `C:\Program Files\PowerShell\7`                              |
+| 层        | 命令                                                                             | 版本                                            | 来源                     | 位置                                                                      |
+| :-------- | -------------------------------------------------------------------------------- | :---------------------------------------------- | :----------------------- | :------------------------------------------------------------------------ |
+| Python    | `conda -v`/`python -v`/`conda env list`                                          | base 3.12.4 · py_env 3.12.13 · pixel_rpg 3.9.23 | conda                    | `D:\ProgramData\anaconda3`、`%USERPROFILE%\.conda\envs`                   |
+| Node      | `nvm -v`/`nvm list`/`node -v`/`npm -v`                                           | 22.23.4                                         | nvm-windows 2.1.0-beta.6 | `%LOCALAPPDATA%\Author Software\nvm`                                      |
+| JVM       | `java -version`/`javac -version`                                                 | Temurin 21.0.8                                  | 官方 MSI                 | `C:\Program Files\Eclipse Adoptium`                                       |
+| Go        | `go version`                                                                     | 1.26.5                                          | 官方 MSI                 | `C:\Program Files\Go`                                                     |
+| .NET      | `dotnet --list-sdks`/`dotnet --list-runtimes`/`dotnet --version`/`dotnet --info` | SDK 10.0.403 · 6.0.428                          | 官方 MSI                 | `C:\Program Files\dotnet`                                                 |
+| Container | `docker -v`/`docker version`/`docker info`                                       | Docker 29.9.1                                   | Docker Desktop           | `C:\Program Files\Docker`                                                 |
+| Editor    | `code -v`/`webstorm -v`                                                          | VS Code · WebStorm 2026.2                       | 用户安装器               | `%LOCALAPPDATA%\Programs\Microsoft VS Code`、`D:\Program Files\JetBrains` |
+| Terminal  | `pwsh -v`/`oh-my-posh version`                                                   | PowerShell 7.6.9 + oh-my-posh 30.6.5            | —                        | `C:\Program Files\PowerShell\7`                                           |
 
 ## 运行时
 
