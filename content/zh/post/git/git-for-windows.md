@@ -286,8 +286,8 @@ git config --global --list
     required = true
 
 [user]
-    name = 白茶木
-    email = wbq20010316@outlook.com
+    name = John Smith
+    email = John.Smith@example.com
 ```
 
 ### 初始化仓库
