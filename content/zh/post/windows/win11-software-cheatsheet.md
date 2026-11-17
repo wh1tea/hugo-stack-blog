@@ -12,7 +12,6 @@ categories:
   - windows
 ---
 
-
 本文不是「必装推荐」，而是一张「电脑上有什么、分别干什么、授权怎么算」的底图。日常操作和快捷键见 [Win11 高效操作指南](win11-efficient-operations-guide.md)。
 
 读表前先约定标签：
@@ -299,13 +298,82 @@ where.exe code
 
 `Get-Command` 显示最终解析到的命令，`where.exe` 列出 PATH 里所有匹配项。两个结果不一致，通常说明装了两份，或者 PATH 里有一条旧路径。
 
+## winget 批量升级的踩坑记录
+
+这次我用一条命令把 winget 来源的软件批量升了一次：
+
+```powershell
+winget upgrade --all --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+```
+
+37 个候选里实际尝试了 35 个：4 个明确失败，31 个报成功，其中 3 个还需要收尾。上面的表保留升级前的快照，这一节记录升级后的实际版本和踩到的坑。
+
+### 升级前后
+
+| 软件          | 升级前                    | 升级后                    | 说明                                    |
+| :------------ | :------------------------ | :------------------------ | :-------------------------------------- |
+| Anaconda3     | 2024.06-1 / Python 3.12.4 | 2026.07-1 / Python 3.14.6 | 安装位置从 D: 变到 C:，conda 入口要重建 |
+| Pandoc        | 3.3                       | 3.14                      | 旧版卸载失败，提权后成功                |
+| OBS Studio    | 32.2.1                    | 33.0.0                    | 先完全退出 OBS                          |
+| WSL           | 2.6.3                     | 3.0.5                     | MSIX 包，需要管理员                     |
+| GPU Tweak III | 1.7.8.6                   | 2.1.8.0                   | 装完要重启                              |
+| Git           | 2.55.0.3                  | 2.56.0.4                  | 正常                                    |
+| Hugo          | 0.168.0                   | 0.170.0                   | 正常                                    |
+| PowerShell    | 7.6.10                    | 7.6.10                    | 新版是 MSIX，winget 不跨技术升级        |
+| Bandizip      | 6.29                      | 6.29                      | 主动保留旧版                            |
+| MySQL         | 8.0.43                    | 8.0.43                    | 8.4 只是并存，后来卸掉 8.4              |
+| PowerToys     | 0.96.1                    | 0.96.1                    | winget 没识别到主程序                   |
+
+### 四个真正失败的包
+
+| 软件          | 现象                             | 原因                                                                          | 处理                                                         |
+| :------------ | :------------------------------- | :---------------------------------------------------------------------------- | :----------------------------------------------------------- |
+| Bandizip 7.47 | `Installer hash does not match.` | 官方在固定 URL 换了安装包，winget 清单里的 SHA256 没更新                      | 不要绕过哈希；等清单更新或手动装                             |
+| Pandoc 3.14   | 卸载旧版 `1603`                  | MSI 日志是 `Error 1730`，卸载要管理员；同时缓存 MSI 和 `D:\download` 源都没了 | 用管理员 PowerShell 重试；不行就装 3.14 MSI，或修复 3.3 再卸 |
+| OBS 33.0.0    | 安装器 `exit code 6`             | OBS 或插件还占着 DLL，NSIS 换不了文件                                         | 托盘退出 OBS，确认没有 `obs64.exe`；不行就重启后再升         |
+| WSL 3.0.5     | `0x80073d28`                     | WSL 是 MSIX 包，机器级安装要管理员，`--silent` 不会提权                       | 在管理员 PowerShell 里执行 `winget upgrade`                  |
+
+Bandizip 这次最后没升，是有意留在 6.29；Pandoc、OBS、WSL 都在处理后在 `winget list` 里确认到了新版本。日志末尾的「12 个版本无法确定」是 Steam 游戏、SQL Server 等没有版本号的卸载项，不是失败。
+
+### 三个“报成功但还要收尾”的包
+
+**Anaconda** 是影响最大的一个。winget 报成功后，旧目录 `D:\ProgramData\anaconda3` 被删掉，新装到了 `C:\ProgramData\anaconda3`，但 PATH 和 PowerShell 的 conda 初始化块还指着 D:，所以新终端里 `conda`、`python` 都用不了。处理方法是让新位置的 `conda.exe` 重新执行 `conda init powershell`，再重开终端。原来的 `pixel_rpg`、`py_env` 环境还在用户目录，没有丢。
+
+另一个小细节：`auto_activate_base` 是 `False`，所以新终端不会自动进 base，`python` 要先 `conda activate base` 才有。这不是安装失败。
+
+**MySQL** 是“假升级”。winget 对 8.4.9 报 `Successfully installed`，但 8.0 和 8.4 只是并存在两个目录：`MySQL80` 服务仍然跑 8.0，3306 端口、数据目录、`mysql` 客户端也都还是 8.0；8.4 没有服务、没有数据目录，等于只装了二进制。真正的跨大版本升级要用 MySQL Installer 走迁移流程，不能把 8.4 直接指向 8.0 的 `Data` 目录。这次最后选择卸载 8.4，保留 8.0。MySQL Workbench 也同时留了 26.10 和 8.0 CE 两份，属于同类重复，按需卸一个即可。
+
+**GPU Tweak III** 装完提示 `Restart your PC to finish installation.`，注册表已经是 2.1.8.0，但 `PendingFileRenameOperations` 里还有待替换的文件。重启一次，挂起项清空，才算真正完成。
+
+### 两个没升成的包
+
+- **PowerShell 7.7**：已装的是 MSI 版 7.6.10，源里 7.7 是 MSIX。winget 日志明确写 `Skipping Microsoft.PowerShell as available upgrades use a different install technology`，不会自动跨 MSI→MSIX。要升就装 7.7 的 MSI，或者先卸 7.6 再装 MSIX。
+- **TeamSpeak 6.0.0-beta4.1**：可用版本是 beta，日志里只拉了 manifest，没有进入安装。`--all` 没有把稳定版 5.0.0 自动升到预发布版；要试 beta 就单独指定包。
+
+### PowerToys 为什么说“没有可用升级”
+
+这台机器上的 PowerToys 是 0.96.1，源里最新是 0.102.3101，但 `winget install Microsoft.PowerToys` 一直返回 `No available upgrade found`。
+
+原因是 winget 只识别到三个 MSIX 右键菜单包（FileLocksmith、ImageResizer、PowerRename），都是 0.96.1；主程序在注册表里没有卸载项，`C:\Program Files\PowerToys` 也是空的。源里的 0.102.3101 安装器是 burn EXE，winget 不会把「MSIX 上下文菜单」当成「burn 主程序」来升级。这种情况只能走 Microsoft Store 或官方 `PowerToysUserSetup` 安装器。
+
+### 这次学到的几条规则
+
+- **`winget upgrade --all` 不是万能更新器**。它适合常规 MSI/EXE，不擅长 MSIX、per-user、便携版和跨安装技术升级。
+- **升级前先看安装形态**。`winget show <包名>` 里的 `Installer Type` 能提前暴露 MSI、MSIX、burn、zip 的差异。
+- **该提权就提权**。MSI 卸载和 MSIX 安装没有管理员权限会直接失败；`--silent` 不会帮你弹 UAC。
+- **升级前关程序**。OBS 这类会加载 DLL 的软件，退出不干净就会 `exit code 6`。
+- **不要绕过哈希校验**。哈希不匹配通常不是网络问题，而是官方换了包、清单还没更新；跳过校验等于把风险装进机器。
+- **报成功不等于能用**。Anaconda 的 PATH、MySQL 的服务和数据目录、GPU Tweak 的重启，都要额外验证。
+- **故意保留的版本要 pin**。`winget pin add --id <包名> --blocking` 能挡住 `--all`；但软件自己的更新器不归 winget 管，比如 Bandizip 的 `Updater.exe` 要单独关。
+- **大版本数据库先备份**。MySQL 这种跨 8.0→8.4 的升级，先 `mysqldump` 再动，别直接换二进制。
+
 ## 怎么用这份清单
 
 - **先按需求选，不要照着装一遍**。同类工具留一个，浏览器最多两三个，杀毒软件只留一个。
 - **命令行工具优先 winget 或 scoop**，GUI 程序走官网安装包；下载页看清 x64、ARM64，别下错架构。
 - **安装时选自定义**，取消捆绑勾选；能选「仅当前用户」就不必给管理员权限。
 - **装 D 盘可以省 C 盘**，但卸载项仍在 C 盘；想要复制即用，选便携版。
-- **定期 `winget upgrade`**，显卡驱动用 NVIDIA App 更新，别装来路不明的「驱动大师」。
+- **定期 `winget upgrade`，但别无脑 `--all`**。先看列表，MSIX、beta、便携版和数据库单独处理；显卡驱动用 NVIDIA App 更新，别装来路不明的「驱动大师」。
 - **商业使用先看许可证**。个人免费不等于商用免费，Bandizip、TeamSpeak、Unity 这类软件尤其要看清楚。
 - **备份便携目录和 `%APPDATA%` 里的配置**，重装系统时能省很多重新配置的时间。
 
