@@ -2,7 +2,7 @@
 title: Windows 开发环境
 slug: dev-env-map
 date: 2026-11-01T15:05:00+08:00
-description:  Windows 环境：运行时归谁管、包管理器怎么分工、PATH 里每条路径的存在理由，附四个真实的版本与 PATH 坑。
+description: Windows 环境：运行时归谁管、包管理器怎么分工、PATH 里每条路径的存在理由，附四个真实的版本与 PATH 坑。
 tags:
   - windows
   - environment
