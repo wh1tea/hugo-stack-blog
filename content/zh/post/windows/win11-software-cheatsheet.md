@@ -1,7 +1,7 @@
 ---
 title:  Windows 11 本地软件速查表
 slug: win11-software-cheatsheet
-date: 2026-11-11T06:00:00+08:00
+date: 2026-11-16T06:00:00+08:00
 description: 从 x86、x64、ARM64 讲起，把 Win11 本地软件按用途分类整理成表，附标签、路径和自查命令
 tags:
   - windows
@@ -10,7 +10,6 @@ tags:
   - installation
 categories:
   - windows
-
 ---
 
 
@@ -142,7 +141,6 @@ Windows 默认把程序分几个地方放：
 | :-------------- | ----- | :----------------------------------------------------------- | :------- |
 | Office          | 2019  | 本地版 Word、Excel、PPT，买断制，不订阅 Microsoft 365        | 付费     |
 | 微软 OfficePLUS | —     | 微软官方模板和素材插件，做 PPT、简历时找版式                 | 免费     |
-| OneDrive        | —     | 系统集成的云盘，5 GB 免费；Office 自动保存也靠它             | Freemium |
 | Typora          | 1.14  | 所见即所得的 Markdown 编辑器，导出 PDF、Word 很顺            | 付费     |
 | Obsidian        | 1.14  | 本地 Markdown 笔记库，双链和插件强；个人免费，同步和发布付费 | Freemium |
 | calibre         | 9.15  | 电子书库管理、格式转换、元数据抓取，Kindle 用户常备          | 开源     |
