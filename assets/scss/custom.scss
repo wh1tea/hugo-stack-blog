@@ -9,3 +9,26 @@
   --emoji-size: 28px; /* 圆形底色直径，同时决定 width / height / line-height */
   --emoji-font-size: 16px; /* emoji 字形大小 */
 }
+
+/* 首页「精选置顶」区。
+   front matter 里写 pinned: true 的文章会被抽到这个区块（见 layouts/home.html），
+   并从下方的分页列表里剔除，避免同一篇出现两次。 */
+.pinned-section {
+  margin-bottom: var(--section-separation);
+}
+
+.pinned-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.pinned-heading svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-color);
+}
+
+.article-list--pinned article {
+  border-right: 3px solid var(--accent-color);
+}

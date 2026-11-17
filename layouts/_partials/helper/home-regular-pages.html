@@ -1,0 +1,3 @@
+{{- $pages := partial "helper/pages.html" . -}}
+{{- $pinned := where $pages "Params.pinned" true -}}
+{{- return ($pages | complement $pinned) -}}

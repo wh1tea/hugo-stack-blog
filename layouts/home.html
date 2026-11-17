@@ -1,0 +1,32 @@
+{{ define "main" }}
+    {{- $pages := partial "helper/pages.html" . -}}
+    {{- $pinned := sort (where $pages "Params.pinned" true) "Date" "desc" -}}
+    {{- $paginator := .Paginate (partial "helper/home-regular-pages.html" .) -}}
+
+    {{- if and $pinned (eq $paginator.PageNumber 1) -}}
+        <section class="pinned-section" aria-labelledby="pinned-heading">
+            <h2 class="section-title pinned-heading" id="pinned-heading">
+                {{ partial "helper/icon" "pin" }}
+                <span>{{ i18n "pinned.title" | default "精选置顶" }}</span>
+            </h2>
+            <div class="article-list article-list--pinned">
+                {{ range $pinned }}
+                    {{ partial "article-list/default" . }}
+                {{ end }}
+            </div>
+        </section>
+    {{- end -}}
+
+    <section class="article-list">
+        {{ range $paginator.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
