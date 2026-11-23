@@ -13,6 +13,7 @@ assets/jsconfig.json
 
 # Local dev
 _devlog/
+.workbuddy/
 
 # Obsidian
 .obsidian/
