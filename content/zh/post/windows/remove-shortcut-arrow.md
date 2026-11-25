@@ -2,7 +2,7 @@
 title: 去掉 Windows 快捷方式的小箭头
 slug: remove-shortcut-arrow
 date: 2026-11-24T04:08:41+08:00
-description: 从叠加图标原理讲起，用命令行或注册表编辑器去掉快捷方式左下角的小箭头；附改完后个别图标变成白纸时的分层排查与图标缓存重建步骤
+description: 从叠加图标原理讲起，用命令行或注册表编辑器去掉快捷方式左下角的小箭头；附改完后图标变白纸的分层排查、图标缓存重建，以及给单个快捷方式换图标的方法
 tags:
   - windows
   - registry
@@ -201,6 +201,39 @@ Get-ChildItem "$env:LOCALAPPDATA\Microsoft\Windows\Explorer\iconcache_*.db" | Se
 
 如果所有图标都异常、连开始菜单和任务栏也不对，先重启电脑；仍然异常再考虑新建一个用户账户做对照，判断是用户级缓存还是系统级图标库损坏。
 
+## 给单个快捷方式换图标
+
+有些快捷方式本身没坏，只是图标不对：目标程序没带图标资源（Git for Windows 的 `wintoast.exe` 就是如此），Windows 只能画一个通用的白色窗口；或者你单纯想换成别的图标。要改的是 `.lnk` 里记录的「图标位置」，程序本身不动。
+
+### 图形界面
+
+右键快捷方式 →「属性」→「快捷方式」标签 →「更改图标」→「浏览」，选一个 `.ico` 文件，或选 exe/dll（里面可能打包了多个图标，在列表里挑一个）→ 一路「确定」。
+
+很多程序会把图标放在安装目录里，找不到时先在这个目录搜 `*.ico`。Git 自带的图标在 `D:\Program Files\Git\ucrt64\share\git\git-for-windows.ico`。
+
+### 命令行
+
+```powershell
+$lnkPath = "$env:USERPROFILE\Desktop\Git for Windows.lnk"
+$icoPath = "D:\Program Files\Git\ucrt64\share\git\git-for-windows.ico"
+
+$shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut($lnkPath)
+$shortcut.IconLocation = "$icoPath,0"
+$shortcut.Save()
+```
+
+`IconLocation` 的格式是「路径,索引」。`.ico` 文件里是一张张独立图片，写 `0` 取第一张（通常也是最大的一张）；exe 或 dll 里的图标才需要按索引挑。
+
+改完桌面没变，先按 `F5`，或者在桌面空白处右键 →「刷新」。仍然显示旧图标，按上一节「重建图标缓存」的步骤处理——给快捷方式换图标同样会撞上缓存里的旧记录，重启一次资源管理器未必够。
+
+### 目标程序有没有图标
+
+把 exe 改成「大图标」看：如果它是一张白窗口（中间一个蓝色方块），说明这个 exe 没有图标资源，快捷方式跟着显示成通用窗口，这不是快捷方式的问题。也可以打开「更改图标」对话框，列表空着同样说明没有。
+
+这种情况给快捷方式指一个 `.ico` 即可。选图标时尽量挑含 16/32/48/256 多尺寸的，否则桌面图标放大或切到列表视图会糊；`git-for-windows.ico` 有 23 个尺寸，够用。
+
+反过来，图标来源正常却显示成白纸（比如 Unity Hub 更新后），基本就是缓存，直接走上一节。
+
 ## 恢复默认箭头
 
 管理员终端执行：
@@ -214,4 +247,4 @@ taskkill /f /im explorer.exe; start explorer.exe
 
 ## 结语
 
-透明图标方案只改叠加的角标，快捷方式的 `IsShortcut` 标记保持原样，开始菜单和任务栏功能不受影响；改完遇到白纸图标，先分清是快捷方式、图标来源还是缓存，再按上面的步骤处理。想进一步改快捷方式本身显示的图标，见 [给 .exe 更换图标的三种方法](change-exe-icon.md)。
+透明图标方案只改叠加的角标，快捷方式的 `IsShortcut` 标记保持原样，开始菜单和任务栏功能不受影响；改完遇到白纸图标，先分清是快捷方式、图标来源还是缓存，再按上面的步骤处理。想给某个快捷方式单独换图标，见上一节；想换的是 exe 自身的图标，见 [给 .exe 更换图标的三种方法](change-exe-icon.md)。
