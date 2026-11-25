@@ -18,7 +18,7 @@ categories:
 
 ## 问题现象
 
-环境：Windows 11 + Anaconda（`D:\ProgramData\anaconda3`，conda 24.11.3）+ PowerShell 7.6.5，conda 环境 `py_env` 位于 `C:\Users\wbq20\.conda\envs\py_env`。
+环境：Windows 11 + Anaconda（`D:\ProgramData\anaconda3`，conda 24.11.3）+ PowerShell 7.6.5，conda 环境 `py_env` 位于 `C:\Users\<username>\.conda\envs\py_env`。
 
 在 pwsh 中依次执行：
 
@@ -53,7 +53,7 @@ conda env list
 
 ```powershell
 python -c "import sys; print(sys.prefix)"
-# C:\Users\wbq20\.conda\envs\py_env
+# C:\Users\<username>\.conda\envs\py_env
 ```
 
 Python 已经指向 `py_env`！说明 **activate 本身是生效的**——环境变量、PATH、Python 解释器都切过去了。
@@ -98,12 +98,12 @@ function Invoke-Conda() {
 
 注意它无条件传了两个变量：`$Env:_CE_M` 和 `$Env:_CE_CONDA`。这正是 hook 里初始化为 `$null` 的两个变量。而 `conda activate` 走的是模块里的 `Enter-CondaEnvironment`，它把激活脚本的输出用 `Invoke-Expression` 应用到当前会话。于是对比 activate 前后的变量：
 
-| 变量           | activate 前 | activate 后                         |
-| :------------- | :---------- | :---------------------------------- |
-| `_CE_M`        | `$null`     | `""`（空字符串）                    |
-| `_CE_CONDA`    | `$null`     | `""`（空字符串）                    |
-| `CONDA_PREFIX` | 未设置      | `C:\Users\wbq20\.conda\envs\py_env` |
-| `CONDA_SHLVL`  | 未设置      | `1`                                 |
+| 变量           | activate 前 | activate 后                              |
+| :------------- | :---------- | :--------------------------------------- |
+| `_CE_M`        | `$null`     | `""`（空字符串）                         |
+| `_CE_CONDA`    | `$null`     | `""`（空字符串）                         |
+| `CONDA_PREFIX` | 未设置      | `C:\Users\<username>\.conda\envs\py_env` |
+| `CONDA_SHLVL`  | 未设置      | `1`                                      |
 
 **conda 的激活脚本把 `_CE_M` / `_CE_CONDA` 写成了空字符串。** 这两个变量本来只是 conda 内部调用自己的占位符，激活前后值的变化看似无关紧要——直到它撞上 pwsh 7 的参数传递规则。
 
@@ -201,10 +201,10 @@ function conda {
 ```powershell
 conda activate py_env
 conda env list
-# py_env               *  C:\Users\wbq20\.conda\envs\py_env   ← 正常，带 * 号
+# py_env               *  C:\Users\<username>\.conda\envs\py_env   ← 正常，带 * 号
 
 python -c "import sys; print(sys.prefix)"
-# C:\Users\wbq20\.conda\envs\py_env
+# C:\Users\<username>\.conda\envs\py_env
 ```
 
 `conda env list` 不再报错，python 正确指向 `py_env`，问题解决。
